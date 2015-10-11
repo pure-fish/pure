@@ -2,6 +2,8 @@
 
 > Port of the [`pure`](https://github.com/sindresorhus/pure) ZSH theme to Fish
 
+![](screenshot.png)
+
 # Todo
 
 - [x] Display current directory tail
