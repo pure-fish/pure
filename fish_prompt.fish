@@ -20,10 +20,13 @@ function fish_prompt
   set -l color_green (set_color green)
   set -l color_blue (set_color blue)
   set -l color_yellow (set_color yellow)
-  set -l color_gray (set_color white)
+  set -l color_cyan (set_color cyan)
+  set -l color_magenta (set_color magenta)
+  set -l color_white (set_color white)
   set -l color_normal (set_color normal)
 
   # Template
+  set -l newline ""
   set -l folder (__parse_current_folder)
   set -l git_branch_name ""
   set -l git_dirty ""
@@ -68,6 +71,6 @@ function fish_prompt
     end
   end
 
-  echo "$folder $git_branch_name$git_dirty $git_arrows"
-  echo -n -s "$PURE_SYMBOL_PROMPT "
+  echo -e "\n$color_blue$folder$color_normal $color_white$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
+  echo -n -s "$color_magenta$PURE_SYMBOL_PROMPT$color_normal "
 end

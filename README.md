@@ -13,3 +13,5 @@
 - [ ] Display the current path in the title (show full path on title)
 - [ ] Display the current folder and command when a process is running
 - [ ] Display username and host when in an SSH session
+- [x] Add colors
+- [x] Format newline
