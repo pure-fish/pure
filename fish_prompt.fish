@@ -22,7 +22,7 @@ function fish_prompt
   set -l color_yellow (set_color yellow)
   set -l color_cyan (set_color cyan)
   set -l color_magenta (set_color magenta)
-  set -l color_white (set_color white)
+  set -l color_gray (set_color 93A1A1)
   set -l color_normal (set_color normal)
 
   # Template
@@ -70,7 +70,11 @@ function fish_prompt
       end
     end
   end
-
-  echo -e "\n$color_blue$folder$color_normal $color_white$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
+  
+  echo -e "\n$color_blue$folder$color_normal $color_gray$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
   echo -n -s "$color_magenta$PURE_SYMBOL_PROMPT$color_normal "
+end
+
+# Removes right prompt
+function fish_right_prompt
 end
