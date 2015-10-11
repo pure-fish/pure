@@ -7,6 +7,7 @@ function __parse_git_branch
 end
 
 function fish_prompt
+  set -l exit_code $status
   # Symbols
 
   set -l PURE_SYMBOL_PROMPT "❯"
@@ -21,7 +22,6 @@ function fish_prompt
   set -l color_blue (set_color blue)
   set -l color_yellow (set_color yellow)
   set -l color_cyan (set_color cyan)
-  set -l color_magenta (set_color magenta)
   set -l color_gray (set_color 93A1A1)
   set -l color_normal (set_color normal)
 
@@ -30,6 +30,7 @@ function fish_prompt
   set -l git_branch_name ""
   set -l git_dirty ""
   set -l git_arrows ""
+  set -l symbol_color $color_green
 
   # Exit with code 1 if git is not available
   if not command -s git >/dev/null
@@ -69,9 +70,14 @@ function fish_prompt
       end
     end
   end
-  
+
+  # Symbol color is red when previous command fails
+  if test $exit_code -ne 0
+    set symbol_color $color_red
+  end
+
   echo -e "\n$color_blue$folder$color_normal $color_gray$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
-  echo -n -s "$color_magenta$PURE_SYMBOL_PROMPT$color_normal "
+  echo -n -s "$symbol_color$PURE_SYMBOL_PROMPT$color_normal "
 end
 
 # Set title to current folder and shell name
