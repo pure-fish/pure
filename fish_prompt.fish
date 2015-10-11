@@ -26,7 +26,6 @@ function fish_prompt
   set -l color_normal (set_color normal)
 
   # Template
-  set -l newline ""
   set -l folder (__parse_current_folder)
   set -l git_branch_name ""
   set -l git_dirty ""
@@ -56,7 +55,7 @@ function fish_prompt
     if test -n "$has_upstream"
       set -l git_status (command git rev-list --left-right --count HEAD...@'{u}' | sed 's/[[:blank:]]/ /' ^/dev/null)
 
-      # Resolve Git arrows by treating `git_status`
+      # Resolve Git arrows by treating `git_status` as an array
       set -l git_arrow_left (command echo $git_status | cut -c 1 ^/dev/null)
       set -l git_arrow_right (command echo $git_status | cut -c 3 ^/dev/null)
 
