@@ -75,6 +75,11 @@ function fish_prompt
   echo -n -s "$color_magenta$PURE_SYMBOL_PROMPT$color_normal "
 end
 
+# Set title to current folder and shell name
+function fish_title
+  echo (__parse_current_folder) – $_
+end
+
 # Removes right prompt
 function fish_right_prompt
 end
