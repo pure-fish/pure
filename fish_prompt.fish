@@ -125,11 +125,9 @@ function fish_prompt
     set prompt $prompt "$color_gray$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
   end
 
-
   set prompt $prompt "\n$color_symbol$symbol_prompt$color_normal "
 
   echo -e -s $prompt
-
 end
 
 # Set title to current folder and shell name
