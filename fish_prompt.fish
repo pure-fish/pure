@@ -1,3 +1,8 @@
+# Pure
+# by Rafael Rinaldi
+# https://github.com/rafaelrinaldi/pure
+# MIT License
+
 function __parse_current_folder -d "Replace '/Users/$USER' by '~'"
   pwd | sed "s/^\/Users\/$USER/~/"
 end
@@ -28,7 +33,7 @@ function __format_time -d "Format milliseconds to a human readable format"
 
   set time (command printf "$time%ss" $seconds)
 
-  echo -e -n $time
+  echo -e $time
 end
 
 function fish_prompt
@@ -59,6 +64,22 @@ function fish_prompt
   set -l git_dirty ""
   set -l git_arrows ""
   set -l command_duration ""
+  set -l prompt ""
+
+  # Format current folder on prompt output
+  set prompt $prompt "\n$color_blue$current_folder$color_normal "
+
+  # Handle previous command exit code
+  if test $exit_code -ne 0
+    # Symbol color is red when previous command fails
+    set color_symbol $color_red
+
+    # Prompt failed command execution duration
+    set command_duration (__format_time $CMD_DURATION)
+
+    set prompt $prompt "$color_yellow$command_duration$color_normal "
+  end
+
 
   # Exit with code 1 if git is not available
   if not command -s git >/dev/null
@@ -94,21 +115,18 @@ function fish_prompt
       end
 
       if test $git_arrow_right -ne "0"
-        set git_arrows $git_arrows $symbol_git_down_arrow
+        set git_arrows $git_arrows$symbol_git_down_arrow
       end
     end
+
+    # Format Git prompt output
+    set prompt $prompt "$color_gray$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
   end
 
-  if test $exit_code -ne 0
-    # Symbol color is red when previous command fails
-    set color_symbol $color_red
+  set prompt $prompt "\n$color_symbol$symbol_prompt$color_normal "
 
-    # Prompt failed command execution duration
-    set command_duration (__format_time $CMD_DURATION)
-  end
+  echo -e -s $prompt
 
-  echo -e "\n$color_blue$current_folder$color_normal $command_duration$color_gray$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
-  echo -n -s "$color_symbol$symbol_prompt$color_normal "
 end
 
 # Set title to current folder and shell name
