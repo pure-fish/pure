@@ -1,3 +1,5 @@
+# vim: set ft=sh:
+
 # Pure
 # by Rafael Rinaldi
 # https://github.com/rafaelrinaldi/pure
