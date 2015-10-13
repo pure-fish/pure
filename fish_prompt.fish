@@ -75,7 +75,7 @@ function fish_prompt
     set -l is_git_dirty (command git status --porcelain --ignore-submodules ^/dev/null)
 
     if test -n "$is_git_dirty"
-      set git_dirty $PURE_SYMBOL_GIT_DIRTY
+      set git_dirty $symbol_git_dirty
     end
 
     # Check if there is an upstream configured
