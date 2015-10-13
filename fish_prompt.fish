@@ -1,19 +1,45 @@
-function __parse_current_folder
+function __parse_current_folder -d "Replace '/Users/$USER' by '~'"
   pwd | sed "s/^\/Users\/$USER/~/"
 end
 
-function __parse_git_branch
+function __parse_git_branch -d "Parse current Git branch name"
   git symbolic-ref HEAD | sed -e "s/^refs\/heads\///"
+end
+
+function __format_time -d "Format milliseconds to a human readable format"
+  set -l millseconds $argv[1]
+  set -l seconds (math "$millseconds / 1000 % 60")
+  set -l minutes (math "$millseconds / 60000 % 60")
+  set -l hours (math "$millseconds / 3600000 % 24")
+  set -l days (math "$millseconds / 86400000")
+  set -l time ""
+
+  if test $days -gt 0
+    set time (command printf "$time%sd " $days)
+  end
+  
+  if test $hours -gt 0
+    set time (command printf "$time%sh " $hours)
+  end
+  
+  if test $minutes -gt 0
+    set time (command printf "$time%sm " $minutes)
+  end
+
+  set time (command printf "$time%ss" $seconds)
+
+  echo -e -n $time
 end
 
 function fish_prompt
   set -l exit_code $status
+
   # Symbols
 
-  set -l PURE_SYMBOL_PROMPT "❯"
-  set -l PURE_SYMBOL_GIT_DOWN_ARROW "⇣"
-  set -l PURE_SYMBOL_GIT_UP_ARROW "⇡"
-  set -l PURE_SYMBOL_GIT_DIRTY "*"
+  set -l symbol_prompt "❯"
+  set -l symbol_git_down_arrow "⇣"
+  set -l symbol_git_up_arrow "⇡"
+  set -l symbol_git_dirty "*"
 
   # Colors
 
@@ -24,13 +50,15 @@ function fish_prompt
   set -l color_cyan (set_color cyan)
   set -l color_gray (set_color 93A1A1)
   set -l color_normal (set_color normal)
+  set -l color_symbol $color_green
 
   # Template
-  set -l folder (__parse_current_folder)
+
+  set -l current_folder (__parse_current_folder)
   set -l git_branch_name ""
   set -l git_dirty ""
   set -l git_arrows ""
-  set -l symbol_color $color_green
+  set -l command_duration ""
 
   # Exit with code 1 if git is not available
   if not command -s git >/dev/null
@@ -62,22 +90,25 @@ function fish_prompt
 
     # If arrow is not "0", it means it's dirty
       if test $git_arrow_left -ne "0"
-        set git_arrows $PURE_SYMBOL_GIT_UP_ARROW
+        set git_arrows $symbol_git_up_arrow
       end
 
       if test $git_arrow_right -ne "0"
-        set git_arrows $git_arrows $PURE_SYMBOL_GIT_DOWN_ARROW
+        set git_arrows $git_arrows $symbol_git_down_arrow
       end
     end
   end
 
-  # Symbol color is red when previous command fails
   if test $exit_code -ne 0
-    set symbol_color $color_red
+    # Symbol color is red when previous command fails
+    set color_symbol $color_red
+
+    # Prompt failed command execution duration
+    set command_duration (__format_time $CMD_DURATION)
   end
 
-  echo -e "\n$color_blue$folder$color_normal $color_gray$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
-  echo -n -s "$symbol_color$PURE_SYMBOL_PROMPT$color_normal "
+  echo -e "\n$color_blue$current_folder$color_normal $command_duration$color_gray$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
+  echo -n -s "$color_symbol$symbol_prompt$color_normal "
 end
 
 # Set title to current folder and shell name
