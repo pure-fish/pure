@@ -69,18 +69,6 @@ function fish_prompt
   # Format current folder on prompt output
   set prompt $prompt "\n$color_blue$current_folder$color_normal "
 
-  # Handle previous command exit code
-  if test $exit_code -ne 0
-    # Symbol color is red when previous command fails
-    set color_symbol $color_red
-
-    # Prompt failed command execution duration
-    set command_duration (__format_time $CMD_DURATION)
-
-    set prompt $prompt "$color_yellow$command_duration$color_normal "
-  end
-
-
   # Exit with code 1 if git is not available
   if not command -s git >/dev/null
     return 1
@@ -121,6 +109,17 @@ function fish_prompt
 
     # Format Git prompt output
     set prompt $prompt "$color_gray$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
+  end
+
+  # Handle previous command exit code
+  if test $exit_code -ne 0
+    # Symbol color is red when previous command fails
+    set color_symbol $color_red
+
+    # Prompt failed command execution duration
+    set command_duration (__format_time $CMD_DURATION)
+
+    set prompt $prompt " $color_yellow$command_duration$color_normal"
   end
 
   set prompt $prompt "\n$color_symbol$symbol_prompt$color_normal "
