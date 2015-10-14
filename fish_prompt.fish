@@ -36,11 +36,11 @@ function __parse_git_branch -d "Parse current Git branch name"
 end
 
 function __format_time -d "Format milliseconds to a human readable format"
-  set -l millseconds $argv[1]
-  set -l seconds (math "$millseconds / 1000 % 60")
-  set -l minutes (math "$millseconds / 60000 % 60")
-  set -l hours (math "$millseconds / 3600000 % 24")
-  set -l days (math "$millseconds / 86400000")
+  set -l milliseconds $argv[1]
+  set -l seconds (math "$milliseconds / 1000 % 60")
+  set -l minutes (math "$milliseconds / 60000 % 60")
+  set -l hours (math "$milliseconds / 3600000 % 24")
+  set -l days (math "$milliseconds / 86400000")
   set -l time
   set -l threshold 5
 
