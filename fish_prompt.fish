@@ -5,6 +5,9 @@
 # https://github.com/rafaelrinaldi/pure
 # MIT License
 
+# Whether or not is a fresh session
+set -g fresh_session 1
+
 function __parse_current_folder -d "Replace '/Users/$USER' by '~'"
   pwd | sed "s/^\/Users\/$USER/~/"
 end
@@ -42,6 +45,7 @@ function __format_time -d "Format milliseconds to a human readable format"
 end
 
 function fish_prompt
+  # Save previous exit code
   set -l exit_code $status
 
   # Symbols
@@ -71,8 +75,13 @@ function fish_prompt
   set -l command_duration ""
   set -l prompt ""
 
+  # Do not add a line break if on a brand new session
+  if test $fresh_session -eq 0
+    set prompt $prompt "\n"
+  end
+
   # Format current folder on prompt output
-  set prompt $prompt "\n$color_blue$current_folder$color_normal "
+  set prompt $prompt "$color_blue$current_folder$color_normal "
 
   # Handle previous command exit code
   if test $exit_code -ne 0
@@ -107,7 +116,7 @@ function fish_prompt
     set -l has_upstream (command git rev-parse --abbrev-ref @'{u}' ^/dev/null)
 
     if test -n "$has_upstream"
-      set -l git_status (command git rev-list --left-right --count HEAD...@'{u}' | sed 's/[[:blank:]]/ /' ^/dev/null)
+      set -l git_status (command git rev-list --left-right --count HEAD...@'{u}' | sed "s/[[:blank:]]/ /" ^/dev/null)
 
       # Resolve Git arrows by treating `git_status` as an array
       set -l git_arrow_left (command echo $git_status | cut -c 1 ^/dev/null)
@@ -130,6 +139,8 @@ function fish_prompt
   set prompt $prompt "\n$color_symbol$symbol_prompt$color_normal "
 
   echo -e -s $prompt
+
+  set fresh_session 0
 end
 
 # Set title to current folder and shell name
