@@ -8,6 +8,25 @@
 # Whether or not is a fresh session
 set -g fresh_session 1
 
+# Symbols
+
+set -g symbol_prompt "❯"
+set -g symbol_git_down_arrow "⇣"
+set -g symbol_git_up_arrow "⇡"
+set -g symbol_git_dirty "*"
+set -g symbol_horizontal_bar "—"
+
+# Colors
+
+set -g color_red (set_color red)
+set -g color_green (set_color green)
+set -g color_blue (set_color blue)
+set -g color_yellow (set_color yellow)
+set -g color_cyan (set_color cyan)
+set -g color_gray (set_color 93A1A1)
+set -g color_normal (set_color normal)
+set -g color_symbol $color_green
+
 function __parse_current_folder -d "Replace '/Users/$USER' by '~'"
   pwd | sed "s/^\/Users\/$USER/~/"
 end
@@ -48,23 +67,6 @@ function fish_prompt
   # Save previous exit code
   set -l exit_code $status
 
-  # Symbols
-
-  set -l symbol_prompt "❯"
-  set -l symbol_git_down_arrow "⇣"
-  set -l symbol_git_up_arrow "⇡"
-  set -l symbol_git_dirty "*"
-
-  # Colors
-
-  set -l color_red (set_color red)
-  set -l color_green (set_color green)
-  set -l color_blue (set_color blue)
-  set -l color_yellow (set_color yellow)
-  set -l color_cyan (set_color cyan)
-  set -l color_gray (set_color 93A1A1)
-  set -l color_normal (set_color normal)
-  set -l color_symbol $color_green
 
   # Template
 
@@ -83,7 +85,7 @@ function fish_prompt
   # Format current folder on prompt output
   set prompt $prompt "$color_blue$current_folder$color_normal "
 
-  # Handle previous command exit code
+  # Handle previous failed command
   if test $exit_code -ne 0
     # Symbol color is red when previous command fails
     set color_symbol $color_red
@@ -145,7 +147,16 @@ end
 
 # Set title to current folder and shell name
 function fish_title
-  echo (__parse_current_folder) – $_
+  set -l basename (command basename $PWD)
+  set -l current_folder (__parse_current_folder)
+  set -l command $argv[1]
+  set -l prompt "$basename: $command $symbol_horizontal_bar $_"
+
+  if test "$command" -eq ""
+    set prompt "$current_folder $symbol_horizontal_bar $_"
+  end
+
+  echo $prompt
 end
 
 # Removes right prompt
