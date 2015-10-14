@@ -22,7 +22,7 @@ function __format_time -d "Format milliseconds to a human readable format"
   set -l minutes (math "$millseconds / 60000 % 60")
   set -l hours (math "$millseconds / 3600000 % 24")
   set -l days (math "$millseconds / 86400000")
-  set -l time ""
+  set -l time
   set -l threshold 5
 
   if test $days -gt 0
@@ -38,7 +38,7 @@ function __format_time -d "Format milliseconds to a human readable format"
   end
 
   if test $seconds -gt $threshold
-    set time (command printf "$time%ss" $seconds)
+    set time (command printf "$time%ss " $seconds)
   end
 
   echo -e $time
@@ -91,7 +91,7 @@ function fish_prompt
     # Prompt failed command execution duration
     set command_duration (__format_time $CMD_DURATION)
 
-    set prompt $prompt "$color_yellow$command_duration$color_normal "
+    set prompt $prompt "$color_yellow$command_duration$color_normal"
   end
 
   # Exit with code 1 if git is not available
