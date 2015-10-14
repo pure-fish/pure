@@ -13,7 +13,7 @@
 - [x] Display an down arrow if there are stuff to be pulled
 - [x] Prompt symbol should be red if previous command failed
 - [x] Display the current path in the title (show full path on title)
-- [ ] Display the current folder and command when a process is running
+- [x] Display the current folder and command when a process is running
 - [x] Display username and host when in an SSH session
 - [x] Add colors
 - [x] Format newline
