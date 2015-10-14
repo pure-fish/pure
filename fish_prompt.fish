@@ -67,7 +67,6 @@ function fish_prompt
   # Save previous exit code
   set -l exit_code $status
 
-
   # Template
 
   set -l current_folder (__parse_current_folder)
@@ -77,7 +76,7 @@ function fish_prompt
   set -l command_duration ""
   set -l prompt ""
 
-  # Do not add a line break if on a brand new session
+  # Do not add a line break to a brand new session
   if test $fresh_session -eq 0
     set prompt $prompt "\n"
   end
