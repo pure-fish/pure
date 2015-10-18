@@ -25,7 +25,6 @@ set -g color_yellow (set_color yellow)
 set -g color_cyan (set_color cyan)
 set -g color_gray (set_color 93A1A1)
 set -g color_normal (set_color normal)
-set -g color_symbol $color_green
 
 function __parse_current_folder -d "Replace '/Users/$USER' by '~'"
   pwd | sed "s/^\/Users\/$USER/~/"
@@ -66,6 +65,9 @@ end
 function fish_prompt
   # Save previous exit code
   set -l exit_code $status
+
+  # Set default color symbol to green meaning it's all good!
+  set -l color_symbol $color_green
 
   # Template
 
