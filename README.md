@@ -23,3 +23,7 @@ $ . $ffns/fish_prompt.fish
 - [x] Display the current folder and command when a process is running
 - [x] Display username and host when in an SSH session
 - [x] Display duration of failed commands
+
+## License
+
+MIT © [Rafael Rinaldi](http://rinaldi.io)
