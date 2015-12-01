@@ -6,6 +6,12 @@
 
 ## Install
 
+### oh-my-fish Framework. 
+
+    omf install https://github.com/rafaelrinaldi/pure.git
+
+
+### Manually 
 ```sh
 $ set -l ffns (echo $HOME/.config/fish/functions)
 $ curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/fish_prompt.fish > $ffns/fish_prompt.fish
