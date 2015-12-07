@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 # vim: set ft=sh:
 
 # Pure
@@ -46,11 +47,11 @@ function __format_time -d "Format milliseconds to a human readable format"
   if test $days -gt 0
     set time (command printf "$time%sd " $days)
   end
-  
+
   if test $hours -gt 0
     set time (command printf "$time%sh " $hours)
   end
-  
+
   if test $minutes -gt 0
     set time (command printf "$time%sm " $minutes)
   end
