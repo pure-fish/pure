@@ -1,15 +1,32 @@
 # Pure
 
-> Port of the [`pure`](https://github.com/sindresorhus/pure) ZSH theme to Fish
+> Port of the [`pure`](https://github.com/sindresorhus/pure) ZSH theme to Fish.
 
+[![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](/LICENSE)
+[![Fish Shell Version](https://img.shields.io/badge/fish-v2.2.0-007EC7.svg?style=flat-square)](http://fishshell.com)
+[![Oh My Fish Framework](https://img.shields.io/badge/Oh%20My%20Fish-Framework-007EC7.svg?style=flat-square)](https://www.github.com/oh-my-fish/oh-my-fish)
+
+<br/>
+
+## Screenshot
+
+<p align="center">
 <img width="572" src="screenshot.png">
+</p>
 
 ## Install
 
+### Oh-My-Fish
+
+```fish
+omf install pure
+```
+
+### Manually
 ```sh
-$ set -l ffns (echo $HOME/.config/fish/functions)
-$ curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/fish_prompt.fish > $ffns/fish_prompt.fish
-$ . $ffns/fish_prompt.fish
+set -l ffns (echo $HOME/.config/fish/functions)
+curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/fish_prompt.fish > $ffns/fish_prompt.fish
+. $ffns/fish_prompt.fish
 ```
 
 ## Features
@@ -24,6 +41,18 @@ $ . $ffns/fish_prompt.fish
 - [x] Display username and host when in an SSH session
 - [x] Display duration of failed commands
 
+## Contributors
+
+* [Rafael Rinaldi](https://github.com/rafaelrinaldi/pure) ;
+* [Édouard Lopez](https://github.com/edouard-lopez/).
+
 ## License
 
-MIT © [Rafael Rinaldi](http://rinaldi.io)
+[MIT][mit] © [Rafael Rinaldi][author] et [al][contributors].
+
+[mit]:            http://opensource.org/licenses/MIT
+[author]:         http://rinaldi.io
+[contributors]:   https://github.com/rafaelrinaldi/pure/graphs/contributors
+[omf-link]:       https://www.github.com/oh-my-fish/oh-my-fish
+
+[license-badge]:  https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square
