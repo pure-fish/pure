@@ -159,7 +159,3 @@ function fish_title
 
   echo $prompt
 end
-
-# Removes right prompt
-function fish_right_prompt
-end
