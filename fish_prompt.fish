@@ -27,8 +27,6 @@ set -g color_cyan (set_color cyan)
 set -g color_gray (set_color 93A1A1)
 set -g color_normal (set_color normal)
 
-source ./pure_utils.fish
-
 function fish_prompt
   # Save previous exit code
   set -l exit_code $status
