@@ -19,7 +19,7 @@
 ### Oh-My-Fish
 
 ```fish
-omf install pure
+omf install https://github.com/edouard-lopez/theme-pure.git
 ```
 
 ### Manually
