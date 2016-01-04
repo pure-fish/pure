@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 # vim: set ft=sh:
 
 # Pure
@@ -25,42 +26,6 @@ set -g color_yellow (set_color yellow)
 set -g color_cyan (set_color cyan)
 set -g color_gray (set_color 93A1A1)
 set -g color_normal (set_color normal)
-
-function __parse_current_folder -d "Replace '/Users/$USER' by '~'"
-  pwd | sed "s/^\/Users\/$USER/~/"
-end
-
-function __parse_git_branch -d "Parse current Git branch name"
-  git symbolic-ref HEAD | sed -e "s/^refs\/heads\///"
-end
-
-function __format_time -d "Format milliseconds to a human readable format"
-  set -l milliseconds $argv[1]
-  set -l seconds (math "$milliseconds / 1000 % 60")
-  set -l minutes (math "$milliseconds / 60000 % 60")
-  set -l hours (math "$milliseconds / 3600000 % 24")
-  set -l days (math "$milliseconds / 86400000")
-  set -l time
-  set -l threshold 5
-
-  if test $days -gt 0
-    set time (command printf "$time%sd " $days)
-  end
-  
-  if test $hours -gt 0
-    set time (command printf "$time%sh " $hours)
-  end
-  
-  if test $minutes -gt 0
-    set time (command printf "$time%sm " $minutes)
-  end
-
-  if test $seconds -gt $threshold
-    set time (command printf "$time%ss " $seconds)
-  end
-
-  echo -e $time
-end
 
 function fish_prompt
   # Save previous exit code
@@ -144,22 +109,4 @@ function fish_prompt
   echo -e -s $prompt
 
   set fresh_session 0
-end
-
-# Set title to current folder and shell name
-function fish_title
-  set -l basename (command basename $PWD)
-  set -l current_folder (__parse_current_folder)
-  set -l command $argv[1]
-  set -l prompt "$basename: $command $symbol_horizontal_bar $_"
-
-  if test "$command" -eq ""
-    set prompt "$current_folder $symbol_horizontal_bar $_"
-  end
-
-  echo $prompt
-end
-
-# Removes right prompt
-function fish_right_prompt
 end
