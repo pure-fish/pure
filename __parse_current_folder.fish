@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
 
-function __parse_current_folder -d "Replace '/Users/$USER' by '~'"
-  pwd | sed "s/^\/Users\/$USER/~/"
+function __parse_current_folder -d "Replace '$HOME' with '~'"
+  pwd | sed "s|$HOME|~|"
 end
