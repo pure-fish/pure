@@ -28,10 +28,17 @@ omf install pure
 ```
 
 ### Manually
+
+#### via `curl`
+
 ```sh
-set -l ffns (echo $HOME/.config/fish/functions)
-curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/fish_prompt.fish > $ffns/fish_prompt.fish
-. $ffns/fish_prompt.fish
+fish -c "$(curl -fsSL https://github.com/rafaelrinaldi/theme-pure/master/installer.fish)"
+```
+
+#### via `wget`
+
+```sh
+fish -c "$(wget https://github.com/rafaelrinaldi/theme-pure/master/installer.fish -O -)"
 ```
 
 ## Features
