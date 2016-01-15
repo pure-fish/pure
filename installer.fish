@@ -1,9 +1,9 @@
 #!/usr/bin/env fish
 
 function install
-    set -l fish_function_path (echo $HOME/.config/fish/functions) $fish_function_path
     check_git_is_present
     fetch_source
+    enable_theme
 end
 
 function check_git_is_present
@@ -19,6 +19,16 @@ function fetch_source
         printf "Error: git clone of theme-pure repo failed\n"
         exit 1
     end
+end
+
+function enable_theme
+    printf "Enabling theme\n"
+    set -l fish_function_path (echo $HOME/.config/fish/functions) $fish_function_path
+    source theme-pure/__format_time.fish
+    source theme-pure/__parse_current_folder.fish
+    source theme-pure/__parse_git_branch.fish
+    source theme-pure/fish_prompt.fish
+    echo "pom"
 end
 
 install
