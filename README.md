@@ -15,6 +15,12 @@
 
 ## Install
 
+### Fisherman
+
+```fish
+fisher install pure
+```
+
 ### Oh-My-Fish
 
 ```fish
