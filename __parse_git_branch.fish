@@ -1,5 +1,6 @@
 #!/usr/bin/env fish
 
 function __parse_git_branch -d "Parse current Git branch name"
-  git symbolic-ref HEAD | sed -e "s/^refs\/heads\///"
+  command git symbolic-ref --short HEAD ^/dev/null;
+    or command git show-ref --head -s --abbrev | head -n1 ^/dev/null
 end
