@@ -28,11 +28,14 @@ omf install pure
 ```
 
 ### Manually
+
+#### via `curl`
+
 ```sh
-set -l ffns (echo $HOME/.config/fish/functions)
-curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/fish_prompt.fish > $ffns/fish_prompt.fish
-. $ffns/fish_prompt.fish
+curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/installer.fish > /tmp/pure_installer.fish
+source /tmp/pure_installer.fish; and install_pure
 ```
+
 
 ## Features
 
