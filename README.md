@@ -32,14 +32,10 @@ omf install pure
 #### via `curl`
 
 ```sh
-fish -c "$(curl -fsSL https://github.com/rafaelrinaldi/theme-pure/master/installer.fish)"
+curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/installer.fish > /tmp/pure_installer.fish
+source /tmp/pure_installer.fish; and install_pure
 ```
 
-#### via `wget`
-
-```sh
-fish -c "$(wget https://github.com/rafaelrinaldi/theme-pure/master/installer.fish -O -)"
-```
 
 ## Features
 
