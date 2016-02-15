@@ -1,66 +1,55 @@
-# Pure
+# pure [![Fish Shell Version](https://img.shields.io/badge/fish-v2.2.0-007EC7.svg?style=flat-square)](http://fishshell.com)
 
-> Port of the [`pure`](https://github.com/sindresorhus/pure) ZSH theme to Fish.
-
-[![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](/LICENSE)
-[![Fish Shell Version](https://img.shields.io/badge/fish-v2.2.0-007EC7.svg?style=flat-square)](http://fishshell.com)
-
-<br/>
-
-## Screenshot
+> Port of the [`pure`](/sindresorhus/pure) ZSH theme to Fish
 
 <p align="center">
-<img width="572" src="screenshot.png">
+  <img width="572" src="screenshot.png">
 </p>
 
 ## Install
 
-### Fisherman
-
-```fish
-fisher install pure
-```
-
-### Oh-My-Fish
-
-```fish
-omf install pure
-```
-
 ### Manually
 
-#### via `curl`
+Via [cURL](https://curl.haxx.se):
 
 ```sh
-curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/installer.fish > /tmp/pure_installer.fish
-source /tmp/pure_installer.fish; and install_pure
+$ # Download the installer to `/tmp`
+$ curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/installer.fish > /tmp/pure_installer.fish
+$ # Source and trigger the installer
+$ source /tmp/pure_installer.fish; and install_pure
 ```
 
+### [Fisherman](http://fisherman.sh)
+
+```fish
+$ fisher install pure
+```
+
+### [Oh My Fish!](https://github.com/oh-my-fish)
+
+```fish
+$ omf install pure
+```
 
 ## Features
 
-- [x] Display current directory tail
-- [x] Display Git branch name
-- [x] Display whether or not the working copy is dirty
-- [x] Display an up arrow if there are stuff to be pushed
-- [x] Display an down arrow if there are stuff to be pulled
-- [x] Display prompt symbol in red if previous command has failed
-- [x] Display the current folder and command when a process is running
-- [x] Display username and host when in an SSH session
-- [x] Display duration of failed commands
+* Display current directory tail
+* Display Git branch name
+* Display whether or not the working copy is dirty
+* Display an up arrow if there are stuff to be pushed
+* Display an down arrow if there are stuff to be pulled
+* Display prompt symbol in red if previous command has failed
+* Display the current folder and command when a process is running
+* Display username and host when in an SSH session
+* Display duration of failed commands (if timeout is greather than default threshold)
 
-## Contributors
+## Maintainers
 
-* [Rafael Rinaldi](https://github.com/rafaelrinaldi/pure) ;
-* [Édouard Lopez](https://github.com/edouard-lopez/).
+* [Rafael Rinaldi](/rafaelrinaldi)
+* [Édouard Lopez](/edouard-lopez)
+
+Kudos to all our awesome [:yellow_heart: contributors :yellow_heart:](/graphs/contributors)
 
 ## License
 
-[MIT][mit] © [Rafael Rinaldi][author] et [al][contributors].
-
-[mit]:            http://opensource.org/licenses/MIT
-[author]:         http://rinaldi.io
-[contributors]:   https://github.com/rafaelrinaldi/pure/graphs/contributors
-[omf-link]:       https://www.github.com/oh-my-fish/oh-my-fish
-
-[license-badge]:  https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square
+MIT © [Rafael Rinaldi](http://rinaldi.io)
