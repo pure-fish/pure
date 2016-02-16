@@ -48,7 +48,7 @@ $ omf install pure
 * [Rafael Rinaldi](https://github.com/rafaelrinaldi)
 * [Édouard Lopez](https://github.com/edouard-lopez)
 
-Kudos to all our awesome [:yellow_heart: contributors :yellow_heart:](/graphs/contributors)
+Kudos to all our awesome [:yellow_heart: contributors :yellow_heart:](../..//graphs/contributors)
 
 ## License
 
