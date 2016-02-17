@@ -63,7 +63,7 @@ function fish_prompt
   end
 
   # Exit with code 1 if git is not available
-  if not command -s git >/dev/null
+  if not which git >/dev/null
     return 1
   end
 
