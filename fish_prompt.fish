@@ -1,4 +1,3 @@
-#!/usr/bin/env fish
 # vim: set ft=sh:
 
 # Pure
