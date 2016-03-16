@@ -1,5 +1,3 @@
-#!/usr/bin/env fish
-
 # Set title to current folder and shell name
 function fish_title
   set -l basename (command basename $PWD)

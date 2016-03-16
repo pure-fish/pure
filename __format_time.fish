@@ -1,5 +1,3 @@
-#!/usr/bin/env fish
-
 function __format_time -d "Format milliseconds to a human readable format"
   set -l milliseconds $argv[1]
   set -l seconds (math "$milliseconds / 1000 % 60")
