@@ -22,7 +22,7 @@ $ source /tmp/pure_installer.fish; and install_pure
 ### [Fisherman](http://fisherman.sh)
 
 ```fish
-$ fisher install pure
+$ fisher rafaelrinaldi/pure
 ```
 
 ### [Oh My Fish!](https://github.com/oh-my-fish)
