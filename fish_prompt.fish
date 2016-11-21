@@ -10,21 +10,21 @@ set -g fresh_session 1
 
 # Symbols
 
-set -g symbol_prompt "❯"
-set -g symbol_git_down_arrow "⇣"
-set -g symbol_git_up_arrow "⇡"
-set -g symbol_git_dirty "*"
-set -g symbol_horizontal_bar "—"
+__set_default symbol_prompt "❯"
+__set_default symbol_git_down_arrow "⇣"
+__set_default symbol_git_down_arrow "⇡"
+__set_default symbol_git_dirty "*"
+__set_default symbol_horizontal_bar "—"
 
 # Colors
 
-set -g color_red (set_color red)
-set -g color_green (set_color green)
-set -g color_blue (set_color blue)
-set -g color_yellow (set_color yellow)
-set -g color_cyan (set_color cyan)
-set -g color_gray (set_color 93A1A1)
-set -g color_normal (set_color normal)
+__set_default color_red (set_color red)
+__set_default color_green (set_color green)
+__set_default color_blue (set_color blue)
+__set_default color_yellow (set_color yellow)
+__set_default color_cyan (set_color cyan)
+__set_default color_gray (set_color 93A1A1)
+__set_default color_normal (set_color normal)
 
 function fish_prompt
   # Save previous exit code
