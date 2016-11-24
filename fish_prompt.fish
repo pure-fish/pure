@@ -6,32 +6,32 @@
 # MIT License
 
 # Whether or not is a fresh session
-set -g fresh_session 1
+set -g __pure_fresh_session 1
 
 # Symbols
 
-__set_default symbol_prompt "❯"
-__set_default symbol_git_down_arrow "⇣"
-__set_default symbol_git_down_arrow "⇡"
-__set_default symbol_git_dirty "*"
-__set_default symbol_horizontal_bar "—"
+__pure_set_default pure_symbol_prompt "❯"
+__pure_set_default pure_symbol_git_down_arrow "⇣"
+__pure_set_default pure_symbol_git_down_arrow "⇡"
+__pure_set_default pure_symbol_git_dirty "*"
+__pure_set_default pure_symbol_horizontal_bar "—"
 
 # Colors
 
-__set_default color_red (set_color red)
-__set_default color_green (set_color green)
-__set_default color_blue (set_color blue)
-__set_default color_yellow (set_color yellow)
-__set_default color_cyan (set_color cyan)
-__set_default color_gray (set_color 93A1A1)
-__set_default color_normal (set_color normal)
+__pure_set_default pure_color_red (set_color red)
+__pure_set_default pure_color_green (set_color green)
+__pure_set_default pure_color_blue (set_color blue)
+__pure_set_default pure_color_yellow (set_color yellow)
+__pure_set_default pure_color_cyan (set_color cyan)
+__pure_set_default pure_color_gray (set_color 93A1A1)
+__pure_set_default pure_color_normal (set_color normal)
 
 function fish_prompt
   # Save previous exit code
   set -l exit_code $status
 
   # Set default color symbol to green meaning it's all good!
-  set -l color_symbol $color_green
+  set -l color_symbol $pure_color_green
 
   # Template
 
@@ -43,22 +43,22 @@ function fish_prompt
   set -l prompt ""
 
   # Do not add a line break to a brand new session
-  if test $fresh_session -eq 0
+  if test $__pure_fresh_session -eq 0
     set prompt $prompt "\n"
   end
 
   # Format current folder on prompt output
-  set prompt $prompt "$color_blue$current_folder$color_normal "
+  set prompt $prompt "$pure_color_blue$current_folder$pure_color_normal "
 
   # Handle previous failed command
   if test $exit_code -ne 0
     # Symbol color is red when previous command fails
-    set color_symbol $color_red
+    set color_symbol $pure_color_red
 
     # Prompt failed command execution duration
     set command_duration (__format_time $CMD_DURATION)
 
-    set prompt $prompt "$color_yellow$command_duration$color_normal"
+    set prompt $prompt "$pure_color_yellow$command_duration$pure_color_normal"
   end
 
   # Exit with code 1 if git is not available
@@ -76,7 +76,7 @@ function fish_prompt
     set -l is_git_dirty (command git status --porcelain --ignore-submodules ^/dev/null)
 
     if test -n "$is_git_dirty"
-      set git_dirty $symbol_git_dirty
+      set git_dirty $pure_symbol_git_dirty
     end
 
     # Check if there is an upstream configured
@@ -90,21 +90,21 @@ function fish_prompt
 
     # If arrow is not "0", it means it's dirty
       if test $git_arrow_left -ne "0"
-        set git_arrows $symbol_git_up_arrow
+        set git_arrows $pure_symbol_git_up_arrow
       end
 
       if test $git_arrow_right -ne "0"
-        set git_arrows $git_arrows$symbol_git_down_arrow
+        set git_arrows $git_arrows$pure_symbol_git_down_arrow
       end
     end
 
     # Format Git prompt output
-    set prompt $prompt "$color_gray$git_branch_name$git_dirty$color_normal\t$color_cyan$git_arrows$color_normal"
+    set prompt $prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal\t$pure_color_cyan$git_arrows$pure_color_normal"
   end
 
-  set prompt $prompt "\n$color_symbol$symbol_prompt$color_normal "
+  set prompt $prompt "\n$color_symbol$pure_symbol_prompt$pure_color_normal "
 
   echo -e -s $prompt
 
-  set fresh_session 0
+  set __pure_fresh_session 0
 end
