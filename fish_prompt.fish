@@ -12,7 +12,7 @@ set -g __pure_fresh_session 1
 
 __pure_set_default pure_symbol_prompt "❯"
 __pure_set_default pure_symbol_git_down_arrow "⇣"
-__pure_set_default pure_symbol_git_down_arrow "⇡"
+__pure_set_default pure_symbol_git_up_arrow "⇡"
 __pure_set_default pure_symbol_git_dirty "*"
 __pure_set_default pure_symbol_horizontal_bar "—"
 
@@ -89,11 +89,11 @@ function fish_prompt
       set -l git_arrow_right (command echo $git_status | cut -c 3 ^/dev/null)
 
     # If arrow is not "0", it means it's dirty
-      if test $git_arrow_left != "0"
+      if test $git_arrow_left != 0
         set git_arrows $pure_symbol_git_up_arrow
       end
 
-      if test $git_arrow_right != "0"
+      if test $git_arrow_right != 0
         set git_arrows $git_arrows$pure_symbol_git_down_arrow
       end
     end
