@@ -2,9 +2,7 @@
 
 > Port of the [`pure`](https://github.com/sindresorhus/pure) ZSH theme to Fish 🐟
 
-<p align="center">
-  <img width="572" src="screenshot.png">
-</p>
+![](screenshot.png?raw=true)
 
 ## Install
 
