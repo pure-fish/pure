@@ -1,5 +1,3 @@
-# vim: set ft=sh:
-
 # Pure
 # by Rafael Rinaldi
 # https://github.com/rafaelrinaldi/pure
@@ -25,6 +23,9 @@ __pure_set_default pure_color_yellow (set_color yellow)
 __pure_set_default pure_color_cyan (set_color cyan)
 __pure_set_default pure_color_gray (set_color 93A1A1)
 __pure_set_default pure_color_normal (set_color normal)
+
+# Max execution time of a process before its run time is shown when it exits
+__pure_set_default pure_command_max_exec_time 5
 
 function fish_prompt
   # Save previous exit code
@@ -56,7 +57,7 @@ function fish_prompt
     set color_symbol $pure_color_red
 
     # Prompt failed command execution duration
-    set command_duration (__format_time $CMD_DURATION)
+    set command_duration (__format_time $CMD_DURATION $pure_command_max_exec_time)
 
     set prompt $prompt "$pure_color_yellow$command_duration$pure_color_normal"
   end

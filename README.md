@@ -40,7 +40,7 @@ $ omf install pure
 * Display prompt symbol in red if previous command has failed
 * Display the current folder and command when a process is running
 * Display username and host when in an SSH session
-* Display duration of failed commands (if timeout is greather than default threshold)
+* Display duration of failed process (defaults to `5`)
 
 ## Configuration
 
@@ -60,6 +60,9 @@ set pure_color_green (set_color "66ff66")
 set pure_color_normal (set_color "000000")
 set pure_color_red (set_color "f820ff")
 set pure_color_yellow (set_color "1bc8c8")
+
+# Max execution time of a process before its run time is shown when it exits
+__pure_set_default pure_command_max_exec_time 5
 ```
 
 ## Maintainers
