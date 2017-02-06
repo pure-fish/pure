@@ -1,6 +1,6 @@
 # pure [![Fish Shell Version](https://img.shields.io/badge/fish-v2.2.0-007EC7.svg?style=flat-square)](http://fishshell.com)
 
-> Port of the [`pure`](https://github.com/sindresorhus/pure) ZSH theme to Fish
+> Port of the [`pure`](https://github.com/sindresorhus/pure) ZSH theme to Fish 🐟
 
 <p align="center">
   <img width="572" src="screenshot.png">
@@ -33,11 +33,12 @@ $ omf install pure
 
 ## Features
 
+* Fully customizable
 * Display current directory tail
 * Display Git branch name
 * Display whether or not the working copy is dirty
-* Display an up arrow if there are stuff to be pushed
-* Display an down arrow if there are stuff to be pulled
+* Display ⇡ if there are stuff to be pushed
+* Display ⇣ if there are stuff to be pulled
 * Display prompt symbol in red if previous command has failed
 * Display the current folder and command when a process is running
 * Display username and host when in an SSH session
@@ -45,7 +46,7 @@ $ omf install pure
 
 ## Configuration
 
-```
+```fish
 # Change the prompt text
 set pure_symbol_prompt "~>"
 set pure_symbol_git_down_arrow "v"
