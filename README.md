@@ -1,4 +1,4 @@
-# pure [![Fish Shell Version](https://img.shields.io/badge/fish-v2.2.0-007EC7.svg?style=flat-square)](http://fishshell.com)
+# pure [![Fish Shell Version](https://img.shields.io/badge/fish-v2.5.0-007EC7.svg?style=flat-square)](http://fishshell.com)
 
 > Port of the [`pure`](https://github.com/sindresorhus/pure) ZSH theme to Fish 🐟
 
