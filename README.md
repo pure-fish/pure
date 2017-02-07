@@ -2,7 +2,9 @@
 
 > Port of the [`pure`](https://github.com/sindresorhus/pure) ZSH theme to Fish 🐟
 
-![](screenshot.png?raw=true)
+<p align=center>
+  <img width=585 src=screenshot.png>
+</p>
 
 ## Install
 
@@ -44,11 +46,13 @@ $ omf install pure
 
 ## Configuration
 
+You can tweak pretty much everything in `pure` by overriding variables in your `config.fish` file:
+
 ```fish
 # Change the prompt text
 set pure_symbol_prompt "~>"
 set pure_symbol_git_down_arrow "v"
-set pure_symbol_git_down_arrow "^"
+set pure_symbol_git_up_arrow "^"
 set pure_symbol_git_dirty "!"
 set pure_symbol_horizontal_bar "_"
 
