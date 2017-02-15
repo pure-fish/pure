@@ -41,7 +41,6 @@ $ omf install pure
 * Display ⇣ if there are stuff to be pulled
 * Display prompt symbol in red if previous command has failed
 * Display the current folder and command when a process is running
-* Display username and host when in an SSH session
 * Display duration of failed process (defaults to `5`)
 
 ## Configuration
