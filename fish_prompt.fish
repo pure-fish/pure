@@ -36,6 +36,7 @@ function fish_prompt
 
   # Template
 
+  set -l user_and_host ""
   set -l current_folder (__parse_current_folder)
   set -l git_branch_name ""
   set -l git_dirty ""
@@ -47,6 +48,15 @@ function fish_prompt
   if test $__pure_fresh_session -eq 0
     set prompt $prompt "\n"
   end
+
+  if [ "$SSH_CONNECTION" != "" ]
+    set -l host (hostname -s)
+    set -l user (whoami)
+
+    set user_and_host "$pure_color_yellow$user$pure_color_normal@$pure_color_green$host$pure_color_normal "
+  end
+
+  set prompt $prompt $user_and_host
 
   # Format current folder on prompt output
   set prompt $prompt "$pure_color_blue$current_folder$pure_color_normal "
