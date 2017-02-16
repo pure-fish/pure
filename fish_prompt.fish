@@ -49,13 +49,16 @@ function fish_prompt
     set prompt $prompt "\n"
   end
 
+  # Check if user is in an SSH session
   if [ "$SSH_CONNECTION" != "" ]
     set -l host (hostname -s)
     set -l user (whoami)
 
+    # Format user and host part of prompt
     set user_and_host "$pure_color_yellow$user$pure_color_normal@$pure_color_green$host$pure_color_normal "
   end
 
+  # Format user and host on prompt output
   set prompt $prompt $user_and_host
 
   # Format current folder on prompt output
