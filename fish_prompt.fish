@@ -24,6 +24,10 @@ __pure_set_default pure_color_cyan (set_color cyan)
 __pure_set_default pure_color_gray (set_color 93A1A1)
 __pure_set_default pure_color_normal (set_color normal)
 
+__pure_set_default pure_username_color $pure_color_gray
+__pure_set_default pure_host_color $pure_color_gray
+__pure_set_default pure_root_color $pure_color_normal
+
 # Max execution time of a process before its run time is shown when it exits
 __pure_set_default pure_command_max_exec_time 5
 
@@ -54,8 +58,14 @@ function fish_prompt
     set -l host (hostname -s)
     set -l user (whoami)
 
+    if [ "$user" = "root" ]
+      set user "$pure_root_color$user"
+    else
+      set user "$pure_username_color$user"
+    end
+
     # Format user and host part of prompt
-    set user_and_host "$pure_color_yellow$user$pure_color_normal@$pure_color_green$host$pure_color_normal "
+    set user_and_host "$user$pure_color_gray@$pure_host_color$host$pure_color_normal "
   end
 
   # Format user and host on prompt output
