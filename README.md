@@ -41,6 +41,7 @@ $ omf install pure
 * Display ⇣ if there are stuff to be pulled
 * Display prompt symbol in red if previous command has failed
 * Display the current folder and command when a process is running
+* Display username and host when in an SSH session
 * Display duration of failed process (defaults to `5`)
 
 ## Configuration
@@ -63,6 +64,17 @@ set pure_color_green (set_color "66ff66")
 set pure_color_normal (set_color "000000")
 set pure_color_red (set_color "f820ff")
 set pure_color_yellow (set_color "1bc8c8")
+
+# Change colors for username and host in SSH
+set pure_username_color $pure_color_yellow
+set pure_host_color $pure_color_green
+set pure_root_color $pure_color_red
+
+# Change where the username and host is displayed
+# 0 - end of prompt, default
+# 1 - start of prompt
+# Any other value defaults to the default behaviour
+set pure_user_host_location 1
 
 # Max execution time of a process before its run time is shown when it exits
 set pure_command_max_exec_time 5
