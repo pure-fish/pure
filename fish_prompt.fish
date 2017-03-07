@@ -48,6 +48,11 @@ function fish_prompt
     set prompt $prompt "\n"
   end
 
+  # Set virtualfish prompt
+  if set -q VIRTUAL_ENV
+    set prompt $prompt "$color_gray("(basename "$VIRTUAL_ENV")")$color_normal "
+  end
+
   # Format current folder on prompt output
   set prompt $prompt "$pure_color_blue$current_folder$pure_color_normal "
 
