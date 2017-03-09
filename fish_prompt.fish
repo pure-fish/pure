@@ -85,11 +85,6 @@ function fish_prompt
   if test $exit_code -ne 0
     # Symbol color is red when previous command fails
     set color_symbol $pure_color_red
-
-    # Prompt failed command execution duration
-    set command_duration (__format_time $CMD_DURATION $pure_command_max_exec_time)
-
-    set prompt $prompt "$pure_color_yellow$command_duration$pure_color_normal"
   end
 
   # Exit with code 1 if git is not available
@@ -121,21 +116,25 @@ function fish_prompt
 
     # If arrow is not "0", it means it's dirty
       if test $git_arrow_left != 0
-        set git_arrows $pure_symbol_git_up_arrow
+        set git_arrows " $pure_symbol_git_up_arrow"
       end
 
       if test $git_arrow_right != 0
-        set git_arrows $git_arrows$pure_symbol_git_down_arrow
+        set git_arrows " $git_arrows$pure_symbol_git_down_arrow"
       end
     end
 
     # Format Git prompt output
-    set prompt $prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal\t$pure_color_cyan$git_arrows$pure_color_normal"
+    set prompt $prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal$pure_color_cyan$git_arrows$pure_color_normal "
   end
 
   if test $pure_user_host_location -ne 1
     set prompt $prompt $user_and_host
   end
+
+  # Prompt command execution duration
+  set command_duration (__format_time $CMD_DURATION $pure_command_max_exec_time)
+  set prompt $prompt "$pure_color_yellow$command_duration$pure_color_normal"
 
   set prompt $prompt "\n$color_symbol$pure_symbol_prompt$pure_color_normal "
 
