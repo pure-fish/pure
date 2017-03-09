@@ -24,6 +24,16 @@ __pure_set_default pure_color_cyan (set_color cyan)
 __pure_set_default pure_color_gray (set_color 93A1A1)
 __pure_set_default pure_color_normal (set_color normal)
 
+__pure_set_default pure_username_color $pure_color_gray
+__pure_set_default pure_host_color $pure_color_gray
+__pure_set_default pure_root_color $pure_color_normal
+
+# Determines whether the username and host are shown at the begining or end
+# 0 - end of prompt, default
+# 1 - start of prompt
+# Any other value defaults to the default behaviour
+__pure_set_default pure_user_host_location 0
+
 # Max execution time of a process before its run time is shown when it exits
 __pure_set_default pure_command_max_exec_time 5
 
@@ -36,6 +46,7 @@ function fish_prompt
 
   # Template
 
+  set -l user_and_host ""
   set -l current_folder (__parse_current_folder)
   set -l git_branch_name ""
   set -l git_dirty ""
@@ -46,6 +57,25 @@ function fish_prompt
   # Do not add a line break to a brand new session
   if test $__pure_fresh_session -eq 0
     set prompt $prompt "\n"
+  end
+
+  # Check if user is in an SSH session
+  if [ "$SSH_CONNECTION" != "" ]
+    set -l host (hostname -s)
+    set -l user (whoami)
+
+    if [ "$user" = "root" ]
+      set user "$pure_root_color$user"
+    else
+      set user "$pure_username_color$user"
+    end
+
+    # Format user and host part of prompt
+    set user_and_host "$user$pure_color_gray@$pure_host_color$host$pure_color_normal "
+  end
+
+  if test $pure_user_host_location -eq 1
+    set prompt $prompt $user_and_host
   end
 
   # Format current folder on prompt output
@@ -96,6 +126,10 @@ function fish_prompt
 
     # Format Git prompt output
     set prompt $prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal$pure_color_cyan$git_arrows$pure_color_normal "
+  end
+
+  if test $pure_user_host_location -ne 1
+    set prompt $prompt $user_and_host
   end
 
   # Prompt command execution duration
