@@ -151,7 +151,10 @@ function fish_prompt
     set prompt $prompt $pure_color_gray(basename "$VIRTUAL_ENV")"$pure_color_normal "
   end
 
-  set prompt $prompt "$color_symbol$pure_symbol_prompt$pure_color_normal "
+  # vi-mode indicator
+  set mode_indicator (fish_default_mode_prompt)
+
+  set prompt $prompt "$mode_indicator$color_symbol$pure_symbol_prompt$pure_color_normal "
 
   echo -e -s $prompt
 
