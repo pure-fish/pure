@@ -133,7 +133,9 @@ function fish_prompt
   end
 
   # Prompt command execution duration
-  set command_duration (__format_time $CMD_DURATION $pure_command_max_exec_time)
+  if test -n "$CMD_DURATION"
+    set command_duration (__format_time $CMD_DURATION $pure_command_max_exec_time)
+  end
   set prompt $prompt "$pure_color_yellow$command_duration$pure_color_normal"
 
   set prompt $prompt "\n$color_symbol$pure_symbol_prompt$pure_color_normal "
