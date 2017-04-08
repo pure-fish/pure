@@ -37,26 +37,19 @@ __pure_set_default pure_user_host_location 0
 # Max execution time of a process before its run time is shown when it exits
 __pure_set_default pure_command_max_exec_time 5
 
-function fish_prompt
-  # Save previous exit code
-  set -l exit_code $status
-
-  # Set default color symbol to green meaning it's all good!
-  set -l color_symbol $pure_color_green
-
+function --on-event fish_prompt pre_prompt
   # Template
-
   set -l user_and_host ""
   set -l current_folder (__parse_current_folder)
   set -l git_branch_name ""
   set -l git_dirty ""
   set -l git_arrows ""
   set -l command_duration ""
-  set -l prompt ""
+  set -l pre_prompt ""
 
   # Do not add a line break to a brand new session
   if test $__pure_fresh_session -eq 0
-    set prompt $prompt "\n"
+    set pre_prompt $pre_prompt "\n"
   end
 
   # Check if user is in an SSH session
@@ -75,17 +68,11 @@ function fish_prompt
   end
 
   if test $pure_user_host_location -eq 1
-    set prompt $prompt $user_and_host
+    set pre_prompt $pre_prompt $user_and_host
   end
 
   # Format current folder on prompt output
-  set prompt $prompt "$pure_color_blue$current_folder$pure_color_normal "
-
-  # Handle previous failed command
-  if test $exit_code -ne 0
-    # Symbol color is red when previous command fails
-    set color_symbol $pure_color_red
-  end
+  set pre_prompt $pre_prompt "$pure_color_blue$current_folder$pure_color_normal "
 
   # Exit with code 1 if git is not available
   if not which git >/dev/null
@@ -114,7 +101,7 @@ function fish_prompt
       set -l git_arrow_left (command echo $git_status | cut -c 1 ^/dev/null)
       set -l git_arrow_right (command echo $git_status | cut -c 3 ^/dev/null)
 
-    # If arrow is not "0", it means it's dirty
+      # If arrow is not "0", it means it's dirty
       if test $git_arrow_left != 0
         set git_arrows " $pure_symbol_git_up_arrow"
       end
@@ -125,22 +112,36 @@ function fish_prompt
     end
 
     # Format Git prompt output
-    set prompt $prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal$pure_color_cyan$git_arrows$pure_color_normal "
+    set pre_prompt $pre_prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal$pure_color_cyan$git_arrows$pure_color_normal "
   end
 
   if test $pure_user_host_location -ne 1
-    set prompt $prompt $user_and_host
+    set pre_prompt $pre_prompt $user_and_host
   end
 
   # Prompt command execution duration
   if test -n "$CMD_DURATION"
     set command_duration (__format_time $CMD_DURATION $pure_command_max_exec_time)
   end
-  set prompt $prompt "$pure_color_yellow$command_duration$pure_color_normal"
+  set pre_prompt $pre_prompt "$pure_color_yellow$command_duration$pure_color_normal"
 
-  set prompt $prompt "\n$color_symbol$pure_symbol_prompt$pure_color_normal "
+  echo -e -s $pre_prompt
+end
 
-  echo -e -s $prompt
+function fish_prompt
+  # Save previous exit code
+  set -l exit_code $status
+
+  # Set default color symbol to green meaning it's all good!
+  set -l color_symbol $pure_color_green
+
+  # Handle previous failed command
+  if test $exit_code -ne 0
+    # Symbol color is red when previous command fails
+    set color_symbol $pure_color_red
+  end
+
+  echo -e -s "$color_symbol$pure_symbol_prompt$pure_color_normal "
 
   set __pure_fresh_session 0
 end
