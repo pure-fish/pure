@@ -13,6 +13,7 @@ __pure_set_default pure_symbol_git_down_arrow "⇣"
 __pure_set_default pure_symbol_git_up_arrow "⇡"
 __pure_set_default pure_symbol_git_dirty "*"
 __pure_set_default pure_symbol_horizontal_bar "—"
+__pure_set_default pure_symbol_stash "⚑"
 
 # Colors
 
@@ -124,8 +125,13 @@ function fish_prompt
       end
     end
 
+    # show git stash
+    if test (count (command git stash list --no-decorate ^/dev/null)) != 0
+      set git_stash $pure_symbol_stash
+    end
+
     # Format Git prompt output
-    set prompt $prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal$pure_color_cyan$git_arrows$pure_color_normal "
+    set prompt $prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal$pure_color_cyan$git_arrows $pure_color_cyan$git_stash$pure_color_normal "
   end
 
   if test $pure_user_host_location -ne 1
