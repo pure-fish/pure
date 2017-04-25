@@ -131,7 +131,7 @@ function fish_prompt
     end
 
     # Format Git prompt output
-    set prompt $prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal$pure_color_cyan$git_arrows $pure_color_cyan$git_stash$pure_color_normal "
+    set prompt $prompt "$pure_color_gray$git_branch_name$git_dirty$pure_color_normal$pure_color_cyan$git_arrows$pure_color_cyan$git_stash$pure_color_normal "
   end
 
   if test $pure_user_host_location -ne 1
