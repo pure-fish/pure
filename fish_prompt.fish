@@ -6,6 +6,9 @@
 # Whether or not is a fresh session
 set -g __pure_fresh_session 1
 
+# Deactivate the default virtualenv prompt so that we can add our own
+set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+
 # Symbols
 
 __pure_set_default pure_symbol_prompt "❯"
@@ -136,9 +139,14 @@ function fish_prompt
   if test -n "$CMD_DURATION"
     set command_duration (__format_time $CMD_DURATION $pure_command_max_exec_time)
   end
-  set prompt $prompt "$pure_color_yellow$command_duration$pure_color_normal"
+  set prompt $prompt "$pure_color_yellow$command_duration$pure_color_normal\n"
 
-  set prompt $prompt "\n$color_symbol$pure_symbol_prompt$pure_color_normal "
+  # Show python virtualenv name (if activated)
+  if test -n "$VIRTUAL_ENV"
+    set prompt $prompt $pure_color_gray(basename "$VIRTUAL_ENV")"$pure_color_normal "
+  end
+
+  set prompt $prompt "$color_symbol$pure_symbol_prompt$pure_color_normal "
 
   echo -e -s $prompt
 
