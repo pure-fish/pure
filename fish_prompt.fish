@@ -78,7 +78,7 @@ function pre_prompt --on-event fish_prompt
   set pre_prompt $pre_prompt "$pure_color_blue$current_folder$pure_color_normal "
 
   # Exit with code 1 if git is not available
-  if not which git >/dev/null
+  if not type -fq git
     return 1
   end
 
@@ -98,11 +98,10 @@ function pre_prompt --on-event fish_prompt
     # Check if there is an upstream configured
     command git rev-parse --abbrev-ref '@{upstream}' >/dev/null ^&1; and set -l has_upstream
     if set -q has_upstream
-      set -l git_status (command git rev-list --left-right --count 'HEAD...@{upstream}' | sed "s/[[:blank:]]/ /" ^/dev/null)
+      set -l git_status (string split ' ' (string replace -ar '\s+' ' ' (command git rev-list --left-right --count 'HEAD...@{upstream}')))
 
-      # Resolve Git arrows by treating `git_status` as an array
-      set -l git_arrow_left (command echo $git_status | cut -c 1 ^/dev/null)
-      set -l git_arrow_right (command echo $git_status | cut -c 3 ^/dev/null)
+      set -l git_arrow_left $git_status[1]
+      set -l git_arrow_right $git_status[2] 
 
       # If arrow is not "0", it means it's dirty
       if test $git_arrow_left != 0
