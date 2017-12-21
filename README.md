@@ -1,4 +1,4 @@
-# pure [![Fish Shell Version](https://img.shields.io/badge/fish-v2.5.0-007EC7.svg?style=flat-square)](http://fishshell.com)
+# pure [![Fish Shell Version](https://img.shields.io/badge/fish-v2.5.0-007EC7.svg?style=flat-square)](http://fishshell.com) [![Build Status][travis-badge]][travis-link]
 
 > Port of the [`pure`](https://github.com/sindresorhus/pure) ZSH theme to Fish 🐟
 
@@ -97,3 +97,6 @@ Kudos to all our awesome [:yellow_heart: contributors :yellow_heart:](../..//gra
 ## License
 
 MIT © [Rafael Rinaldi](http://rinaldi.io)
+
+[travis-link]: https://travis-ci.org/rafaelrinaldi/pure
+[travis-badge]: https://img.shields.io/travis/rafaelrinaldi/pure.svg
