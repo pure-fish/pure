@@ -81,6 +81,12 @@ set pure_user_host_location 1
 set pure_command_max_exec_time 5
 ```
 
+## Tests
+
+**requirements:** [`fishtape`](https://github.com/fisherman/fishtape).
+
+    fishtape tests/*.test.fish
+
 ## Maintainers
 
 * [Rafael Rinaldi](https://github.com/rafaelrinaldi)
