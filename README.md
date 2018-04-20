@@ -57,19 +57,29 @@ set pure_symbol_git_up_arrow "^"
 set pure_symbol_git_dirty "!"
 set pure_symbol_horizontal_bar "_"
 
-# Change the colors
-set pure_color_blue (set_color "1e00fd")
-set pure_color_cyan (set_color "1e95fd")
-set pure_color_gray (set_color "6c6c6c")
-set pure_color_green (set_color "66ff66")
-set pure_color_normal (set_color "000000")
-set pure_color_red (set_color "f820ff")
-set pure_color_yellow (set_color "1bc8c8")
+# Change the base colors
+set pure_color_red (set_color red)
+set pure_color_magenta (set_color magenta)
+set pure_color_blue (set_color blue)
+set pure_color_yellow (set_color yellow)
+set pure_color_cyan (set_color cyan)
+set pure_color_gray (set_color 93A1A1)
+set pure_color_white (set_color white)
+set pure_color_normal (set_color normal)
 
-# Change colors for username and host in SSH
-set pure_username_color $pure_color_yellow
-set pure_host_color $pure_color_green
-set pure_root_color $pure_color_red
+# Change the colors used on symbols, attributes and events
+set pure_color_success (set_color green)
+set pure_color_error (set_color magenta)
+set pure_color_folder (set_color yellow)
+set pure_color_duration (set_color --background blue)
+set pure_color_git_dirty $pure_color_gray
+set pure_color_git_branch $pure_color_gray
+set pure_color_git_arrow $pure_color_cyan
+set pure_color_virtualenv $pure_color_gray
+set pure_color_ssh_username $pure_color_gray
+set pure_color_ssh_host $pure_color_gray
+set pure_color_ssh_root $pure_color_white
+set pure_color_ssh_host_user_seperator $pure_color_gray
 
 # Change where the username and host is displayed
 # 0 - end of prompt, default
