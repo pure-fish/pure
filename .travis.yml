@@ -6,5 +6,6 @@ before_install:
 install:
   - sudo apt-get -y install fish
   - curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+  - fish -c "fisher fishtape"
 script:
-  - fish -c "fisher fishtape .; fishtape tests/*.test.fish"
+  - fish -c "fishtape tests/*.test.fish"
