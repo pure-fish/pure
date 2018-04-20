@@ -20,7 +20,7 @@ __pure_set_default pure_symbol_horizontal_bar "—"
 # Colors
 
 __pure_set_default pure_color_red (set_color red)
-__pure_set_default pure_color_green (set_color green)
+__pure_set_default pure_color_magenta (set_color magenta)
 __pure_set_default pure_color_blue (set_color blue)
 __pure_set_default pure_color_yellow (set_color yellow)
 __pure_set_default pure_color_cyan (set_color cyan)
@@ -107,7 +107,7 @@ function pre_prompt --on-event fish_prompt
       command git rev-list --left-right --count 'HEAD...@{upstream}' | read -la git_status
 
       set -l git_arrow_left $git_status[1]
-      set -l git_arrow_right $git_status[2] 
+      set -l git_arrow_right $git_status[2]
 
       # If arrow is not "0", it means it's dirty
       if test $git_arrow_left != 0
@@ -144,7 +144,7 @@ function fish_prompt
   set -l exit_code $status
 
   # Set default color symbol to green meaning it's all good!
-  set -l color_symbol $pure_color_green
+  set -l color_symbol $pure_color_magenta
 
   # Handle previous failed command
   if test $exit_code -ne 0
