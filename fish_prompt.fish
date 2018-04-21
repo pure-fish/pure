@@ -19,14 +19,14 @@ __pure_set_default pure_symbol_horizontal_bar "—"
 
 # Colors
 
-__pure_set_default pure_color_red (set_color red)
-__pure_set_default pure_color_magenta (set_color magenta)
 __pure_set_default pure_color_blue (set_color blue)
-__pure_set_default pure_color_yellow (set_color yellow)
 __pure_set_default pure_color_cyan (set_color cyan)
 __pure_set_default pure_color_gray (set_color 93A1A1)
-__pure_set_default pure_color_white (set_color white)
+__pure_set_default pure_color_magenta (set_color magenta)
 __pure_set_default pure_color_normal (set_color normal)
+__pure_set_default pure_color_red (set_color red)
+__pure_set_default pure_color_white (set_color white)
+__pure_set_default pure_color_yellow (set_color yellow)
 
 __pure_set_default pure_color_success $pure_color_magenta
 __pure_set_default pure_color_error $pure_color_red
