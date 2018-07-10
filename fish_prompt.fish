@@ -98,7 +98,7 @@ function pre_prompt --on-event fish_prompt
     # Check if there is an upstream configured
     command git rev-parse --abbrev-ref '@{upstream}' >/dev/null ^&1; and set -l has_upstream
     if set -q has_upstream
-      set -l git_status (string split ' ' (string replace -ar '\s+' ' ' (command git rev-list --left-right --count 'HEAD...@{upstream}')))
+      command git rev-list --left-right --count 'HEAD...@{upstream}' | read -la git_status
 
       set -l git_arrow_left $git_status[1]
       set -l git_arrow_right $git_status[2] 
