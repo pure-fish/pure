@@ -22,7 +22,7 @@ $ # Source and trigger the installer
 $ source /tmp/pure_installer.fish; and install_pure
 ```
 
-### [Fisherman](http://fisherman.sh)
+### [Fisherman](https://fisherman.github.io)
 
 ```fish
 $ fisher rafaelrinaldi/pure
