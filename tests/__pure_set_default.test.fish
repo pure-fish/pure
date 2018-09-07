@@ -1,4 +1,4 @@
-source $DIRNAME/../__pure_set_default.fish
+source $DIRNAME/../functions/__pure_set_default.fish
 
 test "set my_var default value"
   'default_value' = (
