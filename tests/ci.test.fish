@@ -24,17 +24,19 @@ test "install with fisher"
     )
 end
 
-set install (
-    docker run \
-        --name pure \
-        --rm \
-        --tty \
-    edouardlopez/pure-fish 'cd $HOME; rm -rf $HOME/.config/fish/functions/theme-pure; curl -L https://get.oh-my.fish > /tmp/install; chmod u+x /tmp/install; /tmp/install --noninteractive; fish -c "omf install pure"'
-)
-echo $install
-
 test "install with OMF (Oh-My-Fish!)"
     'pure successfully installed' = (
-        echo $install | grep --only-matching 'pure successfully installed'
+        docker run \
+            --name pure \
+            --rm \
+            --tty \
+            edouardlopez/pure-fish '
+                cd $HOME;
+                rm -rf $HOME/.config/fish/functions/theme-pure;
+                curl -L https://get.oh-my.fish > /tmp/install;
+                chmod u+x /tmp/install;
+                /tmp/install --noninteractive; 
+                fish -c "omf install pure"
+        ' | grep --only-matching 'pure successfully installed'
     )
 end
