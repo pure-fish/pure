@@ -40,3 +40,19 @@ test "install with OMF (Oh-My-Fish!)"
         ' | grep --only-matching 'pure successfully installed'
     )
 end
+
+test "install with Fundle"
+    'Installing rafaelrinaldi/pure' = (
+        docker run \
+            --name pure \
+            --rm \
+            --tty \
+            edouardlopez/pure-fish '
+                mkdir -p ~/.config/fish/functions;
+                wget https://git.io/fundle -O ~/.config/fish/functions/fundle.fish;
+                fundle plugin rafaelrinaldi/pure;
+                fundle install;
+                fundle list -s
+        ' | grep --only-matching 'Installing rafaelrinaldi/pure'
+    )
+end
