@@ -16,22 +16,24 @@
 Via [cURL](https://curl.haxx.se):
 
 ```sh
-$ # Download the installer to `/tmp`
-$ curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/installer.fish > /tmp/pure_installer.fish
-$ # Source and trigger the installer
-$ source /tmp/pure_installer.fish; and install_pure
+# Download the installer to `/tmp`
+curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/installer.fish > /tmp/pure_installer.fish
+# Source and trigger the installer
+source /tmp/pure_installer.fish; and install_pure
 ```
 
 ### [Fisherman](https://fisherman.github.io)
 
 ```fish
-$ fisher rafaelrinaldi/pure
+fisher rafaelrinaldi/pure
 ```
 
 ### [Oh My Fish!](https://github.com/oh-my-fish)
 
 ```fish
-$ omf install pure
+omf install pure
+```
+
 ### [Fundle](https://github.com/tuvistavie/fundle)
 
 ```fish
