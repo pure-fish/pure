@@ -32,6 +32,11 @@ $ fisher rafaelrinaldi/pure
 
 ```fish
 $ omf install pure
+### [Fundle](https://github.com/tuvistavie/fundle)
+
+```fish
+fundle plugin rafaelrinaldi/pure;
+fundle install;
 ```
 
 ## Features
