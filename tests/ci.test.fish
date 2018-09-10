@@ -1,6 +1,4 @@
-function setup
-    docker pull edouardlopez/pure-fish
-end
+docker pull edouardlopez/pure-fish
 
 test "install manually (default behaviour of `docker-pure-fish`)"
     'version' = (
