@@ -44,3 +44,28 @@ test "backup existing theme prompt"
         [ -e "$backup_prompt" ]
     ) $status -eq 0
 end
+
+test "inject autoloading in config"
+    (
+        pure::enable_autoloading >/dev/null
+        grep --quiet 'fish_function_path' $HOME/.config/fish/config.fish
+    ) $status -eq 0
+end
+
+test "inject autoloading in config"
+    (
+        pure::enable_autoloading >/dev/null
+        grep --quiet 'fish_function_path' $HOME/.config/fish/config.fish
+    ) $status -eq 0
+end
+
+test "activate prompt"
+    (
+        set -l active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
+        rm "$active_prompt"
+
+        pure::enable_autoloading >/dev/null
+
+        [ -r "$active_prompt" -a -L "$active_prompt" ]  # a readable symlink
+    ) $status -eq 0
+end
