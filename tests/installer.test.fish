@@ -52,13 +52,6 @@ test "inject autoloading in config"
     ) $status -eq 0
 end
 
-test "inject autoloading in config"
-    (
-        pure::enable_autoloading >/dev/null
-        grep --quiet 'fish_function_path' $HOME/.config/fish/config.fish
-    ) $status -eq 0
-end
-
 test "activate prompt"
     (
         set -l active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
