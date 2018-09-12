@@ -69,3 +69,19 @@ test "activate prompt"
         [ -r "$active_prompt" -a -L "$active_prompt" ]  # a readable symlink
     ) $status -eq 0
 end
+
+test "enable theme"
+    (
+        pure::enable_theme >/dev/null
+
+        [ "$fish_function_path[1]" = "$PURE_INSTALL_DIR/functions/" ];
+    ) $status -eq 0
+end
+
+test "load theme"
+    (
+        pure::enable_theme >/dev/null
+
+        [ $__pure_fresh_session -eq 1 ]
+    ) $status -eq 0
+end
