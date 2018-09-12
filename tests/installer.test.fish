@@ -27,3 +27,7 @@ test "pass arguments to set $PURE_INSTALL_DIR"
         echo "$PURE_INSTALL_DIR"
     )
 end
+
+test "check git is present"
+    0 = ( pure::check_git_is_available; echo $status)
+end
