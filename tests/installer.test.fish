@@ -37,7 +37,7 @@ test "backup existing theme prompt"
         set -l fake_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
         touch "$fake_prompt"
         set -l backup_prompt $fake_prompt.ignore
-        rm "$backup_prompt"
+        rm --force "$backup_prompt"
 
         pure::backup_existing_theme >/dev/null
 
@@ -55,7 +55,7 @@ end
 test "activate prompt"
     (
         set -l active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
-        rm "$active_prompt"
+        rm --force "$active_prompt"
 
         pure::enable_autoloading >/dev/null
 
@@ -65,6 +65,8 @@ end
 
 test "enable theme"
     (
+        pure::enable_autoloading >/dev/null
+
         pure::enable_theme >/dev/null
 
         [ "$fish_function_path[1]" = "$PURE_INSTALL_DIR/functions/" ];
@@ -75,6 +77,6 @@ test "load theme"
     (
         pure::enable_theme >/dev/null
 
-        [ $__pure_fresh_session -eq 1 ]
+        [ "$__pure_fresh_session" -eq 1 ]
     ) $status -eq 0
 end
