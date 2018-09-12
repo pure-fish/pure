@@ -22,18 +22,18 @@ function pure::set_pure_install_path
 end
 
 function pure::check_git_is_available
-    printf "\tChecking for git availability"
+    printf "\tChecking for git availability\n"
     command --search git >/dev/null 2>&1; or begin;
         printf "%sError: git is not installed%s" "$color_error" "$color_normal"
-        exit 1
+        return 1
     end
 end
 
 function pure::fetch_source
-    printf "\tFetching theme's source"
+    printf "\tFetching theme's source\n"
     env git clone --depth=1 --quiet https://github.com/rafaelrinaldi/theme-pure.git $PURE_INSTALL_DIR; or begin;
         printf "%sError: git clone of theme-pure repo failed%s" "$color_error" "$color_normal"
-        exit 1
+        return 1
     end
 end
 
