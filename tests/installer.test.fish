@@ -29,5 +29,18 @@ test "pass arguments to set $PURE_INSTALL_DIR"
 end
 
 test "check git is present"
-    0 = ( pure::check_git_is_available; echo $status)
+    ( pure::check_git_is_available >/dev/null) $status -eq 0
+end
+
+test "backup existing theme prompt"
+    (
+        set -l fake_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
+        touch "$fake_prompt"
+        set -l backup_prompt $fake_prompt.ignore
+        rm "$backup_prompt"
+
+        pure::backup_existing_theme >/dev/null
+
+        [ -e "$backup_prompt" ]
+    ) $status -eq 0
 end
