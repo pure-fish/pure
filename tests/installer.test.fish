@@ -48,7 +48,7 @@ end
 test "inject autoloading in config"
     (
         pure::enable_autoloading >/dev/null
-        grep --quiet 'fish_function_path' $HOME/.config/fish/config.fish
+        grep -q 'fish_function_path' $HOME/.config/fish/config.fish
     ) $status -eq 0
 end
 
