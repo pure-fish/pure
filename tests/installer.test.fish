@@ -56,6 +56,8 @@ test "activate prompt"
     (
         set -l active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
         rm --force "$active_prompt"
+        mkdir -p $PURE_INSTALL_DIR; \
+            and touch $PURE_INSTALL_DIR/fish_prompt.fish  # stub
 
         pure::enable_autoloading >/dev/null
 
