@@ -103,6 +103,8 @@ set pure_command_max_exec_time 5
 
     fishtape tests/*.test.fish
 
+Refer to [installer.md](./installer.md) to test the installer script.
+
 ## Maintainers
 
 * [Rafael Rinaldi](https://github.com/rafaelrinaldi)
