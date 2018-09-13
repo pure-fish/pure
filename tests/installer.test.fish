@@ -65,7 +65,7 @@ test "activate prompt"
     ) $status -eq 0
 end
 
-test "enable theme"
+test "append path to theme's functions"
     (
         pure::enable_autoloading >/dev/null
 
@@ -75,8 +75,10 @@ test "enable theme"
     ) $status -eq 0
 end
 
-test "load theme"
+test "load theme file"
     (
+        echo 'set -g __pure_fresh_session 1' >$FISH_CONFIG_DIR/functions/fish_prompt.fish
+
         pure::enable_theme >/dev/null
 
         [ "$__pure_fresh_session" -eq 1 ]

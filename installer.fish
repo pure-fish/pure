@@ -59,7 +59,7 @@ function pure::enable_autoloading
 end
 
 function pure::enable_theme
-    printf "\tEnabling theme"
+    printf "\tEnabling theme\n"
     set fish_function_path $PURE_INSTALL_DIR/functions/ $fish_function_path
     source $FISH_CONFIG_DIR/functions/fish_prompt.fish
 end
