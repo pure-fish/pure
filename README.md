@@ -17,7 +17,7 @@ Via [cURL](https://curl.haxx.se):
 
 ```sh
 # Download the installer to `/tmp`
-curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/installer.fish > /tmp/pure_installer.fish
+curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/tools/installer.fish > /tmp/pure_installer.fish
 # Source and trigger the installer
 source /tmp/pure_installer.fish; and install_pure
 ```
@@ -103,7 +103,7 @@ set pure_command_max_exec_time 5
 
     fishtape tests/*.test.fish
 
-Refer to [installer.md](./installer.md) to test the installer script.
+Refer to [tools/installer.md](./tools/installer.md) to test the installer script.
 
 ## Maintainers
 
