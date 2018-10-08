@@ -22,10 +22,10 @@ curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/installer.fish > /tmp/
 source /tmp/pure_installer.fish; and install_pure
 ```
 
-### [Fisherman](https://fisherman.github.io)
+### [Fisher](https://github.com/jorgebucaran/fisher)
 
 ```fish
-fisher rafaelrinaldi/pure
+fisher add rafaelrinaldi/pure
 ```
 
 ### [Oh My Fish!](https://github.com/oh-my-fish)
