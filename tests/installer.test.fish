@@ -1,4 +1,4 @@
-source $DIRNAME/../installer.fish
+source $DIRNAME/../tools/installer.fish
 
 test "pass argument to set $FISH_CONFIG_DIR"
     "/custom/config/path" = (
