@@ -30,17 +30,11 @@ fisher add rafaelrinaldi/pure
 
 ### [Oh My Fish!](https://github.com/oh-my-fish)
 
-Due to Oh My Fish not currently supporting `conf.d` snippets in plugins and themes (oh-my-fish/oh-my-fish#646),
-an additional step to add the snippets to fish's `conf.d` is needed to have the prompt work correctly.
-
 ```fish
 omf install pure
 ln -s $OMF_PATH/themes/pure/conf.d/pure.fish ~/.config/fish/conf.d/pure.fish
 ```
-
-> **Note**: Use $XDG_CONFIG_HOME/fish to find the path to your fish configuration directory if the XDG_CONFIG_HOME
-> environment variable is set on your system.
-
+:information_source: [why the symlink?](https://github.com/rafaelrinaldi/pure/wiki/Oh-My-Fish-not-currently-supporting-conf.d-snippets-in-plugins-and-themes)
 
 ### [Fundle](https://github.com/tuvistavie/fundle)
 
