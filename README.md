@@ -19,7 +19,7 @@ Via [cURL](https://curl.haxx.se):
 
 ```sh
 # Download the installer to `/tmp`
-curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/tools/installer.fish > /tmp/pure_installer.fish
+curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent
 # Source and trigger the installer
 source /tmp/pure_installer.fish; and install_pure
 ```
