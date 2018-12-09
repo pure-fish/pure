@@ -1,3 +1,6 @@
+# Description
+#   Used to test the installer script
+
 FROM ohmyfish/fish
 
 USER root
