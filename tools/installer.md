@@ -4,8 +4,8 @@ First build the image
 
     docker build \
         --file tools/Dockerfile \
-            -t pure-installer \
-            ./
+        --tag=pure-installer \
+        ./
 
 Then run it from the project directory
 
