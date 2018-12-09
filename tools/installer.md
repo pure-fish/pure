@@ -3,7 +3,7 @@ To test the installer locally we created a docker image to provide a clean envir
 First build the image
 
     docker build \
-            --file installer.Dockerfile \
+        --file tools/Dockerfile \
             -t pure-installer \
             ./
 
