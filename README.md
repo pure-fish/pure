@@ -11,6 +11,8 @@
 
 ## Install
 
+**:warning: requirements**: fish `≥2.4`.
+
 ### Manually
 
 Via [cURL](https://curl.haxx.se):
