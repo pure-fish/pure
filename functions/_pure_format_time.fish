@@ -1,5 +1,9 @@
-function _pure_format_time -d "Format milliseconds to a human readable format"
+set FAIL 1
+
+function _pure_format_time --description="Format milliseconds to a human readable format"
     set --local milliseconds $argv[1]
+    if test $milliseconds -lt 0; return $FAIL; end
+
     set --local seconds (math -s0 "$milliseconds / 1000 % 60")
     set --local minutes (math -s0 "$milliseconds / 60000 % 60")
     set --local hours (math -s0 "$milliseconds / 3600000 % 24")
