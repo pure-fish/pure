@@ -1,7 +1,7 @@
-function __pure_new_line
+function _pure_prompt_beginning
     set --local new_line
     # Do not add a line break to a brand new session
-    if test $__pure_fresh_session -eq 0
+    if test $_pure_fresh_session -eq 0
         set new_line "\n"
     end
     # Clear existen line content

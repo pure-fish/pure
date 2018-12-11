@@ -77,10 +77,10 @@ end
 
 test "load theme file"
     (
-        echo 'set -g __pure_fresh_session 1' >$FISH_CONFIG_DIR/functions/fish_prompt.fish
+        echo 'set -g _pure_fresh_session 1' >$FISH_CONFIG_DIR/functions/fish_prompt.fish
 
         pure::enable_theme >/dev/null
 
-        [ "$__pure_fresh_session" -eq 1 ]
+        [ "$_pure_fresh_session" -eq 1 ]
     ) $status -eq 0
 end

@@ -33,7 +33,7 @@ test "install with OMF (Oh-My-Fish!)"
                 rm -rf $HOME/.config/fish/functions/theme-pure;
                 curl -L https://get.oh-my.fish > /tmp/install;
                 chmod u+x /tmp/install;
-                /tmp/install --noninteractive; 
+                /tmp/install --noninteractive;
                 fish -c "omf install pure"
         ' | grep --only-matching 'pure successfully installed'
     )

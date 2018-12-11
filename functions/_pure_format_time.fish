@@ -1,4 +1,4 @@
-function format_time -d "Format milliseconds to a human readable format"
+function _pure_format_time -d "Format milliseconds to a human readable format"
     set --local milliseconds $argv[1]
     set --local seconds (math -s0 "$milliseconds / 1000 % 60")
     set --local minutes (math -s0 "$milliseconds / 60000 % 60")
@@ -24,16 +24,4 @@ function format_time -d "Format milliseconds to a human readable format"
     end
 
     echo -e (string join ' ' $time)
-end
-
-function __pure_command_duration_prompt
-    set --local command_duration
-    
-    # Get command execution duration
-    if test -n "$CMD_DURATION"
-        set command_duration (format_time $CMD_DURATION $pure_command_max_exec_time)
-    end
-    set --local command_duration_color "$pure_color_yellow"
-
-    echo "$command_duration_color$command_duration"
 end
