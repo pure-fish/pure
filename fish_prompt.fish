@@ -7,13 +7,13 @@ function fish_prompt
     # Save previous exit code
     set --local exit_code $status
     # Prepare line for prompt
-    echo -e -n (__pure_new_line)
-    # Print pre prompt
-    echo -e (__pure_pre_prompt)
+    echo -e -n (_pure_prompt_beginning)
+    # Print first line
+    echo -e (_pure_prompt_first_line)
     # Print prompt
-    echo -e -n (__pure_prompt $exit_code)
+    echo -e -n (_pure_prompt $exit_code)
     # Reset colors and end prompt
-    echo -e (__pure_end_prompt)
-    
-    set __pure_fresh_session 0
+    echo -e (_pure_prompt_ending)
+
+    set _pure_fresh_session 0
 end
