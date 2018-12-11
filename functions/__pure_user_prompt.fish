@@ -16,10 +16,10 @@ function prompt_at
 end
 
 function prompt_host
-    set --local hostname (hostname -s) # current host name
-    set --local hostname_color "$pure_host_color"
+    set --local host (hostname -s) # current host name
+    set --local host_color "$pure_host_color"
 
-    echo "$hostname_color$hostname"
+    echo "$host_color$host"
 end
 
 function __pure_user_prompt
