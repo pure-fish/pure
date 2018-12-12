@@ -1,4 +1,4 @@
-function __pure_symbol_prompt
+function _pure_prompt_symbol
     set --local pure_symbol $pure_symbol_prompt
 
     set --local color_symbol $pure_color_green # default pure symbol color
