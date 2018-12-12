@@ -1,10 +1,10 @@
-source $DIRNAME/../functions/__parse_current_folder.fish
+source $DIRNAME/../functions/_pure_parse_directory.fish
 
 set --local EMPTY ''
 
 test "returns current directory"
     (
-        __parse_current_folder
+        _pure_parse_directory
     ) = $PWD
 end
 
@@ -12,13 +12,13 @@ test 'replaces $HOME by ~'
     (
         pushd $HOME
 
-        __parse_current_folder
+        _pure_parse_directory
         popd
     ) = '~'
 end
 
 test 'shortens directory in prompt'
     (
-        string length (__parse_current_folder 1)
+        string length (_pure_parse_directory 1)
     ) -lt (string length $PWD)
 end
