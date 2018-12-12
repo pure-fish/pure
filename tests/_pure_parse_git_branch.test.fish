@@ -7,9 +7,6 @@ function setup
     mkdir -p $temporary_test_directory
     cd $temporary_test_directory
     git init --quiet
-    touch readme.md
-    git add .
-    git commit --message='init mock git' --quiet
 end
 
 test "returns current branch"
