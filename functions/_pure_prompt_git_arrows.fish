@@ -17,7 +17,7 @@ function _pure_prompt_git_arrows
             set git_arrows "$git_arrows$pure_symbol_git_down_arrow"
         end
 
-        set git_arrows_color "$pure_color_cyan"
+        set git_arrows_color "$pure_color_git_arrow"
     end
 
     echo "$git_arrows_color$git_arrows"
