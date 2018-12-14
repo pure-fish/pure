@@ -6,7 +6,7 @@ function _pure_prompt_first_line \
     end
 
     set --local prompt (_pure_print_prompt \
-                            (_pure_prompt_user_and_host) \
+                            (_pure_prompt_ssh) \
                             (_pure_prompt_git) \
                             (_pure_prompt_command_duration)
                         )
@@ -18,11 +18,11 @@ function _pure_prompt_first_line \
         set prompt_components \
                 (_pure_prompt_current_folder $prompt_width) \
                 (_pure_prompt_git) \
-                (_pure_prompt_user_and_host) \
+                (_pure_prompt_ssh) \
                 (_pure_prompt_command_duration)
     else
         set prompt_components \
-                (_pure_prompt_user_and_host) \
+                (_pure_prompt_ssh) \
                 (_pure_prompt_current_folder $prompt_width) \
                 (_pure_prompt_git) \
                 (_pure_prompt_command_duration)
