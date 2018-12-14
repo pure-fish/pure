@@ -8,8 +8,8 @@ set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 _pure_set_default pure_symbol_prompt "❯"
 
 # Git
-_pure_set_default pure_symbol_git_down_arrow "⇣"
-_pure_set_default pure_symbol_git_up_arrow "⇡"
+_pure_set_default pure_symbol_git_arrow_down "⇣"
+_pure_set_default pure_symbol_git_arrow_up "⇡"
 _pure_set_default pure_symbol_git_dirty "*"
 
 # Title
@@ -25,18 +25,18 @@ _pure_set_default pure_color_red (set_color red)
 _pure_set_default pure_color_white (set_color white)
 _pure_set_default pure_color_yellow (set_color yellow)
 
-_pure_set_default pure_color_success $pure_color_magenta
-_pure_set_default pure_color_error $pure_color_red
-_pure_set_default pure_color_folder $pure_color_blue
-_pure_set_default pure_color_duration $pure_color_yellow
-_pure_set_default pure_color_git_dirty $pure_color_gray
+_pure_set_default pure_color_current_folder $pure_color_blue
 _pure_set_default pure_color_git_branch $pure_color_gray
-_pure_set_default pure_color_git_arrow $pure_color_cyan
-_pure_set_default pure_color_virtualenv $pure_color_gray
-_pure_set_default pure_color_ssh_username $pure_color_gray
+_pure_set_default pure_color_git_dirty $pure_color_gray
+_pure_set_default pure_color_git_arrows $pure_color_cyan
+_pure_set_default pure_color_command_duration $pure_color_yellow
+_pure_set_default pure_color_ssh_user_normal $pure_color_gray
+_pure_set_default pure_color_ssh_user_root $pure_color_white
+_pure_set_default pure_color_ssh_separator $pure_color_gray
 _pure_set_default pure_color_ssh_host $pure_color_gray
-_pure_set_default pure_color_ssh_root $pure_color_white
-_pure_set_default pure_color_ssh_host_user_seperator $pure_color_gray
+_pure_set_default pure_color_virtualenv $pure_color_gray
+_pure_set_default pure_color_symbol_success $pure_color_magenta
+_pure_set_default pure_color_symbol_error $pure_color_red
 
 # Print current working directory at the beginning of prompt
 # true (default):   current directory, git, user@hostname (ssh-only), command duration
