@@ -81,6 +81,6 @@ test "load theme file"
 
         pure::enable_theme >/dev/null
 
-        [ "$_pure_fresh_session" -eq 1 ]
+        [ "$_pure_fresh_session" = true ]
     ) $status -eq 0
 end

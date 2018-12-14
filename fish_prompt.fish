@@ -15,5 +15,5 @@ function fish_prompt
     # Reset colors and end prompt
     echo -e (_pure_prompt_ending)
 
-    set _pure_fresh_session 0
+    set _pure_fresh_session false
 end

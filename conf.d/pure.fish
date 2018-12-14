@@ -4,7 +4,7 @@
 # MIT License
 
 # Whether or not is a fresh session
-set -g _pure_fresh_session 1
+set -g _pure_fresh_session true
 
 # Deactivate the default virtualenv prompt so that we can add our own
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
