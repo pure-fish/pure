@@ -77,14 +77,14 @@ set pure_symbol_git_dirty "*"
 set pure_symbol_horizontal_bar "—"
 
 # Base colors
-set pure_color_red (set_color red)
-set pure_color_magenta (set_color magenta)
 set pure_color_blue (set_color blue)
-set pure_color_yellow (set_color yellow)
 set pure_color_cyan (set_color cyan)
 set pure_color_gray (set_color 93A1A1)
-set pure_color_white (set_color white)
+set pure_color_magenta (set_color magenta)
 set pure_color_normal (set_color normal)
+set pure_color_red (set_color red)
+set pure_color_white (set_color white)
+set pure_color_yellow (set_color yellow)
 
 # Colors used on symbols, attributes and events
 set pure_color_success $pure_color_magenta
