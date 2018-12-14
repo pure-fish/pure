@@ -1,7 +1,9 @@
 set FAIL 1
 
-function _pure_format_time --description="Format milliseconds to a human readable format"
-    set --local milliseconds $argv[1]
+function _pure_format_time \
+    --description="Format milliseconds to a human readable format" \
+    --argument-names milliseconds threshold
+    
     if test $milliseconds -lt 0; return $FAIL; end
 
     set --local seconds (math -s0 "$milliseconds / 1000 % 60")
@@ -9,7 +11,6 @@ function _pure_format_time --description="Format milliseconds to a human readabl
     set --local hours (math -s0 "$milliseconds / 3600000 % 24")
     set --local days (math -s0 "$milliseconds / 86400000")
     set --local time
-    set --local threshold $argv[2]
 
     if test $days -gt 0
         set time $time (printf "%sd" $days)
