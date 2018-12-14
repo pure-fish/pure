@@ -17,7 +17,7 @@ _pure_set_default pure_symbol_horizontal_bar "—"
 
 # Colors
 _pure_set_default pure_color_red (set_color red)
-_pure_set_default pure_color_green (set_color green)
+_pure_set_default pure_color_magenta (set_color magenta)
 _pure_set_default pure_color_blue (set_color blue)
 _pure_set_default pure_color_magenta (set_color magenta)
 _pure_set_default pure_color_yellow (set_color yellow)
