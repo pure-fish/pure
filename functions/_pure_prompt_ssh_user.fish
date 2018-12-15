@@ -1,7 +1,7 @@
 function _pure_prompt_ssh_user
     set --local username (whoami) # current user name
     set --local username_color "$pure_color_ssh_user_normal"  # default color
-    if [ "$username" = "root" ]
+    if test "$username" = "root"
         set username_color "$pure_color_ssh_user_root" # different color for root
     end
 
