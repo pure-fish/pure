@@ -53,3 +53,7 @@ _pure_set_default pure_separate_prompt_on_error false
 
 # Max execution time of a process before its run time is shown when it exits
 _pure_set_default pure_command_max_exec_time 5
+
+# Right Prompt variables
+_pure_set_default pure_right_prompt ""
+_pure_set_default pure_right_prompt_color pure_color_normal
