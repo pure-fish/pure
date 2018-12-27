@@ -1,13 +1,13 @@
-function _pure_prompt_symbol
+function _pure_prompt_symbol --argument-names exit_code
     set --local pure_symbol $pure_symbol_prompt
+    set --local command_succeed 0
 
-    set --local color_symbol $pure_color_green # default pure symbol color
-    if test $argv[1] -ne 0
-        # Symbol color is red when previous command fails
-        set color_symbol $pure_color_red
+    set --local color_symbol $pure_color_green  # pure symbol is green by default
+    if test $exit_code -ne 0
+        set color_symbol $pure_color_red  # pure symbol is red when previous command failed
 
         if test $pure_separate_prompt_on_error -eq 1
-            set color_symbol "$pure_color_red$pure_symbol_prompt$pure_color_green"
+            set color_symbol "$pure_color_red$pure_symbol_prompt$pure_color_magenta"
         end
     end
 

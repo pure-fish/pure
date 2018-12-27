@@ -1,0 +1,48 @@
+source $DIRNAME/../functions/_pure_prompt_symbol.fish
+
+set --local EMPTY ''
+set --local FAILED 1
+set --local SUCCEED 0
+
+test "throws error message when argument is missing"
+    (
+        set pure_symbol_prompt '>'  # using default ❯ break following tests
+        set pure_color_green (set_color green)
+
+        set output (_pure_prompt_symbol 2>&1)
+        echo $output[1]
+    ) = 'test: Missing argument at index 2'
+end
+
+test "colorizes prompt in green when last command succeed"
+    (
+        set --local last_command $SUCCEED
+        set pure_symbol_prompt '>'  # using default ❯ break following tests
+        set pure_color_green (set_color green)
+
+        _pure_prompt_symbol $last_command
+    ) = (set_color green)'>'
+end
+
+test "colorizes prompt in red when last command failed"
+    (
+        set --local last_command $FAILED
+        set pure_symbol_prompt '>'  # using default ❯ break following tests
+        set pure_color_red (set_color red)
+
+        _pure_prompt_symbol $last_command
+    ) = (set_color red)'>'
+end
+
+test "add a magenta prompt when pure_separate_prompt_on_error is enable and last command failed"
+    (
+        set --local last_command $FAILED
+        set pure_symbol_prompt '>'  # using default ❯ break following tests
+        set pure_color_red (set_color red)
+        set pure_color_magenta (set_color magenta)
+        set pure_separate_prompt_on_error 1
+
+
+        _pure_prompt_symbol $last_command
+    ) = (set_color red)'>'(set_color magenta)'>'
+end
