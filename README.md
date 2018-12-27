@@ -62,44 +62,47 @@ fundle install;
 
 ## Configuration
 
-You can tweak pretty much everything in `pure` by overriding variables in your `config.fish` file:
+You can tweak pretty much everything in `pure` by overriding variables in your `config.fish` file.
 
 ```fish
-# Change the prompt text
-set pure_symbol_prompt "~>"
-set pure_symbol_git_down_arrow "v"
-set pure_symbol_git_up_arrow "^"
-set pure_symbol_git_dirty "!"
-set pure_symbol_horizontal_bar "_"
+# Symbols
+_pure_set_default pure_symbol_prompt "❯"
 
-# Change the colors
-set pure_color_blue (set_color "1e00fd")
-set pure_color_cyan (set_color "1e95fd")
-set pure_color_gray (set_color "6c6c6c")
-set pure_color_green (set_color "66ff66")
-set pure_color_normal (set_color "000000")
-set pure_color_red (set_color "f820ff")
-set pure_color_yellow (set_color "1bc8c8")
+# Git
+_pure_set_default pure_symbol_git_down_arrow "⇣"
+_pure_set_default pure_symbol_git_up_arrow "⇡"
+_pure_set_default pure_symbol_git_dirty "*"
 
-# Change colors for username and host in SSH
-set pure_username_color $pure_color_yellow
-set pure_host_color $pure_color_green
-set pure_root_color $pure_color_red
+# Title
+_pure_set_default pure_symbol_horizontal_bar "—"
 
-# Change where the username and host is displayed
+# Colors
+_pure_set_default pure_color_red (set_color red)
+_pure_set_default pure_color_green (set_color green)
+_pure_set_default pure_color_blue (set_color blue)
+_pure_set_default pure_color_magenta (set_color magenta)
+_pure_set_default pure_color_yellow (set_color yellow)
+_pure_set_default pure_color_cyan (set_color cyan)
+_pure_set_default pure_color_gray (set_color 93A1A1)
+_pure_set_default pure_color_normal (set_color normal)
+
+_pure_set_default pure_username_color $pure_color_gray
+_pure_set_default pure_host_color $pure_color_gray
+_pure_set_default pure_root_color $pure_color_normal
+
+# Determines whether the username and host are shown at the begining or end
 # 0 - end of prompt, default
 # 1 - start of prompt
 # Any other value defaults to the default behaviour
-set pure_user_host_location 1
+_pure_set_default pure_user_host_location 0
 
-# Show exit code of last command as a separate prompt character. As described here: https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character
+# Show exit code of last command as a separate prompt character (cf. https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character)
 # false - single prompt character, default
 # true - separate prompt character
-# Any other value defaults to the default behaviour
-set pure_separate_prompt_on_error true
+_pure_set_default pure_separate_prompt_on_error false
 
 # Max execution time of a process before its run time is shown when it exits
-set pure_command_max_exec_time 5
+_pure_set_default pure_command_max_exec_time 5
 ```
 
 ## Tests

@@ -1,8 +1,3 @@
-# Pure
-# by Rafael Rinaldi
-# https://github.com/rafaelrinaldi/pure
-# MIT License
-
 # Whether or not is a fresh session
 set -g _pure_fresh_session true
 
@@ -10,15 +5,17 @@ set -g _pure_fresh_session true
 set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
 # Symbols
-
 _pure_set_default pure_symbol_prompt "❯"
+
+# Git
 _pure_set_default pure_symbol_git_down_arrow "⇣"
 _pure_set_default pure_symbol_git_up_arrow "⇡"
 _pure_set_default pure_symbol_git_dirty "*"
+
+# Title
 _pure_set_default pure_symbol_horizontal_bar "—"
 
 # Colors
-
 _pure_set_default pure_color_red (set_color red)
 _pure_set_default pure_color_green (set_color green)
 _pure_set_default pure_color_blue (set_color blue)
@@ -38,10 +35,9 @@ _pure_set_default pure_root_color $pure_color_normal
 # Any other value defaults to the default behaviour
 _pure_set_default pure_user_host_location 0
 
-# Show exit code of last command as a separate prompt character. As described here: https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character
+# Show exit code of last command as a separate prompt character (cf. https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character)
 # false - single prompt character, default
 # true - separate prompt character
-# Any other value defaults to the default behaviour
 _pure_set_default pure_separate_prompt_on_error false
 
 # Max execution time of a process before its run time is shown when it exits
