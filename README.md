@@ -1,5 +1,5 @@
 [travis-link]: https://travis-ci.org/rafaelrinaldi/pure
-[travis-badge]: https://img.shields.io/travis/rafaelrinaldi/pure.svg
+[travis-badge]: https://travis-ci.org/rafaelrinaldi/pure.svg?branch=master
 
 # pure [![Fish Shell Version](https://img.shields.io/badge/fish-v2.5.0-007EC7.svg?style=flat-square)](http://fishshell.com) [![Build Status][travis-badge]][travis-link]
 
