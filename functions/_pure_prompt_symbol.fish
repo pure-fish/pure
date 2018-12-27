@@ -6,7 +6,7 @@ function _pure_prompt_symbol --argument-names exit_code
     if test $exit_code -ne 0
         set color_symbol $pure_color_red  # pure symbol is red when previous command failed
 
-        if test $pure_separate_prompt_on_error -eq 1
+        if test $pure_separate_prompt_on_error = true 
             set color_symbol "$pure_color_red$pure_symbol_prompt$pure_color_magenta"
         end
     end
