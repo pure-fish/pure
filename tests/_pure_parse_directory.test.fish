@@ -4,6 +4,9 @@ set --local EMPTY ''
 
 test "returns current directory"
     (
+        mkdir --parents /tmp/current/directory/
+        cd /tmp/current/directory/
+        
         _pure_parse_directory
     ) = $PWD
 end
