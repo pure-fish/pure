@@ -3,7 +3,6 @@ source $DIRNAME/../functions/_pure_prompt_git_arrows.fish
 set --local EMPTY ''
 set fake_git_repo /tmp/pure
 set fake_git_bare /tmp/pure.git
-set -U fish_features stderr-nocaret
 
 function setup
     rm --recursive --force $fake_git_repo
