@@ -93,10 +93,10 @@ set pure_root_color $pure_color_red
 set pure_user_host_location 1
 
 # Show exit code of last command as a separate prompt character. As described here: https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character
-# 0 - single prompt character, default
-# 1 - separate prompt character
+# false - single prompt character, default
+# true - separate prompt character
 # Any other value defaults to the default behaviour
-set pure_separate_prompt_on_error 1
+set pure_separate_prompt_on_error true
 
 # Max execution time of a process before its run time is shown when it exits
 set pure_command_max_exec_time 5

@@ -40,7 +40,7 @@ test "add a magenta prompt when pure_separate_prompt_on_error is enable and last
         set pure_symbol_prompt '>'  # using default ❯ break following tests
         set pure_color_red (set_color red)
         set pure_color_magenta (set_color magenta)
-        set pure_separate_prompt_on_error 1
+        set pure_separate_prompt_on_error true
 
 
         _pure_prompt_symbol $last_command
