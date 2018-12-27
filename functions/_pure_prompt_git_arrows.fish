@@ -2,9 +2,8 @@ function _pure_prompt_git_arrows
     set --local git_arrows
     set --local git_arrows_color
 
-    command git rev-parse --abbrev-ref '@{upstream}' >/dev/null 2>&1; 
-    and set --local has_upstream
-    if set -q has_upstream  # check there is an upstream repo configured
+    set --local has_upstream (command git rev-parse --abbrev-ref '@{upstream}' 2>/dev/null)
+    if test -n "$has_upstream"  # check there is an upstream repo configured
         command git rev-list --left-right --count 'HEAD...@{upstream}' \
         | read --local --array git_status
         set --local commit_to_push $git_status[1]
