@@ -22,6 +22,7 @@ _pure_set_default pure_symbol_horizontal_bar "—"
 _pure_set_default pure_color_red (set_color red)
 _pure_set_default pure_color_green (set_color green)
 _pure_set_default pure_color_blue (set_color blue)
+_pure_set_default pure_color_magenta (set_color magenta)
 _pure_set_default pure_color_yellow (set_color yellow)
 _pure_set_default pure_color_cyan (set_color cyan)
 _pure_set_default pure_color_gray (set_color 93A1A1)
