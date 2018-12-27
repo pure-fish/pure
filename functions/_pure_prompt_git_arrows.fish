@@ -2,24 +2,22 @@ function _pure_prompt_git_arrows
     set --local git_arrows
     set --local git_arrows_color
 
-    # Check if there is an upstream configured
-    command git rev-parse --abbrev-ref '@{upstream}' >/dev/null ^&1; and set -l has_upstream
-    if set -q has_upstream
-        command git rev-list --left-right --count 'HEAD...@{upstream}' | read -la git_status
+    command git rev-parse --abbrev-ref '@{upstream}' >/dev/null 2>&1; 
+    and set --local has_upstream
+    if set -q has_upstream  # check there is an upstream repo configured
+        command git rev-list --left-right --count 'HEAD...@{upstream}' \
+        | read --local --array git_status
+        set --local commit_to_push $git_status[1]
+        set --local commit_to_pull $git_status[2]
 
-        set --local git_arrow_left $git_status[1]
-        set --local git_arrow_right $git_status[2]
-
-        # If arrow is not "0", it means it's dirty
-        if test $git_arrow_left != 0
+        if test $commit_to_push -gt 0  # upstream is behind local repo
             set git_arrows "$pure_symbol_git_up_arrow"
         end
 
-        if test $git_arrow_right != 0
+        if test $commit_to_pull -gt 0  # upstream is ahead of local repo
             set git_arrows "$git_arrows$pure_symbol_git_down_arrow"
         end
 
-        # Format Git arrows
         set git_arrows_color "$pure_color_cyan"
     end
 
