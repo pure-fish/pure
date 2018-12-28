@@ -6,6 +6,8 @@
 ## Code Conventions for `pure`
 
 * Use the idiomatic [`test` instead of `[`](httpsc://fishshell.com/docs/current/commands.html#test) brackets (as recommended by the documentation).
+* Use **long form options**, _e.g._ `set --local`, as they are more explicit over cryptic 1-letter form.
+
 ### Public item
 
 > Namespace your item with the prefix `pure_`.
