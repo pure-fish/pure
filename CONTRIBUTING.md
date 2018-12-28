@@ -5,6 +5,7 @@
 
 ## Code Conventions for `pure`
 
+* Use the idiomatic [`test` instead of `[`](httpsc://fishshell.com/docs/current/commands.html#test) brackets (as recommended by the documentation).
 ### Public item
 
 > Namespace your item with the prefix `pure_`.
