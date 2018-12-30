@@ -36,6 +36,8 @@ test "print first line as: current directory, git, user@hostname (ssh-only), com
         function _pure_prompt_user_and_host
             echo 'user@hostname'
         end
+        set COLUMNS 50  # prevent path short 1/2
+        set current_prompt_width 15  # prevent path short 2/2
 
         set pure_prompt_begin_with_current_directory true
         _pure_prompt_first_line
@@ -59,6 +61,8 @@ test "print first line as: user@hostname (ssh-only), current directory, git, com
         function _pure_prompt_user_and_host
             echo 'user@hostname'
         end
+        set COLUMNS 50  # prevent path short 1/2
+        set current_prompt_width 15  # prevent path short 2/2
 
         set pure_prompt_begin_with_current_directory false
         _pure_prompt_first_line
