@@ -1,6 +1,6 @@
 source $DIRNAME/../functions/_pure_prompt_first_line.fish
 
-set --local EMPTY ''
+set --local empty ''
 
 test "fails when git is missing"
     (
@@ -23,9 +23,9 @@ end
 
 test "print first line as: current directory, git, user@hostname (ssh-only), command duration"
     (
-        set pure_color_blue $EMPTY
-        set pure_color_gray $EMPTY
-        set pure_color_yellow $EMPTY
+        set pure_color_blue $empty
+        set pure_color_gray $empty
+        set pure_color_yellow $empty
 
         mkdir --parents /tmp/test
         cd /tmp/test
@@ -48,9 +48,9 @@ end
 
 test "print first line as: user@hostname (ssh-only), current directory, git, command duration"
     (
-        set pure_color_blue $EMPTY
-        set pure_color_gray $EMPTY
-        set pure_color_yellow $EMPTY
+        set pure_color_blue $empty
+        set pure_color_gray $empty
+        set pure_color_yellow $empty
 
         mkdir --parents /tmp/test
         cd /tmp/test

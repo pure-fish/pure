@@ -1,6 +1,6 @@
 source $DIRNAME/../functions/_pure_prompt_user_and_host.fish
 
-set --local EMPTY ''
+set --local empty ''
 
 test "hide 'user@hostname' when working locally"
     (
@@ -13,9 +13,9 @@ end
 
 test "displays 'user@hostname' when on SSH connection"
     (
-        set pure_username_color $EMPTY
-        set pure_color_gray $EMPTY
-        set pure_host_color $EMPTY
+        set pure_username_color $empty
+        set pure_color_gray $empty
+        set pure_host_color $empty
         set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
         function whoami  # mock
             echo 'user'

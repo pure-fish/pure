@@ -1,17 +1,17 @@
 source $DIRNAME/../functions/_pure_prompt_current_folder.fish
 
-set --local EMPTY ''
-set --local FAIL 1
+set --local empty ''
+set --local fail 1
 
 test "fails _pure_prompt_current_folder if no argument given"
     (
         _pure_prompt_current_folder
-    ) $status -eq $FAIL
+    ) $status -eq $fail
 end
 
 test "returns _pure_prompt_current_folder"
     (
-        set pure_color_blue $EMPTY
+        set pure_color_blue $empty
         set COLUMNS 20
         set current_prompt_width 10
 
