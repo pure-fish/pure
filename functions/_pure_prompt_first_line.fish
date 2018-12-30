@@ -1,6 +1,6 @@
 function _pure_prompt_first_line \
     --description 'Print contextual information before prompt.'
-    
+
     if not type -fq git  # exit if git is not available
         return 1
     end
@@ -14,7 +14,7 @@ function _pure_prompt_first_line \
     set --local current_folder (_pure_prompt_current_folder $prompt_width)
 
     set --local prompt_components
-    if test $pure_user_host_location -eq 0
+    if test $pure_prompt_begin_with_current_directory = true
         set prompt_components \
                 (_pure_prompt_current_folder $prompt_width) \
                 (_pure_prompt_git) \
