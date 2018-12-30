@@ -1,8 +1,8 @@
 source $DIRNAME/../functions/_pure_prompt_symbol.fish
 
-set --local EMPTY ''
-set --local FAILED 1
-set --local SUCCEED 0
+set --local empty ''
+set --local fail 1
+set --local success 0
 
 test "throws error message when argument is missing"
     (
@@ -16,7 +16,7 @@ end
 
 test "colorizes prompt in green when last command succeed"
     (
-        set --local last_command $SUCCEED
+        set --local last_command $success
         set pure_symbol_prompt '>'  # using default ❯ break following tests
         set pure_color_green (set_color green)
 
@@ -26,7 +26,7 @@ end
 
 test "colorizes prompt in red when last command failed"
     (
-        set --local last_command $FAILED
+        set --local last_command $fail
         set pure_symbol_prompt '>'  # using default ❯ break following tests
         set pure_color_red (set_color red)
 
@@ -36,7 +36,7 @@ end
 
 test "add a magenta prompt when pure_separate_prompt_on_error is enable and last command failed"
     (
-        set --local last_command $FAILED
+        set --local last_command $fail
         set pure_symbol_prompt '>'  # using default ❯ break following tests
         set pure_color_red (set_color red)
         set pure_color_magenta (set_color magenta)

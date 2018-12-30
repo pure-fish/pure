@@ -1,12 +1,12 @@
 source $DIRNAME/../functions/_pure_print_prompt.fish
 source $DIRNAME/../functions/_pure_string_width.fish
 
-set --local EMPTY ''
+set --local empty ''
 
 test "returns nothing when no argument provided"
     (
         _pure_print_prompt
-    ) = $EMPTY
+    ) = $empty
 end
 
 test "trims prompt left side"
@@ -18,7 +18,7 @@ end
 test "ignores color change argument"
     (
         _pure_print_prompt (set_color red)
-    ) = $EMPTY
+    ) = $empty
 end
 
 test "allow colored argument"

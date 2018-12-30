@@ -1,6 +1,6 @@
 source $DIRNAME/../functions/_pure_string_width.fish
 
-set --local EMPTY ''
+set --local empty ''
 
 test "measure empty string"
     (
@@ -21,7 +21,7 @@ test "measure ANSI-colored string"
         set --local prompt \
                         (set_color grey)'user@' \
                         (set_color blue)'hostname'
-        set prompt (string join "$EMPTY" $prompt)  # do not quote the array
+        set prompt (string join "$empty" $prompt)  # do not quote the array
         
         _pure_string_width $prompt
 
@@ -43,7 +43,7 @@ test "measure ANSI-colored UTF-8 string"
                         (set_color grey)'🛡' \
                         (set_color red)'🚀' 
 
-        set prompt (string join "$EMPTY" $prompt)  # do not quote the array
+        set prompt (string join "$empty" $prompt)  # do not quote the array
         
         _pure_string_width $prompt
     ) = 6

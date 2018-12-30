@@ -1,6 +1,6 @@
 source $DIRNAME/../functions/_pure_parse_directory.fish
 
-set --local EMPTY ''
+set --local empty ''
 
 test "returns current directory"
     (

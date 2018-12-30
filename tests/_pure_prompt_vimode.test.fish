@@ -1,11 +1,11 @@
 source $DIRNAME/../functions/_pure_prompt_vimode.fish
 
-set --local EMPTY ''
+set --local empty ''
 
 test "hides vimode prompt by default"
     (
         _pure_prompt_vimode
-    ) = $EMPTY
+    ) = $empty
 end
 
 test "shows default vimode prompt"

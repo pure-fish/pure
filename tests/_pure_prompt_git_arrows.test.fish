@@ -1,6 +1,6 @@
 source $DIRNAME/../functions/_pure_prompt_git_arrows.fish
 
-set --local EMPTY ''
+set --local empty ''
 set fake_git_repo /tmp/pure
 set fake_git_bare /tmp/pure.git
 
@@ -30,7 +30,7 @@ test "print nothing when no upstream repo"
         cd $fake_git_repo
 
         _pure_prompt_git_arrows
-    ) = $EMPTY
+    ) = $empty
 end
 
 test "show arrow UP when branch is AHEAD of upstream (need git push)"
