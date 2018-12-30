@@ -21,7 +21,7 @@ test "fails when git is missing"
     ) = 1
 end
 
-test "print first line as: current directory, git, user@hostname, command duration"
+test "print first line as: current directory, git, user@hostname (ssh-only), command duration"
     (
         set pure_color_blue $EMPTY
         set pure_color_gray $EMPTY
@@ -37,14 +37,14 @@ test "print first line as: current directory, git, user@hostname, command durati
             echo 'user@hostname'
         end
 
-        set pure_user_host_location 0
+        set pure_prompt_begin_with_current_directory true
         _pure_prompt_first_line
 
         rm --recursive --force /tmp/test
     ) = '/tmp/test master user@hostname 1s'
 end
 
-test "print first line as: user@hostname, current directory, git, command duration"
+test "print first line as: user@hostname (ssh-only), current directory, git, command duration"
     (
         set pure_color_blue $EMPTY
         set pure_color_gray $EMPTY
@@ -60,7 +60,7 @@ test "print first line as: user@hostname, current directory, git, command durati
             echo 'user@hostname'
         end
 
-        set pure_user_host_location 1
+        set pure_prompt_begin_with_current_directory false
         _pure_prompt_first_line
 
         rm --recursive --force /tmp/test

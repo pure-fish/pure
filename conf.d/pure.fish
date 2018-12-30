@@ -29,11 +29,10 @@ _pure_set_default pure_username_color $pure_color_gray
 _pure_set_default pure_host_color $pure_color_gray
 _pure_set_default pure_root_color $pure_color_normal
 
-# Determines whether the username and host are shown at the begining or end
-# 0 - end of prompt, default
-# 1 - start of prompt
-# Any other value defaults to the default behaviour
-_pure_set_default pure_user_host_location 0
+# Print current working directory at the beginning of prompt
+# true (default):   current directory, git, user@hostname (ssh-only), command duration
+# false:            user@hostname (ssh-only), current directory, git, command duration
+_pure_set_default pure_prompt_begin_with_current_directory true
 
 # Show exit code of last command as a separate prompt character (cf. https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character)
 # false - single prompt character, default
