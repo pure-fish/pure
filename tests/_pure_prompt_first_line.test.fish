@@ -1,12 +1,33 @@
 source $DIRNAME/../functions/_pure_prompt_first_line.fish
-source $DIRNAME/../functions/_pure_print_prompt.fish
-source $DIRNAME/../functions/_pure_prompt_user_and_host.fish
-source $DIRNAME/../functions/_pure_prompt_git.fish
-source $DIRNAME/../functions/_pure_prompt_command_duration.fish
-source $DIRNAME/../functions/_pure_string_width.fish
-source $DIRNAME/../functions/_pure_prompt_current_folder.fish
 
 set --local empty ''
+
+function setup
+    set pure_color_blue $empty
+    set pure_color_gray $empty
+    set pure_color_yellow $empty
+
+    mkdir --parents /tmp/test
+    cd /tmp/test
+    git init --quiet
+    set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
+
+    function _pure_print_prompt; string join ' ' $argv; end
+    function _pure_prompt_user_and_host; echo 'user@hostname'; end
+    function _pure_prompt_git; echo 'master'; end
+    function _pure_prompt_command_duration; echo '1s'; end
+    function _pure_string_width; echo 15; end
+    function _pure_prompt_current_folder; pwd; end
+end
+
+function teardown
+    functions --erase _pure_print_prompt
+    functions --erase _pure_prompt_user_and_host
+    functions --erase _pure_prompt_git
+    functions --erase _pure_prompt_command_duration
+    functions --erase _pure_string_width
+    functions --erase _pure_prompt_current_folder
+ end
 
 test "fails when git is missing"
     (
@@ -29,22 +50,6 @@ end
 
 test "print first line as: current directory, git, user@hostname (ssh-only), command duration"
     (
-        set pure_color_blue $empty
-        set pure_color_gray $empty
-        set pure_color_yellow $empty
-
-        mkdir --parents /tmp/test
-        cd /tmp/test
-        git init --quiet
-        set CMD_DURATION 1000 # in milliseconds
-        set pure_command_max_exec_time 0 # in seconds
-        set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
-        function _pure_prompt_user_and_host
-            echo 'user@hostname'
-        end
-        set COLUMNS 50  # prevent path short 1/2
-        set current_prompt_width 15  # prevent path short 2/2
-
         set pure_prompt_begin_with_current_directory true
         _pure_prompt_first_line
 
@@ -54,22 +59,6 @@ end
 
 test "print first line as: user@hostname (ssh-only), current directory, git, command duration"
     (
-        set pure_color_blue $empty
-        set pure_color_gray $empty
-        set pure_color_yellow $empty
-
-        mkdir --parents /tmp/test
-        cd /tmp/test
-        git init --quiet
-        set CMD_DURATION 1000 # in milliseconds
-        set pure_command_max_exec_time 0 # in seconds
-        set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
-        function _pure_prompt_user_and_host
-            echo 'user@hostname'
-        end
-        set COLUMNS 50  # prevent path short 1/2
-        set current_prompt_width 15  # prevent path short 2/2
-
         set pure_prompt_begin_with_current_directory false
         _pure_prompt_first_line
 
