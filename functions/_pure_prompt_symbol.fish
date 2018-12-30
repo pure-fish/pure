@@ -1,4 +1,7 @@
-function _pure_prompt_symbol --argument-names exit_code
+function _pure_prompt_symbol \
+    --description 'Print prompt symbol' \
+    --argument-names exit_code
+
     set --local pure_symbol $pure_symbol_prompt
     set --local command_succeed 0
 
