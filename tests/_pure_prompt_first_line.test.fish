@@ -1,4 +1,10 @@
 source $DIRNAME/../functions/_pure_prompt_first_line.fish
+source $DIRNAME/../functions/_pure_print_prompt.fish
+source $DIRNAME/../functions/_pure_prompt_user_and_host.fish
+source $DIRNAME/../functions/_pure_prompt_git.fish
+source $DIRNAME/../functions/_pure_prompt_command_duration.fish
+source $DIRNAME/../functions/_pure_string_width.fish
+source $DIRNAME/../functions/_pure_prompt_current_folder.fish
 
 set --local empty ''
 
