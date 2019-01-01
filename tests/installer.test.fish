@@ -34,9 +34,9 @@ end
 
 test "backup existing theme prompt"
     (
-        set -l fake_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
+        set --local fake_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
         touch "$fake_prompt"
-        set -l backup_prompt $fake_prompt.ignore
+        set --local backup_prompt $fake_prompt.ignore
         rm --force "$backup_prompt"
 
         pure::backup_existing_theme >/dev/null
@@ -54,7 +54,7 @@ end
 
 test "activate prompt"
     (
-        set -l active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
+        set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
         rm --force "$active_prompt"
         mkdir -p $PURE_INSTALL_DIR; \
             and touch $PURE_INSTALL_DIR/fish_prompt.fish  # stub
