@@ -1,5 +1,6 @@
 source $DIRNAME/../functions/_pure_prompt_git.fish
 source $DIRNAME/../functions/_pure_prompt_git_branch.fish
+source $DIRNAME/../functions/_pure_string_width.fish
 
 set --local succeed 0
 set --local empty ''
@@ -50,6 +51,7 @@ test "activates on repository with upstream changes"
         git init --quiet
         function _pure_prompt_git_dirty; echo $empty; end
         function _pure_prompt_git_arrows; echo 'v'; end
+
         set pure_color_gray $empty
         
         _pure_prompt_git
