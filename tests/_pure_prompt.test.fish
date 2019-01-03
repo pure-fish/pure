@@ -9,17 +9,17 @@ set --local succeed 0
 
 test "print prompt after succeeding command"
     (
-        set pure_color_green (set_color green)
+        set pure_color_symbol_success (set_color magenta)
         set pure_symbol_prompt '>'  # using default ❯ break following tests
         set --local last_command $succeed
 
         _pure_prompt $last_command
-    ) = (set_color green)'>'
+    ) = (set_color magenta)'>'
 end
 
 test "print prompt after failing command"
     (
-        set pure_color_red (set_color red)
+        set pure_color_symbol_error (set_color red)
         set pure_symbol_prompt '>'  # using default ❯ break following tests
         set --local last_command $failed
 

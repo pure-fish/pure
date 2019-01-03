@@ -15,10 +15,10 @@ end
 
 test "show branch name in gray"
     (
-        set pure_color_gray (set_color 93A1A1)
-        
+        set pure_color_git_branch (set_color brblack)
+
         _pure_prompt_git_branch
-    ) = (set_color 93A1A1)'master'
+    ) = (set_color brblack)'master'
 end
 
 function teardown

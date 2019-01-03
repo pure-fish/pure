@@ -25,8 +25,11 @@ test "activates on git repository"
         git init --quiet
         function _pure_prompt_git_dirty; echo $empty; end
         function _pure_prompt_git_arrows; echo $empty; end
-        set pure_color_gray $empty
-        
+
+        set pure_color_git_branch $empty
+        set pure_color_git_dirty $empty
+        set pure_color_git_arrows $empty
+
         _pure_prompt_git
     ) = 'master'
 end
@@ -38,8 +41,11 @@ test "activates on dirty repository"
         git init --quiet
         function _pure_prompt_git_dirty; echo '*'; end
         function _pure_prompt_git_arrows; echo $empty; end
-        set pure_color_gray $empty
-        
+
+        set pure_color_git_branch $empty
+        set pure_color_git_dirty $empty
+        set pure_color_git_arrows $empty
+
         _pure_prompt_git
     ) = 'master*'
 end
@@ -52,8 +58,10 @@ test "activates on repository with upstream changes"
         function _pure_prompt_git_dirty; echo $empty; end
         function _pure_prompt_git_arrows; echo 'v'; end
 
-        set pure_color_gray $empty
-        
+        set pure_color_git_branch $empty
+        set pure_color_git_dirty $empty
+        set pure_color_git_arrows $empty
+
         _pure_prompt_git
     ) = 'master v'
 end

@@ -3,9 +3,11 @@ source $DIRNAME/../functions/_pure_prompt_first_line.fish
 set --local empty ''
 
 function setup
-    set pure_color_blue $empty
-    set pure_color_gray $empty
-    set pure_color_yellow $empty
+    set pure_color_current_folder $pure_color_blue
+    set pure_color_git_branch $pure_color_gray
+    set pure_color_git_dirty $pure_color_gray
+    set pure_color_git_arrows $pure_color_cyan
+    set pure_color_command_duration $pure_color_yellow
 
     mkdir --parents /tmp/test
     cd /tmp/test
@@ -13,7 +15,7 @@ function setup
     set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
 
     function _pure_print_prompt; string join ' ' $argv; end
-    function _pure_prompt_user_and_host; echo 'user@hostname'; end
+    function _pure_prompt_ssh; echo 'user@hostname'; end
     function _pure_prompt_git; echo 'master'; end
     function _pure_prompt_command_duration; echo '1s'; end
     function _pure_string_width; echo 15; end
@@ -22,7 +24,7 @@ end
 
 function teardown
     functions --erase _pure_print_prompt
-    functions --erase _pure_prompt_user_and_host
+    functions --erase _pure_prompt_ssh
     functions --erase _pure_prompt_git
     functions --erase _pure_prompt_command_duration
     functions --erase _pure_string_width
@@ -41,7 +43,7 @@ test "fails when git is missing"
 
         _pure_prompt_first_line
         set --local exit_code $status
-        
+
         functions --erase type  # remove mock
         functions --copy builtin_type type  # restore built-in behavior for following test cases
         echo $exit_code
