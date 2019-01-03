@@ -17,9 +17,10 @@ test "untracked files make git repo as dirty"
     (
         touch file.txt
         set pure_symbol_git_dirty '*'
-        
+        set pure_color_git_dirty (set_color brblack)
+
         _pure_prompt_git_dirty
-    ) = '*'
+    ) = (set_color brblack)'*'
 end
 
 test "staged files mark git repo as dirty"
@@ -27,9 +28,10 @@ test "staged files mark git repo as dirty"
         touch file.txt
         git add file.txt
         set pure_symbol_git_dirty '*'
-        
+        set pure_color_git_dirty (set_color brblack)
+
         _pure_prompt_git_dirty
-    ) = '*'
+    ) = (set_color brblack)'*'
 end
 function teardown
     rm --recursive --force /tmp/pure

@@ -11,7 +11,7 @@ end
 
 test "returns _pure_prompt_current_folder"
     (
-        set pure_color_blue $empty
+        set pure_color_current_folder $empty
         set COLUMNS 20
         set current_prompt_width 10
 
