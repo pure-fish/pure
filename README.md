@@ -69,8 +69,8 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 set pure_symbol_prompt "❯"
 
 # Git
-set pure_symbol_git_down_arrow "⇣"
-set pure_symbol_git_up_arrow "⇡"
+set pure_symbol_git_arrow_down "⇣"
+set pure_symbol_git_arrow_up "⇡"
 set pure_symbol_git_dirty "*"
 
 # Title
