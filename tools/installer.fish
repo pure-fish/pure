@@ -53,6 +53,7 @@ function pure::enable_autoloading
     if not test (grep "$THEME_PURE" $FISH_CONFIG_DIR/config.fish 2>&1 >/dev/null)
         echo "# THEME PURE #" >> $FISH_CONFIG_DIR/config.fish
         echo "set fish_function_path $PURE_INSTALL_DIR/functions/" '$fish_function_path' >> $FISH_CONFIG_DIR/config.fish
+        echo "source $PURE_INSTALL_DIR/conf.d/pure.fish" >> $FISH_CONFIG_DIR/config.fish
     end
     ln -sf $PURE_INSTALL_DIR/fish_prompt.fish $FISH_CONFIG_DIR/functions/
 end
