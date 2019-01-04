@@ -61,5 +61,5 @@ COPY . /pure/
 USER nemo
 WORKDIR /pure/
 
-RUN fish -c 'source /pure/tools/installer.fish && install_pure'
+RUN fish -c 'source /pure/tools/installer.fish; and install_pure'
 CMD ["fish"]
