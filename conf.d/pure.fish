@@ -1,4 +1,4 @@
-set --universal pure_version 1.12.0
+set --universal pure_version 1.13.0
 
 # Whether or not is a fresh session
 set --global _pure_fresh_session true
