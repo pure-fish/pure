@@ -1,8 +1,5 @@
-# Removes right prompt
-function fish_right_prompt
-    set_color $pure_right_prompt_color
+function fish_right_prompt \
+    --description "Let user override prompt"
 
-    echo "$pureright_prompt"
-
-    set_color normal
+    printf "%s%s%s" $pure_color_right_prompt "$pure_right_prompt" $pure_color_normal
 end
