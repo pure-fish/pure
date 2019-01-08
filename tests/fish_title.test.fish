@@ -25,6 +25,20 @@ test "fish_title: contains current path without a previous command"
     ) = "/tmp/current/directory — "
 end
 
+test "fish_title: support fish 2.x"  # how to test $_ ?
+    (
+        fish_title
+    ) = "/tmp/current/directory — "
+end
+
+test "fish_title: support fish 3.x"
+    (
+       function status; echo 'fishtape'; end  # mock: status current-command
+
+        fish_title
+    ) = "/tmp/current/directory — fishtape"
+end
+
 function teardown
     functions --erase _pure_parse_directory
  end
