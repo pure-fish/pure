@@ -87,17 +87,17 @@ set pure_color_white (set_color white)
 set pure_color_yellow (set_color yellow)
 
 # Colors used on symbols, attributes and events
+set pure_color_command_duration (set_color --background blue)
+set pure_color_error (set_color magenta)
+set pure_color_git_arrows $pure_color_cyan
 set pure_color_git_branch $pure_color_gray
 set pure_color_git_dirty $pure_color_gray
-set pure_color_git_arrows $pure_color_cyan
-set pure_color_command_duration (set_color --background blue)
+set pure_color_ssh_host $pure_color_gray
+set pure_color_ssh_separator $pure_color_gray
 set pure_color_ssh_user_normal $pure_color_gray
 set pure_color_ssh_user_root $pure_color_white
-set pure_color_ssh_separator $pure_color_gray
-set pure_color_ssh_host $pure_color_gray
-set pure_color_virtualenv $pure_color_gray
 set pure_color_success (set_color green)
-set pure_color_error (set_color magenta)
+set pure_color_virtualenv $pure_color_gray
 
 # Print current working directory at the beginning of prompt
 # true (default):   current directory, git, user@hostname (ssh-only), command duration
