@@ -1,8 +1,8 @@
 # Whether or not is a fresh session
-set -g _pure_fresh_session true
+set --global _pure_fresh_session true
 
 # Deactivate the default virtualenv prompt so that we can add our own
-set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+set --global --export VIRTUAL_ENV_DISABLE_PROMPT 1
 
 # Symbols
 _pure_set_default pure_symbol_prompt "❯"
