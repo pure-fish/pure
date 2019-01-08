@@ -1,3 +1,5 @@
+set --universal pure_version 1.11.0
+
 # Whether or not is a fresh session
 set --global _pure_fresh_session true
 
