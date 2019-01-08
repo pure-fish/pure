@@ -188,3 +188,15 @@ test "configure: pure_command_max_exec_time"
         echo $pure_command_max_exec_time
     ) = 5
 end
+
+test "configure: pure_right_prompt" 
+    (
+        echo $pure_right_prompt
+    ) = ""
+end
+
+test "configure: pure_color_right_prompt" 
+    (
+        echo $pure_color_right_prompt
+    ) = (set_color normal)
+end
