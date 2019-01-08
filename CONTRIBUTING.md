@@ -3,6 +3,15 @@
 * Be kind to others ;
 * Critic code not people.
 
+## Release
+
+Note, we follow [semver](https://semver.org/).
+
+Todo upon release:
+* [ ] updated `pure_version` (in [_conf.d/pure.fish_](conf.d/pure.fish)) ;
+* [ ] create a commit only containing above edit ;
+* [ ] create a git tag for said commit.
+
 ## Code Conventions for `pure`
 
 * Use the idiomatic [`test` instead of `[`](httpsc://fishshell.com/docs/current/commands.html#test) brackets (as recommended by the documentation).
