@@ -56,4 +56,4 @@ _pure_set_default pure_command_max_exec_time 5
 
 # Right Prompt variables
 _pure_set_default pure_right_prompt ""
-_pure_set_default pure_right_prompt_color $pure_color_normal
+_pure_set_default pure_color_right_prompt $pure_color_normal
