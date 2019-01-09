@@ -1,11 +1,37 @@
-language: c
-sudo: required
-before_install:
-  - sudo add-apt-repository -y ppa:fish-shell/release-2
-  - sudo apt-get update
-install:
-  - sudo apt-get -y install fish
-  - curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-  - fish -c "fisher add fisherman/fishtape"
-script:
-  - fish -c "fishtape tests/*.test.fish"
+jobs:
+include:
+  - stage: build-images 
+    name: "Build docker images"
+    language: c
+    before_script:
+      - docker pull ohmyfish/fish:{2.4.0,2.5.0,2.6.0,2.7.1,3.0.0}
+    script:
+      - make build-supported-versions
+
+  - stage: test
+    name: "Test on Fish-2.4.0"
+    script:
+      - make test-on FISH_VERSION=2.4.0"
+
+  - stage: test
+    name: "Test on Fish-2.5.0"
+    script:
+      - make test-on FISH_VERSION=2.5.0"
+
+  - stage: test
+    name: "Test on Fish-2.6.0"
+    script:
+      - make test-on FISH_VERSION=2.6.0"
+
+  - stage: test
+    name: "Test on Fish-2.7.1"
+    script:
+      - make test-on FISH_VERSION=2.7.1"
+
+  - stage: test
+    name: "Test on Fish-3.0.0"
+    script:
+      - make test-on FISH_VERSION=3.0.0"
+
+notifications:
+  email: false
