@@ -10,3 +10,11 @@ build-pure-on:
 		--build-arg FISH_VERSION=${FISH_VERSION} \
 		--tag=pure-on-fish-${FISH_VERSION} \
 		./
+
+test-on:
+	docker run \
+		--name pure-on-${FISH_VERSION} \
+		--rm \
+		--interactive \
+		--tty \
+		pure-on-${FISH_VERSION} fish -c 'fishtape tests/{_pure,fish_,installer}*.test.fish'
