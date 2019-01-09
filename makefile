@@ -27,8 +27,8 @@ build-pure-on:
 .PHONY: test-on
 test-on:
 	docker run \
-		--name pure-on-${FISH_VERSION} \
+		--name test-pure-on-${FISH_VERSION} \
 		--rm \
 		--interactive \
 		--tty \
-		pure-on-${FISH_VERSION} fish -c 'fishtape tests/{_pure,fish_,installer}*.test.fish'
+		pure-on-fish-${FISH_VERSION} fish -c 'fishtape tests/{_pure,fish_,installer}*.test.fish'
