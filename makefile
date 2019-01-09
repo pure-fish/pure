@@ -4,6 +4,7 @@
 SHELL := /bin/bash
 INTERACTIVE=true
 
+.PHONY: build-supported-versions
 build-supported-versions:
 	supported_version=( \
 		2.4.0 \
@@ -15,6 +16,7 @@ build-supported-versions:
 		$(MAKE) build-pure-on FISH_VERSION=$$version; \
 	done
 
+.PHONY: build-pure-on
 build-pure-on:
 	docker build \
 		--file ./tools/pure-on-fish.Dockerfile \
@@ -22,6 +24,7 @@ build-pure-on:
 		--tag=pure-on-fish-${FISH_VERSION} \
 		./
 
+.PHONY: test-on
 test-on:
 	docker run \
 		--name pure-on-${FISH_VERSION} \
