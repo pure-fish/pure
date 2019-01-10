@@ -39,5 +39,5 @@ jobs:
       script:
         - make test-on FISH_VERSION=3.0.0"
 
-  notifications:
-    email: false
+notifications:
+  email: false
