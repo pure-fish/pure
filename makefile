@@ -24,15 +24,6 @@ build-pure-on:
 		--tag=pure-on-fish-${FISH_VERSION} \
 		./
 
-.PHONY: run-pure-on
-run-pure-on:
-	docker run \
-		--name run-pure-on-${FISH_VERSION} \
-		--rm \
-		--interactive \
-		--tty \
-		pure-on-fish-${FISH_VERSION}
-
 .PHONY: test-on
 test-on:
 	docker run \
