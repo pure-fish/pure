@@ -4,18 +4,6 @@
 SHELL := /bin/bash
 INTERACTIVE=true
 
-.PHONY: build-supported-versions
-build-supported-versions:
-	supported_version=( \
-		2.4.0 \
-		2.5.0 \
-		2.6.0 \
-		2.7.1 \
-		3.0.0 \
-	); for version in $${supported_version[@]}; do \
-		$(MAKE) build-pure-on FISH_VERSION=$$version; \
-	done
-
 .PHONY: build-pure-on
 build-pure-on:
 	docker build \
