@@ -19,10 +19,9 @@ function fish_version_below \
     --argument-names version
     
     if test (is_lower_than $FISH_VERSION $version)
-        printf  "[fish <%s]" $version
+        printf "\n%sfish <%s: %s" (set_color blue) $version (set_color normal)
         return $success
     else
-        printf  "[fish ≥%s]" $version
         return $fail
     end
 end
@@ -32,10 +31,9 @@ function fish_version_at_least \
     --argument-names version
     
     if test (fish_version_below $version >/dev/null)
-        printf  "[fish ≥%s]" $version
         return $fail
     else 
-        printf  "[fish <%s]" $version
+        printf "\n%sfish ≥%s: %s" (set_color blue) $version (set_color normal)
         return $success
     end
 end
