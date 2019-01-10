@@ -14,7 +14,7 @@ function fish_version_below \
     end
 
 	printf '%s\n' $actual $expected | sort --check=silent --version-sort
-    and printf "\n%sfish <%s: %s" (set_color blue) $expected (set_color normal)
+    and printf "%sonly fish <%s: %s" (set_color blue) $expected (set_color normal)
 
 	return $status
 end
@@ -23,8 +23,8 @@ function fish_version_at_least \
     --description "Compare versions.  By default this tests \$FISH_VERSION, but if a second argument is provided it tests against that version." \
     --argument-names expected actual
 
-    not fish_version_below $argv
-    and printf "\n%sfish ≥%s: %s" (set_color blue) $expected (set_color normal)
+    not fish_version_below $argv >/dev/null
+    and printf "%sonly fish ≥%s: %s" (set_color blue) $expected (set_color normal)
 
     return $status
 end
