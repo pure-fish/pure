@@ -1,9 +1,10 @@
 services:
   - docker
 
+language: minimal
+
 jobs:
   include:
-    - language: c
     - stage: test
       name: "Test on Fish-2.4.0"
       before_script: 
