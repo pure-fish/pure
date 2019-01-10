@@ -19,4 +19,6 @@ test-on:
 		--rm \
 		--interactive \
 		--tty \
-		pure-on-fish-${FISH_VERSION} fish -c 'fishtape tests/{_pure,fish_,installer}*.test.fish'
+		pure-on-fish-${FISH_VERSION} \
+		fish -c 'fishtape tests/{_pure,fish_,installer}*.test.fish'
+	
