@@ -14,8 +14,10 @@ RUN apk add \
     curl 
 
 COPY . /tmp/.pure/
-USER nemo
+VOLUME /tmp/.pure/
+
 WORKDIR /tmp/.pure/
+USER nemo
 
 RUN curl \
     --location \
