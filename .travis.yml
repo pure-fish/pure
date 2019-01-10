@@ -2,40 +2,44 @@ dist: trusty
 
 jobs:
   include:
-    - stage: build-images 
-      name: "Build docker images"
-      language: c
-      before_script:
-        - docker pull ohmyfish/fish:2.4.0
-        - docker pull ohmyfish/fish:2.5.0
-        - docker pull ohmyfish/fish:2.6.0
-        - docker pull ohmyfish/fish:2.7.1
-        - docker pull ohmyfish/fish:3.0.0
-      script:
-        - make build-supported-versions
-
+    - language: c
     - stage: test
       name: "Test on Fish-2.4.0"
+      before_script: 
+        - docker pull ohmyfish/fish:2.4.0
+        - make build-pure-on FISH_VERSION=2.4.0
       script:
         - make test-on FISH_VERSION=2.4.0
 
     - stage: test
       name: "Test on Fish-2.5.0"
+      before_script: 
+        - docker pull ohmyfish/fish:2.5.0
+        - make build-pure-on FISH_VERSION=2.5.0
       script:
         - make test-on FISH_VERSION=2.5.0
 
     - stage: test
       name: "Test on Fish-2.6.0"
+      before_script: 
+        - docker pull ohmyfish/fish:2.6.0
+        - make build-pure-on FISH_VERSION=2.6.0
       script:
         - make test-on FISH_VERSION=2.6.0
 
     - stage: test
       name: "Test on Fish-2.7.1"
+      before_script: 
+        - docker pull ohmyfish/fish:2.7.1
+        - make build-pure-on FISH_VERSION=2.7.1
       script:
         - make test-on FISH_VERSION=2.7.1
 
     - stage: test
       name: "Test on Fish-3.0.0"
+      before_script: 
+        - docker pull ohmyfish/fish:3.0.0
+        - make build-pure-on FISH_VERSION=3.0.0
       script:
         - make test-on FISH_VERSION=3.0.0
 
