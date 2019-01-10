@@ -1,4 +1,5 @@
-dist: trusty
+services:
+  - docker
 
 jobs:
   include:
