@@ -38,12 +38,12 @@ end
 
 test "versions: fish_version_below current version fail on itself"
     (
-        fish_version_below $FISH_VERSION
+        fish_version_below $FISH_VERSION >/dev/null
     ) $status -eq 1
 end
 
 test "versions: fish_version_at_least current version succeed on itself"
     (
-        fish_version_at_least $FISH_VERSION
+        fish_version_at_least $FISH_VERSION >/dev/null
     ) $status -eq 0
 end
