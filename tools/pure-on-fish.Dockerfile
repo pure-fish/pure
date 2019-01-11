@@ -7,24 +7,25 @@ FROM ohmyfish/fish:${FISH_VERSION}
 ARG FISH_VERSION
 RUN printf "\nBuilding \e[38;5;27mFish-%s\e[m\n\n" ${FISH_VERSION}
 
+# Install dependencies
 USER root
 RUN apk add \
     --no-cache \
     coreutils \
     curl 
 
-COPY . /tmp/.pure/
-VOLUME /tmp/.pure/
-
-WORKDIR /tmp/.pure/
+# Install `fishtape to run tests
 USER nemo
-
 RUN curl \
     --location \
     --output $HOME/.config/fish/functions/fisher.fish \
     --create-dirs \
     git.io/fisher
-RUN  fish -c 'fisher add jorgebucaran/fishtape'
+RUN fish -c 'fisher add jorgebucaran/fishtape'
+
+# Install source code
+WORKDIR /tmp/.pure/
+COPY . /tmp/.pure/
 
 RUN fish -c 'source /tmp/.pure/tools/installer.fish; and install_pure'
 CMD ["fish"]
