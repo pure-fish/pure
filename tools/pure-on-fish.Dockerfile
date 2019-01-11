@@ -31,4 +31,5 @@ COPY --from=tooling --chown=nemo /home/nemo/.config/fish /home/nemo/.config/fish
 WORKDIR /tmp/.pure/
 COPY . /tmp/.pure/
 
-CMD ["fish"]
+ENTRYPOINT ["fish", "-c"]
+CMD ["fishtape tests/{_pure,pure_tools_,fish_,}*.test.fish"]
