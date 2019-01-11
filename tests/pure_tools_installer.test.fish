@@ -7,7 +7,7 @@ test "installer: pass argument to set $FISH_CONFIG_DIR"
     )
 end
 
-test 'set $FISH_CONFIG_DIR to default value'
+test 'installer: set $FISH_CONFIG_DIR to default value'
     "$HOME/.config/fish" = (
         pure::set_fish_config_path
         echo "$FISH_CONFIG_DIR"
@@ -21,7 +21,7 @@ test "installer: pass arguments to set $PURE_INSTALL_DIR"
     )
 end
 
-test 'set $PURE_INSTALL_DIR to default value'
+test 'installer: set $PURE_INSTALL_DIR to default value'
     "$FISH_CONFIG_DIR/functions/theme-pure" = (
         pure::set_pure_install_path
         echo $PURE_INSTALL_DIR
