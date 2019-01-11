@@ -22,3 +22,13 @@ test-on:
 		pure-on-fish-${FISH_VERSION} \
 		fish -c 'fishtape tests/{_pure,fish_,installer}*.test.fish'
 	
+.PHONY: dev-on
+dev-on:
+	@echo "Mount source code to container"
+	docker run \
+		--name run-pure-on-${FISH_VERSION} \
+		--rm \
+		--interactive \
+		--tty \
+		--volume=$$(pwd):/tmp/.pure/ \
+		pure-on-fish-${FISH_VERSION}
