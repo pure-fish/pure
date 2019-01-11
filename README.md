@@ -143,8 +143,6 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 
     fishtape tests/*.test.fish
 
-Refer to [tools/installer.md](./tools/installer.md) to test the installer script.
-
 ## Maintainers
 
 - [Rafael Rinaldi](https://github.com/rafaelrinaldi)
