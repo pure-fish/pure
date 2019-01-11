@@ -2,22 +2,25 @@ docker pull edouardlopez/pure-fish
 
 test "install manually (default behaviour of `docker-pure-fish`)"
     'version' = (
-        docker run \
-            --name pure \
-            --rm \
-            --tty \
-        edouardlopez/pure-fish 'fish --version' \
-        | grep --only-matching 'version'
+	docker run \
+		--name run-pure-on-$FISH_VERSION \
+		--rm \
+		--interactive \
+		--tty \
+		--volume=(pwd):/tmp/.pure/ \
+		pure-on-fish-$FISH_VERSION '
     )
 end
 
 test "install with fisher"
     'Done' = (
         docker run \
-            --name pure \
+            --name run-pure-on-$FISH_VERSION \
             --rm \
+            --interactive \
             --tty \
-        edouardlopez/pure-fish 'fisher rafaelrinaldi/pure' \
+            --volume=(pwd):/tmp/.pure/ \
+            pure-on-fish-$FISH_VERSION 'fisher rafaelrinaldi/pure' \
         | grep --only-matching 'Done'
     )
 end
@@ -25,10 +28,12 @@ end
 test "install with OMF (Oh-My-Fish!)"
     'pure successfully installed' = (
         docker run \
-            --name pure \
+            --name run-pure-on-$FISH_VERSION \
             --rm \
+            --interactive \
             --tty \
-            edouardlopez/pure-fish '
+            --volume=(pwd):/tmp/.pure/ \
+            pure-on-fish-$FISH_VERSION '
                 cd $HOME;
                 rm -rf $HOME/.config/fish/functions/theme-pure;
                 curl -L https://get.oh-my.fish > /tmp/install;
@@ -42,10 +47,12 @@ end
 test "install with Fundle"
     'Installing rafaelrinaldi/pure' = (
         docker run \
-            --name pure \
+            --name run-pure-on-$FISH_VERSION \
             --rm \
+            --interactive \
             --tty \
-            edouardlopez/pure-fish '
+            --volume=(pwd):/tmp/.pure/ \
+            pure-on-fish-$FISH_VERSION '
                 mkdir -p ~/.config/fish/functions;
                 wget https://git.io/fundle -O ~/.config/fish/functions/fundle.fish;
                 fundle plugin rafaelrinaldi/pure;
