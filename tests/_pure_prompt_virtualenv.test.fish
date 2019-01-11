@@ -15,6 +15,6 @@ test "_pure_prompt_virtualenv: displays virtualenv directory prompt"
         set pure_color_virtualenv (set_color grey)
 
         _pure_prompt_virtualenv
-
+        set --erase --global VIRTUAL_ENV
     ) = (set_color grey)'project'
 end
