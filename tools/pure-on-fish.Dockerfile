@@ -32,4 +32,4 @@ WORKDIR /tmp/.pure/
 COPY . /tmp/.pure/
 
 ENTRYPOINT ["fish", "-c"]
-CMD ["fishtape tests/{_pure,pure_tools_,fish_}*.test.fish"]
+CMD ["fishtape tests/*.test.fish"]
