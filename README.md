@@ -67,54 +67,75 @@ fundle install;
 
 You can tweak pretty much everything in `pure` by overriding variables in your `config.fish` file.
 
-```fish
-# Symbols
-set pure_symbol_prompt "❯"
+### Prompt Symbol
+| Option                          | Description    | Default value         |
+| :------------------------------ | :------------- | :-------------------- |
+| **`pure_symbol_prompt`**        | Prompt symbol. | `❯`                   |
+| **`pure_color_symbol_error`**   |                | `$pure_color_red`     |
+| **`pure_color_symbol_success`** |                | `$pure_color_magenta` |
 
-# Git
-set pure_symbol_git_arrow_down "⇣"
-set pure_symbol_git_arrow_up "⇡"
-set pure_symbol_git_dirty "*"
+### Git
 
-# Title
-set pure_symbol_horizontal_bar "—"
+| Option                           | Description                                        | Default value      |
+| :------------------------------- | :------------------------------------------------- | :----------------- |
+| **`pure_symbol_git_arrow_down`** | Symbol for branch ahead (commits to push).         | `⇣`                |
+| **`pure_symbol_git_arrow_up`**   | Symbol for branch being (commits to pull).         | `⇡`                |
+| **`pure_symbol_git_dirty`**      | Symbol for dirty repository (uncommitted changes). | `*`                |
+| **`pure_color_git_arrows`**      |                                                    | `$pure_color_cyan` |
+| **`pure_color_git_branch`**      |                                                    | `$pure_color_gray` |
+| **`pure_color_git_dirty`**       |                                                    | `$pure_color_gray` |
+:information_source:: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki#safer-symbols)?
 
-# Base colors
-set pure_color_blue (set_color blue)
-set pure_color_cyan (set_color cyan)
-set pure_color_gray (set_color 93A1A1)
-set pure_color_magenta (set_color magenta)
-set pure_color_normal (set_color normal)
-set pure_color_red (set_color red)
-set pure_color_white (set_color white)
-set pure_color_yellow (set_color yellow)
+### Terminal Title
+| Option                           | Description                                                                         | Default value |
+| :------------------------------- | :---------------------------------------------------------------------------------- | :------------ |
+| **`pure_symbol_horizontal_bar`** | Separator for the terminal title between `current working directory` and `command`. | `—`          |
 
-# Colors used on symbols, attributes and events
-set pure_color_command_duration (set_color --background blue)
-set pure_color_error (set_color magenta)
-set pure_color_git_arrows $pure_color_cyan
-set pure_color_git_branch $pure_color_gray
-set pure_color_git_dirty $pure_color_gray
-set pure_color_ssh_host $pure_color_gray
-set pure_color_ssh_separator $pure_color_gray
-set pure_color_ssh_user_normal $pure_color_gray
-set pure_color_ssh_user_root $pure_color_white
-set pure_color_success (set_color green)
-set pure_color_virtualenv $pure_color_gray
+### Base Colors
+| Option                   | Default value         |
+| :----------------------- | :-------------------- |
+| **`pure_color_blue`**    | `(set_color blue)`    |
+| **`pure_color_cyan`**    | `(set_color cyan)`    |
+| **`pure_color_gray`**    | `(set_color brblack)` |
+| **`pure_color_magenta`** | `(set_color magenta)` |
+| **`pure_color_normal`**  | `(set_color normal)`  |
+| **`pure_color_red`**     | `(set_color red)`     |
+| **`pure_color_white`**   | `(set_color white)`   |
+| **`pure_color_yellow`**  | `(set_color yellow)`  |
 
-# Print current working directory at the beginning of prompt
-# true (default):   current directory, git, user@hostname (ssh-only), command duration
-# false:            user@hostname (ssh-only), current directory, git, command duration
-set pure_prompt_begin_with_current_directory true
+### Components Colors
+| Option                           | Default value       |
+| :------------------------------- | :------------------ |
+| **`pure_color_current_folder`**  | `$pure_color_blue`  |
+| **`pure_color_ssh_host`**        | `$pure_color_gray`  |
+| **`pure_color_ssh_separator`**   | `$pure_color_gray`  |
+| **`pure_color_ssh_user_normal`** | `$pure_color_gray`  |
+| **`pure_color_ssh_user_root`**   | `$pure_color_white` |
+| **`pure_color_virtualenv`**      | `$pure_color_gray`  |
 
-# Show exit code of last command as a separate prompt character (cf. https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character)
-# false - single prompt character, default
-# true - separate prompt character
-set pure_separate_prompt_on_error false
 
-# Max execution time of a process before its run time is shown when it exits
-set pure_command_max_exec_time 5
-```
+### Maximum Execution Time
+| Option                            | Description                                                                     | Default value        |
+| :-------------------------------- | :------------------------------------------------------------------------------ | :------------------- |
+| **`pure_command_max_exec_time`**  | Maximum execution time of a process before its run time is shown when it exits. | `5`                  |
+| **`pure_color_command_duration`** |                                                                                 | `$pure_color_yellow` |
+
+
+### Miscellaneous
+| Option                                         | Description                                                                                                                                                    | Default value |
+| :--------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
+| **`pure_prompt_begin_with_current_directory`** | `true`: _current directory_, _git_, _user@hostname (ssh-only)_, _command duration_.<br/>`false`: _user@hostname (ssh-only)_, _current directory_, _git_, _command duration_. | `true`        |
+| **`pure_separate_prompt_on_error`**            | Show exit code of last command as a separate prompt character [:information_source:][exit-code]                                                                | `false`       |
+
+
+[exit-code]: https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character "See pure-zsh wiki"
+
+### Right Prompt
+| Option                        | Description             | Default value        |
+| :---------------------------- | :---------------------- | :------------------- |
+| **`pure_right_prompt`**       | Content of right prompt | `""`                 |
+| **`pure_color_right_prompt`** |                         | `$pure_color_normal` |
+
 
 ## Tests
 
