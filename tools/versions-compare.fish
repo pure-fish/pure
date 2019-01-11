@@ -13,7 +13,8 @@ function fish_version_below \
         return $fail
     end
 
-	printf '%s\n' $actual $expected | sort --check=silent --version-sort
+    # busybox compatibility (see https://github.com/fish-shell/fish-shell/issues/4419#issuecomment-453512461)
+	printf '%s\n' $actual $expected | sort -c -t. -k 1,1n -k 2,2n -k 3,3n 2> /dev/null
     and printf "%sonly fish <%s: %s" (set_color blue) $expected (set_color normal)
 
 	return $status
