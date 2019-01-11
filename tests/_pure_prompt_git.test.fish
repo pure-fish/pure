@@ -6,7 +6,7 @@ set --local succeed 0
 set --local empty ''
 
 function teardown
-    rm --recursive --force /tmp/test
+    rm -r -f /tmp/test
 end
 
 test "ignores directory that are not git repository"

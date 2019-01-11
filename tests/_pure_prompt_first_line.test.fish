@@ -55,7 +55,7 @@ test "print first line as: current directory, git, user@hostname (ssh-only), com
         set pure_prompt_begin_with_current_directory true
         _pure_prompt_first_line
 
-        rm --recursive --force /tmp/test
+        rm -r -f /tmp/test
     ) = '/tmp/test master user@hostname 1s'
 end
 
@@ -64,6 +64,6 @@ test "print first line as: user@hostname (ssh-only), current directory, git, com
         set pure_prompt_begin_with_current_directory false
         _pure_prompt_first_line
 
-        rm --recursive --force /tmp/test
+        rm -r -f /tmp/test
     ) = 'user@hostname /tmp/test master 1s'
 end

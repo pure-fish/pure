@@ -5,7 +5,7 @@ set fake_git_repo /tmp/pure
 set fake_git_bare /tmp/pure.git
 
 function setup
-    rm --recursive --force $fake_git_repo
+    rm -r -f $fake_git_repo
 
     git init --bare --quiet /tmp/pure.git
     mkdir -p $fake_git_repo
@@ -20,7 +20,7 @@ function setup
 end
 
 function teardown
-    rm --recursive --force \
+    rm -r -f \
         $fake_git_repo \
         $fake_git_bare
 end
