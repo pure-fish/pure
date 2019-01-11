@@ -13,7 +13,7 @@ function setup
     git config --local user.name "Your Name"
 end
 
-test "untracked files make git repo as dirty"
+test "_pure_prompt_git_dirty: untracked files make git repo as dirty"
     (
         touch file.txt
         set pure_symbol_git_dirty '*'
@@ -23,7 +23,7 @@ test "untracked files make git repo as dirty"
     ) = (set_color brblack)'*'
 end
 
-test "staged files mark git repo as dirty"
+test "_pure_prompt_git_dirty: staged files mark git repo as dirty"
     (
         touch file.txt
         git add file.txt

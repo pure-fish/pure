@@ -1,6 +1,6 @@
 source $DIRNAME/../functions/_pure_prompt_ssh_separator.fish
 
-test "display at symbol"
+test "_pure_prompt_ssh_separator: display at symbol"
     (
         set pure_color_ssh_separator ""
 
@@ -8,7 +8,7 @@ test "display at symbol"
     ) = '@'
 end
 
-test "display colored at symbol"
+test "_pure_prompt_ssh_separator: display colored at symbol"
     (
         set pure_color_ssh_separator (set_color grey)
 

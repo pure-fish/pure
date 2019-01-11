@@ -1,6 +1,6 @@
 source $DIRNAME/../functions/_pure_prompt_ssh_user.fish
 
-test "colorize standard user"
+test "_pure_prompt_ssh_user: colorize standard user"
     (
         set pure_color_ssh_user_normal (set_color green)
 
@@ -9,7 +9,7 @@ test "colorize standard user"
     ) = (set_color green)(whoami)
 end
 
-test "colorize root user"
+test "_pure_prompt_ssh_user: colorize root user"
     (
         function whoami  # mock
             echo 'root'

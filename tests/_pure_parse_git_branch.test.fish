@@ -9,7 +9,7 @@ function setup
     git init --quiet
 end
 
-test "returns current branch"
+test "_pure_parse_git_branch: returns current branch"
     (
         cd $temporary_test_directory
 

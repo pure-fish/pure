@@ -25,7 +25,7 @@ function teardown
         $fake_git_bare
 end
 
-test "print nothing when no upstream repo"
+test "_pure_prompt_git_arrows: print nothing when no upstream repo"
     (
         cd $fake_git_repo
 
@@ -33,7 +33,7 @@ test "print nothing when no upstream repo"
     ) = $empty
 end
 
-test "show arrow UP when branch is AHEAD of upstream (need git push)"
+test "_pure_prompt_git_arrows: show arrow UP when branch is AHEAD of upstream (need git push)"
     (
         git push --set-upstream --quiet origin master > /dev/null
         touch missing-on-upstream.txt
@@ -48,7 +48,7 @@ test "show arrow UP when branch is AHEAD of upstream (need git push)"
     ) = (set_color cyan)'^'
 end
 
-test "show arrow DOWN when branch is BEHIND upstream (need git pull)"
+test "_pure_prompt_git_arrows: show arrow DOWN when branch is BEHIND upstream (need git pull)"
     (
         touch another-file.txt
         git add another-file.txt

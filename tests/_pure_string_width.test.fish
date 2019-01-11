@@ -2,21 +2,21 @@ source $DIRNAME/../functions/_pure_string_width.fish
 
 set --local empty ''
 
-test "measure empty string"
+test "_pure_string_width: measure empty string"
     (
         _pure_string_width ''
 
     ) = 0
 end
 
-test "measure raw string"
+test "_pure_string_width: measure raw string"
     (
         _pure_string_width 'user@hostname'
 
     ) = 13
 end
 
-test "measure ANSI-colored string"
+test "_pure_string_width: measure ANSI-colored string"
     (
         set --local prompt \
                         (set_color grey)'user@' \
@@ -28,14 +28,14 @@ test "measure ANSI-colored string"
     ) = 13
 end
 
-test "measure raw UTF-8 string"
+test "_pure_string_width: measure raw UTF-8 string"
     (
         _pure_string_width '❯⇣🦔@🛡🚀'
 
     ) = 6
 end
 
-test "measure ANSI-colored UTF-8 string"
+test "_pure_string_width: measure ANSI-colored UTF-8 string"
     (
         set --local prompt \
                         (set_color green)'❯⇣' \
