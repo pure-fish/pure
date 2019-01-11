@@ -4,6 +4,14 @@
 SHELL := /bin/bash
 INTERACTIVE=true
 
+.PHONY: default
+default: usage
+usage:
+	@printf "usage:"
+	@printf "\tmake build-on FISH_VERSION=3.0.0\t# build container\n"
+	@printf "\tmake test-on  FISH_VERSION=3.0.0\t# run tests\n"
+	@printf "\tmake dev-on   FISH_VERSION=3.0.0\t# dev in container\n"
+
 .PHONY: build-pure-on
 build-pure-on:
 	docker build \
@@ -23,7 +31,6 @@ test-on:
 	
 .PHONY: dev-on
 dev-on:
-	@echo "Mount source code to container"
 	docker run \
 		--name run-pure-on-${FISH_VERSION} \
 		--rm \
