@@ -11,7 +11,7 @@ jobs:
         - docker pull ohmyfish/fish:2.4.0
         - make build-pure-on FISH_VERSION=2.4.0
       script:
-        - make test-on FISH_VERSION=2.4.0
+        - make test-pure-on FISH_VERSION=2.4.0
 
     - stage: test
       name: "Test on Fish-2.5.0"
@@ -19,7 +19,7 @@ jobs:
         - docker pull ohmyfish/fish:2.5.0
         - make build-pure-on FISH_VERSION=2.5.0
       script:
-        - make test-on FISH_VERSION=2.5.0
+        - make test-pure-on FISH_VERSION=2.5.0
 
     - stage: test
       name: "Test on Fish-2.6.0"
@@ -27,7 +27,7 @@ jobs:
         - docker pull ohmyfish/fish:2.6.0
         - make build-pure-on FISH_VERSION=2.6.0
       script:
-        - make test-on FISH_VERSION=2.6.0
+        - make test-pure-on FISH_VERSION=2.6.0
 
     - stage: test
       name: "Test on Fish-2.7.1"
@@ -35,7 +35,7 @@ jobs:
         - docker pull ohmyfish/fish:2.7.1
         - make build-pure-on FISH_VERSION=2.7.1
       script:
-        - make test-on FISH_VERSION=2.7.1
+        - make test-pure-on FISH_VERSION=2.7.1
 
     - stage: test
       name: "Test on Fish-3.0.0"
@@ -43,7 +43,7 @@ jobs:
         - docker pull ohmyfish/fish:3.0.0
         - make build-pure-on FISH_VERSION=3.0.0
       script:
-        - make test-on FISH_VERSION=3.0.0
+        - make test-pure-on FISH_VERSION=3.0.0
 
 notifications:
   email: false
