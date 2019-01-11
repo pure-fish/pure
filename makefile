@@ -19,8 +19,7 @@ test-on:
 		--rm \
 		--interactive \
 		--tty \
-		pure-on-fish-${FISH_VERSION} \
-		'fishtape tests/{_pure,pure_tools_,fish_,}*.test.fish'
+		pure-on-fish-${FISH_VERSION}
 	
 .PHONY: dev-on
 dev-on:
