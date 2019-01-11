@@ -9,6 +9,12 @@ test "install manually (default behaviour of `docker-pure-fish`)"
 		--tty \
 		--volume=(pwd):/tmp/.pure/ \
 		pure-on-fish-$FISH_VERSION '
+            curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent
+            source /tmp/pure_installer.fish
+            and install_pure
+            fish_prompt
+        ' \
+        | tee | grep --count '❯' 
     )
 end
 
