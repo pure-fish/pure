@@ -11,6 +11,7 @@ RUN printf "\nBuilding \e[38;5;27mFish-%s\e[m\n\n" ${FISH_VERSION}
 USER root
 RUN apk add \
     --no-cache \
+    gawk \
     coreutils \
     curl 
 
