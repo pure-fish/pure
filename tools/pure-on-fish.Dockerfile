@@ -25,7 +25,7 @@ RUN fish -c 'fisher add jorgebucaran/fishtape'
 
 # Only grab what we need to test from previous stage
 FROM ohmyfish/fish:${FISH_VERSION}
-COPY --from=tooling --chown=nemo /home/nemo/.config/fish /home/nemo/.config/fish
+COPY --from=tooling --chown=nemo /home/nemo/.config/ /home/nemo/.config/
 
 # Copy source code
 WORKDIR /tmp/.pure/
