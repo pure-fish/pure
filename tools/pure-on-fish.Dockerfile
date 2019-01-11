@@ -27,5 +27,4 @@ RUN fish -c 'fisher add jorgebucaran/fishtape'
 WORKDIR /tmp/.pure/
 COPY . /tmp/.pure/
 
-RUN fish -c 'source /tmp/.pure/tools/installer.fish; and install_pure'
 CMD ["fish"]
