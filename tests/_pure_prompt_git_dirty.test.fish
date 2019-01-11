@@ -3,7 +3,7 @@ source $DIRNAME/../functions/_pure_parse_git_branch.fish
 
 
 function setup
-    rm --recursive --force /tmp/pure
+    rm -r -f /tmp/pure
 
     mkdir -p /tmp/pure
     cd /tmp/pure
@@ -34,5 +34,5 @@ test "staged files mark git repo as dirty"
     ) = (set_color brblack)'*'
 end
 function teardown
-    rm --recursive --force /tmp/pure
+    rm -r -f /tmp/pure
 end
