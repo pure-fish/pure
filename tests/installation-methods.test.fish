@@ -1,5 +1,5 @@
 if test $USER = 'nemo'
-    test "install manually"
+    test "installation methods: manually"
         (
             curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent > /dev/null
             source /tmp/pure_installer.fish
@@ -10,7 +10,7 @@ if test $USER = 'nemo'
 end
 
 if test $USER = 'nemo'
-    test "install with fisher"
+    test "installation methods: with fisher"
         (
             fisher add rafaelrinaldi/pure >/dev/null
             fish_prompt | grep -c '❯' 
@@ -19,7 +19,7 @@ if test $USER = 'nemo'
 end
 
 if test $USER = 'nemo'
-    test "install with OMF (Oh-My-Fish!)"
+    test "installation methods: with OMF (Oh-My-Fish!)"
         (
             curl -L https://get.oh-my.fish > install
             fish install --noninteractive > /dev/null
@@ -29,7 +29,7 @@ if test $USER = 'nemo'
 end
 
 # if test $USER = 'nemo'
-#     test "install with Fundle"
+#     test "installation methods: with Fundle"
 #         (
 #             mkdir -p ~/.config/fish/functions
 #             wget https://git.io/fundle -O ~/.config/fish/functions/fundle.fish
