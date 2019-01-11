@@ -1,7 +1,7 @@
 # Speficy fish version to use during build 
 # docker build -t <image> --build-arg FISH_VERSION=<version>
 ARG FISH_VERSION=3.0.0
-FROM ohmyfish/fish:${FISH_VERSION}
+FROM ohmyfish/fish:${FISH_VERSION} as tooling
 
 # Redeclare ARG so its value is available after FROM (cf. https://github.com/moby/moby/issues/34129#issuecomment-417609075)
 ARG FISH_VERSION
@@ -23,7 +23,11 @@ RUN curl \
     git.io/fisher
 RUN fish -c 'fisher add jorgebucaran/fishtape'
 
-# Install source code
+# Only grab what we need to test from previous stage
+FROM ohmyfish/fish:${FISH_VERSION}
+COPY --from=tooling /home/nemo/.config/fish $HOME/.config/fish
+
+# Copy source code
 WORKDIR /tmp/.pure/
 COPY . /tmp/.pure/
 
