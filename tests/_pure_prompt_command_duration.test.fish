@@ -3,7 +3,7 @@ source $DIRNAME/../functions/_pure_prompt_command_duration.fish
 
 set --local empty ''
 
-test "hide command duration when it's zero"
+test "_pure_prompt_command_duration: hide command duration when it's zero"
     (
         set CMD_DURATION $empty
         set pure_color_command_duration $empty
@@ -12,7 +12,7 @@ test "hide command duration when it's zero"
     ) = $empty
 end
 
-test "displays command duration when non-zero"
+test "_pure_prompt_command_duration: displays command duration when non-zero"
     (
         set CMD_DURATION 6000 # in milliseconds
         set pure_command_max_exec_time 5 # in seconds

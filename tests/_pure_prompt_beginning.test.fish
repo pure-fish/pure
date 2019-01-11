@@ -1,6 +1,6 @@
 source $DIRNAME/../functions/_pure_prompt_beginning.fish
 
-test "print prompt with newline for existing session"
+test "_pure_prompt_beginning: print prompt with newline for existing session"
     (
         set _pure_fresh_session false
 
@@ -8,7 +8,7 @@ test "print prompt with newline for existing session"
     ) = '\n\r\033[K'
 end
 
-test "print prompt without newline for new session"
+test "_pure_prompt_beginning: print prompt without newline for new session"
     (
         set _pure_fresh_session true
 

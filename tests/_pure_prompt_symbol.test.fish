@@ -4,7 +4,7 @@ set --local empty ''
 set --local fail 1
 set --local success 0
 
-test "throws error message when argument is missing"
+test "_pure_prompt_symbol: throws error message when argument is missing"
     (
         set pure_symbol_prompt '>'  # using default ❯ break following tests
         set pure_color_symbol_success (set_color green)
@@ -14,7 +14,7 @@ test "throws error message when argument is missing"
     ) = 'test: Missing argument at index 2'
 end
 
-test "colorizes prompt in green when last command succeed"
+test "_pure_prompt_symbol: colorizes prompt in green when last command succeed"
     (
         set --local last_command $success
         set pure_symbol_prompt '>'  # using default ❯ break following tests
@@ -24,7 +24,7 @@ test "colorizes prompt in green when last command succeed"
     ) = (set_color green)'>'
 end
 
-test "colorizes prompt in red when last command failed"
+test "_pure_prompt_symbol: colorizes prompt in red when last command failed"
     (
         set --local last_command $fail
         set pure_symbol_prompt '>'  # using default ❯ break following tests
@@ -34,7 +34,7 @@ test "colorizes prompt in red when last command failed"
     ) = (set_color red)'>'
 end
 
-test "add a magenta prompt when pure_separate_prompt_on_error is enable and last command failed"
+test "_pure_prompt_symbol: add a magenta prompt when pure_separate_prompt_on_error is enable and last command failed"
     (
         set --local last_command $fail
         set pure_symbol_prompt '>'  # using default ❯ break following tests
