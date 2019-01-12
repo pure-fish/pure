@@ -61,8 +61,7 @@ end
 function pure::enable_theme
     printf "\tEnabling theme"
     set fish_function_path $PURE_INSTALL_DIR/functions/ $fish_function_path
-    source $PURE_INSTALL_DIR/conf.d/pure.fish
-    source $FISH_CONFIG_DIR/functions/fish_prompt.fish
+    source $FISH_CONFIG_DIR/config.fish
 end
 
 function pure::clean_after_install
