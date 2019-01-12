@@ -4,7 +4,7 @@ if test $USER = 'nemo'
             curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent >/dev/null
             source /tmp/pure_installer.fish
             and install_pure >/dev/null
-            fish_prompt | grep -c '❯' 
+            fish -c 'fish_prompt | grep -c "❯"' 
         ) = 1
     end
 end
@@ -13,7 +13,7 @@ if test $USER = 'nemo'
     test "installation methods: with fisher"
         (
             fisher add rafaelrinaldi/pure >/dev/null
-            fish_prompt | grep -c '❯' 
+            fish -c 'fish_prompt | grep -c "❯"' 
         ) = 1
     end
 end
