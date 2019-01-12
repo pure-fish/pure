@@ -1,9 +1,9 @@
 if test $USER = 'nemo'
     test "installation methods: manually"
         (
-            curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent > /dev/null
+            curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent >/dev/null
             source /tmp/pure_installer.fish
-            and install_pure > /dev/null
+            and install_pure >/dev/null
             fish_prompt | grep -c '❯' 
         ) = 1
     end
@@ -22,7 +22,7 @@ if test $USER = 'nemo'
     test "installation methods: with OMF (Oh-My-Fish!)"
         (
             curl -L https://get.oh-my.fish > install
-            fish install --noninteractive > /dev/null
+            fish install --noninteractive >/dev/null
             fish -c "omf install pure; fish_prompt" | grep -c '❯' 
         ) = 1
     end
