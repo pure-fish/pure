@@ -28,14 +28,14 @@ if test $USER = 'nemo'
     end
 end
 
-# if test $USER = 'nemo'
-#     test "installation methods: with Fundle"
-#         (
-#             mkdir -p ~/.config/fish/functions
-#             wget https://git.io/fundle -O ~/.config/fish/functions/fundle.fish
-#             fundle plugin rafaelrinaldi/pure
-#             fundle install
-#             fish_prompt | grep -c '❯' 
-#         ) = 1
-#     end
-# end
+if test $USER = 'nemo'
+    test "installation methods: with Fundle"
+        (
+            mkdir -p $HOME/.config/fish/functions
+            curl https://git.io/fundle --output $HOME/.config/fish/functions/fundle.fish --location --silent >/dev/null
+            fundle plugin rafaelrinaldi/pure >/dev/null
+            fundle install >/dev/null
+            fish -c 'fish_prompt | grep -c "❯"' 
+        ) = 1
+    end
+end
