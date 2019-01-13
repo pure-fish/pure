@@ -19,7 +19,7 @@
 
 ## Install
 
-**:warning: requirements**: fish `≥2.4`.
+**:warning: requirements**: fish `≥2.5`.
 
 ### Manually
 
