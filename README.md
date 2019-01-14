@@ -13,9 +13,11 @@
 
 > Pretty, minimal and fast Fish 🐟 prompt, ported from [`zsh`](https://github.com/sindresorhus/pure).
 
-<p align=center>
-  <img width=585 src=screenshot.png>
-</p>
+
+<div align=center>
+  <img width=445 src=screenshot-dark.png alt="Pure with dark colorscheme">
+  <img width=445 src=screenshot-light.png alt="Pure with light colorscheme">
+</div>
 
 ## Install
 
