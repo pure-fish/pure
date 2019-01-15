@@ -113,7 +113,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | **`pure_color_normal`**  | `(set_color normal)`  |
 | **`pure_color_danger`**     | `(set_color red)`     |
 | **`pure_color_white`**   | `(set_color white)`   |
-| **`pure_color_yellow`**  | `(set_color yellow)`  |
+| **`pure_color_warning`**  | `(set_color yellow)`  |
 
 ### Components Colors
 | Option                           | Default value       |
@@ -130,7 +130,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | Option                            | Description                                                                     | Default value        |
 | :-------------------------------- | :------------------------------------------------------------------------------ | :------------------- |
 | **`pure_command_max_exec_time`**  | Maximum execution time of a process before its run time is shown when it exits. | `5`                  |
-| **`pure_color_command_duration`** |                                                                                 | `$pure_color_yellow` |
+| **`pure_color_command_duration`** |                                                                                 | `$pure_color_warning` |
 
 
 ### Miscellaneous

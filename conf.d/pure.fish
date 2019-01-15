@@ -25,10 +25,10 @@ _pure_set_default pure_color_success (set_color magenta)
 _pure_set_default pure_color_normal (set_color normal)
 _pure_set_default pure_color_danger (set_color red)
 _pure_set_default pure_color_white (set_color white)
-_pure_set_default pure_color_yellow (set_color yellow)
+_pure_set_default pure_color_warning (set_color yellow)
 
 # Colors used on symbols, attributes and events
-_pure_set_default pure_color_command_duration $pure_color_yellow
+_pure_set_default pure_color_command_duration $pure_color_warning
 _pure_set_default pure_color_current_folder $pure_color_primary
 _pure_set_default pure_color_git_arrows $pure_color_info
 _pure_set_default pure_color_git_branch $pure_color_mute
