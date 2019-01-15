@@ -93,7 +93,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | **`pure_symbol_git_arrow_down`** | Symbol for branch ahead (commits to push).         | `⇣`                |
 | **`pure_symbol_git_arrow_up`**   | Symbol for branch being (commits to pull).         | `⇡`                |
 | **`pure_symbol_git_dirty`**      | Symbol for dirty repository (uncommitted changes). | `*`                |
-| **`pure_color_git_arrows`**      |                                                    | `$pure_color_cyan` |
+| **`pure_color_git_arrows`**      |                                                    | `$pure_color_info` |
 | **`pure_color_git_branch`**      |                                                    | `$pure_color_gray` |
 | **`pure_color_git_dirty`**       |                                                    | `$pure_color_gray` |
 :information_source:: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki#safer-symbols)?
@@ -107,7 +107,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | Option                   | Default value         |
 | :----------------------- | :-------------------- |
 | **`pure_color_primary`**    | `(set_color blue)`    |
-| **`pure_color_cyan`**    | `(set_color cyan)`    |
+| **`pure_color_info`**    | `(set_color cyan)`    |
 | **`pure_color_gray`**    | `(set_color brblack)` |
 | **`pure_color_magenta`** | `(set_color magenta)` |
 | **`pure_color_normal`**  | `(set_color normal)`  |

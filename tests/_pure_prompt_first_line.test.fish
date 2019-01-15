@@ -6,7 +6,7 @@ function setup
     set pure_color_current_folder $pure_color_primary
     set pure_color_git_branch $pure_color_gray
     set pure_color_git_dirty $pure_color_gray
-    set pure_color_git_arrows $pure_color_cyan
+    set pure_color_git_arrows $pure_color_info
     set pure_color_command_duration $pure_color_yellow
 
     mkdir --parents /tmp/test

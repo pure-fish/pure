@@ -74,11 +74,11 @@ test "configure: pure_color_primary"
     ) = (set_color blue)
 end
 
-test "configure: pure_color_cyan" 
+test "configure: pure_color_info" 
     (
-        set --erase pure_color_cyan
+        set --erase pure_color_info
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_cyan
+        echo $pure_color_info
     ) = (set_color cyan)
 end
 
