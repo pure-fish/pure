@@ -8,6 +8,8 @@ set --global --export VIRTUAL_ENV_DISABLE_PROMPT 1
 
 # Symbols
 _pure_set_default pure_symbol_prompt "❯"
+_pure_set_default pure_color_prompt_on_error $pure_color_danger
+_pure_set_default pure_color_prompt_on_success $pure_color_success
 
 # Git
 _pure_set_default pure_symbol_git_arrow_down "⇣"
@@ -38,8 +40,6 @@ _pure_set_default pure_color_ssh_host $pure_color_mute
 _pure_set_default pure_color_ssh_separator $pure_color_mute
 _pure_set_default pure_color_ssh_user_normal $pure_color_mute
 _pure_set_default pure_color_ssh_user_root $pure_color_light
-_pure_set_default pure_color_prompt_on_error $pure_color_danger
-_pure_set_default pure_color_prompt_on_success $pure_color_success
 _pure_set_default pure_color_virtualenv $pure_color_mute
 
 # Print current working directory at the beginning of prompt
