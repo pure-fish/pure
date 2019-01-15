@@ -138,11 +138,11 @@ test "configure: pure_color_command_duration"
     ) = (set_color yellow)
 end
 
-test "configure: pure_color_current_folder" 
+test "configure: pure_color_current_directory" 
     (
-        set --erase pure_color_current_folder
+        set --erase pure_color_current_directory
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_current_folder
+        echo $pure_color_current_directory
     ) = (set_color blue)
 end
 
