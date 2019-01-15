@@ -34,7 +34,7 @@ _pure_set_default pure_color_warning (set_color yellow)
 _pure_set_default pure_color_dark (set_color black)
 
 # Colors used on symbols, attributes and events
-_pure_set_default pure_color_current_folder $pure_color_primary
+_pure_set_default pure_color_current_directory $pure_color_primary
 _pure_set_default pure_color_ssh_hostname $pure_color_mute
 _pure_set_default pure_color_ssh_separator $pure_color_mute
 _pure_set_default pure_color_ssh_user_normal $pure_color_mute

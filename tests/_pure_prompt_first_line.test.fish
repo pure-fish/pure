@@ -3,7 +3,7 @@ source $DIRNAME/../functions/_pure_prompt_first_line.fish
 set --local empty ''
 
 function setup
-    set pure_color_current_folder $pure_color_primary
+    set pure_color_current_directory $pure_color_primary
     set pure_color_git_branch $pure_color_mute
     set pure_color_git_dirty $pure_color_mute
     set pure_color_git_pending_commits $pure_color_info

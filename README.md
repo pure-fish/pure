@@ -118,7 +118,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 ### Components Colors
 | Option                           | Default value       |
 | :------------------------------- | :------------------ |
-| **`pure_color_current_folder`**  | `$pure_color_primary`  |
+| **`pure_color_current_directory`**  | `$pure_color_primary`  |
 | **`pure_color_ssh_hostname`**        | `$pure_color_mute`  |
 | **`pure_color_ssh_separator`**   | `$pure_color_mute`  |
 | **`pure_color_ssh_user_normal`** | `$pure_color_mute`  |
