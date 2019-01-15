@@ -53,7 +53,7 @@ _pure_set_default pure_prompt_begin_with_current_directory true
 _pure_set_default pure_separate_prompt_on_error false
 
 # Max execution time of a process before its run time is shown when it exits
-_pure_set_default pure_command_max_exec_time 5
+_pure_set_default pure_threshold_command_duration 5
 
 # Right Prompt variables
 _pure_set_default pure_right_prompt ""

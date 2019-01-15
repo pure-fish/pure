@@ -129,7 +129,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 ### Maximum Execution Time
 | Option                            | Description                                                                     | Default value        |
 | :-------------------------------- | :------------------------------------------------------------------------------ | :------------------- |
-| **`pure_command_max_exec_time`**  | Maximum execution time of a process before its run time is shown when it exits. | `5`                  |
+| **`pure_threshold_command_duration`**  | Maximum execution time of a process before its run time is shown when it exits. | `5`                  |
 | **`pure_color_command_duration`** |                                                                                 | `$pure_color_warning` |
 
 
