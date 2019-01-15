@@ -1,14 +1,3 @@
-[travis-link]: https://travis-ci.org/rafaelrinaldi/pure "TravisCI"
-[travis-badge]: https://travis-ci.org/rafaelrinaldi/pure.svg?branch=master
-[fish-2.5]: https://img.shields.io/badge/fish-v2.5.0-007EC7.svg?style=flat-square "Support Fish 2.5"
-[fish-2.6]: https://img.shields.io/badge/fish-v2.6.0-007EC7.svg?style=flat-square "Support Fish 2.6"
-[fish-2.7.1]: https://img.shields.io/badge/fish-v2.7.1.0-007EC7.svg?style=flat-square "Support Fish 2.7.1"
-[fish-3.0.0]: https://img.shields.io/badge/fish-v3.0.0.0-007EC7.svg?style=flat-square "Support Fish 3.0.0"
-[changelog-2.5]: https://github.com/fish-shell/fish-shell/releases/tag/2.5.0 "Changelog Fish 2.5"
-[changelog-2.6]: https://github.com/fish-shell/fish-shell/releases/tag/2.6.0 "Changelog Fish 2.6"
-[changelog-2.7.1]: https://github.com/fish-shell/fish-shell/releases/tag/2.7.1 "Changelog Fish 2.7.1"
-[changelog-3.0.0]: https://github.com/fish-shell/fish-shell/releases/tag/3.0.0 "Changelog Fish 3.0.0"
-
 > ##### ✋ Psst! Migrating from v1.x to v2.x? We got you. Check our [**migration guide**](https://github.com/rafaelrinaldi/pure/releases/tag/v2.0.0) and happy upgrading!
 
 # pure [![travis-badge]][travis-link] ![fish-2.5] ![fish-2.6] ![fish-2.7.1] ![fish-3.0.0] 
@@ -140,7 +129,6 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | **`pure_separate_prompt_on_error`**            | Show exit code of last command as a separate prompt character [:information_source:][exit-code]                                                                | `false`       |
 
 
-[exit-code]: https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character "See pure-zsh wiki"
 
 ### Right Prompt
 | Option                        | Description             | Default value        |
@@ -171,3 +159,15 @@ MIT © [Rafael Rinaldi](http://rinaldi.io)
 <p align="center">
   <a href="https://buymeacoff.ee/rinaldi" title="Buy me a coffee">Buy me a ☕</a>
 </p>
+
+[travis-link]: https://travis-ci.org/rafaelrinaldi/pure "TravisCI"
+[travis-badge]: https://travis-ci.org/rafaelrinaldi/pure.svg?branch=master
+[fish-2.5]: https://img.shields.io/badge/fish-v2.5.0-007EC7.svg?style=flat-square "Support Fish 2.5"
+[fish-2.6]: https://img.shields.io/badge/fish-v2.6.0-007EC7.svg?style=flat-square "Support Fish 2.6"
+[fish-2.7.1]: https://img.shields.io/badge/fish-v2.7.1.0-007EC7.svg?style=flat-square "Support Fish 2.7.1"
+[fish-3.0.0]: https://img.shields.io/badge/fish-v3.0.0.0-007EC7.svg?style=flat-square "Support Fish 3.0.0"
+[changelog-2.5]: https://github.com/fish-shell/fish-shell/releases/tag/2.5.0 "Changelog Fish 2.5"
+[changelog-2.6]: https://github.com/fish-shell/fish-shell/releases/tag/2.6.0 "Changelog Fish 2.6"
+[changelog-2.7.1]: https://github.com/fish-shell/fish-shell/releases/tag/2.7.1 "Changelog Fish 2.7.1"
+[changelog-3.0.0]: https://github.com/fish-shell/fish-shell/releases/tag/3.0.0 "Changelog Fish 3.0.0"
+[exit-code]: https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character "See pure-zsh wiki"
