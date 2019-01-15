@@ -90,11 +90,11 @@ test "configure: pure_color_mute"
     ) = (set_color brblack)
 end
 
-test "configure: pure_color_magenta" 
+test "configure: pure_color_success" 
     (
-        set --erase pure_color_magenta
+        set --erase pure_color_success
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_magenta
+        echo $pure_color_success
     ) = (set_color magenta)
 end
 
