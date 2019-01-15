@@ -122,11 +122,11 @@ test "configure: pure_color_white"
     ) = (set_color white)
 end
 
-test "configure: pure_color_yellow" 
+test "configure: pure_color_warning" 
     (
-        set --erase pure_color_yellow
+        set --erase pure_color_warning
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_yellow
+        echo $pure_color_warning
     ) = (set_color yellow)
 end
 
