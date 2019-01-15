@@ -90,7 +90,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 
 | Option                           | Description                                        | Default value      |
 | :------------------------------- | :------------------------------------------------- | :----------------- |
-| **`pure_symbol_git_arrow_down`** | Symbol for branch ahead (commits to push).         | `⇣`                |
+| **`pure_color_git_unpulled_commits`** | Symbol for branch ahead (commits to push).         | `⇣`                |
 | **`pure_symbol_git_unpushed_commits`**   | Symbol for branch being (commits to pull).         | `⇡`                |
 | **`pure_symbol_git_dirty`**      | Symbol for dirty repository (uncommitted changes). | `*`                |
 | **`pure_color_git_arrows`**      |                                                    | `$pure_color_info` |

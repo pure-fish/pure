@@ -34,11 +34,11 @@ test "configure: pure_symbol_prompt"
     ) = "❯"
 end
 
-test "configure: pure_symbol_git_arrow_down" 
+test "configure: pure_color_git_unpulled_commits" 
     (
-        set --erase pure_symbol_git_arrow_down
+        set --erase pure_color_git_unpulled_commits
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_symbol_git_arrow_down
+        echo $pure_color_git_unpulled_commits
     ) = "⇣"
 end
 

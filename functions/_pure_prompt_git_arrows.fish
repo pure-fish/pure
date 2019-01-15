@@ -14,7 +14,7 @@ function _pure_prompt_git_arrows
         end
 
         if test $commit_to_pull -gt 0  # upstream is ahead of local repo
-            set git_arrows "$git_arrows$pure_symbol_git_arrow_down"
+            set git_arrows "$git_arrows$pure_color_git_unpulled_commits"
         end
 
         set git_arrows_color "$pure_color_git_arrows"
