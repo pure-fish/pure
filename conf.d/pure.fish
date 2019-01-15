@@ -34,7 +34,6 @@ _pure_set_default pure_color_warning (set_color yellow)
 _pure_set_default pure_color_dark (set_color black)
 
 # Colors used on symbols, attributes and events
-_pure_set_default pure_color_command_duration $pure_color_warning
 _pure_set_default pure_color_current_folder $pure_color_primary
 _pure_set_default pure_color_ssh_host $pure_color_mute
 _pure_set_default pure_color_ssh_separator $pure_color_mute
@@ -54,6 +53,7 @@ _pure_set_default pure_separate_prompt_on_error false
 
 # Max execution time of a process before its run time is shown when it exits
 _pure_set_default pure_threshold_command_duration 5
+_pure_set_default pure_color_command_duration $pure_color_warning
 
 # Right Prompt variables
 _pure_set_default pure_right_prompt ""
