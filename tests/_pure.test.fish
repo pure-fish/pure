@@ -66,11 +66,11 @@ test "configure: pure_symbol_horizontal_bar"
     ) = "—"
 end
 
-test "configure: pure_color_blue" 
+test "configure: pure_color_primary" 
     (
-        set --erase pure_color_blue
+        set --erase pure_color_primary
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_blue
+        echo $pure_color_primary
     ) = (set_color blue)
 end
 

@@ -106,7 +106,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 ### Base Colors
 | Option                   | Default value         |
 | :----------------------- | :-------------------- |
-| **`pure_color_blue`**    | `(set_color blue)`    |
+| **`pure_color_primary`**    | `(set_color blue)`    |
 | **`pure_color_cyan`**    | `(set_color cyan)`    |
 | **`pure_color_gray`**    | `(set_color brblack)` |
 | **`pure_color_magenta`** | `(set_color magenta)` |
@@ -118,7 +118,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 ### Components Colors
 | Option                           | Default value       |
 | :------------------------------- | :------------------ |
-| **`pure_color_current_folder`**  | `$pure_color_blue`  |
+| **`pure_color_current_folder`**  | `$pure_color_primary`  |
 | **`pure_color_ssh_host`**        | `$pure_color_gray`  |
 | **`pure_color_ssh_separator`**   | `$pure_color_gray`  |
 | **`pure_color_ssh_user_normal`** | `$pure_color_gray`  |
