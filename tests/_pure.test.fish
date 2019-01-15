@@ -58,11 +58,11 @@ test "configure: pure_symbol_git_dirty"
     ) = "*"
 end
 
-test "configure: pure_symbol_horizontal_bar" 
+test "configure: pure_symbol_title_bar_separator" 
     (
-        set --erase pure_symbol_horizontal_bar
+        set --erase pure_symbol_title_bar_separator
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_symbol_horizontal_bar
+        echo $pure_symbol_title_bar_separator
     ) = "—"
 end
 

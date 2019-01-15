@@ -101,7 +101,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 ### Terminal Title
 | Option                           | Description                                                                         | Default value |
 | :------------------------------- | :---------------------------------------------------------------------------------- | :------------ |
-| **`pure_symbol_horizontal_bar`** | Separator for the terminal title between `current working directory` and `command`. | `—`          |
+| **`pure_symbol_title_bar_separator`** | Separator for the terminal title between `current working directory` and `command`. | `—`          |
 
 ### Base Colors
 | Option                   | Default value         |
