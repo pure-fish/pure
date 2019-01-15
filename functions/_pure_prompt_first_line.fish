@@ -14,7 +14,7 @@ function _pure_prompt_first_line \
     set --local current_folder (_pure_prompt_current_folder $prompt_width)
 
     set --local prompt_components
-    if test $pure_prompt_begin_with_current_directory = true
+    if test $pure_begin_prompt_with_current_directory = true
         set prompt_components \
                 (_pure_prompt_current_folder $prompt_width) \
                 (_pure_prompt_git) \
