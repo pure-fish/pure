@@ -16,6 +16,8 @@ _pure_set_default pure_symbol_git_unpulled_commits "⇣"
 _pure_set_default pure_symbol_git_unpushed_commits "⇡"
 _pure_set_default pure_symbol_git_dirty "*"
 _pure_set_default pure_color_git_pending_commits $pure_color_info
+_pure_set_default pure_color_git_branch $pure_color_mute
+_pure_set_default pure_color_git_dirty $pure_color_mute
 
 # Title
 _pure_set_default pure_symbol_horizontal_bar "—"
@@ -34,8 +36,6 @@ _pure_set_default pure_color_dark (set_color black)
 # Colors used on symbols, attributes and events
 _pure_set_default pure_color_command_duration $pure_color_warning
 _pure_set_default pure_color_current_folder $pure_color_primary
-_pure_set_default pure_color_git_branch $pure_color_mute
-_pure_set_default pure_color_git_dirty $pure_color_mute
 _pure_set_default pure_color_ssh_host $pure_color_mute
 _pure_set_default pure_color_ssh_separator $pure_color_mute
 _pure_set_default pure_color_ssh_user_normal $pure_color_mute
