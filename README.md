@@ -15,8 +15,8 @@
 
 
 <div align=center>
-  <img width=445 src=screenshot-dark.png alt="Pure with dark colorscheme">
-  <img width=445 src=screenshot-light.png alt="Pure with light colorscheme">
+  <img width=440 src=screenshot-dark.png alt="Pure with dark colorscheme">
+  <img width=440 src=screenshot-light.png alt="Pure with light colorscheme">
 </div>
 
 ## Install
