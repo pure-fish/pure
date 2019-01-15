@@ -1,4 +1,4 @@
-set --universal pure_version 1.13.0  # used for bug report
+set --universal pure_version 1.13.0 # used for bug report
 
 # Base colors
 _pure_set_default pure_color_primary (set_color blue)
@@ -36,7 +36,7 @@ _pure_set_default pure_color_ssh_user_root $pure_color_light
 # Virtualenv for Pyhon
 _pure_set_default pure_color_virtualenv $pure_color_mute
 # Deactivate the default virtualenv prompt so that we can add our own
-set --global --export VIRTUAL_ENV_DISABLE_PROMPT 1  
+set --global --export VIRTUAL_ENV_DISABLE_PROMPT 1
 
 # Print current working directory at the beginning of prompt
 # true (default):   current directory, git, user@hostname (ssh-only), command duration
