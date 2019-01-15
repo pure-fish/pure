@@ -1,4 +1,4 @@
-source $DIRNAME/../functions/_pure_prompt_git_arrows.fish
+source $DIRNAME/../functions/_pure_prompt_git_pending_commits.fish
 
 set --local empty ''
 set fake_git_repo /tmp/pure
@@ -25,15 +25,15 @@ function teardown
         $fake_git_bare
 end
 
-test "_pure_prompt_git_arrows: print nothing when no upstream repo"
+test "_pure_prompt_git_pending_commits: print nothing when no upstream repo"
     (
         cd $fake_git_repo
 
-        _pure_prompt_git_arrows
+        _pure_prompt_git_pending_commits
     ) = $empty
 end
 
-test "_pure_prompt_git_arrows: show arrow UP when branch is AHEAD of upstream (need git push)"
+test "_pure_prompt_git_pending_commits: show arrow UP when branch is AHEAD of upstream (need git push)"
     (
         git push --set-upstream --quiet origin master > /dev/null
         touch missing-on-upstream.txt
@@ -41,14 +41,14 @@ test "_pure_prompt_git_arrows: show arrow UP when branch is AHEAD of upstream (n
         git commit --quiet --message='missing on upstream'
 
         set pure_symbol_git_unpushed_commits '^'
-        set pure_color_git_pending_commits (set_color cyan)
+        set pure_color_git_unpushed_commits (set_color cyan)
 
-        _pure_prompt_git_arrows
+        _pure_prompt_git_pending_commits
 
     ) = (set_color cyan)'^'
 end
 
-test "_pure_prompt_git_arrows: show arrow DOWN when branch is BEHIND upstream (need git pull)"
+test "_pure_prompt_git_pending_commits: show arrow DOWN when branch is BEHIND upstream (need git pull)"
     (
         touch another-file.txt
         git add another-file.txt
@@ -58,8 +58,8 @@ test "_pure_prompt_git_arrows: show arrow DOWN when branch is BEHIND upstream (n
         git reset --hard --quiet HEAD~1
 
         set pure_symbol_git_unpulled_commits 'v'
-        set pure_color_git_pending_commits (set_color cyan)
+        set pure_color_git_unpulled_commits (set_color cyan)
 
-        _pure_prompt_git_arrows
+        _pure_prompt_git_pending_commits
     ) = (set_color cyan)'v'
 end
