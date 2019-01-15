@@ -242,11 +242,11 @@ test "configure: pure_separate_prompt_on_error"
     ) = false
 end
 
-test "configure: pure_command_max_exec_time" 
+test "configure: pure_threshold_command_duration" 
     (
-        set --erase pure_command_max_exec_time
+        set --erase pure_threshold_command_duration
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_command_max_exec_time
+        echo $pure_threshold_command_duration
     ) = 5
 end
 
