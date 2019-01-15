@@ -42,11 +42,11 @@ test "configure: pure_symbol_git_arrow_down"
     ) = "⇣"
 end
 
-test "configure: pure_symbol_git_arrow_up" 
+test "configure: pure_symbol_git_unpushed_commits" 
     (
-        set --erase pure_symbol_git_arrow_up
+        set --erase pure_symbol_git_unpushed_commits
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_symbol_git_arrow_up
+        echo $pure_symbol_git_unpushed_commits
     ) = "⇡"
 end
 

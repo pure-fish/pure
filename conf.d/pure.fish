@@ -13,7 +13,7 @@ _pure_set_default pure_color_prompt_on_success $pure_color_success
 
 # Git
 _pure_set_default pure_symbol_git_arrow_down "⇣"
-_pure_set_default pure_symbol_git_arrow_up "⇡"
+_pure_set_default pure_symbol_git_unpushed_commits "⇡"
 _pure_set_default pure_symbol_git_dirty "*"
 
 # Title
