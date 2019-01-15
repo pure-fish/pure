@@ -24,7 +24,7 @@ test "_pure_prompt_git: activates on git repository"
         cd /tmp/test
         git init --quiet
         function _pure_prompt_git_dirty; echo $empty; end
-        function _pure_prompt_git_arrows; echo $empty; end
+        function git_pending_commits; echo $empty; end
 
         set pure_color_git_branch $empty
         set pure_color_git_dirty $empty
@@ -40,7 +40,7 @@ test "_pure_prompt_git: activates on dirty repository"
         cd /tmp/test
         git init --quiet
         function _pure_prompt_git_dirty; echo '*'; end
-        function _pure_prompt_git_arrows; echo $empty; end
+        function git_pending_commits; echo $empty; end
 
         set pure_color_git_branch $empty
         set pure_color_git_dirty $empty
@@ -56,7 +56,7 @@ test "_pure_prompt_git: activates on repository with upstream changes"
         cd /tmp/test
         git init --quiet
         function _pure_prompt_git_dirty; echo $empty; end
-        function _pure_prompt_git_arrows; echo 'v'; end
+        function git_pending_commits; echo 'v'; end
 
         set pure_color_git_branch $empty
         set pure_color_git_dirty $empty

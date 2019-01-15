@@ -146,11 +146,19 @@ test "configure: pure_color_current_directory"
     ) = (set_color blue)
 end
 
-test "configure: pure_color_git_pending_commits" 
+test "configure: pure_color_git_unpushed_commits" 
     (
-        set --erase pure_color_git_pending_commits
+        set --erase pure_color_git_unpushed_commits
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_git_pending_commits
+        echo $pure_color_git_unpushed_commits
+    ) = (set_color cyan)
+end
+
+test "configure: pure_color_git_unpulled_commits" 
+    (
+        set --erase pure_color_git_unpulled_commits
+        source $DIRNAME/../conf.d/pure.fish
+        echo $pure_color_git_unpulled_commits
     ) = (set_color cyan)
 end
 
