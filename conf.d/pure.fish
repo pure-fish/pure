@@ -19,7 +19,7 @@ _pure_set_default pure_symbol_horizontal_bar "—"
 
 # Base colors
 _pure_set_default pure_color_primary (set_color blue)
-_pure_set_default pure_color_cyan (set_color cyan)
+_pure_set_default pure_color_info (set_color cyan)
 _pure_set_default pure_color_gray (set_color brblack)
 _pure_set_default pure_color_magenta (set_color magenta)
 _pure_set_default pure_color_normal (set_color normal)
@@ -30,7 +30,7 @@ _pure_set_default pure_color_yellow (set_color yellow)
 # Colors used on symbols, attributes and events
 _pure_set_default pure_color_command_duration $pure_color_yellow
 _pure_set_default pure_color_current_folder $pure_color_primary
-_pure_set_default pure_color_git_arrows $pure_color_cyan
+_pure_set_default pure_color_git_arrows $pure_color_info
 _pure_set_default pure_color_git_branch $pure_color_gray
 _pure_set_default pure_color_git_dirty $pure_color_gray
 _pure_set_default pure_color_ssh_host $pure_color_gray
