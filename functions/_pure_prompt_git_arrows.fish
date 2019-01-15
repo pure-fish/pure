@@ -10,7 +10,7 @@ function _pure_prompt_git_arrows
         set --local commit_to_pull $git_status[2]
 
         if test $commit_to_push -gt 0  # upstream is behind local repo
-            set git_arrows "$pure_symbol_git_arrow_up"
+            set git_arrows "$pure_symbol_git_unpushed_commits"
         end
 
         if test $commit_to_pull -gt 0  # upstream is ahead of local repo
