@@ -26,6 +26,7 @@ _pure_set_default pure_color_normal (set_color normal)
 _pure_set_default pure_color_danger (set_color red)
 _pure_set_default pure_color_light (set_color white)
 _pure_set_default pure_color_warning (set_color yellow)
+_pure_set_default pure_color_dark (set_color black)
 
 # Colors used on symbols, attributes and events
 _pure_set_default pure_color_command_duration $pure_color_warning
