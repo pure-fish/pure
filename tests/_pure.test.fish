@@ -170,11 +170,11 @@ test "configure: pure_color_git_dirty"
     ) = (set_color brblack)
 end
 
-test "configure: pure_color_ssh_host" 
+test "configure: pure_color_ssh_hostname" 
     (
-        set --erase pure_color_ssh_host
+        set --erase pure_color_ssh_hostname
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_ssh_host
+        echo $pure_color_ssh_hostname
     ) = (set_color brblack)
 end
 

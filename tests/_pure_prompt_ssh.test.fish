@@ -20,7 +20,7 @@ test "_pure_prompt_ssh: displays 'user@hostname' when on SSH connection"
     (
         set pure_color_ssh_user_normal $empty
         set pure_color_ssh_separator $empty
-        set pure_color_ssh_host $empty
+        set pure_color_ssh_hostname $empty
         set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
         function whoami; echo 'user'; end # mock
         set hostname 'hostname'
@@ -36,7 +36,7 @@ test "_pure_prompt_ssh: displays 'user@[\w]+' when on SSH connection"
     (
         set pure_color_ssh_user_normal $empty
         set pure_color_ssh_separator $empty
-        set pure_color_ssh_host $empty
+        set pure_color_ssh_hostname $empty
         set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
         function whoami; echo 'user'; end # mock
 
