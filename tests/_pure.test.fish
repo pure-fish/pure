@@ -226,11 +226,11 @@ test "configure: pure_color_virtualenv"
     ) = (set_color brblack)
 end
 
-test "configure: pure_prompt_begin_with_current_directory" 
+test "configure: pure_begin_prompt_with_current_directory" 
     (
-        set --erase pure_prompt_begin_with_current_directory
+        set --erase pure_begin_prompt_with_current_directory
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_prompt_begin_with_current_directory
+        echo $pure_begin_prompt_with_current_directory
     ) = true
 end
 

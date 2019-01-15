@@ -44,7 +44,7 @@ _pure_set_default pure_color_virtualenv $pure_color_mute
 # Print current working directory at the beginning of prompt
 # true (default):   current directory, git, user@hostname (ssh-only), command duration
 # false:            user@hostname (ssh-only), current directory, git, command duration
-_pure_set_default pure_prompt_begin_with_current_directory true
+_pure_set_default pure_begin_prompt_with_current_directory true
 
 # Show exit code of last command as a separate prompt character (cf. https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character)
 # false - single prompt character, default

@@ -136,7 +136,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 ### Miscellaneous
 | Option                                         | Description                                                                                                                                                    | Default value |
 | :--------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
-| **`pure_prompt_begin_with_current_directory`** | `true`: _current directory_, _git_, _user@hostname (ssh-only)_, _command duration_.<br/>`false`: _user@hostname (ssh-only)_, _current directory_, _git_, _command duration_. | `true`        |
+| **`pure_begin_prompt_with_current_directory`** | `true`: _current directory_, _git_, _user@hostname (ssh-only)_, _command duration_.<br/>`false`: _user@hostname (ssh-only)_, _current directory_, _git_, _command duration_. | `true`        |
 | **`pure_separate_prompt_on_error`**            | Show exit code of last command as a separate prompt character [:information_source:][exit-code]                                                                | `false`       |
 
 
