@@ -9,7 +9,7 @@ set --local succeed 0
 
 test "_pure_prompt: print prompt after succeeding command"
     (
-        set pure_color_symbol_success (set_color magenta)
+        set pure_color_prompt_on_success (set_color magenta)
         set pure_symbol_prompt '>'  # using default ❯ break following tests
         set --local last_command $succeed
 

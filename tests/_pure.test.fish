@@ -210,11 +210,11 @@ test "configure: pure_color_prompt_on_error"
     ) = (set_color red)
 end
 
-test "configure: pure_color_symbol_success" 
+test "configure: pure_color_prompt_on_success" 
     (
-        set --erase pure_color_symbol_success
+        set --erase pure_color_prompt_on_success
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_symbol_success
+        echo $pure_color_prompt_on_success
     ) = (set_color magenta)
 end
 

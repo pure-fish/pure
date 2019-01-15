@@ -84,7 +84,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | :------------------------------ | :------------- | :-------------------- |
 | **`pure_symbol_prompt`**        | Prompt symbol. | `❯`                   |
 | **`pure_color_prompt_on_error`**   |                | `$pure_color_danger`     |
-| **`pure_color_symbol_success`** |                | `$pure_color_success` |
+| **`pure_color_prompt_on_success`** |                | `$pure_color_success` |
 
 ### Git
 
