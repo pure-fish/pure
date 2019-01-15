@@ -114,11 +114,11 @@ test "configure: pure_color_danger"
     ) = (set_color red)
 end
 
-test "configure: pure_color_white" 
+test "configure: pure_color_light" 
     (
-        set --erase pure_color_white
+        set --erase pure_color_light
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_white
+        echo $pure_color_light
     ) = (set_color white)
 end
 

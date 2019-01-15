@@ -112,7 +112,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | **`pure_color_success`** | `(set_color magenta)` |
 | **`pure_color_normal`**  | `(set_color normal)`  |
 | **`pure_color_danger`**     | `(set_color red)`     |
-| **`pure_color_white`**   | `(set_color white)`   |
+| **`pure_color_light`**   | `(set_color white)`   |
 | **`pure_color_warning`**  | `(set_color yellow)`  |
 
 ### Components Colors
@@ -122,7 +122,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | **`pure_color_ssh_host`**        | `$pure_color_mute`  |
 | **`pure_color_ssh_separator`**   | `$pure_color_mute`  |
 | **`pure_color_ssh_user_normal`** | `$pure_color_mute`  |
-| **`pure_color_ssh_user_root`**   | `$pure_color_white` |
+| **`pure_color_ssh_user_root`**   | `$pure_color_light` |
 | **`pure_color_virtualenv`**      | `$pure_color_mute`  |
 
 

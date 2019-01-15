@@ -24,7 +24,7 @@ _pure_set_default pure_color_mute (set_color brblack)
 _pure_set_default pure_color_success (set_color magenta)
 _pure_set_default pure_color_normal (set_color normal)
 _pure_set_default pure_color_danger (set_color red)
-_pure_set_default pure_color_white (set_color white)
+_pure_set_default pure_color_light (set_color white)
 _pure_set_default pure_color_warning (set_color yellow)
 
 # Colors used on symbols, attributes and events
@@ -36,7 +36,7 @@ _pure_set_default pure_color_git_dirty $pure_color_mute
 _pure_set_default pure_color_ssh_host $pure_color_mute
 _pure_set_default pure_color_ssh_separator $pure_color_mute
 _pure_set_default pure_color_ssh_user_normal $pure_color_mute
-_pure_set_default pure_color_ssh_user_root $pure_color_white
+_pure_set_default pure_color_ssh_user_root $pure_color_light
 _pure_set_default pure_color_symbol_error $pure_color_danger
 _pure_set_default pure_color_symbol_success $pure_color_success
 _pure_set_default pure_color_virtualenv $pure_color_mute
