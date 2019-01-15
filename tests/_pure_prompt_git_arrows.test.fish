@@ -57,7 +57,7 @@ test "_pure_prompt_git_arrows: show arrow DOWN when branch is BEHIND upstream (n
 
         git reset --hard --quiet HEAD~1
 
-        set pure_symbol_git_arrow_down 'v'
+        set pure_color_git_unpulled_commits 'v'
         set pure_color_git_arrows (set_color cyan)
 
         _pure_prompt_git_arrows
