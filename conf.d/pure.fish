@@ -12,7 +12,7 @@ _pure_set_default pure_color_prompt_on_error $pure_color_danger
 _pure_set_default pure_color_prompt_on_success $pure_color_success
 
 # Git
-_pure_set_default pure_color_git_unpulled_commits "⇣"
+_pure_set_default pure_symbol_git_unpulled_commits "⇣"
 _pure_set_default pure_symbol_git_unpushed_commits "⇡"
 _pure_set_default pure_symbol_git_dirty "*"
 
