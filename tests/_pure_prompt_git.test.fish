@@ -28,7 +28,7 @@ test "_pure_prompt_git: activates on git repository"
 
         set pure_color_git_branch $empty
         set pure_color_git_dirty $empty
-        set pure_color_git_arrows $empty
+        set pure_color_git_pending_commits $empty
 
         _pure_prompt_git
     ) = 'master'
@@ -44,7 +44,7 @@ test "_pure_prompt_git: activates on dirty repository"
 
         set pure_color_git_branch $empty
         set pure_color_git_dirty $empty
-        set pure_color_git_arrows $empty
+        set pure_color_git_pending_commits $empty
 
         _pure_prompt_git
     ) = 'master*'
@@ -60,7 +60,7 @@ test "_pure_prompt_git: activates on repository with upstream changes"
 
         set pure_color_git_branch $empty
         set pure_color_git_dirty $empty
-        set pure_color_git_arrows $empty
+        set pure_color_git_pending_commits $empty
 
         _pure_prompt_git
     ) = 'master v'

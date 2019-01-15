@@ -6,7 +6,7 @@ function setup
     set pure_color_current_folder $pure_color_primary
     set pure_color_git_branch $pure_color_mute
     set pure_color_git_dirty $pure_color_mute
-    set pure_color_git_arrows $pure_color_info
+    set pure_color_git_pending_commits $pure_color_info
     set pure_color_command_duration $pure_color_warning
 
     mkdir --parents /tmp/test

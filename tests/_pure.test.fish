@@ -146,11 +146,11 @@ test "configure: pure_color_current_folder"
     ) = (set_color blue)
 end
 
-test "configure: pure_color_git_arrows" 
+test "configure: pure_color_git_pending_commits" 
     (
-        set --erase pure_color_git_arrows
+        set --erase pure_color_git_pending_commits
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_git_arrows
+        echo $pure_color_git_pending_commits
     ) = (set_color cyan)
 end
 

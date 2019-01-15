@@ -93,7 +93,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | **`pure_symbol_git_unpulled_commits`** | Symbol for branch ahead (commits to push).         | `⇣`                |
 | **`pure_symbol_git_unpushed_commits`**   | Symbol for branch being (commits to pull).         | `⇡`                |
 | **`pure_symbol_git_dirty`**      | Symbol for dirty repository (uncommitted changes). | `*`                |
-| **`pure_color_git_arrows`**      |                                                    | `$pure_color_info` |
+| **`pure_color_git_pending_commits`**      |                                                    | `$pure_color_info` |
 | **`pure_color_git_branch`**      |                                                    | `$pure_color_mute` |
 | **`pure_color_git_dirty`**       |                                                    | `$pure_color_mute` |
 :information_source:: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki#safer-symbols)?

@@ -41,7 +41,7 @@ test "_pure_prompt_git_arrows: show arrow UP when branch is AHEAD of upstream (n
         git commit --quiet --message='missing on upstream'
 
         set pure_symbol_git_unpushed_commits '^'
-        set pure_color_git_arrows (set_color cyan)
+        set pure_color_git_pending_commits (set_color cyan)
 
         _pure_prompt_git_arrows
 
