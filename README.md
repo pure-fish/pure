@@ -83,7 +83,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | Option                          | Description    | Default value         |
 | :------------------------------ | :------------- | :-------------------- |
 | **`pure_symbol_prompt`**        | Prompt symbol. | `❯`                   |
-| **`pure_color_symbol_error`**   |                | `$pure_color_red`     |
+| **`pure_color_symbol_error`**   |                | `$pure_color_danger`     |
 | **`pure_color_symbol_success`** |                | `$pure_color_success` |
 
 ### Git
@@ -111,7 +111,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | **`pure_color_mute`**    | `(set_color brblack)` |
 | **`pure_color_success`** | `(set_color magenta)` |
 | **`pure_color_normal`**  | `(set_color normal)`  |
-| **`pure_color_red`**     | `(set_color red)`     |
+| **`pure_color_danger`**     | `(set_color red)`     |
 | **`pure_color_white`**   | `(set_color white)`   |
 | **`pure_color_yellow`**  | `(set_color yellow)`  |
 
