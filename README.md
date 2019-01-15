@@ -94,8 +94,8 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | **`pure_symbol_git_arrow_up`**   | Symbol for branch being (commits to pull).         | `⇡`                |
 | **`pure_symbol_git_dirty`**      | Symbol for dirty repository (uncommitted changes). | `*`                |
 | **`pure_color_git_arrows`**      |                                                    | `$pure_color_info` |
-| **`pure_color_git_branch`**      |                                                    | `$pure_color_gray` |
-| **`pure_color_git_dirty`**       |                                                    | `$pure_color_gray` |
+| **`pure_color_git_branch`**      |                                                    | `$pure_color_mute` |
+| **`pure_color_git_dirty`**       |                                                    | `$pure_color_mute` |
 :information_source:: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki#safer-symbols)?
 
 ### Terminal Title
@@ -108,7 +108,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | :----------------------- | :-------------------- |
 | **`pure_color_primary`**    | `(set_color blue)`    |
 | **`pure_color_info`**    | `(set_color cyan)`    |
-| **`pure_color_gray`**    | `(set_color brblack)` |
+| **`pure_color_mute`**    | `(set_color brblack)` |
 | **`pure_color_magenta`** | `(set_color magenta)` |
 | **`pure_color_normal`**  | `(set_color normal)`  |
 | **`pure_color_red`**     | `(set_color red)`     |
@@ -119,11 +119,11 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | Option                           | Default value       |
 | :------------------------------- | :------------------ |
 | **`pure_color_current_folder`**  | `$pure_color_primary`  |
-| **`pure_color_ssh_host`**        | `$pure_color_gray`  |
-| **`pure_color_ssh_separator`**   | `$pure_color_gray`  |
-| **`pure_color_ssh_user_normal`** | `$pure_color_gray`  |
+| **`pure_color_ssh_host`**        | `$pure_color_mute`  |
+| **`pure_color_ssh_separator`**   | `$pure_color_mute`  |
+| **`pure_color_ssh_user_normal`** | `$pure_color_mute`  |
 | **`pure_color_ssh_user_root`**   | `$pure_color_white` |
-| **`pure_color_virtualenv`**      | `$pure_color_gray`  |
+| **`pure_color_virtualenv`**      | `$pure_color_mute`  |
 
 
 ### Maximum Execution Time

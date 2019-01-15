@@ -82,11 +82,11 @@ test "configure: pure_color_info"
     ) = (set_color cyan)
 end
 
-test "configure: pure_color_gray" 
+test "configure: pure_color_mute" 
     (
-        set --erase pure_color_gray
+        set --erase pure_color_mute
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_gray
+        echo $pure_color_mute
     ) = (set_color brblack)
 end
 
