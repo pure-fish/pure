@@ -1,26 +1,4 @@
-set --universal pure_version 1.13.0
-
-# Whether or not is a fresh session
-set --global _pure_fresh_session true
-
-# Deactivate the default virtualenv prompt so that we can add our own
-set --global --export VIRTUAL_ENV_DISABLE_PROMPT 1
-
-# Symbols
-_pure_set_default pure_symbol_prompt "❯"
-_pure_set_default pure_color_prompt_on_error $pure_color_danger
-_pure_set_default pure_color_prompt_on_success $pure_color_success
-
-# Git
-_pure_set_default pure_symbol_git_unpulled_commits "⇣"
-_pure_set_default pure_symbol_git_unpushed_commits "⇡"
-_pure_set_default pure_symbol_git_dirty "*"
-_pure_set_default pure_color_git_pending_commits $pure_color_info
-_pure_set_default pure_color_git_branch $pure_color_mute
-_pure_set_default pure_color_git_dirty $pure_color_mute
-
-# Title
-_pure_set_default pure_symbol_title_bar_separator "—"
+set --universal pure_version 1.13.0  # used for bug report
 
 # Base colors
 _pure_set_default pure_color_primary (set_color blue)
@@ -33,13 +11,32 @@ _pure_set_default pure_color_light (set_color white)
 _pure_set_default pure_color_warning (set_color yellow)
 _pure_set_default pure_color_dark (set_color black)
 
-# Colors used on symbols, attributes and events
+# Prompt
+_pure_set_default pure_symbol_prompt "❯"
+_pure_set_default pure_color_prompt_on_error $pure_color_danger
+_pure_set_default pure_color_prompt_on_success $pure_color_success
+
+# Current Working Directory
 _pure_set_default pure_color_current_directory $pure_color_primary
+
+# Git
+_pure_set_default pure_symbol_git_unpulled_commits "⇣"
+_pure_set_default pure_symbol_git_unpushed_commits "⇡"
+_pure_set_default pure_symbol_git_dirty "*"
+_pure_set_default pure_color_git_pending_commits $pure_color_info
+_pure_set_default pure_color_git_branch $pure_color_mute
+_pure_set_default pure_color_git_dirty $pure_color_mute
+
+# SSH info
 _pure_set_default pure_color_ssh_hostname $pure_color_mute
 _pure_set_default pure_color_ssh_separator $pure_color_mute
 _pure_set_default pure_color_ssh_user_normal $pure_color_mute
 _pure_set_default pure_color_ssh_user_root $pure_color_light
+
+# Virtualenv for Pyhon
 _pure_set_default pure_color_virtualenv $pure_color_mute
+# Deactivate the default virtualenv prompt so that we can add our own
+set --global --export VIRTUAL_ENV_DISABLE_PROMPT 1  
 
 # Print current working directory at the beginning of prompt
 # true (default):   current directory, git, user@hostname (ssh-only), command duration
@@ -58,3 +55,9 @@ _pure_set_default pure_color_command_duration $pure_color_warning
 # Right Prompt variables
 _pure_set_default pure_right_prompt ""
 _pure_set_default pure_color_right_prompt $pure_color_normal
+
+# Title
+_pure_set_default pure_symbol_title_bar_separator "—"
+
+# Whether or not is a fresh session
+set --global _pure_fresh_session true
