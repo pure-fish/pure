@@ -20,7 +20,7 @@ _pure_set_default pure_color_git_branch $pure_color_mute
 _pure_set_default pure_color_git_dirty $pure_color_mute
 
 # Title
-_pure_set_default pure_symbol_horizontal_bar "—"
+_pure_set_default pure_symbol_title_bar_separator "—"
 
 # Base colors
 _pure_set_default pure_color_primary (set_color blue)
