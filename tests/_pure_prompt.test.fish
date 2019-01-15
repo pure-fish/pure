@@ -19,7 +19,7 @@ end
 
 test "_pure_prompt: print prompt after failing command"
     (
-        set pure_color_symbol_error (set_color red)
+        set pure_color_prompt_on_error (set_color red)
         set pure_symbol_prompt '>'  # using default ❯ break following tests
         set --local last_command $failed
 

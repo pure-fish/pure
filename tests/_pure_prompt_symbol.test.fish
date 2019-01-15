@@ -28,7 +28,7 @@ test "_pure_prompt_symbol: colorizes prompt in red when last command failed"
     (
         set --local last_command $fail
         set pure_symbol_prompt '>'  # using default ❯ break following tests
-        set pure_color_symbol_error (set_color red)
+        set pure_color_prompt_on_error (set_color red)
 
         _pure_prompt_symbol $last_command
     ) = (set_color red)'>'
@@ -38,7 +38,7 @@ test "_pure_prompt_symbol: add a magenta prompt when pure_separate_prompt_on_err
     (
         set --local last_command $fail
         set pure_symbol_prompt '>'  # using default ❯ break following tests
-        set pure_color_symbol_error (set_color red)
+        set pure_color_prompt_on_error (set_color red)
         set pure_color_symbol_success (set_color magenta)
         set pure_separate_prompt_on_error true
 

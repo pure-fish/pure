@@ -38,7 +38,7 @@ _pure_set_default pure_color_ssh_host $pure_color_mute
 _pure_set_default pure_color_ssh_separator $pure_color_mute
 _pure_set_default pure_color_ssh_user_normal $pure_color_mute
 _pure_set_default pure_color_ssh_user_root $pure_color_light
-_pure_set_default pure_color_symbol_error $pure_color_danger
+_pure_set_default pure_color_prompt_on_error $pure_color_danger
 _pure_set_default pure_color_symbol_success $pure_color_success
 _pure_set_default pure_color_virtualenv $pure_color_mute
 

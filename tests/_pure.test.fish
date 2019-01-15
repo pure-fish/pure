@@ -202,11 +202,11 @@ test "configure: pure_color_ssh_user_root"
     ) = (set_color white)
 end
 
-test "configure: pure_color_symbol_error" 
+test "configure: pure_color_prompt_on_error" 
     (
-        set --erase pure_color_symbol_error
+        set --erase pure_color_prompt_on_error
         source $DIRNAME/../conf.d/pure.fish
-        echo $pure_color_symbol_error
+        echo $pure_color_prompt_on_error
     ) = (set_color red)
 end
 
