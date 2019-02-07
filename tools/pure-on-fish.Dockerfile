@@ -26,7 +26,7 @@ RUN fish -c 'fisher add jorgebucaran/fishtape'
 
 # Copy source code
 WORKDIR /tmp/.pure/
-COPY . /tmp/.pure/
+COPY --chown=nemo:nemo . /tmp/.pure/
 
 ENTRYPOINT ["fish", "-c"]
 CMD ["fishtape tests/*.test.fish"]
