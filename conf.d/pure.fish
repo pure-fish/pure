@@ -13,6 +13,7 @@ _pure_set_default pure_color_dark (set_color black)
 
 # Prompt
 _pure_set_default pure_symbol_prompt "❯"
+_pure_set_default pure_symbol_reverse "❮"
 _pure_set_default pure_color_prompt_on_error $pure_color_danger
 _pure_set_default pure_color_prompt_on_success $pure_color_success
 
@@ -56,6 +57,11 @@ _pure_set_default pure_color_command_duration $pure_color_warning
 # Right Prompt variables
 _pure_set_default pure_right_prompt ""
 _pure_set_default pure_color_right_prompt $pure_color_normal
+
+# vi mode indicator
+# true (default):  indicate a non-insert mode by reversing the prompt symbol (❮)
+# false:           indicate vi mode with [I], [N], [V]  
+_pure_set_default pure_reverse_prompt_symbol_in_vimode true
 
 # Title
 _pure_set_default pure_symbol_title_bar_separator "—"
