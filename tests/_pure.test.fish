@@ -26,6 +26,18 @@ set --local empty ''
     echo $pure_symbol_prompt
 ) = "❯"
 
+@test "configure: pure_symbol_reverse"  (
+    set --erase pure_symbol_reverse
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_symbol_reverse
+) = "❮"
+
+@test "configure: pure_reverse_prompt_symbol_in_vimode" (
+        set --erase pure_reverse_prompt_symbol_in_vimode
+        source $DIRNAME/../conf.d/pure.fish
+        echo $pure_reverse_prompt_symbol_in_vimode
+    ) = true
+
 @test "configure: pure_symbol_git_unpulled_commits"  (
     set --erase pure_symbol_git_unpulled_commits
     source $current_dirname/../conf.d/pure.fish
