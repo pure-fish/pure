@@ -10,55 +10,51 @@ function teardown
 end
 
 @test "_pure_prompt_git: ignores directory that are not git repository" (
-        mkdir --parents /tmp/test
-        cd /tmp/test
+    mkdir --parents /tmp/test
+    cd /tmp/test
 
-        _pure_prompt_git
-    ) $status -eq $succeed
-end
+    _pure_prompt_git
+) $status -eq $succeed
 
 @test "_pure_prompt_git: activates on git repository" (
-        mkdir --parents /tmp/test
-        cd /tmp/test
-        git init --quiet
-        function _pure_prompt_git_dirty; echo $empty; end
-        function git_pending_commits; echo $empty; end
+    mkdir --parents /tmp/test
+    cd /tmp/test
+    git init --quiet
+    function _pure_prompt_git_dirty; echo $empty; end
+    function git_ping_commits; echo $empty; end
 
-        set pure_color_git_branch $empty
-        set pure_color_git_dirty $empty
-        set pure_color_git_pending_commits $empty
+    set pure_color_git_branch $empty
+    set pure_color_git_dirty $empty
+    set pure_color_git_ping_commits $empty
 
-        _pure_prompt_git
-    ) = 'master'
-end
+    _pure_prompt_git
+) = 'master'
 
 @test "_pure_prompt_git: activates on dirty repository" (
-        mkdir --parents /tmp/test
-        cd /tmp/test
-        git init --quiet
-        function _pure_prompt_git_dirty; echo '*'; end
-        function git_pending_commits; echo $empty; end
+    mkdir --parents /tmp/test
+    cd /tmp/test
+    git init --quiet
+    function _pure_prompt_git_dirty; echo '*'; end
+    function git_ping_commits; echo $empty; end
 
-        set pure_color_git_branch $empty
-        set pure_color_git_dirty $empty
-        set pure_color_git_pending_commits $empty
+    set pure_color_git_branch $empty
+    set pure_color_git_dirty $empty
+    set pure_color_git_ping_commits $empty
 
-        _pure_prompt_git
-    ) = 'master*'
-end
+    _pure_prompt_git
+) = 'master*'
 
 @test "_pure_prompt_git: activates on repository with upstream changes" (
-        mkdir --parents /tmp/test
-        cd /tmp/test
-        git init --quiet
-        function _pure_prompt_git_dirty; echo $empty; end
-        function git_pending_commits; echo 'v'; end
+    mkdir --parents /tmp/test
+    cd /tmp/test
+    git init --quiet
+    function _pure_prompt_git_dirty; echo $empty; end
+    function git_ping_commits; echo 'v'; end
 
-        set pure_color_git_branch $empty
-        set pure_color_git_dirty $empty
-        set pure_color_git_pending_commits $empty
+    set pure_color_git_branch $empty
+    set pure_color_git_dirty $empty
+    set pure_color_git_ping_commits $empty
 
-        _pure_prompt_git
-    ) = 'master v'
-end
+    _pure_prompt_git
+) = 'master v'
 

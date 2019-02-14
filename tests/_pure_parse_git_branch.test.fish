@@ -10,11 +10,10 @@ function setup
 end
 
 @test "_pure_parse_git_branch: returns current branch" (
-        cd $temporary_test_directory
+    cd $temporary_test_directory
 
-        _pure_parse_git_branch
-    ) = 'master'
-end
+    _pure_parse_git_branch
+) = 'master'
 
 function teardown
     rm -r -f $temporary_test_directory

@@ -1,7 +1,6 @@
 source $current_dirname/../functions/_pure_prompt_git_branch.fish
 source $current_dirname/../functions/_pure_parse_git_branch.fish
 
-
 function setup
     rm -r -f /tmp/pure
 
@@ -14,11 +13,10 @@ function setup
 end
 
 @test "_pure_prompt_git_branch: show branch name in gray" (
-        set pure_color_git_branch (set_color brblack)
+    set pure_color_git_branch (set_color brblack)
 
-        _pure_prompt_git_branch
-    ) = (set_color brblack)'master'
-end
+    _pure_prompt_git_branch
+) = (set_color brblack)'master'
 
 function teardown
     rm -r -f /tmp/pure

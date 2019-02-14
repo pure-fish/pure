@@ -28,38 +28,37 @@ function teardown
     functions --erase _pure_prompt_command_duration
     functions --erase _pure_string_width
     functions --erase _pure_prompt_current_folder
- end
+end
 
 @test "_pure_prompt_first_line: fails when git is missing" (
-        functions --copy type builtin_type
-        function type  # mock, see https://github.com/fish-shell/fish-shell/issues/5444
-            if test "x$argv" = "x-fq git"
-                return 1
-            end
-            builtin_type $argv
+    functions --copy type builtin_type
+    function type  # mock, see https://github.com/fish-shell/fish-shell/issues/5444
+        if test "x$argv" = "x-fq git"
+            return 1
         end
 
-        _pure_prompt_first_line
-        set --local exit_code $status
+        builtin_type $argv
+    end
 
-        functions --erase type  # remove mock
-        functions --copy builtin_type type  # restore built-in behavior for following test cases
-        echo $exit_code
-    ) = 1
-end
+    _pure_prompt_first_line
+    set --local exit_code $status
+
+    functions --erase type  # remove mock
+    functions --copy builtin_type type  # restore built-in behavior for following test cases
+    echo $exit_code
+) = 1
 
 @test "_pure_prompt_first_line: print current directory, git, user@hostname (ssh-only), command duration" (
-        set pure_begin_prompt_with_current_directory true
-        _pure_prompt_first_line
+    set pure_begin_prompt_with_current_directory true
+    _pure_prompt_first_line
 
-        rm -r -f /tmp/test
-    ) = '/tmp/test master user@hostname 1s'
-end
+    rm -r -f /tmp/test
+) = '/tmp/test master user@hostname 1s'
 
 @test "_pure_prompt_first_line: print user@hostname (ssh-only), current directory, git, command duration" (
-        set pure_begin_prompt_with_current_directory false
-        _pure_prompt_first_line
+    set pure_begin_prompt_with_current_directory false
+    _pure_prompt_first_line
 
-        rm -r -f /tmp/test
-    ) = 'user@hostname /tmp/test master 1s'
-end
+    rm -r -f /tmp/test
+) = 'user@hostname /tmp/test master 1s'
+
