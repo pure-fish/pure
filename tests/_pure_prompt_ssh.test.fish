@@ -6,7 +6,7 @@ source $DIRNAME/../tools/versions-compare.fish
 
 set --local empty ''
 
-test "_pure_prompt_ssh: hide 'user@hostname' when working locally"
+@test "_pure_prompt_ssh: hide 'user@hostname' when working locally"
     (
         set --erase SSH_CONNECTION
 
@@ -16,7 +16,7 @@ test "_pure_prompt_ssh: hide 'user@hostname' when working locally"
 end
 
 if fish_version_below '3.0.0'
-test "_pure_prompt_ssh: displays 'user@hostname' when on SSH connection"
+@test "_pure_prompt_ssh: displays 'user@hostname' when on SSH connection"
     (
         set pure_color_ssh_user_normal $empty
         set pure_color_ssh_separator $empty
@@ -32,7 +32,7 @@ end
 end
 
 if fish_version_at_least '3.0.0'
-test "_pure_prompt_ssh: displays 'user@[\w]+' when on SSH connection"
+@test "_pure_prompt_ssh: displays 'user@[\w]+' when on SSH connection"
     (
         set pure_color_ssh_user_normal $empty
         set pure_color_ssh_separator $empty
