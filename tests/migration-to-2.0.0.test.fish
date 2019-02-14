@@ -8,9 +8,9 @@ function teardown
     rm $DIRNAME/fixtures/config.fish
 end
 
-test "migrate all variables"
+@test "migrate all variables"
     (
-        set file_to_migrate $DIRNAME/fixtures/config.fish
+        set file_to_migrate $DIRNAME/fixtures/config.fish  # created during 'setup'
 
         fish $DIRNAME/../tools/migration-to-2.0.0.fish $file_to_migrate 2>&1 >/dev/null
         

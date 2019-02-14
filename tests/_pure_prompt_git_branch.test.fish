@@ -13,7 +13,7 @@ function setup
     git config --local user.name "Your Name"
 end
 
-test "_pure_prompt_git_branch: show branch name in gray"
+@test "_pure_prompt_git_branch: show branch name in gray"
     (
         set pure_color_git_branch (set_color brblack)
 

@@ -30,7 +30,7 @@ function teardown
     functions --erase _pure_prompt_current_folder
  end
 
-test "_pure_prompt_first_line: fails when git is missing"
+@test "_pure_prompt_first_line: fails when git is missing"
     (
         functions --copy type builtin_type
         function type  # mock, see https://github.com/fish-shell/fish-shell/issues/5444
@@ -49,7 +49,7 @@ test "_pure_prompt_first_line: fails when git is missing"
     ) = 1
 end
 
-test "_pure_prompt_first_line: print current directory, git, user@hostname (ssh-only), command duration"
+@test "_pure_prompt_first_line: print current directory, git, user@hostname (ssh-only), command duration"
     (
         set pure_begin_prompt_with_current_directory true
         _pure_prompt_first_line
@@ -58,7 +58,7 @@ test "_pure_prompt_first_line: print current directory, git, user@hostname (ssh-
     ) = '/tmp/test master user@hostname 1s'
 end
 
-test "_pure_prompt_first_line: print user@hostname (ssh-only), current directory, git, command duration"
+@test "_pure_prompt_first_line: print user@hostname (ssh-only), current directory, git, command duration"
     (
         set pure_begin_prompt_with_current_directory false
         _pure_prompt_first_line
