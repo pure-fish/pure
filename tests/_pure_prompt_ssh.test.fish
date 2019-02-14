@@ -1,8 +1,8 @@
-source $DIRNAME/../functions/_pure_prompt_ssh.fish
-source $DIRNAME/../functions/_pure_prompt_ssh_user.fish
-source $DIRNAME/../functions/_pure_prompt_ssh_separator.fish
-source $DIRNAME/../functions/_pure_prompt_ssh_host.fish
-source $DIRNAME/../tools/versions-compare.fish
+source $current_dirname/../functions/_pure_prompt_ssh.fish
+source $current_dirname/../functions/_pure_prompt_ssh_user.fish
+source $current_dirname/../functions/_pure_prompt_ssh_separator.fish
+source $current_dirname/../functions/_pure_prompt_ssh_host.fish
+source $current_dirname/../tools/versions-compare.fish
 
 set --local empty ''
 

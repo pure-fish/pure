@@ -1,5 +1,5 @@
-source $DIRNAME/../functions/_pure_print_prompt.fish
-source $DIRNAME/../functions/_pure_string_width.fish
+source $current_dirname/../functions/_pure_print_prompt.fish
+source $current_dirname/../functions/_pure_string_width.fish
 
 set --local empty ''
 

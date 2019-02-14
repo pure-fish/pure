@@ -1,5 +1,5 @@
-source $DIRNAME/../fish_title.fish
-source $DIRNAME/../tools/versions-compare.fish
+source $current_dirname/../fish_title.fish
+source $current_dirname/../tools/versions-compare.fish
 
 function setup
     mkdir --parents /tmp/current/directory/

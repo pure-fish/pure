@@ -1,4 +1,4 @@
-source $DIRNAME/../functions/_pure_string_width.fish
+source $current_dirname/../functions/_pure_string_width.fish
 
 set --local empty ''
 

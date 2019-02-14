@@ -1,4 +1,4 @@
-source $DIRNAME/../functions/_pure_prompt_first_line.fish
+source $current_dirname/../functions/_pure_prompt_first_line.fish
 
 set --local empty ''
 
