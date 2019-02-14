@@ -25,16 +25,14 @@ function teardown
         $fake_git_bare
 end
 
-@test "_pure_prompt_git_pending_commits: print nothing when no upstream repo"
-    (
+@test "_pure_prompt_git_pending_commits: print nothing when no upstream repo" (
         cd $fake_git_repo
 
         _pure_prompt_git_pending_commits
     ) = $empty
 end
 
-@test "_pure_prompt_git_pending_commits: show arrow UP when branch is AHEAD of upstream (need git push)"
-    (
+@test "_pure_prompt_git_pending_commits: show arrow UP when branch is AHEAD of upstream (need git push)" (
         git push --set-upstream --quiet origin master > /dev/null
         touch missing-on-upstream.txt
         git add missing-on-upstream.txt
@@ -48,8 +46,7 @@ end
     ) = (set_color cyan)'^'
 end
 
-@test "_pure_prompt_git_pending_commits: show arrow DOWN when branch is BEHIND upstream (need git pull)"
-    (
+@test "_pure_prompt_git_pending_commits: show arrow DOWN when branch is BEHIND upstream (need git pull)" (
         touch another-file.txt
         git add another-file.txt
         git commit --quiet --message='another'

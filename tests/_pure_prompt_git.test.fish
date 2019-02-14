@@ -9,8 +9,7 @@ function teardown
     rm -r -f /tmp/test
 end
 
-@test "_pure_prompt_git: ignores directory that are not git repository"
-    (
+@test "_pure_prompt_git: ignores directory that are not git repository" (
         mkdir --parents /tmp/test
         cd /tmp/test
 
@@ -18,8 +17,7 @@ end
     ) $status -eq $succeed
 end
 
-@test "_pure_prompt_git: activates on git repository"
-    (
+@test "_pure_prompt_git: activates on git repository" (
         mkdir --parents /tmp/test
         cd /tmp/test
         git init --quiet
@@ -34,8 +32,7 @@ end
     ) = 'master'
 end
 
-@test "_pure_prompt_git: activates on dirty repository"
-    (
+@test "_pure_prompt_git: activates on dirty repository" (
         mkdir --parents /tmp/test
         cd /tmp/test
         git init --quiet
@@ -50,8 +47,7 @@ end
     ) = 'master*'
 end
 
-@test "_pure_prompt_git: activates on repository with upstream changes"
-    (
+@test "_pure_prompt_git: activates on repository with upstream changes" (
         mkdir --parents /tmp/test
         cd /tmp/test
         git init --quiet
