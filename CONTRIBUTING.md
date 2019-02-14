@@ -41,3 +41,74 @@ Todo upon release:
 
 * filename: `my_tool.fish`
 * test file: `my_tool.test.fish`
+
+
+## Global Variable
+
+> Base colors should follow `$pure_color_<meaning>` pattern (cf. [bootstrap naming](https://getbootstrap.com/docs/4.1/utilities/colors/)).
+
+##### Example
+
+```fish
+$pure_color_info     # cyan
+$pure_color_success  # green
+$pure_color_warning  # yellow
+$pure_color_danger   # red
+$pure_color_light
+$pure_color_dark
+$pure_color_muted    # gray
+```
+
+## Feature's Variables
+
+> Each feature should have a dedicated variables to allow customization.
+
+> Feature's variables (flag, symbol, color) should use `$pure_<type>_<feature>` naming pattern:
+>
+> | Role   | Name pattern             |
+> | :----- | :----------------------- |
+> | flag   | `$pure_<verb>_<feature>` |
+> | color  | `$pure_color_<feature>`  |
+> | symbol | `$pure_symbol_<feature>` |
+
+##### Example
+
+```fish
+$pure_enable_git_status
+```
+
+```fish
+$pure_symbol_git_unpushed_commits
+```
+
+```fish
+$pure_color_git_unpulled_commits
+```
+
+## Feature Flag's Variable
+
+> Name should follow `$pure_<verb>_<feature>` pattern, where:
+  > * `verb` describe the action triggered by the feature (_i.e._ `separate`, `begin`, `show`, etc.) ;
+  > * `feature` descibre the _what_ of the feature (_i.e._ `prompt_on_error`, `with_current_directory`, `git_status`, etc.).
+
+> Value should be **a boolean**.
+  
+##### Example
+
+```fish
+$pure_begin_prompt_with_current_directory = true
+```
+
+```fish
+$pure_enable_git_async = false
+```
+
+## Avoid abbreviation
+
+> Use complete word over abbreviation.
+
+##### Example
+
+```fish
+$pure_threshold_command_duration
+```
