@@ -1,4 +1,4 @@
-source $DIRNAME/../fish_right_prompt.fish
+source $current_dirname/../fish_right_prompt.fish
 
 set --local empty ''
 

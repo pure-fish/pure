@@ -1,4 +1,4 @@
-source $DIRNAME/../functions/_pure_parse_git_branch.fish
+source $current_dirname/../functions/_pure_parse_git_branch.fish
 
 set temporary_test_directory /tmp/pure
 

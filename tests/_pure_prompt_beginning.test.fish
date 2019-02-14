@@ -1,4 +1,4 @@
-source $DIRNAME/../functions/_pure_prompt_beginning.fish
+source $current_dirname/../functions/_pure_prompt_beginning.fish
 
 @test "_pure_prompt_beginning: print prompt with newline for existing session"
     (

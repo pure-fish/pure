@@ -1,4 +1,4 @@
-source $DIRNAME/../tools/versions-compare.fish
+source $current_dirname/../tools/versions-compare.fish
 
 set --local fail 1
 set --local success 0

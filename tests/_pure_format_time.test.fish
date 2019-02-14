@@ -1,4 +1,4 @@
-source $DIRNAME/../functions/_pure_format_time.fish
+source $current_dirname/../functions/_pure_format_time.fish
 
 set --local threshold 0 # in seconds
 set --local empty ''

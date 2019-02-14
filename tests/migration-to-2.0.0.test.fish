@@ -1,19 +1,19 @@
-set --global DIRNAME $DIRNAME
+set --global DIRNAME $current_dirname
 
 function setup
-    cp $DIRNAME/fixtures/{config.mock.fish,config.fish}
+    cp $current_dirname/fixtures/{config.mock.fish,config.fish}
 end
 
 function teardown
-    rm $DIRNAME/fixtures/config.fish
+    rm $current_dirname/fixtures/config.fish
 end
 
 @test "migrate all variables"
     (
-        set file_to_migrate $DIRNAME/fixtures/config.fish  # created during 'setup'
+        set file_to_migrate $current_dirname/fixtures/config.fish  # created during 'setup'
 
-        fish $DIRNAME/../tools/migration-to-2.0.0.fish $file_to_migrate 2>&1 >/dev/null
+        fish $current_dirname/../tools/migration-to-2.0.0.fish $file_to_migrate 2>&1 >/dev/null
         
-        diff -U 0 $DIRNAME/fixtures/config.expected.fish $file_to_migrate
+        diff -U 0 $current_dirname/fixtures/config.expected.fish $file_to_migrate
     ) $status -eq 0
 end

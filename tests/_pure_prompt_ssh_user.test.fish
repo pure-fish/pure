@@ -1,4 +1,4 @@
-source $DIRNAME/../functions/_pure_prompt_ssh_user.fish
+source $current_dirname/../functions/_pure_prompt_ssh_user.fish
 
 @test "_pure_prompt_ssh_user: colorize standard user"
     (

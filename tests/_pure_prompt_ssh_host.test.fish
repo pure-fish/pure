@@ -1,5 +1,5 @@
-source $DIRNAME/../functions/_pure_prompt_ssh_host.fish
-source $DIRNAME/../tools/versions-compare.fish
+source $current_dirname/../functions/_pure_prompt_ssh_host.fish
+source $current_dirname/../tools/versions-compare.fish
 
 if fish_version_below '3.0.0'
 @test "_pure_prompt_ssh_host: colorize hostname (using reserved variable)"

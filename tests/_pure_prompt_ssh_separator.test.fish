@@ -1,4 +1,4 @@
-source $DIRNAME/../functions/_pure_prompt_ssh_separator.fish
+source $current_dirname/../functions/_pure_prompt_ssh_separator.fish
 
 @test "_pure_prompt_ssh_separator: display at symbol"
     (
