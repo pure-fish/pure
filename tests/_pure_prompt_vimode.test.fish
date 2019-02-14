@@ -2,14 +2,12 @@ source $current_dirname/../functions/_pure_prompt_vimode.fish
 
 set --local empty ''
 
-@test "_pure_prompt_vimode: hides vimode prompt by default"
-    (
+@test "_pure_prompt_vimode: hides vimode prompt by default" (
         _pure_prompt_vimode
     ) = $empty
 end
 
-@test "_pure_prompt_vimode: shows default vimode prompt"
-    (
+@test "_pure_prompt_vimode: shows default vimode prompt" (
         set fish_key_bindings fish_vi_key_bindings
 
         _pure_prompt_vimode
