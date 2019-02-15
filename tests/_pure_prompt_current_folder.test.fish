@@ -1,4 +1,5 @@
 source $current_dirname/../functions/_pure_prompt_current_folder.fish
+source $current_dirname/../functions/_pure_parse_directory.fish
 
 set --local empty ''
 set --local fail 1
