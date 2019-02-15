@@ -2,14 +2,16 @@ source $current_dirname/../functions/_pure_prompt_git_branch.fish
 source $current_dirname/../functions/_pure_parse_git_branch.fish
 
 function setup
-    rm -r -f /tmp/pure
-
-    mkdir -p /tmp/pure
-    cd /tmp/pure
+    mkdir --parents /tmp/test_pure_prompt_git_branch  # prevent conflict between parallel test files
+    cd /tmp/test_pure_prompt_git_branch
 
     git init --quiet
     git config --local user.email "you@example.com"
     git config --local user.name "Your Name"
+end
+
+function teardown
+    rm --force --recursive /tmp/test_pure_prompt_git_branch
 end
 
 @test "_pure_prompt_git_branch: show branch name in gray" (
@@ -18,6 +20,3 @@ end
     _pure_prompt_git_branch
 ) = (set_color brblack)'master'
 
-function teardown
-    rm -r -f /tmp/pure
-end

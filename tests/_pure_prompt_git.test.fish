@@ -6,20 +6,23 @@ source $current_dirname/../functions/_pure_string_width.fish
 set --local succeed 0
 set --local empty ''
 
+function setup
+    mkdir --parents /tmp/test_pure_prompt_git  # prevent conflict between parallel test files
+    cd /tmp/test_pure_prompt_git
+end
+
 function teardown
-    rm -r -f /tmp/test
+    rm --force --recursive /tmp/test_pure_prompt_git
 end
 
 @test "_pure_prompt_git: ignores directory that are not git repository" (
-    mkdir --parents /tmp/test
-    cd /tmp/test
+    function _pure_prompt_git_dirty; echo $empty; end
+    function git_pending_commits; echo $empty; end
 
     _pure_prompt_git
 ) $status -eq $succeed
 
 @test "_pure_prompt_git: activates on git repository" (
-    mkdir --parents /tmp/test
-    cd /tmp/test
     git init --quiet
     function _pure_prompt_git_dirty; echo $empty; end
     function git_pending_commits; echo $empty; end
@@ -32,8 +35,6 @@ end
 ) = 'master'
 
 @test "_pure_prompt_git: activates on dirty repository" (
-    mkdir --parents /tmp/test
-    cd /tmp/test
     git init --quiet
     function _pure_prompt_git_dirty; echo '*'; end
     function git_pending_commits; echo $empty; end
@@ -46,8 +47,6 @@ end
 ) = 'master*'
 
 @test "_pure_prompt_git: activates on repository with upstream changes" (
-    mkdir --parents /tmp/test
-    cd /tmp/test
     git init --quiet
     function _pure_prompt_git_dirty; echo $empty; end
     function git_pending_commits; echo 'v'; end
