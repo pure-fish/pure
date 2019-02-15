@@ -1,8 +1,8 @@
-source $current_dirname/../functions/_pure_prompt_ing.fish
+source $current_dirname/../functions/_pure_prompt_ending.fish
 
-@test "_pure_prompt_ing: reset color to normal" (
+@test "_pure_prompt_ending: reset color to normal" (
     set pure_color_normal (set_color normal)
     
-    _pure_prompt_ing
+    _pure_prompt_ending
 ) = (set_color normal)' '
 
