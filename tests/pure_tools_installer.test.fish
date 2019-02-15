@@ -5,7 +5,7 @@ source $current_dirname/../tools/installer.fish
     echo "$FISH_CONFIG_DIR"
 ) = "/custom/config/path"
 
-test 'installer: set $FISH_CONFIG_DIR to default value' (
+@test 'installer: set $FISH_CONFIG_DIR to default value' (
     pure::set_fish_config_path >/dev/null
     echo "$FISH_CONFIG_DIR"
 ) = "$HOME/.config/fish"
@@ -15,7 +15,7 @@ test 'installer: set $FISH_CONFIG_DIR to default value' (
     echo "$PURE_INSTALL_DIR"
 ) = "/custom/theme/path"
 
-test 'installer: set $PURE_INSTALL_DIR to default value' (
+@test 'installer: set $PURE_INSTALL_DIR to default value' (
     pure::set_pure_install_path >/dev/null
     echo $PURE_INSTALL_DIR
 ) = "$FISH_CONFIG_DIR/functions/theme-pure"
