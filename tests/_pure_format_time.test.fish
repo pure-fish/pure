@@ -15,38 +15,41 @@ set --local fail 1
     _pure_format_time $duration $threshold
 ) = $empty
 
-set --local seconds 1000 # express as milliseconds
 @test "_pure_format_time: format 1s to human" (
+    set --local seconds 1000 # express as milliseconds
     _pure_format_time (math "1*$seconds") $threshold
 ) = '1s'
 
 @test "_pure_format_time: format 60s as a minutes to human" (
+    set --local seconds 1000 # express as milliseconds
     _pure_format_time (math "60*$seconds") $threshold
 ) = '1m'
 
-set --local minutes 60000 # express as milliseconds
 @test "_pure_format_time: format 59 minutes to human" (
-     _pure_format_time (math "59*$minutes") $threshold
-    ) = '59m'
+    set --local minutes 60000 # express as milliseconds
+    _pure_format_time (math "59*$minutes") $threshold
+) = '59m'
 
 @test "_pure_format_time: format 60min as an hour to human" (
-     _pure_format_time (math "60*$minutes") $threshold
-    ) = '1h'
+    set --local minutes 60000 # express as milliseconds
+    _pure_format_time (math "60*$minutes") $threshold
+) = '1h'
 
-set --local hours 3600000 # express as milliseconds
 @test "_pure_format_time: format 23 hours to human" (
-     _pure_format_time (math "23*$hours") $threshold
-    ) = '23h'
+    set --local hours 3600000 # express as milliseconds
+    _pure_format_time (math "23*$hours") $threshold
+) = '23h'
 
 @test "_pure_format_time: format 24 hours as a day to human" (
-     _pure_format_time (math "24*$hours") $threshold
-    ) = '1d'
+    set --local hours 3600000 # express as milliseconds
+    _pure_format_time (math "24*$hours") $threshold
+) = '1d'
 
-set --local days 86400000 # express as milliseconds
 @test "_pure_format_time: format days to human" (
-     _pure_format_time (math "100*$days") $threshold
-    ) = '100d'
+    set --local days 86400000 # express as milliseconds
+    _pure_format_time (math "100*$days") $threshold
+) = '100d'
 
 @test "_pure_format_time: format complex duration to human" (
-     _pure_format_time 123456789 $threshold
-    ) = '1d 10h 17m 36s'
+    _pure_format_time 123456789 $threshold
+) = '1d 10h 17m 36s'
