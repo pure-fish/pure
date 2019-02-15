@@ -13,6 +13,6 @@ set --local fail 1
     set COLUMNS 20
     set current_prompt_width 10
 
-    string length (_pure_prompt_current_folder $current_prompt_width)
-) = 9
+    string length (_pure_prompt_current_folder "$current_prompt_width")
+) = 8
 
