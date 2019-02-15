@@ -9,7 +9,7 @@ function _pure_prompt_symbol \
     if test $exit_code -ne 0
         set color_symbol $pure_color_prompt_on_error  # different pure symbol color when previous command failed
 
-        if test $pure_separate_prompt_on_error = true
+        if test "$pure_separate_prompt_on_error" = true
             set color_symbol "$pure_color_prompt_on_error$pure_symbol_prompt$pure_color_prompt_on_success"
         end
     end
