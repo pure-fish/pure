@@ -15,7 +15,7 @@ function fish_version_below \
 
     # busybox compatibility (see https://github.com/fish-shell/fish-shell/issues/4419#issuecomment-453512461)
 	printf '%s\n' $actual $expected | sort -c -t. -k 1,1n -k 2,2n -k 3,3n 2> /dev/null
-    and printf "%sonly fish <%s: %s" (set_color blue) $expected (set_color normal)
+    and printf "%sonly fish <%s: %s" (set_color blue) $expected (set_color normal) 1>&2
 
 	return $status
 end
@@ -25,7 +25,7 @@ function fish_version_at_least \
     --argument-names expected actual
 
     not fish_version_below $argv >/dev/null
-    and printf "%sonly fish ≥%s: %s" (set_color blue) $expected (set_color normal)
+    and printf "%sonly fish ≥%s: %s" (set_color blue) $expected (set_color normal) 1>&2
 
     return $status
 end
