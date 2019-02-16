@@ -1,5 +1,13 @@
 source $current_dirname/../tools/installer.fish
 
+function setup
+    touch $HOME/.config/fish/config.fish
+end
+
+function teardown
+    rm $HOME/.config/fish/config.fish
+end
+
 @test "installer: pass argument to set $FISH_CONFIG_DIR" (
     pure::set_fish_config_path "/custom/config/path" >/dev/null
     echo "$FISH_CONFIG_DIR"
@@ -23,19 +31,19 @@ source $current_dirname/../tools/installer.fish
 @test "installer: check git is present" ( pure::check_git_is_available >/dev/null) $status -eq 0
 
 @test "installer: backup existing theme prompt" (
-    set --local fake_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
-    touch "$fake_prompt"
-    set --local backup_prompt $fake_prompt.ignore
-    rm -f "$backup_prompt"
+    touch $FISH_CONFIG_DIR/functions/fish_prompt.fish
+    rm -f $FISH_CONFIG_DIR/functions/fish_prompt.fish.ignore
 
     pure::backup_existing_theme >/dev/null
-
-    [ -e "$backup_prompt" ]
-) $status -eq 0
+) -e "$FISH_CONFIG_DIR/functions/fish_prompt.fish.ignore"
 
 @test "installer: inject autoloading in config" (
+    set FISH_CONFIG_DIR "$HOME/.config/fish"
+    mkdir --parents $PURE_INSTALL_DIR/conf.d/
+    touch $PURE_INSTALL_DIR/conf.d/pure.fish
+
     pure::enable_autoloading >/dev/null
-    grep -q 'fish_function_path' $HOME/.config/fish/config.fish
+    grep -q 'fish_function_path' $FISH_CONFIG_DIR/config.fish
 ) $status -eq 0
 
 @test "installer: activate prompt" (
@@ -58,7 +66,7 @@ source $current_dirname/../tools/installer.fish
 ) $status -eq 0
 
 @test "installer: load theme file" (
-    echo 'set -g _pure_fresh_session true' >$FISH_CONFIG_DIR/functions/fish_prompt.fish
+    echo 'set --global _pure_fresh_session true' > $FISH_CONFIG_DIR/config.fish
 
     pure::enable_theme >/dev/null
 
