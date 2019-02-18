@@ -21,13 +21,6 @@ function pure::set_pure_install_path
     end
 end
 
-function pure::check_git_is_available
-    printf "\tChecking for git availability"
-    command --search git >/dev/null 2>&1; or begin;
-        printf "%sError: git is not installed%s" "$color_error" "$color_normal"
-        return 1
-    end
-end
 function pure::fetch_source
     printf "\tFetching theme's source"
 
@@ -72,7 +65,6 @@ function pure::clean_after_install
     printf "\tCleaning after install"
     functions --erase pure::set_fish_config_dir
     functions --erase pure::set_pure_install_dir
-    functions --erase pure::check_git_is_available
     functions --erase pure::fetch_source
     functions --erase pure::backup_existing_theme
     functions --erase pure::enable_autoloading
@@ -98,7 +90,6 @@ function install_pure
     printf "Installing Pure theme\n"
     pure::set_fish_config_path $argv
     pure::set_pure_install_path $argv
-    pure::check_git_is_available; pure::exit_symbol $status
     pure::fetch_source; pure::exit_symbol $status
     pure::backup_existing_theme; pure::exit_symbol $status
     pure::enable_autoloading; pure::exit_symbol $status
