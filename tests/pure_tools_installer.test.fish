@@ -28,8 +28,6 @@ end
     echo $PURE_INSTALL_DIR
 ) = "$FISH_CONFIG_DIR/functions/theme-pure"
 
-@test "installer: check git is present" ( pure::check_git_is_available >/dev/null) $status -eq 0
-
 @test "installer: backup existing theme prompt" (
     touch $FISH_CONFIG_DIR/functions/fish_prompt.fish
     rm -f $FISH_CONFIG_DIR/functions/fish_prompt.fish.ignore
