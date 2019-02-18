@@ -13,7 +13,9 @@ RUN apk add \
     --no-cache \
     coreutils \
     curl \
-    gawk
+    gawk \
+    gzip \
+    tar
 
 # Install `fishtape to run tests
 USER nemo
