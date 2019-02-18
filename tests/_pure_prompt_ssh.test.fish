@@ -14,6 +14,7 @@ set --local empty ''
 ) $status -eq 0
 
 if fish_version_below '3.0.0'
+    @mesg (print_fish_version_below '3.0.0')
     @test "_pure_prompt_ssh: displays 'user@hostname' when on SSH connection" (
         set pure_color_ssh_user_normal $empty
         set pure_color_ssh_separator $empty
@@ -28,6 +29,7 @@ if fish_version_below '3.0.0'
 end
 
 if fish_version_at_least '3.0.0'
+    @mesg (print_fish_version_at_least '3.0.0')
     @test "_pure_prompt_ssh: displays 'user@[\w]+' when on SSH connection" (
         set pure_color_ssh_user_normal $empty
         set pure_color_ssh_separator $empty
