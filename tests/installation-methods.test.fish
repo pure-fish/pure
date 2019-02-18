@@ -1,5 +1,8 @@
 function setup
-    rm --force $HOME/.config/fish/functions/fish_*.fish
+    cd $HOME
+    for file in $HOME/.config/fish/functions/fish_*.fish;
+        rm $file
+    end
     echo 'function fish_prompt; end' > $HOME/.config/fish/functions/fish_prompt.fish
     rm --recursive --force $HOME/.config/fish/functions/theme-pure
     echo '' > $HOME/.config/fish/config.fish
@@ -14,6 +17,8 @@ if test $USER = 'nemo'
     @test "installation methods: manually" (
         curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent >/dev/null
         and source /tmp/pure_installer.fish
+
+        rm --recursive --force $HOME/.config/fish/functions/theme-pure        
         and install_pure >/dev/null
 
         fish -c 'fish_prompt | grep -c "❯"' 
@@ -32,8 +37,8 @@ if test $USER = 'nemo'
         rm --recursive --force $HOME/.local/share/omf $HOME/.config/omf/
 
         curl -L https://get.oh-my.fish > install
-        fish install --noninteractive >/dev/null
-        fish -c "omf install pure; fish_prompt" | grep -c '❯' 
+        and fish install --noninteractive >/dev/null
+        and fish -c "omf install pure; fish_prompt" | grep -c '❯' 
     ) = 1
 end
 
