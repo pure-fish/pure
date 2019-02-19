@@ -17,7 +17,7 @@ end
 
 @test "_pure_prompt_git: ignores directory that are not git repository" (
     function _pure_prompt_git_dirty; echo $empty; end
-    function git_pending_commits; echo $empty; end
+    function _pure_prompt_git_pending_commits; echo $empty; end
 
     _pure_prompt_git
 ) $status -eq $succeed
@@ -25,7 +25,7 @@ end
 @test "_pure_prompt_git: activates on git repository" (
     git init --quiet
     function _pure_prompt_git_dirty; echo $empty; end
-    function git_pending_commits; echo $empty; end
+    function _pure_prompt_git_pending_commits; echo $empty; end
 
     set pure_color_git_branch $empty
     set pure_color_git_dirty $empty
@@ -37,7 +37,7 @@ end
 @test "_pure_prompt_git: activates on dirty repository" (
     git init --quiet
     function _pure_prompt_git_dirty; echo '*'; end
-    function git_pending_commits; echo $empty; end
+    function _pure_prompt_git_pending_commits; echo $empty; end
 
     set pure_color_git_branch $empty
     set pure_color_git_dirty $empty
@@ -49,7 +49,7 @@ end
 @test "_pure_prompt_git: activates on repository with upstream changes" (
     git init --quiet
     function _pure_prompt_git_dirty; echo $empty; end
-    function git_pending_commits; echo 'v'; end
+    function _pure_prompt_git_pending_commits; echo 'v'; end
 
     set pure_color_git_branch $empty
     set pure_color_git_dirty $empty
