@@ -26,10 +26,10 @@ set --local empty ''
     echo $pure_symbol_prompt
 ) = "❯"
 
-@test "configure: pure_symbol_reverse"  (
-    set --erase pure_symbol_reverse
+@test "configure: pure_symbol_reverse_prompt"  (
+    set --erase pure_symbol_reverse_prompt
     source $current_dirname/../conf.d/pure.fish
-    echo $pure_symbol_reverse
+    echo $pure_symbol_reverse_prompt
 ) = "❮"
 
 @test "configure: pure_reverse_prompt_symbol_in_vimode" (
