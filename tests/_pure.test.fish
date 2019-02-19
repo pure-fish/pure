@@ -34,7 +34,7 @@ set --local empty ''
 
 @test "configure: pure_reverse_prompt_symbol_in_vimode" (
         set --erase pure_reverse_prompt_symbol_in_vimode
-        source $DIRNAME/../conf.d/pure.fish
+        source $current_dirname/../conf.d/pure.fish
         echo $pure_reverse_prompt_symbol_in_vimode
     ) = true
 
