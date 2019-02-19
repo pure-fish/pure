@@ -27,7 +27,7 @@ function pure::fetch_source
     set --local package "https://github.com/rafaelrinaldi/pure/archive/master.tar.gz"
     mkdir --parents $PURE_INSTALL_DIR
 
-    command curl --show-error --location "$package" | command tar -xzf- -C $PURE_INSTALL_DIR; or begin;
+    command curl --show-error --location "$package" | command tar -xzf- -C $PURE_INSTALL_DIR --strip-components=1; or begin;
         printf "%sError: fetching Pure sources failed%s" "$color_error" "$color_normal"
         return 1
     end
