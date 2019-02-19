@@ -5,7 +5,7 @@ function _pure_prompt_git \
 
     if test -n "$is_git_repository"
         set --local git_prompt (_pure_prompt_git_branch)(_pure_prompt_git_dirty)
-        set --local git_pending_commits (git_pending_commits)
+        set --local git_pending_commits (_pure_prompt_git_pending_commits)
 
         if test (_pure_string_width $git_pending_commits) -ne 0
             set git_prompt $git_prompt $git_pending_commits
