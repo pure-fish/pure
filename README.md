@@ -72,6 +72,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | Option                                 | Default | Description                                          |
 | :------------------------------------- | :------ | :--------------------------------------------------- |
 | **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                       |
+| **`pure_symbol_reverse_prompt`** | `❮`  | VI non-insert mode symbol.
 | **`pure_right_prompt`**                | ""      | Content of the right prompt.                         |
 | **`pure_symbol_git_unpulled_commits`** | "⇣"     | Branch is behind upstream (commits to pull).         |
 | **`pure_symbol_git_unpushed_commits`** | "⇡"     | Branch is ahead upstream (commits to push).          |
@@ -87,6 +88,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | **`pure_threshold_command_duration`** | `5`     | Show command duration when above this value (seconds).            |
 | **`pure_separate_prompt_on_error`**   | `false` | Show last command [exit code as a separate character][exit-code]. |
 | **`pure_begin_prompt_with_current_directory`** | `true` | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_. |
+| **`pure_reverse_prompt_symbol_in_vimode`** | `true` | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`.
 
 #### Colors
 
