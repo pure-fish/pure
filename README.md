@@ -73,11 +73,11 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | :------------------------------------- | :------ | :--------------------------------------------------- |
 | **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                       |
 | **`pure_symbol_reverse_prompt`** | `❮`  | VI non-insert mode symbol.
-| **`pure_right_prompt`**                | ""      | Content of the right prompt.                         |
-| **`pure_symbol_git_unpulled_commits`** | "⇣"     | Branch is behind upstream (commits to pull).         |
-| **`pure_symbol_git_unpushed_commits`** | "⇡"     | Branch is ahead upstream (commits to push).          |
-| **`pure_symbol_git_dirty`**            | "*"     | Repository is Dirty (uncommitted/untracked changes). |
-| **`pure_symbol_title_bar_separator`**  | "—"    |
+| **`pure_right_prompt`**                | ` `       | Content of the right prompt.                         |
+| **`pure_symbol_git_unpulled_commits`** | `⇣`     | Branch is behind upstream (commits to pull).         |
+| **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).          |
+| **`pure_symbol_git_dirty`**            | `*`     | Repository is Dirty (uncommitted/untracked changes). |
+| **`pure_symbol_title_bar_separator`**  | `—`    |
 
 :information_source:: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki#safer-symbols)?
 
