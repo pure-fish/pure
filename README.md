@@ -62,6 +62,7 @@ fundle install;
 - Display `Python` _virtualenv_ when activated ;
 - Fine control over **colors** ;
 - Right prompt control.
+- Display `VI` mode and custom symbol for non-insert mode.
 
 ## Configuration
 
