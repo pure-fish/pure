@@ -39,3 +39,11 @@ end
 
     _pure_get_prompt_symbol
 ) = '❮'
+
+@test "_pure_get_prompt_symbol: get reverse symbol ❮ when hybrid key binding and not in insert mode" (
+    set pure_reverse_prompt_symbol_in_vimode true
+    set fish_bind_mode 'default'
+    set fish_key_bindings 'fish_hybrid_key_bindings'
+
+    _pure_get_prompt_symbol
+) = '❮'
