@@ -54,7 +54,7 @@ fundle install;
 - Display `git` branch name ;
   - Display `*` when `git` repository is _dirty_ ;
   - Display `⇡` when branch is _ahead_ (commits to push) ;
-  - Display `⇣` when branch is _being_ (commits to pull) ;
+  - Display `⇣` when branch is _behind_ (commits to pull) ;
 - Change `❯` to red when previous command has failed ;
 - Update terminal title with _current folder_ and _command_ ;
 - Display _username_ and _hostname_ when in an `SSH` session ;
