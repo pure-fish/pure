@@ -60,7 +60,7 @@ _pure_set_default pure_color_right_prompt $pure_color_normal
 
 # VI mode indicator
 # true (default):  indicate a non-insert mode by reversing the prompt symbol (❮)
-# false:           indicate vi mode with [I], [N], [V]  
+# false:           indicate vi mode with [I], [N], [V]
 _pure_set_default pure_reverse_prompt_symbol_in_vimode true
 
 # Title
@@ -68,3 +68,6 @@ _pure_set_default pure_symbol_title_bar_separator "—"
 
 # Whether or not is a fresh session
 set --global _pure_fresh_session true
+
+# Register `_pure_prompt_new_line` as an event handler fot `fish_prompt`
+functions -q _pure_prompt_new_line
