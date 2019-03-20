@@ -8,18 +8,6 @@ set --local empty ''
     echo $pure_version
 ) != $empty
 
-@test "configure: _pure_fresh_session"  (
-    set --erase _pure_fresh_session
-    source $current_dirname/../conf.d/pure.fish
-    echo $_pure_fresh_session
-) = true
-
-@test "configure: VIRTUAL_ENV_DISABLE_PROMPT"  (
-    set --erase VIRTUAL_ENV_DISABLE_PROMPT
-    source $current_dirname/../conf.d/pure.fish
-    echo $VIRTUAL_ENV_DISABLE_PROMPT
-) = 1
-
 @test "configure: pure_symbol_prompt"  (
     set --erase pure_symbol_prompt
     source $current_dirname/../conf.d/pure.fish
@@ -217,4 +205,3 @@ set --local empty ''
     source $current_dirname/../conf.d/pure.fish
     echo $pure_color_right_prompt
 ) = (set_color normal)
-

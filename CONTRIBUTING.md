@@ -42,8 +42,12 @@ Todo upon release:
 * filename: `my_tool.fish`
 * test file: `my_tool.test.fish`
 
-
 ## Global Variable
+
+* Public settings' default values are placed in [_conf.d/pure.fish_](conf.d/pure.fish)
+* Private settings and anything else `pure` needs to do on init are placed in [_conf.d/__pure_init.fish_](conf.d/_pure_init.fish).
+
+### Color's Variables
 
 > Base colors should follow `$pure_color_<meaning>` pattern (cf. [bootstrap naming](https://getbootstrap.com/docs/4.1/utilities/colors/)).
 
@@ -59,7 +63,7 @@ $pure_color_dark
 $pure_color_muted    # gray
 ```
 
-## Feature's Variables
+### Feature's Variables
 
 > Each feature should have a dedicated variables to allow customization.
 
