@@ -42,10 +42,10 @@ Todo upon release:
 * filename: `my_tool.fish`
 * test file: `my_tool.test.fish`
 
-
 ## Global Variable
 
-Default values for public global variables are placed in [_conf.d/pure.fish_](conf.d/pure.fish), while private global variables and anything else `pure` needs to do on init are placed in [_conf.d/_pure_init.fish_](conf.d/_pure_init.fish)
+* Public settings' default values are placed in [_conf.d/pure.fish_](conf.d/pure.fish)
+* Private settings and anything else `pure` needs to do on init are placed in [_conf.d/__pure_init.fish_](conf.d/_pure_init.fish).
 
 ### Color's Variables
 
