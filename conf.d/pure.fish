@@ -1,5 +1,3 @@
-set --universal pure_version 2.1.2 # used for bug report
-
 # Base colors
 _pure_set_default --universal pure_color_primary (set_color blue)
 _pure_set_default --universal pure_color_info (set_color cyan)

@@ -1,3 +1,6 @@
+# Used for bug report
+set --universal pure_version 2.1.2
+
 # Deactivate the default virtualenv prompt so that we can add our own
 set --global --export VIRTUAL_ENV_DISABLE_PROMPT 1
 
