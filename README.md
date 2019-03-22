@@ -93,20 +93,40 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 
 #### Colors
 
-| Option                   | Default               |
-| :----------------------- | :-------------------- |
-| **Base Colors**          |
-| **`pure_color_primary`** | `(set_color blue)`    |
-| **`pure_color_info`**    | `(set_color cyan)`    |
-| **`pure_color_mute`**    | `(set_color brblack)` |
-| **`pure_color_success`** | `(set_color magenta)` |
-| **`pure_color_normal`**  | `(set_color normal)`  |
-| **`pure_color_danger`**  | `(set_color red)`     |
-| **`pure_color_light`**   | `(set_color white)`   |
-| **`pure_color_warning`** | `(set_color yellow)`  |
-| **`pure_color_dark`**    | `(set_color black)`   |
+##### Base Colors
 
-:information_source:: Want more customization? See `$HOME/.config/fish/conf.d/pure.fish` for available variables.
+| Option                                 | Default               |
+| :------------------------------------- | :-------------------- |
+| **`pure_color_primary`**               | `(set_color blue)`    |
+| **`pure_color_info`**                  | `(set_color cyan)`    |
+| **`pure_color_mute`**                  | `(set_color brblack)` |
+| **`pure_color_success`**               | `(set_color magenta)` |
+| **`pure_color_normal`**                | `(set_color normal)`  |
+| **`pure_color_danger`**                | `(set_color red)`     |
+| **`pure_color_light`**                 | `(set_color white)`   |
+| **`pure_color_warning`**               | `(set_color yellow)`  |
+| **`pure_color_dark`**                  | `(set_color black)`   |
+
+:warning:: Base colors are universal variables, to tweak them use `set` command with `-U` or `--universal` flag.
+
+##### Feature Colors
+
+| Option                                 | Default               |
+| :------------------------------------- | :-------------------- |
+| **`pure_color_prompt_on_error`**       | `$pure_color_danger`  |
+| **`pure_color_prompt_on_success`**     | `$pure_color_success` |
+| **`pure_color_current_directory`**     | `$pure_color_primary` |
+| **`pure_color_git_unpulled_commits`**  | `$pure_color_info`    |
+| **`pure_color_git_unpushed_commits`**  | `$pure_color_info`    |
+| **`pure_color_git_branch`**            | `$pure_color_mute`    |
+| **`pure_color_git_dirty`**             | `$pure_color_mute`    |
+| **`pure_color_ssh_hostname`**          | `$pure_color_mute`    |
+| **`pure_color_ssh_separator`**         | `$pure_color_mute`    |
+| **`pure_color_ssh_user_normal`**       | `$pure_color_danger`  |
+| **`pure_color_ssh_user_root`**         | `$pure_color_light`   |
+| **`pure_color_virtualenv`**            | `$pure_color_mute`    |
+| **`pure_color_command_duration`**      | `$pure_color_warning` |
+| **`pure_color_right_prompt`**          | `$pure_color_normal`  |
 
 
 ## Tests
