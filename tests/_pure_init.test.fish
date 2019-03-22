@@ -1,3 +1,9 @@
+@test "init: pure_version"  (
+    set --erase pure_version
+    source $current_dirname/../conf.d/_pure_init.fish
+    echo $pure_version
+) != $empty
+
 @test "init: _pure_fresh_session"  (
     set --erase _pure_fresh_session
     source $current_dirname/../conf.d/_pure_init.fish
