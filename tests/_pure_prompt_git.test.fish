@@ -7,7 +7,7 @@ set --local succeed 0
 set --local empty ''
 
 function setup
-    mkdir --parents /tmp/test_pure_prompt_git  # prevent conflict between parallel test files
+    mkdir -p /tmp/test_pure_prompt_git  # prevent conflict between parallel test files
     cd /tmp/test_pure_prompt_git
 end
 

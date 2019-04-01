@@ -2,7 +2,7 @@ source $current_dirname/../functions/_pure_prompt_git_branch.fish
 source $current_dirname/../functions/_pure_parse_git_branch.fish
 
 function setup
-    mkdir --parents /tmp/test_pure_prompt_git_branch  # prevent conflict between parallel test files
+    mkdir -p /tmp/test_pure_prompt_git_branch  # prevent conflict between parallel test files
     cd /tmp/test_pure_prompt_git_branch
 
     git init --quiet

@@ -37,7 +37,7 @@ end
 
 @test "installer: inject autoloading in config" (
     set FISH_CONFIG_DIR "$HOME/.config/fish"
-    mkdir --parents $PURE_INSTALL_DIR/conf.d/
+    mkdir -p $PURE_INSTALL_DIR/conf.d/
     touch $PURE_INSTALL_DIR/conf.d/pure.fish
 
     pure::enable_autoloading >/dev/null
@@ -47,7 +47,7 @@ end
 @test "installer: activate prompt" (
     set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
     rm -f "$active_prompt"
-    mkdir --parents $PURE_INSTALL_DIR; \
+    mkdir -p $PURE_INSTALL_DIR; \
         and touch $PURE_INSTALL_DIR/fish_prompt.fish  # stub
 
     pure::enable_autoloading >/dev/null

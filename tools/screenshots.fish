@@ -9,7 +9,7 @@ end
 set --global mock_directory $HOME/dev/
 function setup_mock_environment
     git init --bare --quiet /tmp/fake.git
-    mkdir --parents $mock_directory/pure/
+    mkdir -p $mock_directory/pure/
     cd $mock_directory/pure/
     git init --quiet
     git remote add origin /tmp/fake.git/

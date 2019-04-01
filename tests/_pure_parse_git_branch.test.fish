@@ -4,7 +4,7 @@ set temporary_test_directory /tmp/pure
 
 function setup
     rm -r -f $temporary_test_directory
-    mkdir --parents $temporary_test_directory
+    mkdir -p $temporary_test_directory
     cd $temporary_test_directory
     git init --quiet
 end

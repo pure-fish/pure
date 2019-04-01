@@ -8,7 +8,7 @@ function setup
     set pure_color_git_dirty $pure_color_mute
     set pure_color_command_duration $pure_color_warning
 
-    mkdir --parents /tmp/test
+    mkdir -p /tmp/test
     cd /tmp/test
     git init --quiet
     set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22

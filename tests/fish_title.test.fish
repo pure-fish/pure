@@ -2,7 +2,7 @@ source $current_dirname/../fish_title.fish
 source $current_dirname/../tools/versions-compare.fish
 
 function setup
-    mkdir --parents /tmp/current/directory/
+    mkdir -p /tmp/current/directory/
     cd /tmp/current/directory/
 
     function _pure_parse_directory; echo /tmp/current/directory; end
