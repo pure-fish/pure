@@ -8,7 +8,7 @@ function setup
     rm -r -f $fake_git_repo
 
     git init --bare --quiet /tmp/pure.git
-    mkdir --parents $fake_git_repo
+    mkdir -p $fake_git_repo
     cd $fake_git_repo
     git init --quiet
     git config --local user.email "you@example.com"
