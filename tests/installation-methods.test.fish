@@ -57,7 +57,13 @@ if test $USER = 'nemo'
 
         curl -L https://get.oh-my.fish > install
         and fish install --noninteractive >/dev/null
-        and fish -c "omf install pure; fish_prompt" | grep -c '❯' 
+
+        set --global OMF_PURE_PATH $HOME/.local/share/omf/themes/pure
+        fish -c "omf install pure; \
+                ln -sf $OMF_PURE_PATH/fish_*.fish $HOME/.config/fish/functions/; \
+                ln -sf $OMF_PURE_PATH/functions/*.fish $HOME/.config/fish/functions/; \
+                ln -sf $OMF_PURE_PATH/conf.d/* $HOME/.config/fish/conf.d/" > /dev/null
+        fish -c "fish_prompt" | grep -c '❯' 
     ) = 1
 end
 
