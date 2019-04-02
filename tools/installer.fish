@@ -39,8 +39,8 @@ function pure::backup_existing_theme
     set --local backup_prompt $old_prompt.ignore
     
     if test -f "$old_prompt"
-        mv "$old_prompt" "$backup_prompt"
-        printf "\t\tPrevious config saved to: %s%s%s." "$color_white" "$backup_prompt" "$color_normal"
+        mv "$old_prompt" "$backup_prompt"; pure::exit_symbol $status
+        printf "\tPrevious config saved to: %s%s%s." "$color_white" "$backup_prompt" "$color_normal"
     end
 end
 
