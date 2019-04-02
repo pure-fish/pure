@@ -1,16 +1,25 @@
-function setup
-    cd $HOME
-    for file in $HOME/.config/fish/functions/fish_*.fish;
-        rm $file
+function rm_pure_files
+    for file in $HOME/.config/fish/functions/_pure*.fish
+        rm --recursive --force "$file"
     end
-    echo 'function fish_prompt; end' > $HOME/.config/fish/functions/fish_prompt.fish
+    for file in $HOME/.config/fish/conf.d/*pure*
+        rm --recursive --force "$file"
+    end
     rm --recursive --force $HOME/.config/fish/functions/theme-pure
-    echo '' > $HOME/.config/fish/config.fish
 end
 
-function teardown
-    rm --force $HOME/.config/fish/functions/fish_prompt.fish
-    echo 'function fish_prompt; end' > $HOME/.config/fish/functions/fish_prompt.fish
+function rm_fish_prompt_files
+    for file in $HOME/.config/fish/functions/fish_*.fish
+        rm --recursive --force "$file"
+    end
+end
+
+function setup
+    if test $USER = 'nemo'
+        rm_pure_files
+        rm_fish_prompt_files
+        echo '' > $HOME/.config/fish/config.fish
+    end
 end
 
 if test $USER = 'nemo'
@@ -18,7 +27,6 @@ if test $USER = 'nemo'
         curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent >/dev/null
         and source /tmp/pure_installer.fish
 
-        rm --recursive --force $HOME/.config/fish/functions/theme-pure        
         and install_pure >/dev/null
 
         fish -c 'fish_prompt | grep -c "❯"' 
