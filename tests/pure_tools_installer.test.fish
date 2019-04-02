@@ -44,6 +44,7 @@ end
     grep -q 'fish_function_path' $FISH_CONFIG_DIR/config.fish
 ) $status -eq 0
 
+
 @test "installer: activate prompt" (
     set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
     rm -f "$active_prompt"
@@ -52,8 +53,8 @@ end
 
     pure::enable_autoloading >/dev/null
 
-    [ -r "$active_prompt" -a -L "$active_prompt" ]  # a readable symlink
-) $status -eq 0
+    grep -c "pure.fish" $FISH_CONFIG_DIR/config.fish
+) = 1
 
 @test "installer: app path to theme's functions" (
     pure::enable_autoloading >/dev/null
@@ -71,3 +72,15 @@ end
     [ "$_pure_fresh_session" = true ]
 ) $status -eq 0
 
+if test $USER = 'nemo'
+    @test "installer: link configuration and functions to fish config directory" (
+        rm --force --recursive $FISH_CONFIG_DIR/{conf.d,functions}
+        mkdir -p $FISH_CONFIG_DIR/{conf.d,functions}
+        set PURE_INSTALL_DIR /tmp/.pure/
+
+        pure_symlinks_assets >/dev/null
+
+        set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
+        [ -r "$active_prompt" -a -L "$active_prompt" ]  # a readable symlink
+    ) $status -eq 0
+end

@@ -52,6 +52,10 @@ function pure::enable_autoloading
         echo "set fish_function_path $PURE_INSTALL_DIR/functions/" '$fish_function_path' >> $FISH_CONFIG_DIR/config.fish
         echo "source $PURE_INSTALL_DIR/conf.d/pure.fish" >> $FISH_CONFIG_DIR/config.fish
     end
+end
+
+function pure_symlinks_assets
+    printf "\tLink pure's configuration and functions to fish config directory"
     ln -sf $PURE_INSTALL_DIR/fish_*.fish $FISH_CONFIG_DIR/functions/
     ln -sf $PURE_INSTALL_DIR/functions/*.fish $FISH_CONFIG_DIR/functions/
     ln -sf $PURE_INSTALL_DIR/conf.d/* $FISH_CONFIG_DIR/conf.d/
@@ -70,6 +74,7 @@ function pure::clean_after_install
     functions --erase pure::fetch_source
     functions --erase pure::backup_existing_theme
     functions --erase pure::enable_autoloading
+    functions --erase pure_symlinks_assets
     functions --erase pure::enable_theme
 end
 
@@ -95,6 +100,7 @@ function install_pure
     pure::fetch_source; pure::exit_symbol $status
     pure::backup_existing_theme; pure::exit_symbol $status
     pure::enable_autoloading; pure::exit_symbol $status
+    pure_symlinks_assets; pure::exit_symbol $status
     pure::enable_theme; pure::exit_symbol $status
     pure::clean_after_install; pure::exit_symbol $status
 end
