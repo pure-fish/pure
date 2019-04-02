@@ -23,11 +23,21 @@ function setup
 end
 
 if test $USER = 'nemo'
-    @test "installation methods: manually" (
-        curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent >/dev/null
-        and source /tmp/pure_installer.fish
+    @test "installation methods: manually (with unpublished installer)" (
+        source tools/installer.fish
 
         and install_pure >/dev/null
+        source $PURE_INSTALL_DIR/conf.d/*
+
+        fish -c 'fish_prompt | grep -c "❯"' 
+    ) = 1
+end
+
+if test $USER = 'nemo'
+    @test "installation methods: manually (with published installer)" (
+        curl git.io/pure-fish --output /tmp/installer.fish --location --silent
+        and source /tmp/installer.fish
+        and install_pure
 
         fish -c 'fish_prompt | grep -c "❯"' 
     ) = 1
@@ -36,6 +46,7 @@ end
 if test $USER = 'nemo'
     @test "installation methods: with fisher" (
         fisher add rafaelrinaldi/pure >/dev/null
+
         fish -c 'fish_prompt | grep -c "❯"' 
     ) = 1
 end
