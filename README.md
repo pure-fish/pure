@@ -132,9 +132,10 @@ Take a note on the absence of `$` sign before the second argument in this case. 
 
 ## Tests
 
-**requirements:** [`fishtape`](https://github.com/fisherman/fishtape).
+**requirements:** [`docker`](https://docs.docker.com/install/) (to run tests in isolation from user environment)
 
-    fishtape tests/*.test.fish
+    make build-pure-on FISH_VERSION=3.0.0  
+    make dev-pure-on   FISH_VERSION=3.0.0 CMD="fishtape tests/*.test.fish"
 
 ## Maintainers
 
