@@ -118,3 +118,17 @@ $pure_enable_git_async = false
 ```fish
 $pure_threshold_command_duration
 ```
+
+## How to develop?
+
+We provide a [makefile](makefile) and a [Dockerfile](tools/pure-on-fish.Dockerfile) to help you work on `pure`.
+
+### :checkered_flag: Build container
+
+Specify the [`fish` version](https://github.com/oh-my-fish/dockerfiles/tree/master/fish) you want to work with using `FISH_VERSION` argument:
+
+    make build-pure-on FISH_VERSION=3.0.0
+
+### :heavy_check_mark: Run Tests
+
+    make dev-pure-on FISH_VERSION=3.0.0 CMD="fishtape tests/*.test.fish"
