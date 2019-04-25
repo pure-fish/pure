@@ -74,8 +74,11 @@ end
 
 if test $USER = 'nemo'
     @test "installer: link configuration and functions to fish config directory" (
+        set FISH_CONFIG_DIR "$HOME/.config/fish"
+        cp $FISH_CONFIG_DIR/functions/fishtape.fish /tmp/  # save fishtape for following tests
         rm --force --recursive $FISH_CONFIG_DIR/{conf.d,functions}
         mkdir -p $FISH_CONFIG_DIR/{conf.d,functions}
+        cp /tmp/fishtape.fish $FISH_CONFIG_DIR/functions/   # restore fishtape for following tests
         set PURE_INSTALL_DIR /tmp/.pure/
 
         pure_symlinks_assets >/dev/null
