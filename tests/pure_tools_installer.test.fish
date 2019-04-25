@@ -72,14 +72,22 @@ end
     [ "$_pure_fresh_session" = true ]
 ) $status -eq 0
 
+
+function mock_install_dir
+    set --global PURE_INSTALL_DIR /tmp/mock/pure
+    mkdir -p $PURE_INSTALL_DIR
+    cp -R ./{fish_*.fish,functions/,conf.d/} $PURE_INSTALL_DIR
+end
+
+function mock_fish_config_dir
+    set --global FISH_CONFIG_DIR /tmp/mock/config
+    mkdir -p $FISH_CONFIG_DIR/{functions,conf.d}
+end
+
 if test $USER = 'nemo'
     @test "installer: link configuration and functions to fish config directory" (
-        set FISH_CONFIG_DIR "$HOME/.config/fish"
-        cp $FISH_CONFIG_DIR/functions/fishtape.fish /tmp/  # save fishtape for following tests
-        rm --force --recursive $FISH_CONFIG_DIR/{conf.d,functions}
-        mkdir -p $FISH_CONFIG_DIR/{conf.d,functions}
-        cp /tmp/fishtape.fish $FISH_CONFIG_DIR/functions/   # restore fishtape for following tests
-        set PURE_INSTALL_DIR /tmp/.pure/
+        mock_install_dir
+        mock_fish_config_dir
 
         pure_symlinks_assets >/dev/null
 
