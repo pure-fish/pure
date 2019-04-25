@@ -109,9 +109,24 @@ end
 ) $status -eq $SUCCESS
 
 
+
+function mock_install_dir
+    set --global PURE_INSTALL_DIR /tmp/mock/pure
+    mkdir -p $PURE_INSTALL_DIR
+    cp -R ./{fish_*.fish,functions/,conf.d/} $PURE_INSTALL_DIR
+end
+
+function mock_fish_config_dir
+    set --global FISH_CONFIG_DIR /tmp/mock/config
+    mkdir -p $FISH_CONFIG_DIR/{functions,conf.d}
+end
+
 if test $USER = 'nemo'
     @test "installer: link configuration and functions to fish config directory" (
         pure_set_pure_install_path "" /tmp/.pure/ >/dev/null
+        mock_install_dir
+        mock_fish_config_dir
+
         pure_symlinks_assets >/dev/null
 
         set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
