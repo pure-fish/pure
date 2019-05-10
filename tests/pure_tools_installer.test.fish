@@ -73,21 +73,22 @@ end
 ) $status -eq 0
 
 
-function mock_install_dir
-    set --global PURE_INSTALL_DIR /tmp/mock/pure
-    mkdir -p $PURE_INSTALL_DIR
-    cp -R ./{fish_*.fish,functions/,conf.d/} $PURE_INSTALL_DIR
-end
+if test $USER = 'nemo'
+    @test "installer: scaffold fish config directory" (
+        set --global PURE_INSTALL_DIR /tmp/mock/pure
 
-function mock_fish_config_dir
-    set --global FISH_CONFIG_DIR /tmp/mock/config
-    mkdir -p $FISH_CONFIG_DIR/{functions,conf.d}
+        pure_scaffold_fish_directories >/dev/null
+
+        test    -d $PURE_INSTALL_DIR/functions \
+             -a -d $PURE_INSTALL_DIR/conf.d/
+    ) $status -eq 0
 end
 
 if test $USER = 'nemo'
     @test "installer: link configuration and functions to fish config directory" (
-        mock_install_dir
-        mock_fish_config_dir
+        set --global PURE_INSTALL_DIR /tmp/mock/pure
+        cp -R ./{fish_*.fish,functions/,conf.d/} $PURE_INSTALL_DIR
+        pure_scaffold_fish_directories >/dev/null
 
         pure_symlinks_assets >/dev/null
 
