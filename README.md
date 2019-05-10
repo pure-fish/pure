@@ -119,6 +119,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 
 - [Rafael Rinaldi](https://github.com/rafaelrinaldi)
 - [Édouard Lopez](https://github.com/edouard-lopez)
+- [Andrei Borisov](https://github.com/schrodincat)
 
 Kudos to all our awesome [:yellow_heart: contributors :yellow_heart:](../..//graphs/contributors)
 
