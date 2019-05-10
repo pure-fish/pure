@@ -21,6 +21,13 @@ function pure_set_pure_install_path
     end
 end
 
+function pure_scaffold_fish_directories
+    printf "\tScaffolding fish directories"
+
+    mkdir -p $PURE_INSTALL_DIR/functions
+    mkdir -p $PURE_INSTALL_DIR/conf.d/
+end
+
 function pure_fetch_source
     printf "\tFetching theme's source"
 
@@ -37,7 +44,7 @@ function pure_backup_existing_theme
     printf "\tBackuping existing theme"
     set --local old_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
     set --local backup_prompt $old_prompt.ignore
-    
+
     if test -f "$old_prompt"
         mv "$old_prompt" "$backup_prompt"; pure_exit_symbol $status
         printf "\tPrevious config saved to: %s%s%s." "$color_white" "$backup_prompt" "$color_normal"
@@ -97,6 +104,7 @@ function install_pure
     printf "Installing Pure theme\n"
     pure_set_fish_config_path $argv
     pure_set_pure_install_path $argv
+    pure_scaffold_fish_directories; pure_exit_symbol $status
     pure_fetch_source; pure_exit_symbol $status
     pure_backup_existing_theme; pure_exit_symbol $status
     pure_enable_autoloading; pure_exit_symbol $status
