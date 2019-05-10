@@ -108,6 +108,19 @@ end
     [ "$_pure_fresh_session" = true ]
 ) $status -eq $SUCCESS
 
+
+
+if test $USER = 'nemo'
+    @test "installer: scaffold fish config directory" (
+        set --global PURE_INSTALL_DIR /tmp/mock/pure
+
+        pure_scaffold_fish_directories >/dev/null
+
+        test    -d $PURE_INSTALL_DIR/functions \
+             -a -d $PURE_INSTALL_DIR/conf.d/
+    ) $status -eq $SUCCESS
+end
+
 if test $USER = 'nemo'
     @test "installer: link configuration and functions to fish config directory" (
         pure_set_pure_install_path "" /tmp/.pure/ >/dev/null
