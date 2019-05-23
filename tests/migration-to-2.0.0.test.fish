@@ -5,11 +5,11 @@ set --global DIRNAME $current_dirname
 
 
 function setup
-    cp $current_dirname/fixtures/{config.mock.fish,config.fish}
+    cp tests/fixtures/{config.mock.fish,config.fish}
 end
 
 function teardown
-    rm $current_dirname/fixtures/config.fish
+    rm tests/fixtures/config.fish
 end
 
 @test "migrate all variables" (
