@@ -57,6 +57,7 @@ if test $USER = 'nemo'
 
         curl -L https://get.oh-my.fish > install
         and fish install --noninteractive >/dev/null
+        rm install
 
         set --global OMF_PURE_PATH $HOME/.local/share/omf/themes/pure
         fish -c "omf install pure; \
