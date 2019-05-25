@@ -63,7 +63,6 @@ end
 
 function pure_symlinks_assets
     printf "\tLink pure's configuration and functions to fish config directory"
-    ln -sf $PURE_INSTALL_DIR/fish_*.fish $FISH_CONFIG_DIR/functions/
     ln -sf $PURE_INSTALL_DIR/functions/*.fish $FISH_CONFIG_DIR/functions/
     ln -sf $PURE_INSTALL_DIR/conf.d/* $FISH_CONFIG_DIR/conf.d/
 end

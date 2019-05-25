@@ -87,7 +87,7 @@ end
 if test $USER = 'nemo'
     @test "installer: link configuration and functions to fish config directory" (
         set --global PURE_INSTALL_DIR /tmp/mock/pure
-        cp -R ./{fish_*.fish,functions/,conf.d/} $PURE_INSTALL_DIR
+        cp -R ./{functions/,conf.d/} $PURE_INSTALL_DIR
         pure_scaffold_fish_directories >/dev/null
 
         pure_symlinks_assets >/dev/null
