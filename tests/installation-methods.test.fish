@@ -55,9 +55,9 @@ if test $USER = 'nemo'
     @test "installation methods: with OMF (Oh-My-Fish!)" (
         rm --recursive --force $HOME/.local/share/omf $HOME/.config/omf/
 
-        curl -L https://get.oh-my.fish > install
-        and fish install --noninteractive >/dev/null
-        rm install
+        curl --location --output /tmp/install https://get.oh-my.fish
+        and fish /tmp/install --noninteractive >/dev/null
+        rm /tmp/install
 
         set --global OMF_PURE_PATH $HOME/.local/share/omf/themes/pure
         fish -c "omf install pure; \
