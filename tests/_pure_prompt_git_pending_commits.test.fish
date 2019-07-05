@@ -1,19 +1,19 @@
 source $current_dirname/../functions/_pure_prompt_git_pending_commits.fish
 
 set --local empty ''
-set fake_git_repo /tmp/pure
-set fake_git_bare /tmp/pure.git
+set fake_repo /tmp/pure
+set fake_remote /tmp/remote.git
 
 function setup
-    rm -r -f $fake_git_repo
+    rm -r -f $fake_repo
 
-    git init --bare --quiet /tmp/pure.git
-    mkdir -p $fake_git_repo
-    cd $fake_git_repo
+    git init --bare --quiet $fake_remote
+    mkdir -p $fake_repo
+    cd $fake_repo
     git init --quiet
     git config --local user.email "you@example.com"
     git config --local user.name "Your Name"
-    git remote add origin ../pure.git/
+    git remote add origin ../remote.git/
     touch file.txt
     git add file.txt
     git commit --quiet --message='init'
@@ -21,12 +21,12 @@ end
 
 function teardown
     rm -r -f \
-        $fake_git_repo \
-        $fake_git_bare
+        $fake_repo \
+        $fake_remote
 end
 
 @test "_pure_prompt_git_pending_commits: print nothing when no upstream repo" (
-    cd $fake_git_repo
+    cd $fake_repo
 
     _pure_prompt_git_pending_commits
 ) = $empty
