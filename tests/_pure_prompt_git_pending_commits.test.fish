@@ -58,3 +58,15 @@ end
     _pure_prompt_git_pending_commits
 ) = (set_color cyan)'v'
 
+@test "_pure_prompt_git_pending_commits: empty repo don't throw error" (
+    set fake_empty_repo /tmp/empty-remote
+    set fake_empty_remote /tmp/empty-remote.git
+    rm -r -f \
+        $fake_empty_repo \
+        $fake_empty_remote
+    git init --bare --quiet $fake_empty_remote
+    git clone $fake_empty_remote $fake_empty_repo
+    cd $fake_empty_repo
+
+    _pure_prompt_git_pending_commits
+) = $empty
