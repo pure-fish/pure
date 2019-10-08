@@ -27,6 +27,7 @@ end
     function _pure_prompt_git_dirty; echo $empty; end
     function _pure_prompt_git_pending_commits; echo $empty; end
 
+    set pure_enable_git true
     set pure_color_git_branch $empty
     set pure_color_git_dirty $empty
     set pure_color_git_pending_commits $empty
@@ -39,6 +40,7 @@ end
     function _pure_prompt_git_dirty; echo '*'; end
     function _pure_prompt_git_pending_commits; echo $empty; end
 
+    set pure_enable_git true
     set pure_color_git_branch $empty
     set pure_color_git_dirty $empty
     set pure_color_git_pending_commits $empty
@@ -51,9 +53,23 @@ end
     function _pure_prompt_git_dirty; echo $empty; end
     function _pure_prompt_git_pending_commits; echo 'v'; end
 
+    set pure_enable_git true
     set pure_color_git_branch $empty
     set pure_color_git_dirty $empty
     set pure_color_git_pending_commits $empty
 
     _pure_prompt_git
 ) = 'master v'
+
+@test "_pure_prompt_git: returns an empty string when pure_enable_git is false" (
+    git init --quiet
+    function _pure_prompt_git_dirty; echo $empty; end
+    function _pure_prompt_git_pending_commits; echo $empty; end
+
+    set pure_enable_git false
+    set pure_color_git_branch $empty
+    set pure_color_git_dirty $empty
+    set pure_color_git_pending_commits $empty
+
+    _pure_prompt_git
+) $status -eq $succeed
