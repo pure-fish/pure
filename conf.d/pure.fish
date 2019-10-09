@@ -36,7 +36,11 @@ _pure_set_default pure_color_ssh_separator $pure_color_mute
 _pure_set_default pure_color_ssh_user_normal $pure_color_mute
 _pure_set_default pure_color_ssh_user_root $pure_color_light
 
-# Virtualenv for Pyhon
+# Number of running jobs
+_pure_set_default pure_show_jobs false
+_pure_set_default pure_color_jobs $pure_color_normal
+
+# Virtualenv for Python
 _pure_set_default pure_color_virtualenv $pure_color_mute
 
 # Print current working directory at the beginning of prompt

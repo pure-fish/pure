@@ -1,4 +1,5 @@
 source $current_dirname/../functions/_pure_prompt.fish
+source $current_dirname/../functions/_pure_prompt_jobs.fish
 source $current_dirname/../functions/_pure_prompt_virtualenv.fish
 source $current_dirname/../functions/_pure_prompt_vimode.fish
 source $current_dirname/../functions/_pure_prompt_symbol.fish
