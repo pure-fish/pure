@@ -170,6 +170,12 @@ set --local empty ''
     echo $pure_color_prompt_on_success
 ) = (set_color magenta)
 
+@test "configure: pure_color_jobs"  (
+    set --erase pure_color_jobs
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_color_jobs
+) = (set_color normal)
+
 @test "configure: pure_color_virtualenv"  (
     set --erase pure_color_virtualenv
     source $current_dirname/../conf.d/pure.fish
