@@ -52,10 +52,6 @@ _pure_set_default pure_separate_prompt_on_error false
 _pure_set_default pure_threshold_command_duration 5
 _pure_set_default pure_color_command_duration $pure_color_warning
 
-# Right Prompt variables
-_pure_set_default pure_right_prompt ""
-_pure_set_default pure_color_right_prompt $pure_color_normal
-
 # VI mode indicator
 # true (default):  indicate a non-insert mode by reversing the prompt symbol (❮)
 # false:           indicate vi mode with [I], [N], [V]
