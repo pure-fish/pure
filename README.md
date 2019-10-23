@@ -62,7 +62,6 @@ fundle install;
 - Display _duration_ when command run more that `5` seconds ;
 - Display `Python` _virtualenv_ when activated ;
 - Fine control over **colors** ;
-- Right prompt control.
 - Display `VI` mode and custom symbol for non-insert mode.
 
 ## Configuration
@@ -75,7 +74,6 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 | :------------------------------------- | :------ | :--------------------------------------------------- |
 | **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                       |
 | **`pure_symbol_reverse_prompt`** | `❮`  | VI non-insert mode symbol.
-| **`pure_right_prompt`**                | ` `       | Content of the right prompt.                         |
 | **`pure_symbol_git_unpulled_commits`** | `⇣`     | Branch is behind upstream (commits to pull).         |
 | **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).          |
 | **`pure_symbol_git_dirty`**            | `*`     | Repository is Dirty (uncommitted/untracked changes). |

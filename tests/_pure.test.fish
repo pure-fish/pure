@@ -193,15 +193,3 @@ set --local empty ''
     source $current_dirname/../conf.d/pure.fish
     echo $pure_threshold_command_duration
 ) = 5
-
-@test "configure: pure_right_prompt"  (
-    set --erase pure_right_prompt
-    source $current_dirname/../conf.d/pure.fish
-    echo $pure_right_prompt
-) = ""
-
-@test "configure: pure_color_right_prompt"  (
-    set --erase pure_color_right_prompt
-    source $current_dirname/../conf.d/pure.fish
-    echo $pure_color_right_prompt
-) = (set_color normal)
