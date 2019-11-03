@@ -1,6 +1,10 @@
 function _pure_prompt_git \
     --description 'Print git repository informations: branch name, dirty, upstream ahead/behind'
 
+    if test $pure_enable_git != true
+        return
+    end
+
     set --local is_git_repository (command git rev-parse --is-inside-work-tree 2>/dev/null)
 
     if test -n "$is_git_repository"
