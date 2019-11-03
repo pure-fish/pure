@@ -85,6 +85,7 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 
 | Option                                         | Default | Description                                                                                     |
 | :--------------------------------------------- | :------ | :---------------------------------------------------------------------------------------------- |
+| **`pure_enable_git`**                          | `true`  | Show info about Git repository.                                                                 |
 | **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
 | **`pure_separate_prompt_on_error`**            | `false` | Show last command [exit code as a separate character][exit-code].                               |
 | **`pure_begin_prompt_with_current_directory`** | `true`  | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_.             |
