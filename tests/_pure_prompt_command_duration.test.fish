@@ -1,4 +1,5 @@
 source $current_dirname/../functions/_pure_format_time.fish
+source $current_dirname/../functions/_pure_get_var.fish
 source $current_dirname/../functions/_pure_prompt_command_duration.fish
 
 set --local empty ''

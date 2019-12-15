@@ -2,6 +2,7 @@ source $current_dirname/../functions/_pure_prompt_ssh.fish
 source $current_dirname/../functions/_pure_prompt_ssh_user.fish
 source $current_dirname/../functions/_pure_prompt_ssh_separator.fish
 source $current_dirname/../functions/_pure_prompt_ssh_host.fish
+source $current_dirname/../functions/_pure_get_var.fish
 source $current_dirname/../tools/versions-compare.fish
 
 set --local empty ''

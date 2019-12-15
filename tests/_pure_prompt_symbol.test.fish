@@ -1,5 +1,6 @@
-source $current_dirname/../functions/_pure_get_prompt_symbol.fish
 source $current_dirname/../functions/_pure_prompt_symbol.fish
+source $current_dirname/../functions/_pure_get_prompt_symbol.fish
+source $current_dirname/../functions/_pure_get_var.fish
 
 set --local empty ''
 set --local fail 1

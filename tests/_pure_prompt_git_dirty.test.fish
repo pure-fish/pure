@@ -1,5 +1,5 @@
 source $current_dirname/../functions/_pure_prompt_git_dirty.fish
-source $current_dirname/../functions/_pure_parse_git_branch.fish
+source $current_dirname/../functions/_pure_get_var.fish
 
 function setup
     rm -r -f /tmp/pure_pure_prompt_git_dirty

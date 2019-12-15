@@ -1,4 +1,5 @@
 source $current_dirname/../functions/_pure_prompt_jobs.fish
+source $current_dirname/../functions/_pure_get_var.fish
 
 set --local success 0
 
