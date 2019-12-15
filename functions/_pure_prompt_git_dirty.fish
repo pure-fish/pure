@@ -11,7 +11,7 @@ function _pure_prompt_git_dirty
     )
     if test -n "$is_git_dirty"  # untracked or un-commited files
         set git_dirty_symbol "$pure_symbol_git_dirty"
-        set git_dirty_color "$pure_color_git_dirty"
+        set git_dirty_color (_pure_get_var pure_color_git_dirty $pure_color_mute)
     end
 
     echo "$git_dirty_color$git_dirty_symbol"
