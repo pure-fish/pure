@@ -5,6 +5,7 @@ set --local succeed 0
 function setup
     function _pure_prompt_beginning; echo '['; end
     function _pure_prompt_first_line; echo -e '/path/ git duration'; end
+    function _pure_place_iterm2_prompt_mark; end
     function _pure_prompt; echo '❯'; end
     function _pure_prompt_ending; echo ']'; end
 end

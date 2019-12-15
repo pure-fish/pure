@@ -1,5 +1,6 @@
 source $current_dirname/../functions/_pure_prompt_git_branch.fish
 source $current_dirname/../functions/_pure_parse_git_branch.fish
+source $current_dirname/../functions/_pure_get_var.fish
 
 function setup
     mkdir -p /tmp/test_pure_prompt_git_branch  # prevent conflict between parallel test files

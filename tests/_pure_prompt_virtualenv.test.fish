@@ -1,4 +1,5 @@
 source $current_dirname/../functions/_pure_prompt_virtualenv.fish
+source $current_dirname/../functions/_pure_get_var.fish
 
 @test "_pure_prompt_virtualenv: hide virtualenv prompt when not activated" (
     set --erase VIRTUAL_ENV
