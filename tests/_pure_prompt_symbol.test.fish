@@ -38,4 +38,3 @@ set --local success 0
 
     _pure_prompt_symbol $last_command
 ) = (set_color red)'>'(set_color magenta)'>'
-

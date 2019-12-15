@@ -13,4 +13,3 @@ set --local success 0
     _pure_prompt_jobs
     kill (jobs -p)
 ) = (set_color grey)'[1]'
-

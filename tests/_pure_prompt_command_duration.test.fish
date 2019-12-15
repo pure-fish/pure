@@ -17,4 +17,3 @@ set --local empty ''
 
     _pure_prompt_command_duration
 ) = '6s'
-

@@ -19,4 +19,3 @@ set --local empty ''
     _pure_prompt_vimode
     set fish_key_bindings fish_default_key_bindings
 ) = (set_color --bold --background red white)'[N] '(set_color normal)' '
-

@@ -32,4 +32,3 @@ set --local success 0
     set mock_fish_version '4.0.0'
     fish_version_at_least '3.0.0' $mock_fish_version >/dev/null
 ) $status -eq $success
-

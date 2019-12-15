@@ -11,4 +11,3 @@ source $current_dirname/../functions/_pure_prompt_ssh_separator.fish
 
     _pure_prompt_ssh_separator
 ) = (set_color grey)'@'
-

@@ -25,4 +25,3 @@ set --local succeed 0
 
     _pure_prompt $last_command
 ) = (set_color red)'>'
-
