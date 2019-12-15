@@ -18,4 +18,3 @@ set --local empty ''
 @test "_pure_print_prompt: allow colored argument" (
     _pure_print_prompt ""(set_color red)"hello"
 ) = (set_color red)'hello'
-

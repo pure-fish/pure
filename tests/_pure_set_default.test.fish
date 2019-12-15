@@ -10,4 +10,3 @@ source $current_dirname/../functions/_pure_set_default.fish
     _pure_set_default my_var 'another_value'
     echo $my_var
 ) = 'default_value'
-

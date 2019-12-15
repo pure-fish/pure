@@ -15,4 +15,3 @@ set --local fail 1
 
     string length (_pure_prompt_current_folder "$current_prompt_width")
 ) = 8
-

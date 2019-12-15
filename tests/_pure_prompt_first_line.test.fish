@@ -63,4 +63,3 @@ end
 
     rm -r -f /tmp/test
 ) = 'user@hostname /tmp/test master 1s'
-

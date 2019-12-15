@@ -19,4 +19,3 @@ end
 
     _pure_prompt_git_branch
 ) = (set_color brblack)'master'
-

@@ -1,4 +1,4 @@
-# Speficy fish version to use during build 
+# Speficy fish version to use during build
 # docker build -t <image> --build-arg FISH_VERSION=<version>
 ARG FISH_VERSION=3.0.0
 FROM ohmyfish/fish:${FISH_VERSION}

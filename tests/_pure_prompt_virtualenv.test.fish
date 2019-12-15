@@ -14,4 +14,3 @@ source $current_dirname/../functions/_pure_prompt_virtualenv.fish
     _pure_prompt_virtualenv
     set --erase --global VIRTUAL_ENV
 ) = (set_color grey)'project'
-

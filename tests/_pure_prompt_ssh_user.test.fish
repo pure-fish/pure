@@ -17,4 +17,3 @@ source $current_dirname/../functions/_pure_prompt_ssh_user.fish
     _pure_prompt_ssh_user
 
 ) = (set_color red)'root'
-
