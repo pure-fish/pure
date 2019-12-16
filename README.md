@@ -93,20 +93,17 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 
 #### Colors
 
-| Option                   | Default               |
-| :----------------------- | :-------------------- |
-| **Base Colors**          |
-| **`pure_color_primary`** | `(set_color blue)`    |
-| **`pure_color_info`**    | `(set_color cyan)`    |
-| **`pure_color_mute`**    | `(set_color brblack)` |
-| **`pure_color_success`** | `(set_color magenta)` |
-| **`pure_color_normal`**  | `(set_color normal)`  |
-| **`pure_color_danger`**  | `(set_color red)`     |
-| **`pure_color_light`**   | `(set_color white)`   |
-| **`pure_color_warning`** | `(set_color yellow)`  |
-| **`pure_color_dark`**    | `(set_color black)`   |
-
-:information_source:: Want more customization? See `$HOME/.config/fish/conf.d/pure.fish` for available variables.
+| Base Color               | Inherited by                                                                                                                                                                                    | Default               |
+| :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- |
+| **`pure_color_primary`** | **`pure_color_current_directory`**                                                                                                                                                              | `(set_color blue)`    |
+| **`pure_color_info`**    | **`pure_color_git_unpulled_commits`**<br>**`pure_color_git_unpushed_commits`**                                                                                                                  | `(set_color cyan)`    |
+| **`pure_color_mute`**    | **`pure_color_git_branch`**<br>**`pure_color_git_dirty`**<br>**`pure_color_ssh_hostname`**<br>**`pure_color_ssh_separator`**<br>**`pure_color_ssh_user_normal`**<br>**`pure_color_virtualenv`** | `(set_color brblack)` |
+| **`pure_color_success`** | **`pure_color_prompt_on_success`**                                                                                                                                                              | `(set_color magenta)` |
+| **`pure_color_normal`**  | **`pure_color_jobs`**                                                                                                                                                                           | `(set_color normal)`  |
+| **`pure_color_danger`**  | **`pure_color_prompt_on_error`**                                                                                                                                                                | `(set_color red)`     |
+| **`pure_color_light`**   | **`pure_color_ssh_user_root`**                                                                                                                                                                  | `(set_color white)`   |
+| **`pure_color_warning`** | **`pure_color_command_duration`**                                                                                                                                                               | `(set_color yellow)`  |
+| **`pure_color_dark`**    |                                                                                                                                                                                                 | `(set_color black)`   |
 
 ## Tests
 
