@@ -1,4 +1,4 @@
-set --universal pure_version 2.4.2 # used for bug report
+set --universal pure_version 2.4.3 # used for bug report
 
 # Base colors
 _pure_set_default pure_color_primary (set_color blue)
