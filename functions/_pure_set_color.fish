@@ -11,7 +11,8 @@ function _pure_set_color \
 
     set --local result $color
     if not string match --quiet --all --regex '\e\[[^m]*m' $result[1]
-        set result (set_color $color)
+        and not test -z $result[1]
+            set result (set_color $color)
     end
 
     echo "$result"

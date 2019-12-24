@@ -16,7 +16,7 @@ function teardown
 end
 
 @test "_pure_prompt_git_branch: show branch name in gray" (
-    set pure_color_git_branch (set_color brblack)
+    set --global pure_color_git_branch brblack
 
     _pure_prompt_git_branch
 ) = (set_color brblack)'master'

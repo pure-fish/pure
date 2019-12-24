@@ -17,9 +17,9 @@ set --local empty ''
 if fish_version_below '3.0.0'
     @mesg (print_fish_version_below '3.0.0')
     @test "_pure_prompt_ssh: displays 'user@hostname' when on SSH connection" (
-        set pure_color_ssh_user_normal $empty
-        set pure_color_ssh_separator $empty
-        set pure_color_ssh_hostname $empty
+        set --global pure_color_ssh_user_normal $empty
+        set --global pure_color_ssh_separator $empty
+        set --global pure_color_ssh_hostname $empty
         set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
         function whoami; echo 'user'; end  # mock
         set hostname 'hostname'
@@ -32,9 +32,9 @@ end
 if fish_version_at_least '3.0.0'
     @mesg (print_fish_version_at_least '3.0.0')
     @test "_pure_prompt_ssh: displays 'user@[\w]+' when on SSH connection" (
-        set pure_color_ssh_user_normal $empty
-        set pure_color_ssh_separator $empty
-        set pure_color_ssh_hostname $empty
+        set --global pure_color_ssh_user_normal $empty
+        set --global pure_color_ssh_separator $empty
+        set --global pure_color_ssh_hostname $empty
         set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
         function whoami; echo 'user'; end  # mock
 

@@ -13,6 +13,8 @@ function setup
 end
 
 function teardown
+    source $current_dirname/../tests/fixtures/config.empty.fish
+
     rm --force --recursive /tmp/test_pure_prompt_git
 end
 
@@ -28,10 +30,11 @@ end
     function _pure_prompt_git_dirty; echo $empty; end
     function _pure_prompt_git_pending_commits; echo $empty; end
 
-    set pure_enable_git true
-    set pure_color_git_branch $empty
-    set pure_color_git_dirty $empty
-    set pure_color_git_pending_commits $empty
+    set --global pure_enable_git true
+    set --global pure_color_git_branch $empty
+    set --global pure_color_git_dirty $empty
+    set --global pure_color_git_unpulled_commits $empty
+    set --global pure_color_git_unpushed_commits $empty
 
     _pure_prompt_git
 ) = 'master'
@@ -41,10 +44,11 @@ end
     function _pure_prompt_git_dirty; echo '*'; end
     function _pure_prompt_git_pending_commits; echo $empty; end
 
-    set pure_enable_git true
-    set pure_color_git_branch $empty
-    set pure_color_git_dirty $empty
-    set pure_color_git_pending_commits $empty
+    set --global pure_enable_git true
+    set --global pure_color_git_branch $empty
+    set --global pure_color_git_dirty $empty
+    set --global pure_color_git_unpulled_commits $empty
+    set --global pure_color_git_unpushed_commits $empty
 
     _pure_prompt_git
 ) = 'master*'
@@ -54,10 +58,11 @@ end
     function _pure_prompt_git_dirty; echo $empty; end
     function _pure_prompt_git_pending_commits; echo 'v'; end
 
-    set pure_enable_git true
-    set pure_color_git_branch $empty
-    set pure_color_git_dirty $empty
-    set pure_color_git_pending_commits $empty
+    set --global pure_enable_git true
+    set --global pure_color_git_branch $empty
+    set --global pure_color_git_dirty $empty
+    set --global pure_color_git_unpulled_commits $empty
+    set --global pure_color_git_unpushed_commits $empty
 
     _pure_prompt_git
 ) = 'master v'
@@ -67,10 +72,11 @@ end
     function _pure_prompt_git_dirty; echo $empty; end
     function _pure_prompt_git_pending_commits; echo $empty; end
 
-    set pure_enable_git false
-    set pure_color_git_branch $empty
-    set pure_color_git_dirty $empty
-    set pure_color_git_pending_commits $empty
+    set --global pure_enable_git false
+    set --global pure_color_git_branch $empty
+    set --global pure_color_git_dirty $empty
+    set --global pure_color_git_unpulled_commits $empty
+    set --global pure_color_git_unpushed_commits $empty
 
     _pure_prompt_git
 ) $status -eq $succeed
