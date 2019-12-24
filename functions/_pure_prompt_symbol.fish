@@ -3,8 +3,8 @@ function _pure_prompt_symbol \
     --argument-names exit_code
 
     set --local prompt_symbol (_pure_get_prompt_symbol)
-    set --local symbol_color_success (_pure_set_color pure_color_prompt_on_success $pure_color_success)
-    set --local symbol_color_error (_pure_set_color pure_color_prompt_on_error $pure_color_danger)
+    set --local symbol_color_success (_pure_set_color $pure_color_prompt_on_success)
+    set --local symbol_color_error (_pure_set_color $pure_color_prompt_on_error)
     set --local command_succeed 0
 
     set --local symbol_color $symbol_color_success # default pure symbol color
