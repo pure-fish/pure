@@ -10,7 +10,7 @@ source $current_dirname/../functions/_pure_set_color.fish
 
 @test "_pure_prompt_virtualenv: displays virtualenv directory prompt" (
     set VIRTUAL_ENV /home/test/fake/project/
-    set pure_color_virtualenv (set_color grey)
+    set --global pure_color_virtualenv grey
 
     _pure_prompt_virtualenv
     set --erase --global VIRTUAL_ENV

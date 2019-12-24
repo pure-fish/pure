@@ -8,8 +8,8 @@ set --local success 0
 ) $status -eq $success
 
 @test "_pure_prompt_jobs: displays number of jobs in prompt" (
-    set pure_color_jobs (set_color grey)
-    set pure_show_jobs true
+    set --global pure_color_jobs grey
+    set --global pure_show_jobs true
     sleep 5 &
     _pure_prompt_jobs
     kill (jobs -p)

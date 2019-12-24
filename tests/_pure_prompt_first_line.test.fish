@@ -4,10 +4,10 @@ source $current_dirname/../functions/_pure_set_color.fish
 set --local empty ''
 
 function setup
-    set pure_color_current_directory $pure_color_primary
-    set pure_color_git_branch $pure_color_mute
-    set pure_color_git_dirty $pure_color_mute
-    set pure_color_command_duration $pure_color_warning
+    set --global pure_color_current_directory $pure_color_primary
+    set --global pure_color_git_branch $pure_color_mute
+    set --global pure_color_git_dirty $pure_color_mute
+    set --global pure_color_command_duration $pure_color_warning
 
     mkdir -p /tmp/test
     cd /tmp/test
