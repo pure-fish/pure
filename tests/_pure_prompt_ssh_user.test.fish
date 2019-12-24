@@ -1,5 +1,5 @@
 source $current_dirname/../functions/_pure_prompt_ssh_user.fish
-source $current_dirname/../functions/_pure_get_var.fish
+source $current_dirname/../functions/_pure_set_color.fish
 
 @test "_pure_prompt_ssh_user: colorize standard user" (
     set pure_color_ssh_user_normal (set_color green)
