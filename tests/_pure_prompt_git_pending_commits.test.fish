@@ -1,5 +1,5 @@
 source $current_dirname/../functions/_pure_prompt_git_pending_commits.fish
-source $current_dirname/../functions/_pure_get_var.fish
+source $current_dirname/../functions/_pure_set_color.fish
 
 set --local empty ''
 set fake_repo /tmp/pure

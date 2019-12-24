@@ -1,5 +1,5 @@
 source $current_dirname/../functions/_pure_prompt_git_dirty.fish
-source $current_dirname/../functions/_pure_get_var.fish
+source $current_dirname/../functions/_pure_set_color.fish
 
 function setup
     rm -r -f /tmp/pure_pure_prompt_git_dirty

@@ -1,5 +1,5 @@
-function _pure_get_var \
-    --description 'Get value of configuration variable' \
+function _pure_set_color \
+    --description 'Set color' \
     --argument-names var default
 
     set --local result $default

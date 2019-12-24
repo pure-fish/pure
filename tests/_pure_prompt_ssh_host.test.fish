@@ -1,5 +1,5 @@
 source $current_dirname/../functions/_pure_prompt_ssh_host.fish
-source $current_dirname/../functions/_pure_get_var.fish
+source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../tools/versions-compare.fish
 
 if fish_version_below '3.0.0'

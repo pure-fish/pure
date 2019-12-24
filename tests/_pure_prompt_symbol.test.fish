@@ -1,6 +1,6 @@
 source $current_dirname/../functions/_pure_prompt_symbol.fish
 source $current_dirname/../functions/_pure_get_prompt_symbol.fish
-source $current_dirname/../functions/_pure_get_var.fish
+source $current_dirname/../functions/_pure_set_color.fish
 
 set --local empty ''
 set --local fail 1
