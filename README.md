@@ -11,18 +11,7 @@
 
 ## Install
 
-**:warning: requirements**: fish `≥2.5`.
-
-### Manually
-
-Via [cURL](https://curl.haxx.se):
-
-```sh
-# Download the installer to `/tmp`
-curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent
-# Source and trigger the installer
-source /tmp/pure_installer.fish; and install_pure
-```
+**:warning: requirements**: fish `≥2.5`
 
 ### [Fisher](https://github.com/jorgebucaran/fisher)
 
@@ -47,6 +36,17 @@ fundle plugin rafaelrinaldi/pure;
 fundle install;
 ```
 
+### Manually
+
+Via [cURL](https://curl.haxx.se):
+
+```sh
+# Download the installer to `/tmp`
+curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent
+# Source and trigger the installer
+source /tmp/pure_installer.fish; and install_pure
+```
+
 ## Features
 
 -   Fully **customizable** ;
@@ -66,7 +66,17 @@ fundle install;
 
 ## Configuration
 
-You can tweak pretty much everything in `pure` by overriding variables in your `config.fish` file.
+You can tweak pretty much everything in `pure` by overriding defaults with global variables in your `config.fish` file:
+
+```
+set -g pure_symbol_prompt ">"
+```
+
+or by changing [universal variables](https://fishshell.com/docs/current/tutorial.html#tut_universal) directly in the terminal (which will be preserved between all `fish` sessions on the computer):
+
+```
+set -U pure_symbol_prompt ">"
+```
 
 #### Prompt Symbol
 
@@ -93,17 +103,31 @@ You can tweak pretty much everything in `pure` by overriding variables in your `
 
 #### Colors
 
-| Base Color               | Inherited by                                                                                                                                                                                    | Default               |
-| :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- |
-| **`pure_color_primary`** | **`pure_color_current_directory`**                                                                                                                                                              | `(set_color blue)`    |
-| **`pure_color_info`**    | **`pure_color_git_unpulled_commits`**<br>**`pure_color_git_unpushed_commits`**                                                                                                                  | `(set_color cyan)`    |
-| **`pure_color_mute`**    | **`pure_color_git_branch`**<br>**`pure_color_git_dirty`**<br>**`pure_color_ssh_hostname`**<br>**`pure_color_ssh_separator`**<br>**`pure_color_ssh_user_normal`**<br>**`pure_color_virtualenv`** | `(set_color brblack)` |
-| **`pure_color_success`** | **`pure_color_prompt_on_success`**                                                                                                                                                              | `(set_color magenta)` |
-| **`pure_color_normal`**  | **`pure_color_jobs`**                                                                                                                                                                           | `(set_color normal)`  |
-| **`pure_color_danger`**  | **`pure_color_prompt_on_error`**                                                                                                                                                                | `(set_color red)`     |
-| **`pure_color_light`**   | **`pure_color_ssh_user_root`**                                                                                                                                                                  | `(set_color white)`   |
-| **`pure_color_warning`** | **`pure_color_command_duration`**                                                                                                                                                               | `(set_color yellow)`  |
-| **`pure_color_dark`**    |                                                                                                                                                                                                 | `(set_color black)`   |
+You can configure `pure` colors by changing the values of variables below. The value of these variables can be one of the colors accepted by the [`set_color`](https://fishshell.com/docs/current/commands.html#set_color) command (including various options like `--background`, `-o`, `--underline`, etc.):
+
+```
+set pure_color_success 6638F0 --italics
+```
+
+Variables regulating color for certain features from the second column can also accept one of the base color names:
+
+```
+set pure_color_ssh_user_root pure_color_dark
+```
+
+Take a note on the absence of `$` sign before the second argument in this case. By default all feature colors inherit their values from base colors.
+
+| Base Color               | Inherited by                                                                                                                                                                                    | Default   |
+| :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------- |
+| **`pure_color_primary`** | **`pure_color_current_directory`**                                                                                                                                                              | `blue`    |
+| **`pure_color_info`**    | **`pure_color_git_unpulled_commits`**<br>**`pure_color_git_unpushed_commits`**                                                                                                                  | `cyan`    |
+| **`pure_color_mute`**    | **`pure_color_git_branch`**<br>**`pure_color_git_dirty`**<br>**`pure_color_ssh_hostname`**<br>**`pure_color_ssh_separator`**<br>**`pure_color_ssh_user_normal`**<br>**`pure_color_virtualenv`** | `brblack` |
+| **`pure_color_success`** | **`pure_color_prompt_on_success`**                                                                                                                                                              | `magenta` |
+| **`pure_color_normal`**  | **`pure_color_jobs`**                                                                                                                                                                           | `normal`  |
+| **`pure_color_danger`**  | **`pure_color_prompt_on_error`**                                                                                                                                                                | `red`     |
+| **`pure_color_light`**   | **`pure_color_ssh_user_root`**                                                                                                                                                                  | `white`   |
+| **`pure_color_warning`** | **`pure_color_command_duration`**                                                                                                                                                               | `yellow`  |
+| **`pure_color_dark`**    |                                                                                                                                                                                                 | `black`   |
 
 ## Tests
 
