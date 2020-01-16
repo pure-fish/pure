@@ -37,7 +37,7 @@ function pure_backup_existing_theme
     printf "\tBackuping existing theme"
     set --local old_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
     set --local backup_prompt $old_prompt.ignore
-    
+
     if test -f "$old_prompt"
         mv "$old_prompt" "$backup_prompt"; pure_exit_symbol $status
         printf "\tPrevious config saved to: %s%s%s." "$color_white" "$backup_prompt" "$color_normal"
@@ -56,7 +56,6 @@ end
 
 function pure_symlinks_assets
     printf "\tLink pure's configuration and functions to fish config directory"
-    ln -sf $PURE_INSTALL_DIR/fish_*.fish $FISH_CONFIG_DIR/functions/
     ln -sf $PURE_INSTALL_DIR/functions/*.fish $FISH_CONFIG_DIR/functions/
     ln -sf $PURE_INSTALL_DIR/conf.d/* $FISH_CONFIG_DIR/conf.d/
 end
