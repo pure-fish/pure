@@ -21,6 +21,13 @@ function pure_set_pure_install_path
     end
 end
 
+function pure_scaffold_fish_directories
+     printf "\tScaffolding fish directories"
+
+      mkdir -p $PURE_INSTALL_DIR/functions
+     mkdir -p $PURE_INSTALL_DIR/conf.d/
+ end
+
 function pure_fetch_source
     printf "\tFetching theme's source"
 
@@ -96,6 +103,7 @@ function install_pure
     printf "Installing Pure theme\n"
     pure_set_fish_config_path $argv
     pure_set_pure_install_path $argv
+    pure_scaffold_fish_directories; pure_exit_symbol $status
     pure_fetch_source; pure_exit_symbol $status
     pure_backup_existing_theme; pure_exit_symbol $status
     pure_enable_autoloading; pure_exit_symbol $status
