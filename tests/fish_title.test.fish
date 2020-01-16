@@ -1,4 +1,4 @@
-source $current_dirname/../fish_title.fish
+source $current_dirname/../functions/fish_title.fish
 source $current_dirname/../tools/versions-compare.fish
 
 function setup

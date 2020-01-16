@@ -1,4 +1,4 @@
-source $current_dirname/../fish_greeting.fish
+source $current_dirname/../functions/fish_greeting.fish
 
 set --local succeed 0
 

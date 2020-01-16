@@ -1,4 +1,4 @@
-source $current_dirname/../fish_mode_prompt.fish
+source $current_dirname/../functions/fish_mode_prompt.fish
 
 set --local succeed 0
 
