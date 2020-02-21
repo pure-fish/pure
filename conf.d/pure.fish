@@ -40,6 +40,10 @@ _pure_set_default pure_color_ssh_user_root pure_color_light
 _pure_set_default pure_show_jobs false
 _pure_set_default pure_color_jobs pure_color_normal
 
+# Show system time
+_pure_set_default pure_show_system_time false
+_pure_set_default pure_color_system_time pure_color_mute
+
 # Virtualenv for Python
 _pure_set_default pure_color_virtualenv pure_color_mute
 
