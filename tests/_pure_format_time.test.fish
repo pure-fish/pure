@@ -11,18 +11,23 @@ set --local threshold 0 # in seconds
 
 @test "_pure_format_time: returns nothing if duration is below thresold time" (
     set --local duration 0 # ms
-    set --local threshold 1 # ms
+    set --local threshold 1 # s
     _pure_format_time $duration $threshold
 ) = $EMPTY
 
 @test "_pure_format_time: format 1s to human" (
-    set --local seconds 1000 # express as milliseconds
-    _pure_format_time (math "1*$seconds") $threshold
+    set --local milliseconds 1000 # express as milliseconds
+    _pure_format_time (math "1*$milliseconds") $threshold
 ) = '1s'
 
+@test "_pure_format_time: format 1050ms to human (show milliseconds)" (
+    set --local milliseconds 1053 # express as milliseconds
+    _pure_format_time (math "1*$milliseconds") $threshold true
+) = '1.05s'
+
 @test "_pure_format_time: format 60s as a minutes to human" (
-    set --local seconds 1000 # express as milliseconds
-    _pure_format_time (math "60*$seconds") $threshold
+    set --local milliseconds 1000 # express as milliseconds
+    _pure_format_time (math "60*$milliseconds") $threshold
 ) = '1m'
 
 @test "_pure_format_time: format 59 minutes to human" (

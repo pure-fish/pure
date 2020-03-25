@@ -98,6 +98,9 @@ or changing the defaults in your `config.fish`:
 | **`pure_enable_git`**                          | `true`  | Show info about Git repository.                                                                 |
 | **`pure_show_jobs`**                           | `false` | Show Number of running jobs                                                                     |
 | **`pure_show_system_time`**                    | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                             |
+| **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
+| **`pure_show_subsecond_command_duration`**     | `false` | Show subsecond (ex. 1.5s) in command duration.                                                  |
+| **`pure_separate_prompt_on_error`**            | `false` | Show last command [exit code as a separate character][exit-code].                               |
 | **`pure_begin_prompt_with_current_directory`** | `true`  | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_.             |
 | **`pure_separate_prompt_on_error`**            | `false` | Show last command [exit code as a separate character][exit-code].                               |
 | **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
