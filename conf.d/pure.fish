@@ -79,3 +79,6 @@ _pure_set_default pure_check_for_new_release false
 _pure_set_default pure_show_prefix_root_prompt false
 _pure_set_default pure_symbol_prefix_root_prompt "#"
 _pure_set_default pure_color_prefix_root_prompt pure_color_danger
+
+# Compact mode
+_pure_set_default pure_enable_compact_mode false
