@@ -73,3 +73,6 @@ _pure_set_default pure_symbol_title_bar_separator "-"
 
 # Check for new release on startup
 _pure_set_default pure_check_for_new_release false
+
+# Compact mode
+_pure_set_default pure_compact_mode false

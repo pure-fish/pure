@@ -3,7 +3,13 @@ function _pure_prompt_new_line \
     --on-event fish_prompt
 
     set --local new_line
-    if test $_pure_fresh_session = false
+
+    if begin
+            test $pure_compact_mode = false; or test "$PWD" != "$HOME"
+        end; and test $_pure_fresh_session = false
+        # don't show new line if it's a fresh session
+        # or if compact mode is enabled and pwd = ~
+
         set new_line "\n"
     end
 

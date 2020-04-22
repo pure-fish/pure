@@ -104,6 +104,7 @@ or changing the defaults in your `config.fish`:
 | **`pure_show_subsecond_command_duration`**     | `false` | Show subsecond (ex. 1.5s) in command duration.                                                  |
 | **`pure_show_system_time`**                    | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                             |
 | **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
+| **`pure_compact_mode`**                        | `false` | `true`: Don't show direcory line when in home                                                   |
 
 ### Colors
 
