@@ -8,9 +8,9 @@ INTERACTIVE=true
 default: usage
 usage:
 	@printf "usage:"
-	@printf "\tmake build-pure-on FISH_VERSION=3.0.0\t# build container\n"
-	@printf "\tmake test-pure-on  FISH_VERSION=3.0.0\t# run tests\n"
-	@printf "\tmake dev-pure-on   FISH_VERSION=3.0.0\t# dev in container\n"
+	@printf "\tmake build-pure-on FISH_VERSION=3.1.2\t# build container\n"
+	@printf "\tmake test-pure-on  FISH_VERSION=3.1.2\t# run tests\n"
+	@printf "\tmake dev-pure-on   FISH_VERSION=3.1.2\t# dev in container\n"
 
 .PHONY: build-pure-on
 build-pure-on:
@@ -28,7 +28,7 @@ test-pure-on:
 		--interactive \
 		--tty \
 		pure-on-fish-${FISH_VERSION}
-	
+
 .PHONY: dev-pure-on
 dev-pure-on:
 	docker run \
