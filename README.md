@@ -16,7 +16,7 @@
 ### [Fisher](https://github.com/jorgebucaran/fisher)
 
 ```fish
-fisher add rafaelrinaldi/pure
+fisher install rafaelrinaldi/pure
 ```
 
 ### [Oh My Fish!](https://github.com/oh-my-fish)
@@ -29,11 +29,11 @@ ln -s $OMF_PATH/themes/pure/conf.d/_pure_init.fish ~/.config/fish/conf.d/pure_in
 
 :information_source: [why the symlink?](https://github.com/rafaelrinaldi/pure/wiki/Oh-My-Fish-not-currently-supporting-conf.d-snippets-in-plugins-and-themes)
 
-### [Fundle](https://github.com/tuvistavie/fundle)
+### [Fundle](https://github.com/danhper/fundle)
 
 ```fish
-fundle plugin rafaelrinaldi/pure;
-fundle install;
+fundle plugin rafaelrinaldi/pure
+fundle install
 ```
 
 ### Manually
