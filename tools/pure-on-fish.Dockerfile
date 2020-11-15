@@ -24,7 +24,7 @@ RUN curl \
     --output $HOME/.config/fish/functions/fisher.fish \
     --create-dirs \
     git.io/fisher
-RUN fish -c 'fisher add jorgebucaran/fishtape@2.1.1'
+RUN fish -c 'fisher install jorgebucaran/fishtape@2.1.1'
 
 # Copy source code
 WORKDIR /tmp/.pure/

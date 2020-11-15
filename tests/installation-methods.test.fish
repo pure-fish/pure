@@ -45,7 +45,7 @@ end
 
 if test $USER = 'nemo'
     @test "installation methods: with fisher" (
-        fisher add rafaelrinaldi/pure >/dev/null
+        fisher install rafaelrinaldi/pure >/dev/null
 
         fish -c 'fish_prompt | grep -c "❯"'
     ) = 1
