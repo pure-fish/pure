@@ -1,4 +1,4 @@
-> ##### ✋ Psst! Migrating from v1.x to v2.x? We got you. Check our [**migration guide**](https://github.com/rafaelrinaldi/pure/releases/tag/v2.0.0) and happy upgrading!
+> ##### ✋ Psst! Migrating from v1.x to v2.x? We got you. Check our [**migration guide**](https://github.com/rafaelrinaldi/pure/releases/tag/v2.0.0) and happy upgrading
 
 # pure [![travis-badge]][travis-link] ![fish-2.5] ![fish-2.6] ![fish-2.7.1] ![fish-3.0.0]
 
@@ -16,7 +16,7 @@
 ### [Fisher](https://github.com/jorgebucaran/fisher)
 
 ```fish
-fisher add rafaelrinaldi/pure
+fisher install rafaelrinaldi/pure
 ```
 
 ### [Oh My Fish!](https://github.com/oh-my-fish)
@@ -29,11 +29,11 @@ ln -s $OMF_PATH/themes/pure/conf.d/_pure_init.fish ~/.config/fish/conf.d/pure_in
 
 :information_source: [why the symlink?](https://github.com/rafaelrinaldi/pure/wiki/Oh-My-Fish-not-currently-supporting-conf.d-snippets-in-plugins-and-themes)
 
-### [Fundle](https://github.com/tuvistavie/fundle)
+### [Fundle](https://github.com/danhper/fundle)
 
 ```fish
-fundle plugin rafaelrinaldi/pure;
-fundle install;
+fundle plugin rafaelrinaldi/pure
+fundle install
 ```
 
 ### Manually
@@ -49,20 +49,20 @@ source /tmp/pure_installer.fish; and install_pure
 
 ## Features
 
--   Fully **customizable** ;
--   Excellent prompt character `❯` ;
--   Display current directory tail ;
--   Display `git` branch name ;
-    -   Display `*` when `git` repository is _dirty_ ;
-    -   Display `⇡` when branch is _ahead_ (commits to push) ;
-    -   Display `⇣` when branch is _behind_ (commits to pull) ;
--   Change `❯` to red when previous command has failed ;
--   Update terminal title with _current folder_ and _command_ ;
--   Display _username_ and _hostname_ when in an `SSH` session ;
--   Display _duration_ when command run more that `5` seconds ;
--   Display `Python` _virtualenv_ when activated ;
--   Fine control over **colors** ;
--   Display `VI` mode and custom symbol for non-insert mode.
+- Fully **customizable** ;
+- Excellent prompt character `❯` ;
+- Display current directory tail ;
+- Display `git` branch name ;
+  - Display `*` when `git` repository is _dirty_ ;
+  - Display `⇡` when branch is _ahead_ (commits to push) ;
+  - Display `⇣` when branch is _behind_ (commits to pull) ;
+- Change `❯` to red when previous command has failed ;
+- Update terminal title with _current folder_ and _command_ ;
+- Display _username_ and _hostname_ when in an `SSH` session ;
+- Display _duration_ when command run more that `5` seconds ;
+- Display `Python` _virtualenv_ when activated ;
+- Fine control over **colors** ;
+- Display `VI` mode and custom symbol for non-insert mode.
 
 ## Configuration
 
@@ -137,9 +137,9 @@ Take a note on the absence of `$` sign before the second argument in this case. 
 
 ## Maintainers
 
--   [Rafael Rinaldi](https://github.com/rafaelrinaldi)
--   [Édouard Lopez](https://github.com/edouard-lopez)
--   [Andrei Borisov](https://github.com/schrodincat)
+- [Rafael Rinaldi](https://github.com/rafaelrinaldi)
+- [Édouard Lopez](https://github.com/edouard-lopez)
+- [Andrei Borisov](https://github.com/schrodincat)
 
 Kudos to all our awesome [:yellow_heart: contributors :yellow_heart:](../..//graphs/contributors)
 

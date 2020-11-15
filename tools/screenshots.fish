@@ -3,7 +3,7 @@
 set coming_from (pwd)
 function install_base16_plugin
     fisher ls | grep --quiet smh/base16-shell-fish
-    or fisher add smh/base16-shell-fish
+    or fisher install smh/base16-shell-fish
 end
 
 set --global mock_directory $HOME/dev/
