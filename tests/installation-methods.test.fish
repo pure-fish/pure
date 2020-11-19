@@ -65,17 +65,3 @@ if test $USER = 'nemo'
         fish -c "fish_prompt" | grep -c '❯'
     ) = 1
 end
-
-# if test $USER = 'nemo'
-#     @test "installation methods: with Fundle" (
-#         rm --recursive --force $HOME/.config/fish/fundle/
-#         mkdir -p $HOME/.config/fish/functions
-#         curl https://git.io/fundle --output $HOME/.config/fish/functions/fundle.fish --location --silent >/dev/null
-
-#         fundle plugin rafaelrinaldi/pure >/dev/null
-#         fundle install >/dev/null
-#         cp $HOME/.config/fish/fundle/rafaelrinaldi/pure/{,functions/}fish_prompt.fish
-
-#         fish -c 'fish_prompt | grep -c "❯"'
-#     ) = 1
-# end
