@@ -100,6 +100,7 @@ set -U pure_symbol_prompt ">"
 | **`pure_begin_prompt_with_current_directory`** | `true`  | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_.             |
 | **`pure_reverse_prompt_symbol_in_vimode`**     | `true`  | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`. |
 | **`pure_check_for_new_release false`**         | `false`  | `true`: check repo for new release (on every shell start)
+| **`pure_show_system_time`** | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).
 
 #### Colors
 
