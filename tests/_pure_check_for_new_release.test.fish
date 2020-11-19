@@ -1,5 +1,4 @@
 source $current_dirname/../functions/_pure_check_for_new_release.fish
-source $current_dirname/../functions/_pure_prompt_ending.fish
 
 set --local succeed 0
 set --local empty ''
