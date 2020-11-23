@@ -27,7 +27,6 @@ dev-pure-on:
 	docker run \
 		--name run-pure-on-${FISH_VERSION} \
 		--rm \
-		--interactive \
 		--tty \
 		--volume=$$(pwd):/tmp/.pure/ \
 		pure-on-fish-${FISH_VERSION} "${CMD}"
