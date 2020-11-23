@@ -1,0 +1,45 @@
+version: "3.7"
+
+# re-usable configuration fragments
+x-build:
+  &default-build
+  context: .
+
+# configuration
+services:
+  test-on-fish-3.0.0:
+    image: pure-on-fish:3.0.0
+    build:
+      <<: *default-build
+      args:
+        FISH_VERSION: 3.0.0
+  test-on-fish-3.0.1:
+    image: pure-on-fish:3.0.1
+    build:
+      <<: *default-build
+      args:
+        FISH_VERSION: 3.0.1
+  test-on-fish-3.0.2:
+    image: pure-on-fish:3.0.2
+    build:
+      <<: *default-build
+      args:
+        FISH_VERSION: 3.0.2
+  test-on-fish-3.1.0:
+    image: pure-on-fish:3.1.0
+    build:
+      <<: *default-build
+      args:
+        FISH_VERSION: 3.1.0
+  test-on-fish-3.1.1:
+    image: pure-on-fish:3.1.1
+    build:
+      <<: *default-build
+      args:
+        FISH_VERSION: 3.1.1
+  test-on-fish-3.1.2:
+    image: pure-on-fish:3.1.2
+    build:
+      <<: *default-build
+      args:
+        FISH_VERSION: 3.1.2
