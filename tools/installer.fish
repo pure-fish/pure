@@ -24,7 +24,7 @@ end
 function pure_scaffold_fish_directories
     printf "\tScaffolding fish directories"
 
-    mkdir -p $FISH_CONFIG_DIR/functions
+    mkdir -p $FISH_CONFIG_DIR/functions/
     mkdir -p $FISH_CONFIG_DIR/conf.d/
 end
 
