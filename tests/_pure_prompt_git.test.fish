@@ -13,8 +13,6 @@ function setup
 end
 
 function teardown
-    source $current_dirname/../tests/fixtures/config.empty.fish
-
     rm --force --recursive /tmp/test_pure_prompt_git
 end
 
