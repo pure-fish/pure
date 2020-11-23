@@ -7,6 +7,7 @@ source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../functions/_pure_get_prompt_symbol.fish
 source $current_dirname/../functions/_pure_print_prompt.fish
 source $current_dirname/../functions/_pure_string_width.fish
+source $current_dirname/../functions/_pure_prompt_system_time.fish
 
 set --local failed 1
 set --local succeed 0
