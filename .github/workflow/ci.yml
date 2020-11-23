@@ -1,0 +1,22 @@
+name: Run tests on CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Test on fish ${{ matrix.fish_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        fish_version: [
+          "3.1.2",
+          "3.1.1",
+          "3.1.0",
+          "3.0.2",
+          "3.0.1",
+          "3.0.0"
+        ]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v2
+      - run: make build-pure-on FISH_VERSION=${{ matrix.fish_version }}
+      - run: make test-pure-on FISH_VERSION=${{ matrix.fish_version }}
