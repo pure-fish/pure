@@ -15,7 +15,7 @@ usage:
 .PHONY: build-pure-on
 build-pure-on:
 	docker build \
-		--file ./tools/pure-on-fish.Dockerfile \
+		--file ./Dockerfile \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
 		--tag=pure-on-fish-${FISH_VERSION} \
 		./
