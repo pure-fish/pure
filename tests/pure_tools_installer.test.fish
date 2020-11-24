@@ -1,6 +1,7 @@
 source $current_dirname/../tools/installer.fish
 
 set --local succeed 0
+set --local failed 1
 
 function rm_pure_files
     for file in $HOME/.config/fish/functions/_pure*.fish
@@ -88,19 +89,15 @@ end
 ) $status -eq $succeed
 
 
+set --local is_present 1
 @test "installer: activate prompt" (
-    set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
-    rm -f "$active_prompt"
-    mkdir -p $PURE_INSTALL_DIR; \
-        and touch $PURE_INSTALL_DIR/fish_prompt.fish  # stub
-
     pure_enable_autoloading >/dev/null
 
     grep -c "pure.fish" $FISH_CONFIG_DIR/config.fish
-) = 1
+) = $is_present
 
 @test "installer: app path to theme's functions" (
-    pure_enable_autoloading >/dev/null
+    touch $FISH_CONFIG_DIR/config.fish
 
     pure_enable_theme >/dev/null
 

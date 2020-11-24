@@ -66,7 +66,7 @@ end
         $fake_empty_repo \
         $fake_empty_remote
     git init --bare --quiet $fake_empty_remote
-    git clone $fake_empty_remote $fake_empty_repo
+    git clone --quiet $fake_empty_remote $fake_empty_repo
     cd $fake_empty_repo
 
     _pure_prompt_git_pending_commits
