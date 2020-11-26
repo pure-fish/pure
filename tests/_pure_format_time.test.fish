@@ -1,19 +1,19 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_format_time.fish
 
+
 set --local threshold 0 # in seconds
-set --local empty ''
-set --local fail 1
 
 @test "_pure_format_time: throws error on negative time" (
     set --local negative_duration -1
     _pure_format_time $negative_duration $threshold
-) $status -eq $fail
+) $status -eq $FAILURE
 
 @test "_pure_format_time: returns nothing if duration is below thresold time" (
     set --local duration 0 # ms
     set --local threshold 1 # ms
     _pure_format_time $duration $threshold
-) = $empty
+) = $EMPTY
 
 @test "_pure_format_time: format 1s to human" (
     set --local seconds 1000 # express as milliseconds

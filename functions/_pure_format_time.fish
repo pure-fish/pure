@@ -1,10 +1,10 @@
-set fail 1
+set FAILURE 1
 
 function _pure_format_time \
     --description="Format milliseconds to a human readable format" \
     --argument-names milliseconds threshold
-    
-    if test $milliseconds -lt 0; return $fail; end
+
+    if test $milliseconds -lt 0; return $FAILURE; end
 
     set --local seconds (math -s0 "$milliseconds / 1000 % 60")
     set --local minutes (math -s0 "$milliseconds / 60000 % 60")

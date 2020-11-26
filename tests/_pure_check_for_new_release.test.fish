@@ -1,14 +1,14 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_check_for_new_release.fish
 
-set --local succeed 0
-set --local empty ''
-function _pure_set_color; echo $empty; end # drop coloring during test
+
+function _pure_set_color; echo $EMPTY; end # drop coloring during test
 
 @test "_pure_check_for_new_release: is disabled" (
     set --global pure_check_for_new_release false
 
     _pure_check_for_new_release
-) $status -eq $succeed
+) $status -eq $SUCCESS
 
 
 @test "_pure_check_for_new_release: nothing when same as latest" (

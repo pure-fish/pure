@@ -1,12 +1,12 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_set_default.fish
 
-set --local empty ''
 
 @test "configure: pure_version"  (
     set --erase pure_version
     source $current_dirname/../conf.d/pure.fish
     echo $pure_version
-) != $empty
+) != $EMPTY
 
 @test "configure: pure_symbol_prompt"  (
     set --erase pure_symbol_prompt

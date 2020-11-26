@@ -1,6 +1,6 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_string_width.fish
 
-set --local empty ''
 
 @test "_pure_string_width: measure empty string" (
     _pure_string_width ''
@@ -16,7 +16,7 @@ set --local empty ''
     set --local prompt \
                     (set_color grey)'user@' \
                     (set_color blue)'hostname'
-    set prompt (string join "$empty" $prompt)  # do not quote the array
+    set prompt (string join "$EMPTY" $prompt)  # do not quote the array
 
     _pure_string_width $prompt
 ) = 13
@@ -32,7 +32,7 @@ set --local empty ''
                     (set_color grey)'🛡' \
                     (set_color red)'🚀'
 
-    set prompt (string join "$empty" $prompt)  # do not quote the array
+    set prompt (string join "$EMPTY" $prompt)  # do not quote the array
 
     _pure_string_width $prompt
 ) = 6

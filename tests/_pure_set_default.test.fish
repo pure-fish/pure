@@ -1,7 +1,6 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_set_default.fish
 
-set --local empty ''
-set --local fail 1
 
 function teardown
     set --universal --erase my_var
@@ -20,7 +19,7 @@ end
 ) = 'default_value'
 
 @test "_pure_set_default: overwrite UNIVERSAL empty value to make sure the user won't have empty colors." (
-    _pure_set_default my_var $empty
+    _pure_set_default my_var $EMPTY
     _pure_set_default my_var 'default_value'
     echo $my_var
 ) = 'default_value'
