@@ -1,6 +1,6 @@
 > ##### ✋ Psst! Migrating from v1.x to v2.x? We got you. Check our [**migration guide**](https://github.com/rafaelrinaldi/pure/releases/tag/v2.0.0) and happy upgrading
 
-# pure [![travis-badge]][travis-link] ![fish-2.5] ![fish-2.6] ![fish-2.7.1] ![fish-3.0.0]
+# pure [![github-ci-badge]][github-ci-link] ![fish-2.5] ![fish-2.6] ![fish-2.7.1] ![fish-3.0.0]
 
 > Pretty, minimal and fast Fish 🐟 prompt, ported from [`zsh`](https://github.com/sindresorhus/pure).
 
@@ -63,6 +63,10 @@ source /tmp/pure_installer.fish; and install_pure
 - Display `Python` _virtualenv_ when activated ;
 - Fine control over **colors** ;
 - Display `VI` mode and custom symbol for non-insert mode.
+- Show system time
+- Show number of running jobs
+- Print current working directory at the beginning of prompt
+- Can check for new release on start
 
 ## Configuration
 
@@ -95,12 +99,13 @@ set -U pure_symbol_prompt ">"
 | Option                                         | Default | Description                                                                                     |
 | :--------------------------------------------- | :------ | :---------------------------------------------------------------------------------------------- |
 | **`pure_enable_git`**                          | `true`  | Show info about Git repository.                                                                 |
-| **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
-| **`pure_separate_prompt_on_error`**            | `false` | Show last command [exit code as a separate character][exit-code].                               |
+| **`pure_show_jobs`**                           | `false` | Show Number of running jobs                                                                     |
+| **`pure_show_system_time`**                    | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                             |
 | **`pure_begin_prompt_with_current_directory`** | `true`  | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_.             |
+| **`pure_separate_prompt_on_error`**            | `false` | Show last command [exit code as a separate character][exit-code].                               |
+| **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
 | **`pure_reverse_prompt_symbol_in_vimode`**     | `true`  | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`. |
-| **`pure_check_for_new_release false`**         | `false`  | `true`: check repo for new release (on every shell start)
-| **`pure_show_system_time`** | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).
+| **`pure_check_for_new_release false`**         | `false` | `true`: check repo for new release (on every shell start)                                       |
 
 #### Colors
 
@@ -155,14 +160,14 @@ MIT © [Rafael Rinaldi](http://rinaldi.io)
 <a href="https://buymeacoff.ee/rinaldi" title="Buy me a coffee">Buy me a ☕</a>
 </p>
 
-[travis-link]: https://travis-ci.org/rafaelrinaldi/pure "TravisCI"
-[travis-badge]: https://travis-ci.org/rafaelrinaldi/pure.svg?branch=master
-[fish-2.5]: https://img.shields.io/badge/fish-v2.5.0-007EC7.svg?style=flat-square "Support Fish 2.5"
-[fish-2.6]: https://img.shields.io/badge/fish-v2.6.0-007EC7.svg?style=flat-square "Support Fish 2.6"
-[fish-2.7.1]: https://img.shields.io/badge/fish-v2.7.1-007EC7.svg?style=flat-square "Support Fish 2.7.1"
-[fish-3.0.0]: https://img.shields.io/badge/fish-v3.0.0-007EC7.svg?style=flat-square "Support Fish 3.0.0"
-[changelog-2.5]: https://github.com/fish-shell/fish-shell/releases/tag/2.5.0 "Changelog Fish 2.5"
-[changelog-2.6]: https://github.com/fish-shell/fish-shell/releases/tag/2.6.0 "Changelog Fish 2.6"
-[changelog-2.7.1]: https://github.com/fish-shell/fish-shell/releases/tag/2.7.1 "Changelog Fish 2.7.1"
-[changelog-3.0.0]: https://github.com/fish-shell/fish-shell/releases/tag/3.0.0 "Changelog Fish 3.0.0"
-[exit-code]: https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character "See pure-zsh wiki"
+[github-ci-link]: <https://github.com/rafaelrinaldi/pure/actions> "Github CI"
+[github-ci-badge]: <https://github.com/rafaelrinaldi/pure/workflows/Run%20tests%20on%20CI/badge.svg>
+[fish-2.5]: <https://img.shields.io/badge/fish-v2.5.0-007EC7.svg?style=flat-square> "Support Fish 2.5"
+[fish-2.6]: <https://img.shields.io/badge/fish-v2.6.0-007EC7.svg?style=flat-square> "Support Fish 2.6"
+[fish-2.7.1]: <https://img.shields.io/badge/fish-v2.7.1-007EC7.svg?style=flat-square> "Support Fish 2.7.1"
+[fish-3.0.0]: <https://img.shields.io/badge/fish-v3.0.0-007EC7.svg?style=flat-square> "Support Fish 3.0.0"
+[changelog-2.5]: <https://github.com/fish-shell/fish-shell/releases/tag/2.5.0> "Changelog Fish 2.5"
+[changelog-2.6]: <https://github.com/fish-shell/fish-shell/releases/tag/2.6.0> "Changelog Fish 2.6"
+[changelog-2.7.1]: <https://github.com/fish-shell/fish-shell/releases/tag/2.7.1> "Changelog Fish 2.7.1"
+[changelog-3.0.0]: <https://github.com/fish-shell/fish-shell/releases/tag/3.0.0> "Changelog Fish 3.0.0"
+[exit-code]: <https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character> "See pure-zsh wiki"
