@@ -146,7 +146,8 @@ if test $USER = 'nemo'
     ) = $is_present
 end
 
-if is_fisher_4 and test $USER = 'nemo'
+set --local fisher_version (fisher --version)
+if is_fisher_4 $fisher_version and test $USER = 'nemo'
     @test "installation methods: with fisher 4.x" (
         fish -c 'fisher add rafaelrinaldi/pure' >/dev/null 2>&1
 
@@ -154,7 +155,7 @@ if is_fisher_4 and test $USER = 'nemo'
     ) = $is_present
 end
 
-if not is_fisher_4 and test $USER = 'nemo'
+if not is_fisher_4 $fisher_version and test $USER = 'nemo'
     @test "installation methods: with fisher 3.x" (
         fish -c 'fisher add rafaelrinaldi/pure' >/dev/null 2>&1
 

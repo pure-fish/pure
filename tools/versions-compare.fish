@@ -41,5 +41,6 @@ end
 
 function is_fisher_4 \
     --argument-names fisher_version
-    test (string match --regex '\d' $fisher_version) = '4'
+    set --local major_version (string match --regex '\d' $fisher_version)
+    test $major_version = '4'
 end;
