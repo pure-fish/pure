@@ -132,7 +132,8 @@ if test $USER = 'nemo'
             source $config
         end
 
-        fish -c 'fish_prompt | grep -c "❯"'
+        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        fish -c 'fish_prompt | grep -c ">"'
     ) = $is_present
 end
 
@@ -142,7 +143,8 @@ if test $USER = 'nemo'
         and source /tmp/installer.fish
         and install_pure >/dev/null
 
-        fish -c 'fish_prompt | grep -c "❯"'
+        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        fish -c 'fish_prompt | grep -c ">"'
     ) = $is_present
 end
 
@@ -151,7 +153,8 @@ if is_fisher_4 $fisher_version and test $USER = 'nemo'
     @test "installation methods: with fisher 4.x" (
         fish -c 'fisher add rafaelrinaldi/pure' >/dev/null 2>&1
 
-        fish -c 'fish_prompt | grep -c "❯"'
+        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        fish -c 'fish_prompt | grep -c ">"'
     ) = $is_present
 end
 
@@ -159,7 +162,8 @@ if not is_fisher_4 $fisher_version and test $USER = 'nemo'
     @test "installation methods: with fisher 3.x" (
         fish -c 'fisher add rafaelrinaldi/pure' >/dev/null 2>&1
 
-        fish -c 'fish_prompt | grep -c "❯"'
+        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        fish -c 'fish_prompt | grep -c ">"'
     ) = $is_present
 end
 
@@ -174,7 +178,8 @@ if test $USER = 'nemo'
         fish -c "omf install pure; \
                 ln -sf $OMF_PURE_PATH/functions/*.fish $HOME/.config/fish/functions/; \
                 ln -sf $OMF_PURE_PATH/conf.d/* $HOME/.config/fish/conf.d/" > /dev/null
-        fish -c "fish_prompt" | grep -c '❯'
+        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        fish -c "fish_prompt" | grep -c '>'
     ) = $is_present
 end
 
@@ -188,6 +193,7 @@ if test $USER = 'nemo'
         fundle install >/dev/null
         cp $HOME/.config/fish/fundle/rafaelrinaldi/pure/{,functions/}fish_prompt.fish
 
-        fish -c 'fish_prompt | grep -c "❯"'
+        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        fish -c "fish_prompt" | grep -c '>'
     ) = $is_present
 end
