@@ -38,3 +38,8 @@ function print_fish_version_at_least \
     --argument-names expected
     printf "%sonly fish <%s: %s" (set_color blue) $expected (set_color normal) 1>&2
 end
+
+function is_fisher_4 \
+    --argument-names fisher_version
+    test (string match --regex '\d' $fisher_version) = '4'
+end;
