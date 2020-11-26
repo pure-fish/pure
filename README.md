@@ -142,23 +142,13 @@ Take a note on the absence of `$` sign before the second argument in this case. 
     make build-pure-on FISH_VERSION=3.0.0  
     make dev-pure-on   FISH_VERSION=3.0.0 CMD="fishtape tests/*.test.fish"
 
-## Maintainers
+## Maintainer
 
-- [Rafael Rinaldi](https://github.com/rafaelrinaldi)
 - [Édouard Lopez](https://github.com/edouard-lopez)
-- [Andrei Borisov](https://github.com/schrodincat)
-
-Kudos to all our awesome [:yellow_heart: contributors :yellow_heart:](../..//graphs/contributors)
 
 ## License
 
-MIT © [Rafael Rinaldi](http://rinaldi.io)
-
----
-
-<p align="center">
-<a href="https://buymeacoff.ee/rinaldi" title="Buy me a coffee">Buy me a ☕</a>
-</p>
+[MIT][MIT]
 
 [github-ci-link]: <https://github.com/rafaelrinaldi/pure/actions> "Github CI"
 [github-ci-badge]: <https://github.com/rafaelrinaldi/pure/workflows/Run%20tests%20on%20CI/badge.svg>
@@ -171,3 +161,4 @@ MIT © [Rafael Rinaldi](http://rinaldi.io)
 [changelog-2.7.1]: <https://github.com/fish-shell/fish-shell/releases/tag/2.7.1> "Changelog Fish 2.7.1"
 [changelog-3.0.0]: <https://github.com/fish-shell/fish-shell/releases/tag/3.0.0> "Changelog Fish 3.0.0"
 [exit-code]: <https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character> "See pure-zsh wiki"
+[MIT]: LICENSE.md
