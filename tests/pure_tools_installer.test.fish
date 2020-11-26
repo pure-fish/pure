@@ -111,14 +111,16 @@ end
 
 
 if test $USER = 'nemo'
-    @test "installer: scaffold fish config directory" (
-        set --global PURE_INSTALL_DIR /tmp/mock/pure
+    @test "installer: link configuration and functions to fish config directory" (
+        pure_set_pure_install_path "" /tmp/.pure/ >/dev/null
+        pure_symlinks_assets >/dev/null
 
-        pure_scaffold_fish_directories >/dev/null
-
-        test    -d $PURE_INSTALL_DIR/functions \
-             -a -d $PURE_INSTALL_DIR/conf.d/
-    ) $status -eq 0
+        set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
+        set --local pure_config $FISH_CONFIG_DIR/conf.d/pure.fish
+        test \
+            -r "$active_prompt" -a -L "$active_prompt" \
+            -a -r "$pure_config" -a -L "$pure_config"   # configs and functions are a readable symlink
+    ) $status -eq $succeed
 end
 
 if test $USER = 'nemo'
@@ -129,7 +131,9 @@ if test $USER = 'nemo'
         cp -R ./{fish_*.fish,functions/,conf.d/} $PURE_INSTALL_DIR
         pure_scaffold_fish_directories >/dev/null
 
-        pure_symlinks_assets >/dev/null
+        fish -c 'fish_prompt | grep -c "❯"'
+    ) = $is_present
+end
 
         set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
         set --local pure_config $FISH_CONFIG_DIR/conf.d/pure.fish
@@ -214,65 +218,47 @@ if test $USER = 'nemo'
 end
 
 
-
-
-
-
-
-if test $USER = 'nemo'
-    @test "installation methods: manually (with unpublished installer)" (
-        source tools/installer.fish
-
-        and install_pure >/dev/null
-        source $PURE_INSTALL_DIR/conf.d/*
+if is_fisher_4 and test $USER = 'nemo'
+    @test "installation methods: with fisher 4.x" (
+        fisher install rafaelrinaldi/pure >/dev/null
 
         fish -c 'fish_prompt | grep -c "❯"'
-    ) = $succeed
+    ) = $is_present
 end
 
-# if test $USER = 'nemo'
-#     @test "installation methods: manually (with published installer)" (
-#         curl git.io/pure-fish --output /tmp/installer.fish --location --silent
-#         and source /tmp/installer.fish
-#         and install_pure
+if not is_fisher_4 and test $USER = 'nemo'
+    @test "installation methods: with fisher 3.x" (
+        fisher add rafaelrinaldi/pure >/dev/null
 
-#         fish -c 'fish_prompt | grep -c "❯"'
-#     ) = $succeed
-# end
+        fish -c 'fish_prompt | grep -c "❯"'
+    ) = $is_present
+end
 
-# if test $USER = 'nemo'
-#     @test "installation methods: with fisher" (
-#         fisher install rafaelrinaldi/pure >/dev/null
+if test $USER = 'nemo'
+    @test "installation methods: with OMF (Oh-My-Fish!)" (
+        rm --recursive --force $HOME/.local/share/omf $HOME/.config/omf/
 
-#         fish -c 'fish_prompt | grep -c "❯"'
-#     ) = $succeed
-# end
+        curl -L https://get.oh-my.fish > install
+        and fish install --noninteractive >/dev/null
 
-# if test $USER = 'nemo'
-#     @test "installation methods: with OMF (Oh-My-Fish!)" (
-#         rm --recursive --force $HOME/.local/share/omf $HOME/.config/omf/
+        set --global OMF_PURE_PATH $HOME/.local/share/omf/themes/pure
+        fish -c "omf install pure; \
+                ln -sf $OMF_PURE_PATH/functions/*.fish $HOME/.config/fish/functions/; \
+                ln -sf $OMF_PURE_PATH/conf.d/* $HOME/.config/fish/conf.d/" > /dev/null
+        fish -c "fish_prompt" | grep -c '❯'
+    ) = $is_present
+end
 
-#         curl -L https://get.oh-my.fish > install
-#         and fish install --noninteractive >/dev/null
+if test $USER = 'nemo'
+    @test "installation methods: with Fundle" (
+        rm --recursive --force $HOME/.config/fish/fundle/
+        mkdir -p $HOME/.config/fish/functions
+        curl https://git.io/fundle --output $HOME/.config/fish/functions/fundle.fish --location --silent >/dev/null
 
-#         set --global OMF_PURE_PATH $HOME/.local/share/omf/themes/pure
-#         fish -c "omf install pure; \
-#                 ln -sf $OMF_PURE_PATH/functions/*.fish $HOME/.config/fish/functions/; \
-#                 ln -sf $OMF_PURE_PATH/conf.d/* $HOME/.config/fish/conf.d/" > /dev/null
-#         fish -c "fish_prompt" | grep -c '❯'
-#     ) = $succeed
-# end
+        fundle plugin rafaelrinaldi/pure >/dev/null
+        fundle install >/dev/null
+        cp $HOME/.config/fish/fundle/rafaelrinaldi/pure/{,functions/}fish_prompt.fish
 
-# if test $USER = 'nemo'
-#     @test "installation methods: with Fundle" (
-#         rm --recursive --force $HOME/.config/fish/fundle/
-#         mkdir -p $HOME/.config/fish/functions
-#         curl https://git.io/fundle --output $HOME/.config/fish/functions/fundle.fish --location --silent >/dev/null
-
-#         fundle plugin rafaelrinaldi/pure >/dev/null
-#         fundle install >/dev/null
-#         cp $HOME/.config/fish/fundle/rafaelrinaldi/pure/{,functions/}fish_prompt.fish
-
-#         fish -c 'fish_prompt | grep -c "❯"'
-#     ) = 1
-# end
+        fish -c 'fish_prompt | grep -c "❯"'
+    ) = $is_present
+end
