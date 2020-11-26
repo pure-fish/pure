@@ -9,7 +9,7 @@
   <a href="screenshot-light.png" target=blank><img width=440 src=https://i.imgur.com/qJdonqo.png alt="Pure with light colorscheme"></a>
 </div>
 
-## Install
+## :rocket: Install
 
 **:warning: requirements**: fish `≥2.5`
 
@@ -68,19 +68,15 @@ source /tmp/pure_installer.fish; and install_pure
 - Print current working directory at the beginning of prompt
 - Can check for new release on start
 
-## Configuration
+## :paintbrush: Configuration
 
-You can tweak pretty much everything in `pure` by overriding defaults with global variables in your `config.fish` file:
+You can tweak `pure` behavior by changing [universal variables](https://fishshell.com/docs/current/tutorial.html#tut_universal) directly in the terminal:
 
-```
-set -g pure_symbol_prompt ">"
-```
+    set --universal pure_show_system_time true
 
-or by changing [universal variables](https://fishshell.com/docs/current/tutorial.html#tut_universal) directly in the terminal (which will be preserved between all `fish` sessions on the computer):
+or changing the defaults in your `config.fish`:
 
-```
-set -U pure_symbol_prompt ">"
-```
+    _pure_set_default pure_show_system_time true
 
 #### Prompt Symbol
 
@@ -105,7 +101,7 @@ set -U pure_symbol_prompt ">"
 | **`pure_separate_prompt_on_error`**            | `false` | Show last command [exit code as a separate character][exit-code].                               |
 | **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
 | **`pure_reverse_prompt_symbol_in_vimode`**     | `true`  | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`. |
-| **`pure_check_for_new_release false`**         | `false` | `true`: check repo for new release (on every shell start)                                       |
+| **`pure_check_for_new_release`**               | `false` | `true`: check repo for new release (on every shell start)                                       |
 
 #### Colors
 
@@ -135,18 +131,26 @@ Take a note on the absence of `$` sign before the second argument in this case. 
 | **`pure_color_warning`** | **`pure_color_command_duration`**                                                                                                                                                               | `yellow`  |
 | **`pure_color_dark`**    |                                                                                                                                                                                                 | `black`   |
 
-## Tests
+## :+1:  Contribute
 
-**requirements:** [`docker`](https://docs.docker.com/install/) (to run tests in isolation from user environment)
+**requirements:** [`docker`](https://docs.docker.com/install/) (isolate from your environment)
 
-    make build-pure-on FISH_VERSION=3.0.0  
-    make dev-pure-on   FISH_VERSION=3.0.0 CMD="fishtape tests/*.test.fish"
+Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by the container:
 
-## Maintainer
+    make build-pure-on FISH_VERSION=3.0.0
+    make dev-pure-on FISH_VERSION=3.0.0 CMD="fishtape tests/*.test.fish"
+
+## :man_technologist: Maintainer
 
 - [Édouard Lopez](https://github.com/edouard-lopez)
 
-## License
+## :clap: Thanks
+
+* [@andreiborisov](https://github.com/andreiborisov) for the [docker images][docker-images] ;
+* [@jorgebucaran](https://github.com/jorgebucaran/) for [fishtape](https://github.com/jorgebucaran/fishtape) ;
+* [@rafaelrinaldi](https://github.com/rafaelrinaldi/pure) for starting the project ;
+
+## :classical_building: License
 
 [MIT][MIT]
 
@@ -161,4 +165,6 @@ Take a note on the absence of `$` sign before the second argument in this case. 
 [changelog-2.7.1]: <https://github.com/fish-shell/fish-shell/releases/tag/2.7.1> "Changelog Fish 2.7.1"
 [changelog-3.0.0]: <https://github.com/fish-shell/fish-shell/releases/tag/3.0.0> "Changelog Fish 3.0.0"
 [exit-code]: <https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character> "See pure-zsh wiki"
+[fish-releases]: https://github.com/fish-shell/fish-shell/releases
+[docker-images]: https://github.com/andreiborisov/docker-fish/
 [MIT]: LICENSE.md
