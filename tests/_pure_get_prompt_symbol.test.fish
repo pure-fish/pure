@@ -1,5 +1,6 @@
 source $current_dirname/../functions/_pure_get_prompt_symbol.fish
 
+
 function setup
     set --global pure_symbol_prompt '❯'
     set --global pure_symbol_reverse_prompt '❮'

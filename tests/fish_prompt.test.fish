@@ -1,6 +1,6 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/fish_prompt.fish
 
-set --local succeed 0
 
 function setup
     function _pure_prompt_beginning; echo '['; end
@@ -12,7 +12,7 @@ end
 
 @test "fish_prompt: succeed" (
     fish_prompt 2>&1 >/dev/null
-) $status -eq $succeed
+) $status -eq $SUCCESS
 
 @test "fish_prompt: print segments" (
     fish_prompt

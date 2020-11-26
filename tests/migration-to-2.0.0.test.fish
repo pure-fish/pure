@@ -1,4 +1,8 @@
+source $current_dirname/fixtures/constants.fish
+
+
 set --global DIRNAME $current_dirname
+
 
 function setup
     cp $current_dirname/fixtures/{config.mock.fish,config.fish}
@@ -13,5 +17,5 @@ end
 
     fish $current_dirname/../tools/migration-to-2.0.0.fish $file_to_migrate 2>&1 >/dev/null
 
-    diff -U 0 $current_dirname/fixtures/config.expected.fish $file_to_migrate
-) $status -eq 0
+    diff -U $NONE $current_dirname/fixtures/config.expected.fish $file_to_migrate
+) $status -eq $SUCCESS

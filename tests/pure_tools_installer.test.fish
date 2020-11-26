@@ -1,9 +1,7 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../tools/installer.fish
 source $current_dirname/../tools/versions-compare.fish
 
-set --local succeed 0
-set --local failed 1
-set --local is_present 1
 
 function remove_pure_files
     for file in $HOME/.config/fish/functions/_pure*.fish
@@ -55,12 +53,12 @@ end
     pure_scaffold_fish_directories >/dev/null
 
     test -d $FISH_CONFIG_DIR/functions -a -d $FISH_CONFIG_DIR/conf.d
-) $status -eq $succeed
+) $status -eq $SUCCESS
 
 @test "installer: pure_fetch_source create install directory $PURE_INSTALL_DIR" (
     pure_fetch_source >/dev/null
     test -d $PURE_INSTALL_DIR -a -O $PURE_INSTALL_DIR
-) $status -eq $succeed
+) $status -eq $SUCCESS
 
 @test "installer: pure_fetch_source extract source correctly" (
     function curl; echo $argv; end # mock
@@ -68,7 +66,7 @@ end
     functions --erase curl  # so others tests are not polluted
 
     test -e README.md
-) $status -eq $succeed
+) $status -eq $SUCCESS
 
 
 @test "installer: backup existing theme prompt" (
@@ -85,14 +83,14 @@ end
 
     pure_enable_autoloading >/dev/null
     grep -q 'fish_function_path' $FISH_CONFIG_DIR/config.fish
-) $status -eq $succeed
+) $status -eq $SUCCESS
 
 
 @test "installer: activate prompt" (
     pure_enable_autoloading >/dev/null
 
     grep -c "pure.fish" $FISH_CONFIG_DIR/config.fish
-) = $is_present
+) = $IS_PRESENT
 
 @test "installer: app path to theme's functions" (
     touch $FISH_CONFIG_DIR/config.fish
@@ -100,7 +98,7 @@ end
     pure_enable_theme >/dev/null
 
     [ "$fish_function_path[1]" = "$PURE_INSTALL_DIR/functions/" ];
-) $status -eq $succeed
+) $status -eq $SUCCESS
 
 @test "installer: load theme file" (
     echo 'set --global _pure_fresh_session true' > $FISH_CONFIG_DIR/config.fish
@@ -108,7 +106,7 @@ end
     pure_enable_theme >/dev/null
 
     [ "$_pure_fresh_session" = true ]
-) $status -eq $succeed
+) $status -eq $SUCCESS
 
 
 if test $USER = 'nemo'
@@ -121,7 +119,7 @@ if test $USER = 'nemo'
         test \
             -r "$active_prompt" -a -L "$active_prompt" \
             -a -r "$pure_config" -a -L "$pure_config"   # configs and functions are a readable symlink
-    ) $status -eq $succeed
+    ) $status -eq $SUCCESS
 end
 
 if test $USER = 'nemo'
@@ -134,7 +132,7 @@ if test $USER = 'nemo'
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
         fish -c 'fish_prompt | grep -c ">"'
-    ) = $is_present
+    ) = $IS_PRESENT
 end
 
 if test $USER = 'nemo'
@@ -145,7 +143,7 @@ if test $USER = 'nemo'
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
         fish -c 'fish_prompt | grep -c ">"'
-    ) = $is_present
+    ) = $IS_PRESENT
 end
 
 set --local fisher_version (fisher --version)
@@ -155,7 +153,7 @@ if is_fisher_4 $fisher_version and test $USER = 'nemo'
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
         fish -c 'fish_prompt | grep -c ">"'
-    ) = $is_present
+    ) = $IS_PRESENT
 end
 
 if not is_fisher_4 $fisher_version and test $USER = 'nemo'
@@ -164,7 +162,7 @@ if not is_fisher_4 $fisher_version and test $USER = 'nemo'
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
         fish -c 'fish_prompt | grep -c ">"'
-    ) = $is_present
+    ) = $IS_PRESENT
 end
 
 if test $USER = 'nemo'
@@ -180,7 +178,7 @@ if test $USER = 'nemo'
                 ln -sf $OMF_PURE_PATH/conf.d/* $HOME/.config/fish/conf.d/" > /dev/null
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
         fish -c "fish_prompt" | grep -c '>'
-    ) = $is_present
+    ) = $IS_PRESENT
 end
 
 if test $USER = 'nemo'
@@ -195,5 +193,5 @@ if test $USER = 'nemo'
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
         fish -c "fish_prompt" | grep -c '>'
-    ) = $is_present
+    ) = $IS_PRESENT
 end

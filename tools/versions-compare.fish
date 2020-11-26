@@ -1,5 +1,5 @@
-set --global fail 1
-set --global success 0
+source $current_dirname/fixtures/constants.fish
+
 
 function fish_version_below \
     --description "Compare versions.  By default this tests \$FISH_VERSION, but if a second argument is provided it tests against that version." \
@@ -10,7 +10,7 @@ function fish_version_below \
 	end
 
     if test $expected = $actual
-        return $fail
+        return $FAILURE
     end
 
     # busybox compatibility (see https://github.com/fish-shell/fish-shell/issues/4419#issuecomment-453512461)

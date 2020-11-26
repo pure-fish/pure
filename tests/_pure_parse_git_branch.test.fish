@@ -1,5 +1,6 @@
 source $current_dirname/../functions/_pure_parse_git_branch.fish
 
+
 function setup
     mkdir -p /tmp/test_pure_parse_git_branch # prevent conflict between parallel test files
     cd /tmp/test_pure_parse_git_branch

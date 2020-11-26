@@ -1,7 +1,7 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_git_pending_commits.fish
 source $current_dirname/../functions/_pure_set_color.fish
 
-set --local empty ''
 set fake_repo /tmp/pure
 set fake_remote /tmp/remote.git
 
@@ -30,7 +30,7 @@ end
     cd $fake_repo
 
     _pure_prompt_git_pending_commits
-) = $empty
+) = $EMPTY
 
 @test "_pure_prompt_git_pending_commits: show arrow UP when branch is AHEAD of upstream (need git push)" (
     git push --set-upstream --quiet origin master > /dev/null
@@ -70,4 +70,4 @@ end
     cd $fake_empty_repo
 
     _pure_prompt_git_pending_commits
-) = $empty
+) = $EMPTY

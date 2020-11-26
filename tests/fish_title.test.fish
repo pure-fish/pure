@@ -1,5 +1,7 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/fish_title.fish
 source $current_dirname/../tools/versions-compare.fish
+
 
 function setup
     mkdir -p /tmp/current/directory/

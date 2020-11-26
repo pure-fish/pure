@@ -1,7 +1,7 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_first_line.fish
 source $current_dirname/../functions/_pure_set_color.fish
 
-set --local empty ''
 
 function setup
     set --global pure_color_current_directory $pure_color_primary
