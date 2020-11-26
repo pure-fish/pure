@@ -108,8 +108,6 @@ end
     [ "$_pure_fresh_session" = true ]
 ) $status -eq $SUCCESS
 
-
-
 if test $USER = 'nemo'
     @test "installer: link configuration and functions to fish config directory" (
         pure_set_pure_install_path "" /tmp/.pure/ >/dev/null
@@ -120,28 +118,9 @@ if test $USER = 'nemo'
         test \
             -r "$active_prompt" -a -L "$active_prompt" \
             -a -r "$pure_config" -a -L "$pure_config"   # configs and functions are a readable symlink
-    ) $status -eq $succeed
-end
-
-if test $USER = 'nemo'
-    @test "installer: link configuration and functions to fish config directory" (
-        pure_set_pure_install_path "" /tmp/mock/pure >/dev/null
-        mock_install_dir
-        mock_fish_config_dir
-        cp -R ./{fish_*.fish,functions/,conf.d/} $PURE_INSTALL_DIR
-        pure_scaffold_fish_directories >/dev/null
-
-        fish -c 'fish_prompt | grep -c "❯"'
-    ) = $is_present
-end
-
-        set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
-        set --local pure_config $FISH_CONFIG_DIR/conf.d/pure.fish
-        test \
-            -r "$active_prompt" -a -L "$active_prompt" \
-            -a -r "$pure_config" -a -L "$pure_config"   # configs and functions are a readable symlink
     ) $status -eq $SUCCESS
 end
+
 
 if test $USER = 'nemo'
     @test "installation methods: manually (with local installer)" (
@@ -215,7 +194,6 @@ if test $USER = 'nemo'
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
         fish -c "fish_prompt" | grep -c '>'
     ) = $IS_PRESENT
-end
 
 
 if is_fisher_4 and test $USER = 'nemo'
