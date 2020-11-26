@@ -32,3 +32,11 @@ set --local success 0
     set mock_fish_version '4.0.0'
     fish_version_at_least '3.0.0' $mock_fish_version >/dev/null
 ) $status -eq $success
+
+@test "is_fisher_4: succeed with 4.x" (
+    is_fisher_4 '4.x'
+) $status -eq $success
+
+@test "is_fisher_4: fail with 3.x" (
+    is_fisher_4 '3.x'
+) $status -eq $fail
