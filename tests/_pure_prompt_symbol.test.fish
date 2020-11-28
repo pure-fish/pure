@@ -4,14 +4,6 @@ source $current_dirname/../functions/_pure_get_prompt_symbol.fish
 source $current_dirname/../functions/_pure_set_color.fish
 
 
-@test "_pure_prompt_symbol: throws error message when argument is missing" (
-    set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-    set --global pure_color_prompt_on_success green
-
-    set output (_pure_prompt_symbol 2>&1)
-    echo $output[1]
-) = 'test: Missing argument at index 2'
-
 @test "_pure_prompt_symbol: colorizes prompt in green when last command succeed" (
     set --local last_command $SUCCESS
     set --global pure_symbol_prompt '>'  # using default ❯ break following tests
