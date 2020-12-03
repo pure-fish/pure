@@ -12,7 +12,7 @@ function _pure_prompt_git \
         set --local git_pending_commits (_pure_prompt_git_pending_commits)
 
         if test (_pure_string_width $git_pending_commits) -ne 0
-            set git_prompt $git_prompt $git_pending_commits
+            set --append git_prompt $git_pending_commits
         end
 
         echo $git_prompt
