@@ -37,5 +37,5 @@ end
     git stash --quiet
 
     _pure_prompt_git_stash
-) = '≡'
+) = ' ≡'
 
