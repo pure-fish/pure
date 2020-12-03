@@ -1,4 +1,4 @@
-source $current_dirname/../functions/_pure_prompt_git_stashed.fish
+source $current_dirname/../functions/_pure_prompt_git_stash.fish
 source $current_dirname/../functions/_pure_set_color.fish
 
 function setup
