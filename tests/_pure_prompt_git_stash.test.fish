@@ -2,7 +2,7 @@ source $current_dirname/../functions/_pure_prompt_git_stash.fish
 source $current_dirname/../functions/_pure_set_color.fish
 
 function setup
-    rm -r -f /tmp/pure_pure_prompt_git_stash
+    rm --force --recursive /tmp/pure_pure_prompt_git_stash
 
     mkdir -p /tmp/pure_pure_prompt_git_stash
     cd /tmp/pure_pure_prompt_git_stash
@@ -13,7 +13,7 @@ function setup
 end
 
 function teardown
-    rm -r -f /tmp/pure_pure_prompt_git_stash
+    rm --force --recursive /tmp/pure_pure_prompt_git_stash
 end
 
 @test "_pure_prompt_git_stash: check git stash indicator" (
