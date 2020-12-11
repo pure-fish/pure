@@ -22,10 +22,10 @@ function _pure_format_time \
     if test $show_subsecond = true
         if test $milliseconds -gt 0
             set --local subsec (string sub --start -3 --length 2 00$milliseconds | string trim --right --chars 0)
-            set time $time $seconds(test -n "$subsec"; and echo '.'$subsec; or echo)'s'
+            set --append time $seconds(test -n "$subsec"; and echo '.'$subsec; or echo)'s'
         end
     else
-        test $seconds -gt 0; and set time $time (printf "%ss" $seconds)
+        test $seconds -gt 0; and set --append time (printf "%ss" $seconds)
     end
 
     echo -e (string join ' ' $time)
