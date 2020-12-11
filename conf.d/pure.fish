@@ -73,9 +73,3 @@ _pure_set_default pure_symbol_title_bar_separator "-"
 
 # Check for new release on startup
 _pure_set_default pure_check_for_new_release false
-
-function _pure_uninstall --on-event pure_uninstall
-    set --names \
-        | string replace --filter --regex '(^_?pure)' 'set --erase $1' \
-        | source
-end
