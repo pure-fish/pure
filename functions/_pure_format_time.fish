@@ -3,8 +3,12 @@ set FAILURE 1
 
 function _pure_format_time \
     --description="Format milliseconds to a human readable format" \
-    --argument-names milliseconds threshold show_subsecond
+    --argument-names \
+        milliseconds \
+        threshold \
+        show_subsecond
 
+    set --query show_subsecond[1]; or set show_subsecond false
     test $milliseconds -lt 0; and return $FAILURE
     test $milliseconds -lt (math --scale=0 "$threshold * 1000"); and echo; and return $SUCCESS
 
