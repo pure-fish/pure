@@ -58,3 +58,21 @@ set --local threshold 0 # in seconds
 @test "_pure_format_time: format complex duration to human" (
     _pure_format_time 123456789 $threshold
 ) = '1d 10h 17m 36s'
+
+@test "_pure_format_time_subseconds: empty when below threshold" (
+    set --local milliseconds 953 # express as milliseconds
+    set --local threshold 1000 # express as milliseconds
+    _pure_format_time_subseconds $milliseconds $threshold
+) = $EMPTY
+
+@test "_pure_format_time_subseconds: show subsecond when above threshold" (
+    set --local milliseconds 1053 # express as milliseconds
+    set --local threshold 1000 # express as milliseconds
+    _pure_format_time_subseconds $milliseconds $threshold
+) = '.05'
+
+@test "_pure_format_time_subseconds: keep precision with zero-ending" (
+    set --local milliseconds 1200 # express as milliseconds
+    set --local threshold 1000 # express as milliseconds
+    _pure_format_time_subseconds $milliseconds $threshold
+) = '.20'
