@@ -193,3 +193,14 @@ if test $USER = 'nemo'
         fish -c "fish_prompt" | grep -c '>'
     ) = $IS_PRESENT
 end
+
+if is_fisher_4 (fisher --version) and test $USER = 'nemo'
+# don't move in different file otherwise there is a race conditions
+    @test "_pure_uninstall: " (
+        fish -c "\
+            fisher install /tmp/.pure >/dev/null 2>&1; \
+            fisher remove /tmp/.pure >/dev/null 2>&1; \
+            set --names | grep -c -E '^pure_' \
+        "
+    ) = $NONE
+end
