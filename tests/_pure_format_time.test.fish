@@ -16,8 +16,8 @@ set --local threshold 0 # in seconds
 ) = $EMPTY
 
 @test "_pure_format_time: format 1s to human" (
-    set --local milliseconds 1000 # express as milliseconds
-    _pure_format_time (math "1*$milliseconds") $threshold
+    set --local millisecond 1000 # express as milliseconds
+    _pure_format_time (math "1*$millisecond") $threshold
 ) = '1s'
 
 @test "_pure_format_time: format 1050ms to human (show milliseconds)" (
@@ -26,33 +26,33 @@ set --local threshold 0 # in seconds
 ) = '1.05s'
 
 @test "_pure_format_time: format 60s as a minutes to human" (
-    set --local milliseconds 1000 # express as milliseconds
-    _pure_format_time (math "60*$milliseconds") $threshold
+    set --local millisecond 1000 # express as milliseconds
+    _pure_format_time (math "60*$millisecond") $threshold
 ) = '1m'
 
 @test "_pure_format_time: format 59 minutes to human" (
-    set --local minutes 60000 # express as milliseconds
-    _pure_format_time (math "59*$minutes") $threshold
+    set --local minute 60000 # express as milliseconds
+    _pure_format_time (math "59*$minute") $threshold
 ) = '59m'
 
 @test "_pure_format_time: format 60min as an hour to human" (
-    set --local minutes 60000 # express as milliseconds
-    _pure_format_time (math "60*$minutes") $threshold
+    set --local minute 60000 # express as milliseconds
+    _pure_format_time (math "60*$minute") $threshold
 ) = '1h'
 
 @test "_pure_format_time: format 23 hours to human" (
-    set --local hours 3600000 # express as milliseconds
-    _pure_format_time (math "23*$hours") $threshold
+    set --local hour 3600000 # express as milliseconds
+    _pure_format_time (math "23*$hour") $threshold
 ) = '23h'
 
 @test "_pure_format_time: format 24 hours as a day to human" (
-    set --local hours 3600000 # express as milliseconds
-    _pure_format_time (math "24*$hours") $threshold
+    set --local hour 3600000 # express as milliseconds
+    _pure_format_time (math "24*$hour") $threshold
 ) = '1d'
 
 @test "_pure_format_time: format days to human" (
-    set --local days 86400000 # express as milliseconds
-    _pure_format_time (math "100*$days") $threshold
+    set --local day 86400000 # express as milliseconds
+    _pure_format_time (math "100*$day") $threshold
 ) = '100d'
 
 @test "_pure_format_time: format complex duration to human" (
