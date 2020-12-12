@@ -88,7 +88,7 @@ or changing the defaults in your `config.fish`:
 | **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).          |
 | **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                       |
 | **`pure_symbol_reverse_prompt`**       | `❮`     | VI non-insert mode symbol.                           |
-| **`pure_symbol_title_bar_separator`**  | `—`     |
+| **`pure_symbol_title_bar_separator`**  | `-`     |
 :information_source:: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki#safer-symbols)?
 
 ### Features
