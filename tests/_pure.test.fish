@@ -48,7 +48,7 @@ source $current_dirname/../functions/_pure_set_default.fish
     set --erase pure_symbol_title_bar_separator
     source $current_dirname/../conf.d/pure.fish
     echo $pure_symbol_title_bar_separator
-) = "—"
+) = "-"
 
 @test "configure: pure_color_primary"  (
     set --erase pure_color_primary

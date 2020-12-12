@@ -69,7 +69,7 @@ _pure_set_default pure_color_command_duration pure_color_warning
 _pure_set_default pure_reverse_prompt_symbol_in_vimode true
 
 # Title
-_pure_set_default pure_symbol_title_bar_separator "—"
+_pure_set_default pure_symbol_title_bar_separator "-"
 
 # Check for new release on startup
 _pure_set_default pure_check_for_new_release false
