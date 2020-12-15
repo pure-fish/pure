@@ -187,7 +187,17 @@ end
 
 if test $USER = 'nemo'
 # don't move in different file otherwise there is a race conditions
-    @test "_pure_uninstall: " (
+    @test "_pure_uninstall: handler file is source correctly" (
+        cd $HOME
+        fisher install /tmp/.pure 2>&1 \
+        | string match --entire 'source: Error encountered while sourcing file' \
+        | count
+    ) = $NONE
+end
+
+if test $USER = 'nemo'
+# don't move in different file otherwise there is a race conditions
+    @test "_pure_uninstall: uninstall handler is executed and remove config" (
         fish -c "\
             fisher install /tmp/.pure >/dev/null 2>&1; \
             fisher remove /tmp/.pure >/dev/null 2>&1; \
