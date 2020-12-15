@@ -5,6 +5,6 @@ set --global --export VIRTUAL_ENV_DISABLE_PROMPT 1
 set --global _pure_fresh_session true
 
 # Register `_pure_prompt_new_line` as an event handler fot `fish_prompt`
-functions -q _pure_prompt_new_line
+functions --query _pure_prompt_new_line
 
 source $__fish_config_dir/functions/_pure_uninstall.fish
