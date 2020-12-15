@@ -17,8 +17,6 @@ RUN apk add \
     tar
 
 USER nemo
-RUN fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
-
 # Copy source code
 COPY --chown=nemo:nemo . /tmp/.pure/
 WORKDIR /tmp/.pure/
