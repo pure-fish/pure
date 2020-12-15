@@ -146,18 +146,9 @@ if test $USER = 'nemo'
 end
 
 set --local fisher_version (fisher --version)
-if is_fisher_4 $fisher_version and test $USER = 'nemo'
+if test $USER = 'nemo'
     @test "installation methods: with fisher 4.x" (
         fish -c 'fisher install rafaelrinaldi/pure' >/dev/null 2>&1
-
-        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish -c 'fish_prompt | grep -c ">"'
-    ) = $IS_PRESENT
-end
-
-if not is_fisher_4 $fisher_version and test $USER = 'nemo'
-    @test "installation methods: with fisher 3.x" (
-        fish -c 'fisher add rafaelrinaldi/pure' >/dev/null 2>&1
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
         fish -c 'fish_prompt | grep -c ">"'
@@ -194,7 +185,7 @@ if test $USER = 'nemo'
     ) = $IS_PRESENT
 end
 
-if is_fisher_4 (fisher --version) and test $USER = 'nemo'
+if test $USER = 'nemo'
 # don't move in different file otherwise there is a race conditions
     @test "_pure_uninstall: " (
         fish -c "\
