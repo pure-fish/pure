@@ -11,9 +11,3 @@ source $current_dirname/fixtures/constants.fish
     source $current_dirname/../conf.d/_pure_init.fish
     echo $VIRTUAL_ENV_DISABLE_PROMPT
 ) = 1
-
-@test "init: source uninstall handler"  (
-    functions --erase _pure_uninstall
-    source $current_dirname/../conf.d/_pure_init.fish
-    functions --query _pure_uninstall
-) $status -eq $SUCCESS
