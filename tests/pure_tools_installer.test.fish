@@ -130,8 +130,8 @@ if test $USER = 'nemo'
         end
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish_prompt | string match --entire '>' | count
-    ) = $IS_PRESENT
+        fish_prompt | string match --entire --quiet '>'
+    ) $status -eq $SUCCESS
 end
 
 if test $USER = 'nemo'
@@ -141,8 +141,8 @@ if test $USER = 'nemo'
         and install_pure >/dev/null
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish_prompt | string match --entire '>' | count
-    ) = $IS_PRESENT
+        fish_prompt | string match --entire --quiet '>'
+    ) $status -eq $SUCCESS
 end
 
 if test $USER = 'nemo'
@@ -150,8 +150,8 @@ if test $USER = 'nemo'
         fish -c 'fisher install rafaelrinaldi/pure' >/dev/null 2>&1
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish_prompt | string match --entire '>' | count
-    ) = $IS_PRESENT
+        fish_prompt | string match --entire --quiet '>'
+    ) $status -eq $SUCCESS
 end
 
 if test $USER = 'nemo'
@@ -167,8 +167,8 @@ if test $USER = 'nemo'
             ln -s $OMF_PATH/themes/pure/conf.d/_pure_init.fish ~/.config/fish/conf.d/pure_init.fish
         '
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish_prompt | string match --entire '>' | count
-    ) = $IS_PRESENT
+        fish_prompt | string match --entire --quiet '>'
+    ) $status -eq $SUCCESS
 end
 
 if test $USER = 'nemo'
@@ -181,8 +181,8 @@ if test $USER = 'nemo'
         fundle install >/dev/null
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish_prompt | string match --entire '>' | count
-    ) = $IS_PRESENT
+        fish_prompt | string match --entire --quiet '>'
+    ) $status -eq $SUCCESS
 end
 
 if test $USER = 'nemo'
@@ -191,9 +191,8 @@ if test $USER = 'nemo'
         fish -c '\
             cd $HOME
             fisher install /tmp/. >/dev/null 2>&1 '\
-        | string match --entire 'source: Error encountered while sourcing file' \
-        | count
-    ) = $NONE
+        | string match --entire --quiet 'source: Error encountered while sourcing file' \
+    ) $status = $FAILURE
 end
 
 if test $USER = 'nemo'
