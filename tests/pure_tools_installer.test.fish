@@ -130,7 +130,7 @@ if test $USER = 'nemo'
         end
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish -c 'fish_prompt | grep -c ">"'
+        fish_prompt | string match --entire '>' | count
     ) = $IS_PRESENT
 end
 
@@ -141,17 +141,16 @@ if test $USER = 'nemo'
         and install_pure >/dev/null
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish -c 'fish_prompt | grep -c ">"'
+        fish_prompt | string match --entire '>' | count
     ) = $IS_PRESENT
 end
 
-set --local fisher_version (fisher --version)
 if test $USER = 'nemo'
     @test "installation methods: with fisher 4.x" (
         fish -c 'fisher install rafaelrinaldi/pure' >/dev/null 2>&1
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish -c 'fish_prompt | grep -c ">"'
+        fish_prompt | string match --entire '>' | count
     ) = $IS_PRESENT
 end
 
@@ -167,7 +166,7 @@ if test $USER = 'nemo'
                 ln -sf $OMF_PURE_PATH/functions/*.fish $HOME/.config/fish/functions/; \
                 ln -sf $OMF_PURE_PATH/conf.d/* $HOME/.config/fish/conf.d/" > /dev/null
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish -c "fish_prompt" | grep -c '>'
+        fish_prompt | string match --entire '>' | count
     ) = $IS_PRESENT
 end
 
@@ -181,7 +180,7 @@ if test $USER = 'nemo'
         fundle install >/dev/null
 
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish -c "fish_prompt" | grep -c '>'
+        fish_prompt | string match --entire '>' | count
     ) = $IS_PRESENT
 end
 
