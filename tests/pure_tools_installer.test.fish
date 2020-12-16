@@ -157,14 +157,15 @@ end
 if test $USER = 'nemo'
     @test "installation methods: with OMF (Oh-My-Fish!)" (
         rm --recursive --force $HOME/.local/share/omf $HOME/.config/omf/
-
-        curl -L https://get.oh-my.fish > install
+        curl --silent --location https://get.oh-my.fish > install
         and fish install --noninteractive >/dev/null
-
         set --global OMF_PURE_PATH $HOME/.local/share/omf/themes/pure
-        fish -c "omf install pure; \
-                ln -sf $OMF_PURE_PATH/functions/*.fish $HOME/.config/fish/functions/; \
-                ln -sf $OMF_PURE_PATH/conf.d/* $HOME/.config/fish/conf.d/" > /dev/null
+
+        fish -c '\
+            omf install pure >/dev/null 2>&1; \
+            ln -s $OMF_PATH/themes/pure/conf.d/pure.fish ~/.config/fish/conf.d/pure.fish
+            ln -s $OMF_PATH/themes/pure/conf.d/_pure_init.fish ~/.config/fish/conf.d/pure_init.fish
+        '
         set --global pure_symbol_prompt '>'  # using default ❯ break following tests
         fish_prompt | string match --entire '>' | count
     ) = $IS_PRESENT
