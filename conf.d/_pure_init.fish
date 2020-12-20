@@ -7,4 +7,4 @@ set --global _pure_fresh_session true
 # Register `_pure_prompt_new_line` as an event handler fot `fish_prompt`
 functions --query _pure_prompt_new_line
 
-source $__fish_config_dir/functions/_pure_uninstall.fish
+source (realpath (status --current-filename)/../../functions/_pure_uninstall.fish)
