@@ -254,3 +254,20 @@ source $current_dirname/../functions/_pure_set_default.fish
     echo $pure_check_for_new_release
 ) = false
 
+@test "configure: pure_show_prefix_root_prompt" (
+    set --erase pure_show_prefix_root_prompt
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_show_prefix_root_prompt
+) = false
+
+@test "configure: pure_symbol_prefix_root_prompt" (
+    set --erase pure_symbol_prefix_root_prompt
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_symbol_prefix_root_prompt
+) = '#'
+
+@test "configure: pure_color_prefix_root_prompt" (
+    set --erase pure_color_prefix_root_prompt
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_color_prefix_root_prompt
+) = pure_color_danger
