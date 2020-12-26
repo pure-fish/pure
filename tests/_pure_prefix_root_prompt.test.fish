@@ -6,7 +6,7 @@ set pure_symbol_prefix_root_prompt '#'
 
 @test "_pure_prefix_root_prompt: is empty for unprivileged user" (
     set pure_show_prefix_root_prompt true
-    function whoami; echo 'nemo'; end # mock
+    function id; echo 'nemo'; end # mock
 
     _pure_prefix_root_prompt
 ) = $EMPTY
@@ -14,7 +14,7 @@ set pure_symbol_prefix_root_prompt '#'
 @test "_pure_prefix_root_prompt: is shown for `root` user" (
     set pure_show_prefix_root_prompt true
     set pure_color_prefix_root_prompt red
-    function whoami; echo 'root'; end # mock
+    function id; echo 'root'; end # mock
 
     _pure_prefix_root_prompt
 ) = (set_color red)"#$SPACE"

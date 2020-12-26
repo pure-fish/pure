@@ -21,7 +21,7 @@ if fish_version_at_least '3.0.0'
         set --global pure_color_ssh_separator $EMPTY
         set --global pure_color_ssh_hostname $EMPTY
         set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
-        function whoami; echo 'user'; end  # mock
+        function id; echo 'user'; end  # mock
 
         set prompt_ssh_host (_pure_prompt_ssh)
         string match --quiet --regex 'user@[\w]+' $prompt_ssh_host
