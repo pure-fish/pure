@@ -18,3 +18,11 @@ set pure_symbol_prefix_root_prompt '#'
 
     _pure_prefix_root_prompt
 ) = (set_color red)"#$SPACE"
+
+@test "_pure_prefix_root_prompt: require flag" (
+    set pure_show_prefix_root_prompt false
+    set pure_color_prefix_root_prompt red
+    function id; echo 'root'; end # mock
+
+    _pure_prefix_root_prompt
+) = $EMPTY
