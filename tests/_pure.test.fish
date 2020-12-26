@@ -199,3 +199,16 @@ source $current_dirname/../functions/_pure_set_default.fish
     source $current_dirname/../conf.d/pure.fish
     echo $pure_threshold_command_duration
 ) = 5
+
+@test "configure: pure_show_subsecond_command_duration"  (
+    set --erase pure_show_subsecond_command_duration
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_show_subsecond_command_duration
+) = pure_color_warning
+
+@test "configure: pure_color_command_duration"  (
+    set --erase pure_color_command_duration
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_color_command_duration
+) = 5
+
