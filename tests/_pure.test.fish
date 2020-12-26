@@ -26,6 +26,12 @@ source $current_dirname/../functions/_pure_set_default.fish
     echo $pure_reverse_prompt_symbol_in_vimode
 ) = true
 
+@test "configure: pure_enable_git"  (
+    set --erase pure_enable_git
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_enable_git
+) = true
+
 @test "configure: pure_symbol_git_unpulled_commits"  (
     set --erase pure_symbol_git_unpulled_commits
     source $current_dirname/../conf.d/pure.fish
