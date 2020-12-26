@@ -7,12 +7,10 @@ source $current_dirname/../functions/_pure_set_color.fish
 
     _pure_prompt_ssh_user
 
-) = (set_color green)(whoami)
+) = (set_color green)(id --user --name)
 
 @test "_pure_prompt_ssh_user: colorize root user" (
-    function whoami  # mock
-        echo 'root'
-    end
+    function id; echo 'root'; end # mock
 
     set --global pure_color_ssh_user_root red
 
