@@ -9,6 +9,7 @@ source $current_dirname/../functions/_pure_get_prompt_symbol.fish
 source $current_dirname/../functions/_pure_print_prompt.fish
 source $current_dirname/../functions/_pure_string_width.fish
 source $current_dirname/../functions/_pure_prompt_system_time.fish
+source $current_dirname/../functions/_pure_prefix_root_prompt.fish
 
 @test "_pure_prompt: print prompt after succeeding command" (
     set pure_color_prompt_on_success magenta
@@ -25,3 +26,12 @@ source $current_dirname/../functions/_pure_prompt_system_time.fish
 
     _pure_prompt $last_command
 ) = (set_color red)'>'
+
+@test "_pure_prompt: print root prefix" (
+    set pure_show_prefix_root_prompt true
+    set pure_color_prefix_root_prompt $EMPTY
+    set pure_color_prompt_on_success $EMPTY
+    function id; echo 'root'; end # mock
+
+    _pure_prompt
+) = "# >"
