@@ -1,4 +1,4 @@
-set --global pure_version 3.3.5 # used for bug report
+set --global pure_version 3.4.0 # used for bug report
 
 # Base colors
 _pure_set_default pure_color_primary blue
