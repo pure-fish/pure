@@ -7,6 +7,7 @@ function _pure_prompt \
     set --local vimode_indicator (_pure_prompt_vimode) # vi-mode indicator
     set --local pure_symbol (_pure_prompt_symbol $exit_code)
     set --local system_time (_pure_prompt_system_time)
+    set --local root_prefix (_pure_prefix_root_prompt)
 
-    echo (_pure_print_prompt $system_time $jobs $virtualenv $vimode_indicator $pure_symbol)
+    echo (_pure_print_prompt $system_time $root_prefix $jobs $virtualenv $vimode_indicator $pure_symbol)
 end
