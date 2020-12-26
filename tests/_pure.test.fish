@@ -188,11 +188,29 @@ source $current_dirname/../functions/_pure_set_default.fish
     echo $pure_color_prompt_on_success
 ) = pure_color_success
 
+@test "configure: pure_show_jobs"  (
+    set --erase pure_show_jobs
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_show_jobs
+) = false
+
 @test "configure: pure_color_jobs"  (
     set --erase pure_color_jobs
     source $current_dirname/../conf.d/pure.fish
     echo $pure_color_jobs
 ) = pure_color_normal
+
+@test "configure: pure_show_system_time"  (
+    set --erase pure_show_system_time
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_show_system_time
+) = false
+
+@test "configure: pure_color_system_time"  (
+    set --erase pure_color_system_time
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_color_system_time
+) = pure_color_mute
 
 @test "configure: pure_color_virtualenv"  (
     set --erase pure_color_virtualenv
@@ -222,11 +240,17 @@ source $current_dirname/../functions/_pure_set_default.fish
     set --erase pure_show_subsecond_command_duration
     source $current_dirname/../conf.d/pure.fish
     echo $pure_show_subsecond_command_duration
-) = pure_color_warning
+) = false
 
 @test "configure: pure_color_command_duration"  (
     set --erase pure_color_command_duration
     source $current_dirname/../conf.d/pure.fish
     echo $pure_color_command_duration
-) = 5
+) = pure_color_warning
+
+@test "configure: pure_check_for_new_release" (
+    set --erase pure_check_for_new_release
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_check_for_new_release
+) = false
 
