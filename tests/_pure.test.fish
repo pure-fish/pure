@@ -50,6 +50,12 @@ source $current_dirname/../functions/_pure_set_default.fish
     echo $pure_symbol_git_dirty
 ) = "*"
 
+@test "configure: pure_symbol_git_stash"  (
+    set --erase pure_symbol_git_stash
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_symbol_git_stash
+) = "≡"
+
 @test "configure: pure_symbol_title_bar_separator"  (
     set --erase pure_symbol_title_bar_separator
     source $current_dirname/../conf.d/pure.fish
@@ -139,6 +145,12 @@ source $current_dirname/../functions/_pure_set_default.fish
     source $current_dirname/../conf.d/pure.fish
     echo $pure_color_git_dirty
 ) = pure_color_mute
+
+@test "configure: pure_color_git_stash"  (
+    set --erase pure_color_git_stash
+    source $current_dirname/../conf.d/pure.fish
+    echo $pure_color_git_stash
+) = pure_color_info
 
 @test "configure: pure_color_ssh_hostname"  (
     set --erase pure_color_ssh_hostname
