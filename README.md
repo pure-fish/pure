@@ -88,7 +88,9 @@ or changing the defaults in your `config.fish`:
 | **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).          |
 | **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                       |
 | **`pure_symbol_reverse_prompt`**       | `❮`     | VI non-insert mode symbol.                           |
-| **`pure_symbol_title_bar_separator`**  | `-`     |
+| **`pure_symbol_title_bar_separator`**  | `-`     |                                                      |
+| **`pure_symbol_prefix_root_prompt`**   | `#`     | Prefix prompt when logged in as `root`               |
+
 :information_source:: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki#safer-symbols)?
 
 ### Features
@@ -104,6 +106,7 @@ or changing the defaults in your `config.fish`:
 | **`pure_show_subsecond_command_duration`**     | `false` | Show subsecond (ex. 1.5s) in command duration.                                                  |
 | **`pure_show_system_time`**                    | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                             |
 | **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
+| **`pure_show_prefix_root_prompt`**             | `false` | `true`: shows prompt prefix when logged in as `root`.                                           |
 
 ### Colors
 
