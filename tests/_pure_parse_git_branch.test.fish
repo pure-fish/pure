@@ -32,5 +32,5 @@ end
 ) = 'master~1'
 
 function teardown
-    rm --force --recursive /tmp/test_pure_parse_git_branch
+    rm -rf /tmp/test_pure_parse_git_branch
 end

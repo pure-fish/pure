@@ -54,7 +54,7 @@ end
     set pure_begin_prompt_with_current_directory true
     _pure_prompt_first_line
 
-    rm --force --recursive /tmp/test
+    rm -rf /tmp/test
 ) = '/tmp/test master user@hostname 1s'
 
 @test "_pure_prompt_first_line: print user@hostname (ssh-only), current directory, git, command duration" (
@@ -62,5 +62,5 @@ end
     set pure_begin_prompt_with_current_directory false
     _pure_prompt_first_line
 
-    rm --force --recursive /tmp/test
+    rm -rf /tmp/test
 ) = 'user@hostname /tmp/test master 1s'

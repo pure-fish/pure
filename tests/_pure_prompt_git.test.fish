@@ -13,7 +13,7 @@ function setup
 end
 
 function teardown
-    rm --force --recursive /tmp/test_pure_prompt_git
+    rm -rf /tmp/test_pure_prompt_git
 end
 
 @test "_pure_prompt_git: ignores directory that are not git repository" (

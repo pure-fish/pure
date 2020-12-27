@@ -5,17 +5,17 @@ source $current_dirname/../tools/versions-compare.fish
 
 function remove_pure_files
     for file in $HOME/.config/fish/functions/_pure*.fish
-        rm --recursive --force "$file"
+        rm -rf "$file"
     end
     for file in $HOME/.config/fish/conf.d/*pure*
-        rm --recursive --force "$file"
+        rm -rf "$file"
     end
-    rm --recursive --force $HOME/.config/fish/functions/theme-pure
+    rm -rf $HOME/.config/fish/functions/theme-pure
 end
 
 function remove_fish_prompt_files
     for file in $HOME/.config/fish/functions/fish_*.fish
-        rm --recursive --force "$file"
+        rm -rf "$file"
     end
 end
 
@@ -156,7 +156,7 @@ end
 
 if test $USER = 'nemo'
     @test "installation methods: with OMF (Oh-My-Fish!)" (
-        rm --recursive --force $HOME/.local/share/omf $HOME/.config/omf/
+        rm -rf $HOME/.local/share/omf $HOME/.config/omf/
         curl --silent --location https://get.oh-my.fish > install
         and fish install --noninteractive >/dev/null
         set --global OMF_PURE_PATH $HOME/.local/share/omf/themes/pure
@@ -173,7 +173,7 @@ end
 
 if test $USER = 'nemo'
     @test "installation methods: with Fundle" (
-        rm --recursive --force $HOME/.config/fish/fundle/
+        rm -rf $HOME/.config/fish/fundle/
         mkdir -p $HOME/.config/fish/functions
         curl https://git.io/fundle --output $HOME/.config/fish/functions/fundle.fish --location --silent >/dev/null
 

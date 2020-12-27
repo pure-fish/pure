@@ -3,7 +3,7 @@ source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/fixtures/constants.fish
 
 function setup
-    rm --force --recursive /tmp/pure_pure_prompt_git_stash
+    rm -rf /tmp/pure_pure_prompt_git_stash
 
     mkdir -p /tmp/pure_pure_prompt_git_stash
     cd /tmp/pure_pure_prompt_git_stash
@@ -14,7 +14,7 @@ function setup
 end
 
 function teardown
-    rm --force --recursive /tmp/pure_pure_prompt_git_stash
+    rm -rf /tmp/pure_pure_prompt_git_stash
 end
 
 @test "_pure_prompt_git_stash: no indicator when no stash" (
