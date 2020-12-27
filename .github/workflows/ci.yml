@@ -2,48 +2,48 @@ name: Run tests on CI
 on: [push, pull_request]
 
 jobs:
-  test-ubuntu:
-    name: Test on fish on Ubuntu
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install Fish
-        run: |
-          sudo apt-add-repository -yn ppa:fish-shell/release-3
-          sudo apt-get update
-          sudo apt-get install -y fish
-      - name: Install Fisher > Fishtape > Pure
-        run: |
-          curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
-        shell: fish {0}
-      - name: Test Pure
-        run: fishtape tests/*.test.fish
-        shell: fish {0}
+  # test-ubuntu:
+  #   name: Test on fish on Ubuntu
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Install Fish
+  #       run: |
+  #         sudo apt-add-repository -yn ppa:fish-shell/release-3
+  #         sudo apt-get update
+  #         sudo apt-get install -y fish
+  #     - name: Install Fisher > Fishtape > Pure
+  #       run: |
+  #         curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
+  #       shell: fish {0}
+  #     - name: Test Pure
+  #       run: fishtape tests/*.test.fish
+  #       shell: fish {0}
 
 
-  test-container:
-    name: Test on fish ${{ matrix.fish_version }} on Docker
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        fish_version:
-          - "3.1.2"
-          - "3.1.0"
-          - "3.0.2"
-    steps:
-      - uses: actions/checkout@v2
-      - run: make build-pure-on FISH_VERSION=${{ matrix.fish_version }}
-      - run: make test-pure-on FISH_VERSION=${{ matrix.fish_version }}
+  # test-container:
+  #   name: Test on fish ${{ matrix.fish_version }} on Docker
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       fish_version:
+  #         - "3.1.2"
+  #         - "3.1.0"
+  #         - "3.0.2"
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: make build-pure-on FISH_VERSION=${{ matrix.fish_version }}
+  #     - run: make test-pure-on FISH_VERSION=${{ matrix.fish_version }}
 
   test-macos:
     name: Test on fish on MacOS
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Install Fish
         run: brew install fish
       - name: Install Fisher > Fishtape > Pure
-        run: |
-          curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
+        run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
         shell: fish {0}
       - name: Test Pure
         run: fishtape tests/*.test.fish
