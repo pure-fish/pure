@@ -3,7 +3,7 @@ source $current_dirname/../functions/_pure_set_color.fish
 
 
 function setup
-    rm --force --recursive /tmp/pure_pure_prompt_git_dirty
+    rm -rf /tmp/pure_pure_prompt_git_dirty
 
     mkdir -p /tmp/pure_pure_prompt_git_dirty
     cd /tmp/pure_pure_prompt_git_dirty
@@ -14,7 +14,7 @@ function setup
 end
 
 function teardown
-    rm --force --recursive /tmp/pure_pure_prompt_git_dirty
+    rm -rf /tmp/pure_pure_prompt_git_dirty
 end
 
 @test "_pure_prompt_git_dirty: untracked files make git repo as dirty" (

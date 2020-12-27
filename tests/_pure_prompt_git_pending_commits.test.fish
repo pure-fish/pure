@@ -6,7 +6,7 @@ set fake_repo /tmp/pure
 set fake_remote /tmp/remote.git
 
 function setup
-    rm --force --recursive $fake_repo
+    rm -rf $fake_repo
 
     git init --bare --quiet $fake_remote
     mkdir -p $fake_repo
@@ -21,7 +21,7 @@ function setup
 end
 
 function teardown
-    rm --force --recursive \
+    rm -rf \
         $fake_repo \
         $fake_remote
 end
@@ -62,7 +62,7 @@ end
 @test "_pure_prompt_git_pending_commits: empty repo don't throw error" (
     set fake_empty_repo /tmp/empty-remote
     set fake_empty_remote /tmp/empty-remote.git
-    rm --force --recursive \
+    rm -rf \
         $fake_empty_repo \
         $fake_empty_remote
     git init --bare --quiet $fake_empty_remote
