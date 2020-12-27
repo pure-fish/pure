@@ -1,5 +1,5 @@
 function _pure_prefix_root_prompt
-    set --local username (id --user --name) # current user name
+    set --local username (id -u -n) # current user name
     set --local prefix_root_prompt ''
 
     if test $pure_show_prefix_root_prompt = true -a "$username" = "root"
