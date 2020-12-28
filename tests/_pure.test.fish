@@ -272,8 +272,8 @@ source $current_dirname/../functions/_pure_set_default.fish
     echo $pure_color_prefix_root_prompt
 ) = pure_color_danger
 
-@test "configure: pure_enable_compact_prompt" (
-    set --erase pure_enable_compact_prompt
+@test "configure: pure_enable_single_line_prompt" (
+    set --erase pure_enable_single_line_prompt
     source $current_dirname/../conf.d/pure.fish
-    echo $pure_enable_compact_prompt
+    echo $pure_enable_single_line_prompt
 ) = false

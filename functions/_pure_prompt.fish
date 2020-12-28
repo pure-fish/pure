@@ -9,7 +9,7 @@ function _pure_prompt \
     set --local system_time (_pure_prompt_system_time)
     set --local root_prefix (_pure_prefix_root_prompt)
     set --local space
-    if set --query pure_enable_compact_prompt; and test $pure_enable_compact_prompt = true
+    if set --query pure_enable_single_line_prompt; and test $pure_enable_single_line_prompt = true
         set space ' '
     end
 

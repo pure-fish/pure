@@ -16,7 +16,7 @@ function teardown
     set --erase pure_show_prefix_root_prompt
     set --erase pure_symbol_prefix_root_prompt
     set --erase pure_color_prefix_root_prompt
-    set --erase pure_enable_compact_prompt
+    set --erase pure_enable_single_line_prompt
     set --erase pure_color_prompt_on_success
 end
 
@@ -49,14 +49,14 @@ end
 
 @test "_pure_prompt: no space before symbol in 2-lines prompt" (
     set --local last_command $SUCCESS
-    set --global pure_enable_compact_prompt false
+    set --global pure_enable_single_line_prompt false
 
     _pure_prompt $last_command
 ) = ">"
 
 @test "_pure_prompt: space before symbol in 1-line prompt" (
     set --local last_command $SUCCESS
-    set --global pure_enable_compact_prompt true
+    set --global pure_enable_single_line_prompt true
 
     _pure_prompt $last_command
 ) = " >"
