@@ -11,6 +11,15 @@ source $current_dirname/../functions/_pure_string_width.fish
 source $current_dirname/../functions/_pure_prompt_system_time.fish
 source $current_dirname/../functions/_pure_prefix_root_prompt.fish
 
+
+function teardown
+    set --erase pure_show_prefix_root_prompt
+    set --erase pure_symbol_prefix_root_prompt
+    set --erase pure_color_prefix_root_prompt
+    set --erase pure_enable_compact_prompt
+    set --erase pure_color_prompt_on_success
+end
+
 @test "_pure_prompt: print prompt after succeeding command" (
     set pure_color_prompt_on_success magenta
     set pure_symbol_prompt '>'  # using default ❯ break following tests
@@ -28,10 +37,26 @@ source $current_dirname/../functions/_pure_prefix_root_prompt.fish
 ) = (set_color red)'>'
 
 @test "_pure_prompt: print root prefix" (
-    set pure_show_prefix_root_prompt true
-    set pure_color_prefix_root_prompt $EMPTY
-    set pure_color_prompt_on_success $EMPTY
+    set --global pure_show_prefix_root_prompt true
+    set --global pure_symbol_prefix_root_prompt '#'
+    set --global pure_color_prefix_root_prompt $EMPTY
+    set --global pure_color_prompt_on_success $EMPTY
     function id; echo 'root'; end # mock
+    set --local last_command $SUCCESS
 
-    _pure_prompt
+    _pure_prompt $last_command
 ) = "# >"
+
+@test "_pure_prompt: no space before symbol in 2-lines prompt" (
+    set --local last_command $SUCCESS
+    set --global pure_enable_compact_prompt false
+
+    _pure_prompt $last_command
+) = ">"
+
+@test "_pure_prompt: space before symbol in 1-line prompt" (
+    set --local last_command $SUCCESS
+    set --global pure_enable_compact_prompt true
+
+    _pure_prompt $last_command
+) = " >"
