@@ -31,3 +31,13 @@ end
 
     echo $_pure_fresh_session
 ) = false
+
+@test "fish_prompt: use 2-lines prompt by default" (
+    fish_prompt | wc -l
+) = 2
+
+@test "fish_prompt: use 1-line compact-prompt" (
+    set pure_enable_compact_prompt true
+
+    fish_prompt | wc -l
+) = 1
