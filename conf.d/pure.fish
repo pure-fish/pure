@@ -81,4 +81,4 @@ _pure_set_default pure_symbol_prefix_root_prompt "#"
 _pure_set_default pure_color_prefix_root_prompt pure_color_danger
 
 # Compact mode
-_pure_set_default pure_enable_compact_prompt false
+_pure_set_default pure_enable_single_line_prompt false
