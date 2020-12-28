@@ -12,6 +12,8 @@ source $current_dirname/../functions/_pure_set_color.fish
     set --global pure_color_current_directory $EMPTY
     set COLUMNS 20
     set current_prompt_width 10
+    mkdir -p /tmp/.pure;
+    and cd /tmp/.pure
 
     string length (_pure_prompt_current_folder "$current_prompt_width")
 ) = 8
