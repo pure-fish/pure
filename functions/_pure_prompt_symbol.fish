@@ -8,10 +8,10 @@ function _pure_prompt_symbol \
     set --local command_succeed 0
 
     set --local symbol_color $symbol_color_success # default pure symbol color
-    if test $exit_code -ne $command_succeed
+    if set --query exit_code; and test $exit_code -ne $command_succeed
         set symbol_color $symbol_color_error # different pure symbol color when previous command failed
 
-        if test "$pure_separate_prompt_on_error" = true
+        if set --query pure_separate_prompt_on_error; and test $pure_separate_prompt_on_error = true
             set symbol_color "$symbol_color_error$prompt_symbol$symbol_color_success"
         end
     end
