@@ -18,6 +18,7 @@ function teardown
     set --erase pure_color_prefix_root_prompt
     set --erase pure_enable_single_line_prompt
     set --erase pure_color_prompt_on_success
+    set --erase pure_color_prompt_on_error
 end
 
 @test "_pure_prompt: print prompt after succeeding command" (
