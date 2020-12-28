@@ -1,8 +1,10 @@
+set --global FAILURE 1
+
 function _pure_prompt_first_line \
     --description 'Print contextual information before prompt.'
 
-    if not type -fq git  # exit if git is not available
-        return 1
+    if not type --quiet --no-functions git  # exit if git is not available
+        return $FAILURE
     end
 
     set --local prompt_ssh (_pure_prompt_ssh)
