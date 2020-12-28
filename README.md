@@ -107,7 +107,7 @@ or changing the defaults in your `config.fish`:
 | **`pure_show_system_time`**                    | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                             |
 | **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
 | **`pure_show_prefix_root_prompt`**             | `false` | `true`: shows prompt prefix when logged in as `root`.                                           |
-| **`pure_enable_compact_mode`**                        | `false` | `true`: Compact prompt as a single line |
+| **`pure_enable_compact_prompt`**                        | `false` | `true`: Compact prompt as a single line |
 
 ### Colors
 
