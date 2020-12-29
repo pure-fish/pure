@@ -5,6 +5,12 @@ source $current_dirname/../tools/versions-compare.fish
 @mesg (_print_filename $current_filename)
 
 
+function setup
+    _purge_configs
+    _disable_colors
+end
+
+
 if fish_version_at_least '3.0.0'
     @mesg (print_fish_version_at_least '3.0.0')
     @test "_pure_prompt_ssh_host: use native \$hostname" (

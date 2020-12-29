@@ -4,8 +4,15 @@ source $current_dirname/../functions/_pure_print_prompt_rows.fish
 
 
 function setup
+    _purge_configs
+    _disable_colors
     function _pure_prompt_first_line; echo $EMPTY; end
 end
+
+function teardown
+    functions --erase _pure_prompt_first_line
+end
+
 
 @test "_pure_print_prompt_rows: end with newline by default" (
     _pure_print_prompt_rows | wc -l

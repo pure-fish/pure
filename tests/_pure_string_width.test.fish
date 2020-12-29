@@ -3,14 +3,18 @@ source $current_dirname/../functions/_pure_string_width.fish
 @mesg (_print_filename $current_filename)
 
 
+function setup
+    _purge_configs
+    _disable_colors
+end
+
+
 @test "_pure_string_width: measure empty string" (
     _pure_string_width ''
-
 ) = 0
 
 @test "_pure_string_width: measure raw string" (
     _pure_string_width 'user@hostname'
-
 ) = 13
 
 @test "_pure_string_width: measure ANSI-colored string" (

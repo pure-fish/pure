@@ -3,7 +3,16 @@ source $current_dirname/../functions/_pure_check_for_new_release.fish
 @mesg (_print_filename $current_filename)
 
 
-function _pure_set_color; echo $EMPTY; end # drop coloring during test
+function setup
+    _purge_configs
+    _disable_colors
+
+    function _pure_set_color; echo $EMPTY; end # drop coloring during test
+end
+
+function teardown
+    functions --erase _pure_set_color
+end
 
 @test "_pure_check_for_new_release: is disabled" (
     set --global pure_check_for_new_release false

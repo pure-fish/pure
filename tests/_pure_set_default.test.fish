@@ -3,9 +3,14 @@ source $current_dirname/../functions/_pure_set_default.fish
 @mesg (_print_filename $current_filename)
 
 
+function setup
+    _purge_configs
+    _disable_colors
+end
+
 function teardown
-    set --universal --erase my_var
-    set --global --erase my_var
+    set --erase --universal my_var
+    set --erase --global my_var
 end
 
 

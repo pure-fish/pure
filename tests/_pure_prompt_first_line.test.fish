@@ -5,10 +5,8 @@ source $current_dirname/../functions/_pure_set_color.fish
 
 
 function setup
-    set --global pure_color_current_directory $pure_color_primary
-    set --global pure_color_git_branch $pure_color_mute
-    set --global pure_color_git_dirty $pure_color_mute
-    set --global pure_color_command_duration $pure_color_warning
+    _purge_configs
+    _disable_colors
 
     mkdir -p /tmp/test
     cd /tmp/test

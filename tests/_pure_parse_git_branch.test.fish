@@ -4,6 +4,8 @@ source $current_dirname/../functions/_pure_parse_git_branch.fish
 
 
 function setup
+    _purge_configs
+    _disable_colors
     mkdir -p /tmp/test_pure_parse_git_branch # prevent conflict between parallel test files
     cd /tmp/test_pure_parse_git_branch
 

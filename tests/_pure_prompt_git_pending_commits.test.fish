@@ -4,12 +4,12 @@ source $current_dirname/../functions/_pure_set_color.fish
 @mesg (_print_filename $current_filename)
 
 
-set fake_repo /tmp/pure
-set fake_remote /tmp/remote.git
-
 function setup
     _purge_configs
     _disable_colors
+
+    set --global fake_repo /tmp/pure
+    set --global fake_remote /tmp/remote.git
     rm -rf $fake_repo
 
     git init --bare --quiet $fake_remote
@@ -28,6 +28,8 @@ function teardown
     rm -rf \
         $fake_repo \
         $fake_remote
+    set --erase --global fake_repo
+    set --erase --global fake_remote
 end
 
 @test "_pure_prompt_git_pending_commits: print nothing when no upstream repo" (

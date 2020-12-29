@@ -4,7 +4,17 @@ source $current_dirname/../functions/_pure_set_color.fish
 @mesg (_print_filename $current_filename)
 
 
-set JOB_DURATION 1.5
+function setup
+    _purge_configs
+    _disable_colors
+
+    set --global JOB_DURATION 1.5
+end
+
+function teardown
+    set --erase --global JOB_DURATION
+end
+
 
 @test "_pure_prompt_jobs: no jobs indicator when there are no jobs" (
     _pure_prompt_jobs

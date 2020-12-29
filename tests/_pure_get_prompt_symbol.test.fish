@@ -4,6 +4,8 @@ source $current_dirname/../functions/_pure_get_prompt_symbol.fish
 
 
 function setup
+    _purge_configs
+    _disable_colors
     set --global pure_symbol_prompt '❯'
     set --global pure_symbol_reverse_prompt '❮'
 end
@@ -12,6 +14,7 @@ function teardown
     set fish_key_bindings fish_default_key_bindings
     set fish_bind_mode 'default'
 end
+
 
 @test "_pure_get_prompt_symbol: get default symbol ❯" (
     set --global pure_reverse_prompt_symbol_in_vimode false

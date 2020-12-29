@@ -8,19 +8,21 @@ source $current_dirname/../tools/versions-compare.fish
 @mesg (_print_filename $current_filename)
 
 
+function setup
+    _purge_configs
+    _disable_colors
+end
+
+
 @test "_pure_prompt_ssh: hide 'user@hostname' when working locally" (
     set --erase SSH_CONNECTION
 
     _pure_prompt_ssh
-
 ) $status -eq $SUCCESS
 
 if fish_version_at_least '3.0.0'
     @mesg (print_fish_version_at_least '3.0.0')
     @test "_pure_prompt_ssh: displays 'user@hostname' when on SSH connection (based on \$hostname variable)" (
-        set --global pure_color_ssh_user_normal $EMPTY
-        set --global pure_color_ssh_separator $EMPTY
-        set --global pure_color_ssh_hostname $EMPTY
         set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
         function id; echo 'user'; end  # mock
 
