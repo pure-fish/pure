@@ -15,53 +15,41 @@ source $current_dirname/../functions/_pure_prefix_root_prompt.fish
 function setup
     purge_configs
     disable_colors
+    set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
 end
+
 function teardown
-    set --erase pure_show_prefix_root_prompt
-    set --erase pure_symbol_prefix_root_prompt
-    set --erase pure_color_prefix_root_prompt
-    set --erase pure_enable_single_line_prompt
-    set --erase pure_color_prompt_on_success
-    set --erase pure_color_prompt_on_error
+    functions --erase id
 end
 
 @test "_pure_prompt: print prompt after succeeding command" (
     set pure_color_prompt_on_success magenta
-    set pure_symbol_prompt '>'  # using default ❯ break following tests
-    set --local last_command $SUCCESS
 
-    _pure_prompt $last_command
+    _pure_prompt $SUCCESS
 ) = (set_color magenta)'>'
 
 @test "_pure_prompt: print prompt after failing command" (
     set pure_color_prompt_on_error red
-    set pure_symbol_prompt '>'  # using default ❯ break following tests
-    set --local last_command $FAILURE
 
-    _pure_prompt $last_command
+    _pure_prompt $FAILURE
 ) = (set_color red)'>'
 
 @test "_pure_prompt: print root prefix" (
     set --global pure_show_prefix_root_prompt true
     set --global pure_symbol_prefix_root_prompt '#'
-    set --global pure_color_prefix_root_prompt $EMPTY
-    set --global pure_color_prompt_on_success $EMPTY
     function id; echo 'root'; end # mock
-    set --local last_command $SUCCESS
 
-    _pure_prompt $last_command
+    _pure_prompt $SUCCESS
 ) = "# >"
 
 @test "_pure_prompt: no space before symbol in 2-lines prompt" (
-    set --local last_command $SUCCESS
     set --global pure_enable_single_line_prompt false
 
-    _pure_prompt $last_command
-) = ">"
+    _pure_prompt $SUCCESS
+) = '>'
 
 @test "_pure_prompt: space before symbol in 1-line prompt" (
-    set --local last_command $SUCCESS
     set --global pure_enable_single_line_prompt true
 
-    _pure_prompt $last_command
-) = " >"
+    _pure_prompt $SUCCESS
+) = ' >'
