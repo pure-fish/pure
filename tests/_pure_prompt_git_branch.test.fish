@@ -2,12 +2,12 @@ source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_git_branch.fish
 source $current_dirname/../functions/_pure_parse_git_branch.fish
 source $current_dirname/../functions/_pure_set_color.fish
-@mesg (print_filename $current_filename)
+@mesg (_print_filename $current_filename)
 
 
 function setup
-    purge_configs
-    disable_colors
+    _purge_configs
+    _disable_colors
     mkdir -p /tmp/test_pure_prompt_git_branch  # prevent conflict between parallel test files
     cd /tmp/test_pure_prompt_git_branch
 

@@ -1,15 +1,15 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_git_pending_commits.fish
 source $current_dirname/../functions/_pure_set_color.fish
-@mesg (print_filename $current_filename)
+@mesg (_print_filename $current_filename)
 
 
 set fake_repo /tmp/pure
 set fake_remote /tmp/remote.git
 
 function setup
-    purge_configs
-    disable_colors
+    _purge_configs
+    _disable_colors
     rm -rf $fake_repo
 
     git init --bare --quiet $fake_remote

@@ -1,12 +1,12 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../functions/_pure_prefix_root_prompt.fish
-@mesg (print_filename $current_filename)
+@mesg (_print_filename $current_filename)
 
 
 function setup
-    purge_configs
-    disable_colors
+    _purge_configs
+    _disable_colors
     set --global pure_symbol_prefix_root_prompt '#'
 end
 

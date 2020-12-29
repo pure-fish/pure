@@ -1,7 +1,7 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_virtualenv.fish
 source $current_dirname/../functions/_pure_set_color.fish
-@mesg (print_filename $current_filename)
+@mesg (_print_filename $current_filename)
 
 
 function teardown
