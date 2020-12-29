@@ -6,7 +6,6 @@ source $current_dirname/../functions/_pure_set_default.fish
 function setup
     _purge_configs
     _disable_colors
-    set --global pure_symbol_prompt '>'  # using default ❯ break following tests
 end
 
 @test "configure: pure_version"  (
@@ -21,7 +20,6 @@ end
     echo $pure_symbol_prompt
 ) = "❯"
 
-@mesg [$pure_symbol_reverse_prompt]
 @test "configure: pure_symbol_reverse_prompt"  (
     set --erase pure_symbol_reverse_prompt
     source $current_dirname/../conf.d/pure.fish

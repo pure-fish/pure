@@ -21,6 +21,9 @@ function remove_fish_prompt_files
 end
 
 function setup
+    _purge_configs
+    _disable_colors
+
     if test $USER = 'nemo'
         rm --force $HOME/.config/fish/config.fish
         touch $HOME/.config/fish/config.fish
@@ -29,6 +32,7 @@ function setup
         echo '' > $HOME/.config/fish/config.fish
     end
 end
+
 
 @test "installer: pass argument to set $FISH_CONFIG_DIR" (
     pure_set_fish_config_path "/custom/config/path" >/dev/null

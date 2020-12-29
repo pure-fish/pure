@@ -7,6 +7,7 @@ source $current_dirname/../functions/_pure_set_color.fish
 function setup
     _purge_configs
     _disable_colors
+
     rm -rf /tmp/pure_pure_prompt_git_dirty
 
     mkdir -p /tmp/pure_pure_prompt_git_dirty
@@ -20,6 +21,7 @@ end
 function teardown
     rm -rf /tmp/pure_pure_prompt_git_dirty
 end
+
 
 @test "_pure_prompt_git_dirty: untracked files make git repo as dirty" (
     touch file.txt

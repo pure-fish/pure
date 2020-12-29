@@ -5,12 +5,17 @@ source $current_dirname/../functions/_pure_set_color.fish
 @mesg (_print_filename $current_filename)
 
 
+function setup
+    _purge_configs
+    _disable_colors
+end
+
+
 @test "_pure_prompt_current_folder: fails if no argument given" (
     _pure_prompt_current_folder
 ) $status -eq $FAILURE
 
 @test "_pure_prompt_current_folder: returns current folder" (
-    set --global pure_color_current_directory $EMPTY
     set COLUMNS 20
     set current_prompt_width 10
     mkdir -p /tmp/.pure;

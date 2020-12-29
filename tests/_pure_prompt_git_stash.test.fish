@@ -7,6 +7,7 @@ source $current_dirname/../functions/_pure_set_color.fish
 function setup
     _purge_configs
     _disable_colors
+
     rm -rf /tmp/pure_pure_prompt_git_stash
 
     mkdir -p /tmp/pure_pure_prompt_git_stash

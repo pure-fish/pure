@@ -2,6 +2,12 @@ source $current_dirname/fixtures/constants.fish
 @mesg (_print_filename $current_filename)
 
 
+function setup
+    _purge_configs
+    _disable_colors
+end
+
+
 @test "init: _pure_fresh_session"  (
     set --erase _pure_fresh_session
     source $current_dirname/../conf.d/_pure_init.fish

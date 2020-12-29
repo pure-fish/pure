@@ -14,12 +14,10 @@ end
     set --erase VIRTUAL_ENV
 
     _pure_prompt_virtualenv
-
 ) $status -eq $SUCCESS
 
 @test "_pure_prompt_virtualenv: displays virtualenv directory prompt" (
     set VIRTUAL_ENV /home/test/fake/project/
-    set --global pure_color_virtualenv $EMPTY
 
     _pure_prompt_virtualenv
 ) = 'project'
@@ -28,12 +26,10 @@ end
     set --erase CONDA_DEFAULT_ENV
 
     _pure_prompt_virtualenv
-
 ) $status -eq $SUCCESS
 
 @test "_pure_prompt_virtualenv: displays Conda virtualenv directory prompt" (
     set CONDA_DEFAULT_ENV /home/test/fake/project/
-    set --global pure_color_virtualenv $EMPTY
 
     _pure_prompt_virtualenv
 ) = 'project'
