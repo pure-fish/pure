@@ -39,7 +39,7 @@ end
 ) = 2
 
 @test "fish_prompt: use 1-line compact-prompt" (
-    set --global pure_enable_single_line_prompt true
+    set --universal pure_enable_single_line_prompt true
 
     fish_prompt | wc -l
 ) = 1

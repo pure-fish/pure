@@ -11,7 +11,7 @@ end
 
 
 @test "_pure_prompt_ssh_user: colorize standard user" (
-    set --global pure_color_ssh_user_normal green
+    set --universal pure_color_ssh_user_normal green
 
     _pure_prompt_ssh_user
 
@@ -20,7 +20,7 @@ end
 @test "_pure_prompt_ssh_user: colorize root user" (
     function id; echo 'root'; end # mock
 
-    set --global pure_color_ssh_user_root red
+    set --universal pure_color_ssh_user_root red
 
     _pure_prompt_ssh_user
 

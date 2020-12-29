@@ -7,26 +7,26 @@ source $current_dirname/../functions/_pure_prefix_root_prompt.fish
 function setup
     _purge_configs
     _disable_colors
-    set --global pure_symbol_prefix_root_prompt '#'
+    set --universal pure_symbol_prefix_root_prompt '#'
 end
 
 @test "_pure_prefix_root_prompt: is empty for unprivileged user" (
-    set --global pure_show_prefix_root_prompt true
+    set --universal pure_show_prefix_root_prompt true
     function id; echo 'nemo'; end # mock
 
     _pure_prefix_root_prompt
 ) = $EMPTY
 
 @test "_pure_prefix_root_prompt: is shown for `root` user" (
-    set --global pure_show_prefix_root_prompt true
-    set --global pure_color_prefix_root_prompt red
+    set --universal pure_show_prefix_root_prompt true
+    set --universal pure_color_prefix_root_prompt red
     function id; echo 'root'; end # mock
 
     _pure_prefix_root_prompt
 ) = (set_color red)"#"
 
 @test "_pure_prefix_root_prompt: require flag" (
-    set --global pure_show_prefix_root_prompt false
+    set --universal pure_show_prefix_root_prompt false
     function id; echo 'root'; end # mock
 
     _pure_prefix_root_prompt

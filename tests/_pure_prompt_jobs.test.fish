@@ -21,15 +21,15 @@ end
 ) $status -eq $SUCCESS
 
 @test "_pure_prompt_jobs: displays number of jobs in prompt" (
-    set --global pure_show_jobs true
+    set --universal pure_show_jobs true
     sleep $JOB_DURATION &
     _pure_prompt_jobs
     kill (jobs -p)
 ) = '[1]'
 
 @test "_pure_prompt_jobs: colorize jobs" (
-    set --global pure_color_jobs grey
-    set --global pure_show_jobs true
+    set --universal pure_color_jobs grey
+    set --universal pure_show_jobs true
     sleep $JOB_DURATION &
 
     _pure_prompt_jobs
