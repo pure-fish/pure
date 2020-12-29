@@ -4,3 +4,15 @@ set --global IS_PRESENT 1 # when using grep
 set --global EMPTY ''
 set --global NONE 0
 set --global SPACE ' '
+
+function purge_configs --description "Erase all existing pure configurations"
+    for variable in (set --names | grep pure_)
+        set --erase $variable
+    end
+end
+
+function disable_colors --description "Set all color to empty value"
+    for color_config in (set --names | grep pure_color_)
+        set --global $color_config $EMPTY
+    end
+end

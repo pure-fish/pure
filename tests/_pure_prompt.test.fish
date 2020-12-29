@@ -12,6 +12,10 @@ source $current_dirname/../functions/_pure_prompt_system_time.fish
 source $current_dirname/../functions/_pure_prefix_root_prompt.fish
 
 
+function setup
+    purge_configs
+    disable_colors
+end
 function teardown
     set --erase pure_show_prefix_root_prompt
     set --erase pure_symbol_prefix_root_prompt
