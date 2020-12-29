@@ -277,3 +277,4 @@ source $current_dirname/../functions/_pure_set_default.fish
     source $current_dirname/../conf.d/pure.fish
     echo $pure_enable_single_line_prompt
 ) = false
+
