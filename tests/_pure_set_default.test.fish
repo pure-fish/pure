@@ -9,30 +9,42 @@ function setup
 end
 
 function teardown
-    set --erase --universal my_var
-    set --erase --global my_var
+    set --erase --universal pure_fake_config
+    set --erase --global pure_fake_config
 end
 
 
-@test "_pure_set_default: set my_var default value" (
-    _pure_set_default my_var 'default_value'
-    echo $my_var
-) = 'default_value'
+@test "_pure_set_default: set value when variable doesn't exist on any scope" (
+    _pure_set_default pure_fake_config 'default'
 
-@test "_pure_set_default: skip setting value if default already exists at universal scope" (
-    _pure_set_default my_var 'default_value'
-    _pure_set_default my_var 'another_value'
-    echo $my_var
-) = 'default_value'
+    echo $pure_fake_config
+) = 'default'
 
-@test "_pure_set_default: overwrite UNIVERSAL empty value to make sure the user won't have empty colors." (
-    _pure_set_default my_var $EMPTY
-    _pure_set_default my_var 'default_value'
-    echo $my_var
-) = 'default_value'
+@test "_pure_set_default: ignore value when variable already declared on UNIVERSAL scope" (
+    set --universal pure_fake_config 'default'
 
-@test "_pure_set_default: skip setting value if default already exists at global scope" (
-    set --global my_var 'default_value'
-    _pure_set_default my_var 'another_value'
-    echo $my_var
-) = 'default_value'
+    _pure_set_default pure_fake_config 'new'
+    echo $pure_fake_config
+) = 'default'
+
+@test "_pure_set_default: set value when declared on UNIVERSAL scope but is an empty string (i.e. prevent empty colors)" (
+    set --universal pure_fake_config $EMPTY
+
+    _pure_set_default pure_fake_config 'new'
+    echo $pure_fake_config
+) = 'new'
+
+@test "_pure_set_default: ignore value when variable already declared on GLOBAL scope" (
+    set --global pure_fake_config 'default'
+
+    _pure_set_default pure_fake_config 'new'
+    echo $pure_fake_config
+) = 'default'
+
+@test "_pure_set_default: ignore value when declared on GLOBAL scope but is an empty string (i.e. prevent empty colors)" (
+    set --global pure_fake_config $EMPTY
+
+    _pure_set_default pure_fake_config 'new'
+    echo $pure_fake_config
+) != 'new' # ⚠️ Universal variable is shadowed by the global variable of the same name.
+
