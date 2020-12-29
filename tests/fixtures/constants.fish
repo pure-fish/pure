@@ -7,7 +7,9 @@ set --global SPACE ' '
 
 function purge_configs --description "Erase all existing pure configurations"
     for variable in (set --names | grep pure_)
-        set --erase $variable
+        set --erase --local $variable
+        set --erase --global $variable
+        set --erase --universal $variable
     end
 end
 
