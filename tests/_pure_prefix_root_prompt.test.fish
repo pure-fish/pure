@@ -3,7 +3,12 @@ source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../functions/_pure_prefix_root_prompt.fish
 @mesg (print_filename $current_filename)
 
-set --global pure_symbol_prefix_root_prompt '#'
+
+function setup
+    purge_configs
+    disable_colors
+    set --global pure_symbol_prefix_root_prompt '#'
+end
 
 @test "_pure_prefix_root_prompt: is empty for unprivileged user" (
     set --global pure_show_prefix_root_prompt true

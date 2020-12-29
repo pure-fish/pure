@@ -2,7 +2,6 @@ source $current_dirname/fixtures/constants.fish
 @mesg (print_filename $current_filename)
 
 
-set --global DIRNAME $current_dirname
 function setup
     cp tests/fixtures/{config.mock.fish,config.fish}
 end
