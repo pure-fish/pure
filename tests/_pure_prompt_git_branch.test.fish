@@ -21,6 +21,12 @@ function teardown
     rm -rf /tmp/test_pure_prompt_git_branch
 end
 
-@test "_pure_prompt_git_branch: show branch name in gray" (
+
+@test "_pure_prompt_git_branch: show branch name" (
     _pure_prompt_git_branch
 ) = 'master'
+
+@test "_pure_prompt_git_branch: colorize branch name" (
+    set --global pure_color_git_branch grey
+    _pure_prompt_git_branch
+) = (set_color grey)'master'
