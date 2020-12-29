@@ -10,12 +10,12 @@ source $current_dirname/../functions/_pure_print_prompt.fish
 source $current_dirname/../functions/_pure_string_width.fish
 source $current_dirname/../functions/_pure_prompt_system_time.fish
 source $current_dirname/../functions/_pure_prefix_root_prompt.fish
-@mesg (print_filename $current_filename)
+@mesg (_print_filename $current_filename)
 
 
 function setup
-    purge_configs
-    disable_colors
+    _purge_configs
+    _disable_colors
     set --global pure_symbol_prompt '>'  # using default ❯ break following tests
 end
 

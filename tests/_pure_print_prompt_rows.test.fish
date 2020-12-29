@@ -1,6 +1,6 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_print_prompt_rows.fish
-@mesg (print_filename $current_filename)
+@mesg (_print_filename $current_filename)
 
 
 function setup

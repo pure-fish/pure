@@ -1,11 +1,11 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_set_default.fish
-@mesg (print_filename $current_filename)
+@mesg (_print_filename $current_filename)
 
 
 function setup
-    purge_configs
-    disable_colors
+    _purge_configs
+    _disable_colors
     set --global pure_symbol_prompt '>'  # using default ❯ break following tests
 end
 
@@ -21,6 +21,7 @@ end
     echo $pure_symbol_prompt
 ) = "❯"
 
+@mesg [$pure_symbol_reverse_prompt]
 @test "configure: pure_symbol_reverse_prompt"  (
     set --erase pure_symbol_reverse_prompt
     source $current_dirname/../conf.d/pure.fish

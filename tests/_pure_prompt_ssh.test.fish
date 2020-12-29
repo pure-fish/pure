@@ -5,7 +5,7 @@ source $current_dirname/../functions/_pure_prompt_ssh_separator.fish
 source $current_dirname/../functions/_pure_prompt_ssh_host.fish
 source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../tools/versions-compare.fish
-@mesg (print_filename $current_filename)
+@mesg (_print_filename $current_filename)
 
 
 @test "_pure_prompt_ssh: hide 'user@hostname' when working locally" (

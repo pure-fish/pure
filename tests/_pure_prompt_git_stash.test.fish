@@ -1,12 +1,12 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_git_stash.fish
 source $current_dirname/../functions/_pure_set_color.fish
-@mesg (print_filename $current_filename)
+@mesg (_print_filename $current_filename)
 
 
 function setup
-    purge_configs
-    disable_colors
+    _purge_configs
+    _disable_colors
     rm -rf /tmp/pure_pure_prompt_git_stash
 
     mkdir -p /tmp/pure_pure_prompt_git_stash
