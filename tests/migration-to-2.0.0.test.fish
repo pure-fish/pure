@@ -1,9 +1,8 @@
 source $current_dirname/fixtures/constants.fish
+@mesg (print_filename $current_filename)
 
 
 set --global DIRNAME $current_dirname
-
-
 function setup
     cp tests/fixtures/{config.mock.fish,config.fish}
 end
@@ -11,6 +10,7 @@ end
 function teardown
     rm tests/fixtures/config.fish
 end
+
 
 @test "migrate all variables" (
     set file_to_migrate $current_dirname/fixtures/config.mock.fish  # created during 'setup'

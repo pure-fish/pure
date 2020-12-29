@@ -1,4 +1,5 @@
 source $current_dirname/../functions/_pure_parse_directory.fish
+@mesg (print_filename $current_filename)
 
 
 @test "_pure_parse_directory: returns current directory" (

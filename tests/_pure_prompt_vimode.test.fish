@@ -1,5 +1,6 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_vimode.fish
+@mesg (print_filename $current_filename)
 
 
 @test "_pure_prompt_vimode: hides vimode prompt by default" (

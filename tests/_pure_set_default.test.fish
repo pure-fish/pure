@@ -1,11 +1,13 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_set_default.fish
+@mesg (print_filename $current_filename)
 
 
 function teardown
     set --universal --erase my_var
     set --global --erase my_var
 end
+
 
 @test "_pure_set_default: set my_var default value" (
     _pure_set_default my_var 'default_value'

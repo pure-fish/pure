@@ -1,4 +1,6 @@
 source $current_dirname/fixtures/constants.fish
+@mesg (print_filename $current_filename)
+
 
 @test "init: source uninstall handler"  (
     functions --erase _pure_uninstall

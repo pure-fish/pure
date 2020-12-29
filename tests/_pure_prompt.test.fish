@@ -10,6 +10,7 @@ source $current_dirname/../functions/_pure_print_prompt.fish
 source $current_dirname/../functions/_pure_string_width.fish
 source $current_dirname/../functions/_pure_prompt_system_time.fish
 source $current_dirname/../functions/_pure_prefix_root_prompt.fish
+@mesg (print_filename $current_filename)
 
 
 function setup
@@ -21,6 +22,7 @@ end
 function teardown
     functions --erase id
 end
+
 
 @test "_pure_prompt: print prompt after succeeding command" (
     set --global pure_color_prompt_on_success magenta

@@ -1,6 +1,7 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_print_prompt.fish
 source $current_dirname/../functions/_pure_string_width.fish
+@mesg (print_filename $current_filename)
 
 
 @test "_pure_print_prompt: returns nothing when no argument provided" (
