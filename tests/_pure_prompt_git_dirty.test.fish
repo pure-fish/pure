@@ -7,11 +7,8 @@ source $current_dirname/../functions/_pure_set_color.fish
 function setup
     _purge_configs
     _disable_colors
-
-    rm -rf /tmp/pure_pure_prompt_git_dirty
-
-    mkdir -p /tmp/pure_pure_prompt_git_dirty
-    cd /tmp/pure_pure_prompt_git_dirty
+    mkdir -p /tmp/pure_pure_prompt_git_dirty # prevent conflict between parallel test files
+    and cd /tmp/pure_pure_prompt_git_dirty
 
     git init --quiet
     git config --local user.email "you@example.com"

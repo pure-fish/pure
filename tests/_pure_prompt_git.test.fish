@@ -9,11 +9,11 @@ source $current_dirname/../functions/_pure_prompt_git_stash.fish
 
 
 function setup
+    mkdir -p /tmp/test_pure_prompt_git  # prevent conflict between parallel test files
+    and cd /tmp/test_pure_prompt_git
+
     _purge_configs
     _disable_colors
-
-    mkdir -p /tmp/test_pure_prompt_git  # prevent conflict between parallel test files
-    cd /tmp/test_pure_prompt_git
 end
 
 function teardown

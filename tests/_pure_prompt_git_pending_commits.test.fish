@@ -10,11 +10,10 @@ function setup
 
     set --global fake_repo /tmp/pure
     set --global fake_remote /tmp/remote.git
-    rm -rf $fake_repo
 
     git init --bare --quiet $fake_remote
     mkdir -p $fake_repo
-    cd $fake_repo
+    and cd $fake_repo
     git init --quiet
     git config --local user.email "you@example.com"
     git config --local user.name "Your Name"
