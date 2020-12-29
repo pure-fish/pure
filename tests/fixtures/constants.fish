@@ -15,7 +15,7 @@ end
 
 function _disable_colors --description "Set all color to empty value"
     for color_config in (set --names | string match --regex --entire '^pure_color_')
-        set --global $color_config $EMPTY
+        set --universal $color_config $EMPTY
     end
 end
 
