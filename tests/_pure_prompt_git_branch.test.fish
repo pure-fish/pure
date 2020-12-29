@@ -7,7 +7,7 @@ source $current_dirname/../functions/_pure_set_color.fish
 
 function setup
     mkdir -p /tmp/test_pure_prompt_git_branch  # prevent conflict between parallel test files
-    cd /tmp/test_pure_prompt_git_branch
+    and cd /tmp/test_pure_prompt_git_branch
 
     git init --quiet
     git config --local user.email "you@example.com"
