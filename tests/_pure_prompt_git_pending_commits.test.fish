@@ -5,9 +5,6 @@ source $current_dirname/../functions/_pure_prompt_git_pending_commits.fish
 
 
 function setup
-    _purge_configs
-    _disable_colors
-
     set --global fake_repo /tmp/pure
     set --global fake_remote /tmp/remote.git
 
@@ -21,6 +18,9 @@ function setup
     touch file.txt
     git add file.txt
     git commit --quiet --message='init'
+
+    _purge_configs
+    _disable_colors
 end
 
 function teardown
