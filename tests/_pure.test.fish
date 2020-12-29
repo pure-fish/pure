@@ -2,6 +2,12 @@ source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_set_default.fish
 
 
+function setup
+    purge_configs
+    disable_colors
+    set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+end
+
 @test "configure: pure_version"  (
     set --erase pure_version
     source $current_dirname/../conf.d/pure.fish
