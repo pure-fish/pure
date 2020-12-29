@@ -1,5 +1,6 @@
 source $current_dirname/../functions/_pure_prompt_ssh_user.fish
 source $current_dirname/../functions/_pure_set_color.fish
+@mesg (print_filename $current_filename)
 
 
 @test "_pure_prompt_ssh_user: colorize standard user" (

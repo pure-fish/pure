@@ -1,4 +1,6 @@
 source $current_dirname/fixtures/constants.fish
+@mesg (print_filename $current_filename)
+
 
 @test "init: _pure_fresh_session"  (
     set --erase _pure_fresh_session

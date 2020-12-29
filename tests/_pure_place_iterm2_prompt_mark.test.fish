@@ -1,5 +1,6 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_place_iterm2_prompt_mark.fish
+@mesg (print_filename $current_filename)
 
 
 @test "_pure_place_iterm2_prompt_mark: no iterm2 prompt mark when NOT in iTerm" (

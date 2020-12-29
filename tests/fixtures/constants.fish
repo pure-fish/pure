@@ -18,3 +18,7 @@ function disable_colors --description "Set all color to empty value"
         set --global $color_config $EMPTY
     end
 end
+
+function print_filename --argument-names filename
+    echo (set_color cyan)$filename(set_color normal)
+end

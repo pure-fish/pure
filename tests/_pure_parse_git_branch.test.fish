@@ -1,4 +1,5 @@
 source $current_dirname/../functions/_pure_parse_git_branch.fish
+@mesg (print_filename $current_filename)
 
 
 function setup

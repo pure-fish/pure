@@ -2,6 +2,7 @@ source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_format_time.fish
 source $current_dirname/../functions/_pure_prompt_command_duration.fish
 source $current_dirname/../functions/_pure_set_color.fish
+@mesg (print_filename $current_filename)
 
 
 @test "_pure_prompt_command_duration: hide command duration when it's zero" (
