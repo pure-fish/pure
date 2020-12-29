@@ -50,16 +50,16 @@ end
 ) = 1
 
 @test "_pure_prompt_first_line: print current directory, git, user@hostname (ssh-only), command duration" (
-    set pure_enable_git true
-    set pure_begin_prompt_with_current_directory true
+    set --global pure_enable_git true
+    set --global pure_begin_prompt_with_current_directory true
     _pure_prompt_first_line
 
     rm -rf /tmp/test
 ) = '/tmp/test master user@hostname 1s'
 
 @test "_pure_prompt_first_line: print user@hostname (ssh-only), current directory, git, command duration" (
-    set pure_enable_git true
-    set pure_begin_prompt_with_current_directory false
+    set --global pure_enable_git true
+    set --global pure_begin_prompt_with_current_directory false
     _pure_prompt_first_line
 
     rm -rf /tmp/test

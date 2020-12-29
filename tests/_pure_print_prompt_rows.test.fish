@@ -11,7 +11,7 @@ end
 ) = 1
 
 @test "_pure_print_prompt_rows: end WITHOUT newline when compact-prompt is enable" (
-    set pure_enable_single_line_prompt true
+    set --global pure_enable_single_line_prompt true
 
     _pure_print_prompt_rows | wc -l
 ) = 0

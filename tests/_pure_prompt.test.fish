@@ -15,7 +15,7 @@ source $current_dirname/../functions/_pure_prefix_root_prompt.fish
 function setup
     purge_configs
     disable_colors
-    set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
+    set --global pure_symbol_prompt '>'  # using default ❯ break following tests
 end
 
 function teardown
@@ -23,13 +23,13 @@ function teardown
 end
 
 @test "_pure_prompt: print prompt after succeeding command" (
-    set pure_color_prompt_on_success magenta
+    set --global pure_color_prompt_on_success magenta
 
     _pure_prompt $SUCCESS
 ) = (set_color magenta)'>'
 
 @test "_pure_prompt: print prompt after failing command" (
-    set pure_color_prompt_on_error red
+    set --global pure_color_prompt_on_error red
 
     _pure_prompt $FAILURE
 ) = (set_color red)'>'
