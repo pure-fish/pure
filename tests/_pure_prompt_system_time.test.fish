@@ -1,8 +1,7 @@
 source $current_dirname/fixtures/constants.fish
+source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../functions/_pure_prompt_system_time.fish
 
-
-function _pure_set_color; echo $EMPTY; end # drop coloring during test
 
 @test "_pure_prompt_system_time: no system time when disable" (
     set --global pure_show_system_time false
