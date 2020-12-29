@@ -16,7 +16,7 @@ source $current_dirname/../functions/_pure_prefix_root_prompt.fish
 function setup
     _purge_configs
     _disable_colors
-    set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+    set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
 end
 
 function teardown
@@ -25,33 +25,33 @@ end
 
 
 @test "_pure_prompt: print prompt after succeeding command" (
-    set --global pure_color_prompt_on_success magenta
+    set --universal pure_color_prompt_on_success magenta
 
     _pure_prompt $SUCCESS
 ) = (set_color magenta)'>'
 
 @test "_pure_prompt: print prompt after failing command" (
-    set --global pure_color_prompt_on_error red
+    set --universal pure_color_prompt_on_error red
 
     _pure_prompt $FAILURE
 ) = (set_color red)'>'
 
 @test "_pure_prompt: print root prefix" (
-    set --global pure_show_prefix_root_prompt true
-    set --global pure_symbol_prefix_root_prompt '#'
+    set --universal pure_show_prefix_root_prompt true
+    set --universal pure_symbol_prefix_root_prompt '#'
     function id; echo 'root'; end # mock
 
     _pure_prompt $SUCCESS
 ) = "# >"
 
 @test "_pure_prompt: no space before symbol in 2-lines prompt" (
-    set --global pure_enable_single_line_prompt false
+    set --universal pure_enable_single_line_prompt false
 
     _pure_prompt $SUCCESS
 ) = '>'
 
 @test "_pure_prompt: space before symbol in 1-line prompt" (
-    set --global pure_enable_single_line_prompt true
+    set --universal pure_enable_single_line_prompt true
 
     _pure_prompt $SUCCESS
 ) = ' >'

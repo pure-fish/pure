@@ -10,23 +10,23 @@ function setup
 end
 
 @test "_pure_check_for_new_release: is disabled" (
-    set --global pure_check_for_new_release false
+    set --universal pure_check_for_new_release false
 
     _pure_check_for_new_release
 ) $status -eq $SUCCESS
 
 
 @test "_pure_check_for_new_release: nothing when same as latest" (
-    set --global pure_check_for_new_release true
-    set --global pure_version 0.0.1
+    set --universal pure_check_for_new_release true
+    set --universal pure_version 0.0.1
     function curl; echo '"tag_name": "v0.0.1",'; end # mock
 
     _pure_check_for_new_release
 ) = '🛈 Checking for new release…'
 
 @test "_pure_check_for_new_release: show fisher command to install when enable" (
-    set --global pure_check_for_new_release true
-    set --global pure_version 0.0.1
+    set --universal pure_check_for_new_release true
+    set --universal pure_version 0.0.1
     function curl; echo '"tag_name": "v9.9.9",'; end # mock
 
     set output (_pure_check_for_new_release 2>&1)

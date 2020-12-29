@@ -43,7 +43,7 @@ end
     git add missing-on-upstream.txt
     git commit --quiet --message='missing on upstream'
 
-    set --global pure_symbol_git_unpushed_commits '^'
+    set --universal pure_symbol_git_unpushed_commits '^'
 
     _pure_prompt_git_pending_commits
 ) = '^'
@@ -56,7 +56,7 @@ end
 
     git reset --hard --quiet HEAD~1
 
-    set --global pure_symbol_git_unpulled_commits 'v'
+    set --universal pure_symbol_git_unpulled_commits 'v'
 
     _pure_prompt_git_pending_commits
 ) = 'v'
@@ -80,8 +80,8 @@ end
     git add missing-on-upstream.txt
     git commit --quiet --message='missing on upstream'
 
-    set --global pure_symbol_git_unpushed_commits '^'
-    set --global pure_color_git_unpushed_commits cyan
+    set --universal pure_symbol_git_unpushed_commits '^'
+    set --universal pure_color_git_unpushed_commits cyan
 
     _pure_prompt_git_pending_commits
 ) = (set_color cyan)'^'

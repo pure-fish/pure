@@ -27,6 +27,6 @@ end
 ) = 'master'
 
 @test "_pure_prompt_git_branch: colorize branch name" (
-    set --global pure_color_git_branch grey
+    set --universal pure_color_git_branch grey
     _pure_prompt_git_branch
 ) = (set_color grey)'master'

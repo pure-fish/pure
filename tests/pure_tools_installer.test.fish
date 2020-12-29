@@ -134,7 +134,7 @@ if test $USER = 'nemo'
             source $config
         end
 
-        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
         fish_prompt | string match --entire --quiet '>'
     ) $status -eq $SUCCESS
 end
@@ -145,7 +145,7 @@ if test $USER = 'nemo'
         and source /tmp/installer.fish
         and install_pure >/dev/null
 
-        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
         fish_prompt | string match --entire --quiet '>'
     ) $status -eq $SUCCESS
 end
@@ -154,7 +154,7 @@ if test $USER = 'nemo'
     @test "installation methods: with fisher 4.x" (
         fish -c 'fisher install rafaelrinaldi/pure' >/dev/null 2>&1
 
-        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
         fish_prompt | string match --entire --quiet '>'
     ) $status -eq $SUCCESS
 end
@@ -171,7 +171,7 @@ if test $USER = 'nemo'
             ln -s $OMF_PATH/themes/pure/conf.d/pure.fish ~/.config/fish/conf.d/pure.fish
             ln -s $OMF_PATH/themes/pure/conf.d/_pure_init.fish ~/.config/fish/conf.d/pure_init.fish
         '
-        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
         fish_prompt | string match --entire --quiet '>'
     ) $status -eq $SUCCESS
 end
@@ -185,7 +185,7 @@ if test $USER = 'nemo'
         fundle plugin rafaelrinaldi/pure >/dev/null
         fundle install >/dev/null
 
-        set --global pure_symbol_prompt '>'  # using default ❯ break following tests
+        set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
         fish_prompt | string match --entire --quiet '>'
     ) $status -eq $SUCCESS
 end

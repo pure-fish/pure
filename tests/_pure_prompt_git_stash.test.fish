@@ -21,7 +21,7 @@ function teardown
 end
 
 @test "_pure_prompt_git_stash: no indicator when no stash" (
-    set --global pure_symbol_git_stash '≡'
+    set --universal pure_symbol_git_stash '≡'
     touch init.file
     git add init.file
     git commit --quiet --message 'mandatory initial commit'
@@ -30,7 +30,7 @@ end
 ) = $EMPTY
 
 @test "_pure_prompt_git_stash: stashing file shows indicator" (
-    set --global pure_symbol_git_stash '≡'
+    set --universal pure_symbol_git_stash '≡'
     touch init.file stash.file
     git add init.file
     git commit --quiet --message 'mandatory initial commit'
@@ -41,8 +41,8 @@ end
 ) = ' ≡'
 
 @test "_pure_prompt_git_stash: symbol is colorized" (
-    set --global pure_symbol_git_stash '≡'
-    set --global pure_color_git_stash cyan
+    set --universal pure_symbol_git_stash '≡'
+    set --universal pure_color_git_stash cyan
     touch init.file stash.file
     git add init.file
     git commit --quiet --message 'mandatory initial commit'

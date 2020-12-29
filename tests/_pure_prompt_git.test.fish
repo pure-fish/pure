@@ -32,7 +32,7 @@ end
     function _pure_prompt_git_dirty; echo $EMPTY; end
     function _pure_prompt_git_pending_commits; echo $EMPTY; end
 
-    set --global pure_enable_git true
+    set --universal pure_enable_git true
 
     _pure_prompt_git
 ) = 'master'
@@ -42,7 +42,7 @@ end
     function _pure_prompt_git_dirty; echo '*'; end
     function _pure_prompt_git_pending_commits; echo $EMPTY; end
 
-    set --global pure_enable_git true
+    set --universal pure_enable_git true
 
     _pure_prompt_git
 ) = 'master*'
@@ -52,7 +52,7 @@ end
     function _pure_prompt_git_dirty; echo $EMPTY; end
     function _pure_prompt_git_pending_commits; echo 'v'; end
 
-    set --global pure_enable_git true
+    set --universal pure_enable_git true
 
     _pure_prompt_git
 ) = 'master v'
@@ -62,7 +62,7 @@ end
     function _pure_prompt_git_dirty; echo $EMPTY; end
     function _pure_prompt_git_pending_commits; echo $EMPTY; end
 
-    set --global pure_enable_git false
+    set --universal pure_enable_git false
 
     _pure_prompt_git
 ) $status -eq $SUCCESS

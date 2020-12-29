@@ -35,7 +35,7 @@ end
 ) = 'new'
 
 @test "_pure_set_default: ignore value when variable already declared on GLOBAL scope" (
-    set --global pure_fake_config 'default'
+    set --universal pure_fake_config 'default'
 
     _pure_set_default pure_fake_config 'new'
     echo $pure_fake_config

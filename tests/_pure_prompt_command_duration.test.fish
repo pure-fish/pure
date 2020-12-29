@@ -19,15 +19,15 @@ end
 
 @test "_pure_prompt_command_duration: displays command duration when non-zero" (
     set CMD_DURATION 6053 # in milliseconds
-    set --global pure_threshold_command_duration 5 # in seconds
+    set --universal pure_threshold_command_duration 5 # in seconds
 
     _pure_prompt_command_duration
 ) = '6s'
 
 @test "_pure_prompt_command_duration: displays command duration with ms when non-zero" (
     set CMD_DURATION 6053 # in milliseconds
-    set --global pure_threshold_command_duration 5 # in seconds
-    set --global pure_show_subsecond_command_duration true
+    set --universal pure_threshold_command_duration 5 # in seconds
+    set --universal pure_show_subsecond_command_duration true
 
     _pure_prompt_command_duration
 ) = '6.05s'

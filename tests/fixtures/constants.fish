@@ -22,3 +22,5 @@ end
 function _print_filename --argument-names filename
     echo (set_color cyan)$filename(set_color normal)
 end
+
+# function _pure_set_color; echo $EMPTY; end

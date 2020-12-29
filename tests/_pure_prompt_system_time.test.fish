@@ -11,13 +11,13 @@ end
 
 
 @test "_pure_prompt_system_time: no system time when disable" (
-    set --global pure_show_system_time false
+    set --universal pure_show_system_time false
 
     _pure_prompt_system_time
 ) $status -eq $SUCCESS
 
 @test "_pure_prompt_system_time: displays system time when enable" (
-    set --global pure_show_system_time true
+    set --universal pure_show_system_time true
     function date
         test (uname) = Darwin;
         and command date -j -f "%H:%M:%S" '10:01:29' '+%T'; # MacOS
