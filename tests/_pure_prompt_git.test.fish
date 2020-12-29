@@ -8,6 +8,8 @@ source $current_dirname/../functions/_pure_prompt_git_stash.fish
 
 
 function setup
+    purge_configs
+    disable_colors
     mkdir -p /tmp/test_pure_prompt_git  # prevent conflict between parallel test files
     cd /tmp/test_pure_prompt_git
 end
@@ -29,10 +31,6 @@ end
     function _pure_prompt_git_pending_commits; echo $EMPTY; end
 
     set --global pure_enable_git true
-    set --global pure_color_git_branch $EMPTY
-    set --global pure_color_git_dirty $EMPTY
-    set --global pure_color_git_unpulled_commits $EMPTY
-    set --global pure_color_git_unpushed_commits $EMPTY
 
     _pure_prompt_git
 ) = 'master'
@@ -43,10 +41,6 @@ end
     function _pure_prompt_git_pending_commits; echo $EMPTY; end
 
     set --global pure_enable_git true
-    set --global pure_color_git_branch $EMPTY
-    set --global pure_color_git_dirty $EMPTY
-    set --global pure_color_git_unpulled_commits $EMPTY
-    set --global pure_color_git_unpushed_commits $EMPTY
 
     _pure_prompt_git
 ) = 'master*'
@@ -57,10 +51,6 @@ end
     function _pure_prompt_git_pending_commits; echo 'v'; end
 
     set --global pure_enable_git true
-    set --global pure_color_git_branch $EMPTY
-    set --global pure_color_git_dirty $EMPTY
-    set --global pure_color_git_unpulled_commits $EMPTY
-    set --global pure_color_git_unpushed_commits $EMPTY
 
     _pure_prompt_git
 ) = 'master v'
@@ -71,10 +61,6 @@ end
     function _pure_prompt_git_pending_commits; echo $EMPTY; end
 
     set --global pure_enable_git false
-    set --global pure_color_git_branch $EMPTY
-    set --global pure_color_git_dirty $EMPTY
-    set --global pure_color_git_unpulled_commits $EMPTY
-    set --global pure_color_git_unpushed_commits $EMPTY
 
     _pure_prompt_git
 ) $status -eq $SUCCESS
