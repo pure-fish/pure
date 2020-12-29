@@ -1,3 +1,4 @@
+source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_get_prompt_symbol.fish
 @mesg (print_filename $current_filename)
 
