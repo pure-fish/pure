@@ -6,7 +6,7 @@ function _pure_check_for_new_release \
         set latest (pure_get_latest_release_version "rafaelrinaldi/pure")
 
         if test "v"$pure_version != $latest
-            set --local latest_version (_pure_set_color $pure_color_info)$latest(_pure_set_color pure_color_normal)
+            set --local latest_version (_pure_set_color $pure_color_info)$latest(_pure_set_color $pure_color_normal)
             echo -e "🔔 New version available!\n"
             echo -e (_pure_set_color $pure_color_success)"fisher install rafaelrinaldi/pure@$latest_version\n"
         end
