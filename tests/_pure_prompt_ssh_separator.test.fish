@@ -1,6 +1,5 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_ssh_separator.fish
-source $current_dirname/../functions/_pure_set_color.fish
 @mesg (_print_filename $current_filename)
 
 
@@ -17,6 +16,7 @@ end
 ) = '@'
 
 @test "_pure_prompt_ssh_separator: display colored at symbol" (
+    source $current_dirname/../functions/_pure_set_color.fish
     set --universal pure_color_ssh_separator grey
 
     _pure_prompt_ssh_separator

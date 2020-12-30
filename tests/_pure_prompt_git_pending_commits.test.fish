@@ -1,5 +1,4 @@
 source $current_dirname/fixtures/constants.fish
-source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../functions/_pure_prompt_git_pending_commits.fish
 @mesg (_print_filename $current_filename)
 
@@ -80,6 +79,7 @@ end
     git add missing-on-upstream.txt
     git commit --quiet --message='missing on upstream'
 
+    source $current_dirname/../functions/_pure_set_color.fish # enable colors
     set --universal pure_symbol_git_unpushed_commits '^'
     set --universal pure_color_git_unpushed_commits cyan
 

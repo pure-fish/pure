@@ -1,5 +1,4 @@
 source $current_dirname/fixtures/constants.fish
-source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../functions/_pure_prompt_git_stash.fish
 @mesg (_print_filename $current_filename)
 
@@ -41,13 +40,15 @@ end
 ) = ' ≡'
 
 @test "_pure_prompt_git_stash: symbol is colorized" (
-    set --universal pure_symbol_git_stash '≡'
-    set --universal pure_color_git_stash cyan
     touch init.file stash.file
     git add init.file
     git commit --quiet --message 'mandatory initial commit'
     git add stash.file
     git stash --quiet
+
+    source $current_dirname/../functions/_pure_set_color.fish # enable colors
+    set --universal pure_symbol_git_stash '≡'
+    set --universal pure_color_git_stash cyan
 
     _pure_prompt_git_stash
 ) = (set_color cyan)' ≡'

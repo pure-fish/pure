@@ -1,5 +1,4 @@
 source $current_dirname/fixtures/constants.fish
-source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../functions/_pure_prompt_git.fish
 source $current_dirname/../functions/_pure_prompt_git_branch.fish
 source $current_dirname/../functions/_pure_parse_git_branch.fish

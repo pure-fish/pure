@@ -1,6 +1,5 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_ssh_host.fish
-source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../tools/versions-compare.fish
 @mesg (_print_filename $current_filename)
 
