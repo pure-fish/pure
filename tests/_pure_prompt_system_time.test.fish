@@ -1,5 +1,4 @@
 source $current_dirname/fixtures/constants.fish
-source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../functions/_pure_prompt_system_time.fish
 @mesg (_print_filename $current_filename)
 

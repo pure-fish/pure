@@ -1,5 +1,4 @@
 source $current_dirname/fixtures/constants.fish
-source $current_dirname/../functions/_pure_set_color.fish
 source $current_dirname/../functions/_pure_prompt_git_branch.fish
 source $current_dirname/../functions/_pure_parse_git_branch.fish
 @mesg (_print_filename $current_filename)
@@ -27,6 +26,7 @@ end
 ) = 'master'
 
 @test "_pure_prompt_git_branch: colorize branch name" (
+    source $current_dirname/../functions/_pure_set_color.fish # enable colors
     set --universal pure_color_git_branch grey
     _pure_prompt_git_branch
 ) = (set_color grey)'master'

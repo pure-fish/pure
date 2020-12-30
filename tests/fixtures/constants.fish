@@ -6,21 +6,12 @@ set --global NONE 0
 set --global SPACE ' '
 
 function _purge_configs --description "Erase all existing pure configurations"
-    for variable in (set --names | string match --regex --entire '^pure_')
-        set --erase --local $variable
-        set --erase --global $variable
-        set --erase --universal $variable
-    end
 end
 
 function _disable_colors --description "Set all color to empty value"
-    for color_config in (set --names | string match --regex --entire '^pure_color_')
-        set --universal $color_config $EMPTY
-    end
+    function _pure_set_color; end
 end
 
 function _print_filename --argument-names filename
     echo (set_color cyan)$filename(set_color normal)
 end
-
-# function _pure_set_color; echo $EMPTY; end

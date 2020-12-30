@@ -1,8 +1,11 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_virtualenv.fish
-source $current_dirname/../functions/_pure_set_color.fish
 @mesg (_print_filename $current_filename)
 
+
+function setup
+    _disable_colors
+end
 
 function teardown
     set --erase --global VIRTUAL_ENV
