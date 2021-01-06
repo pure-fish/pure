@@ -20,3 +20,10 @@ end
 
     _pure_prompt_new_line | wc -l
 ) = $NONE
+
+@test "_pure_prompt_new_line: print prompt without newline when single line prompt is enabled" (
+    set _pure_fresh_session false
+    set --universal pure_enable_single_line_prompt true
+
+    _pure_prompt_new_line | wc -l
+) = $NONE
