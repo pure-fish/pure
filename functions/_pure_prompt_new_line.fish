@@ -3,7 +3,7 @@ function _pure_prompt_new_line \
     --on-event fish_prompt
 
     set --local new_line
-    if test $_pure_fresh_session = false
+    if not _pure_is_single_line_prompt; and test $_pure_fresh_session = false
         set new_line "\n"
     end
 
