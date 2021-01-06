@@ -25,12 +25,14 @@ end
 
 
 @test "_pure_prompt: print prompt after succeeding command" (
+    source $current_dirname/../functions/_pure_set_color.fish
     set --universal pure_color_prompt_on_success magenta
 
     _pure_prompt $SUCCESS
 ) = (set_color magenta)'>'
 
 @test "_pure_prompt: print prompt after failing command" (
+    source $current_dirname/../functions/_pure_set_color.fish
     set --universal pure_color_prompt_on_error red
 
     _pure_prompt $FAILURE
