@@ -42,7 +42,6 @@ set test_files \
     # fish_mode_prompt \
     # fish_prompt \
     # fish_title \
-    # migration-to-2.0.0 \
     # pure_tools_versions-compare
     ''
 
