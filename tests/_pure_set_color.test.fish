@@ -14,3 +14,9 @@ source $current_dirname/../functions/_pure_set_color.fish
 
     echo $colorize'foo'
 ) = 'foo'
+
+@test "_pure_set_color: resolve variable value" (
+    set color red
+
+    _pure_set_color $color
+) = (set_color red)
