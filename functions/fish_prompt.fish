@@ -1,7 +1,6 @@
+# a called to `_pure_prompt_new_line` is triggered by an event
 function fish_prompt
     set --local exit_code $status  # save previous exit code
-
-    # `_pure_prompt_new_line` is called by  event
 
     echo -e -n (_pure_prompt_beginning)  # init prompt context (clear current line, etc.)
     _pure_print_prompt_rows # manage default vs. compact prompt
