@@ -16,6 +16,7 @@ usage:
 .PHONY: build-pure-on
 build-pure-on:
 	docker build \
+        --quiet \
 		--file ./Dockerfile \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
 		--tag=pure-on-fish-${FISH_VERSION} \
@@ -25,6 +26,7 @@ build-pure-on:
 dev-pure-on: CMD?=fish
 dev-pure-on:
 	docker run \
+        --quiet \
 		--name run-pure-on-${FISH_VERSION} \
 		--rm \
 		--interactive \
