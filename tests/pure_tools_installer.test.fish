@@ -160,37 +160,6 @@ if test $USER = 'nemo'
 end
 
 if test $USER = 'nemo'
-    @test "installation methods: with OMF (Oh-My-Fish!)" (
-        rm -rf $HOME/.local/share/omf $HOME/.config/omf/
-        curl --silent --location https://get.oh-my.fish > install
-        and fish install --noninteractive >/dev/null
-        set --global OMF_PURE_PATH $HOME/.local/share/omf/themes/pure
-
-        fish -c '\
-            omf install pure >/dev/null 2>&1; \
-            ln -s $OMF_PATH/themes/pure/conf.d/pure.fish ~/.config/fish/conf.d/pure.fish
-            ln -s $OMF_PATH/themes/pure/conf.d/_pure_init.fish ~/.config/fish/conf.d/pure_init.fish
-        '
-        set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish_prompt | string match --entire --quiet '>'
-    ) $status -eq $SUCCESS
-end
-
-if test $USER = 'nemo'
-    @test "installation methods: with Fundle" (
-        rm -rf $HOME/.config/fish/fundle/
-        mkdir -p $HOME/.config/fish/functions
-        curl https://git.io/fundle --output $HOME/.config/fish/functions/fundle.fish --location --silent >/dev/null
-
-        fundle plugin rafaelrinaldi/pure >/dev/null
-        fundle install >/dev/null
-
-        set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
-        fish_prompt | string match --entire --quiet '>'
-    ) $status -eq $SUCCESS
-end
-
-if test $USER = 'nemo'
 # don't move in different file otherwise there is a race conditions
     @test "_pure_uninstall: handler file is source correctly" (
         fish -c '\

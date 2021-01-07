@@ -19,23 +19,6 @@
 fisher install rafaelrinaldi/pure
 ```
 
-### [Oh My Fish!](https://github.com/oh-my-fish)
-
-```fish
-omf install pure
-ln -s $OMF_PATH/themes/pure/conf.d/pure.fish ~/.config/fish/conf.d/pure.fish
-ln -s $OMF_PATH/themes/pure/conf.d/_pure_init.fish ~/.config/fish/conf.d/pure_init.fish
-```
-
-:information_source: [why the symlink?](https://github.com/rafaelrinaldi/pure/wiki/Oh-My-Fish-not-currently-supporting-conf.d-snippets-in-plugins-and-themes)
-
-### [Fundle](https://github.com/danhper/fundle)
-
-```fish
-fundle plugin rafaelrinaldi/pure
-fundle install
-```
-
 ### Manually
 
 Via [cURL](https://curl.haxx.se):
