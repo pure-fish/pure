@@ -1,7 +1,10 @@
 set test_files \
+    _pure \
     _pure_check_for_new_release \
     _pure_format_time \
     _pure_get_prompt_symbol \
+    _pure_init \
+    _pure_is_single_line_prompt \
     _pure_parse_directory \
     _pure_parse_git_branch \
     _pure_place_iterm2_prompt_mark \
@@ -14,11 +17,11 @@ set test_files \
     _pure_prompt_current_folder \
     _pure_prompt_ending \
     _pure_prompt_first_line \
-    _pure_prompt_git, \
-    _pure_prompt_git_branch, \
-    _pure_prompt_git_dirty, \
-    _pure_prompt_git_pending_commits, \
-    _pure_prompt_git_stash, \
+    _pure_prompt_git \
+    _pure_prompt_git_branch \
+    _pure_prompt_git_dirty \
+    _pure_prompt_git_pending_commits \
+    _pure_prompt_git_stash \
     _pure_prompt_jobs \
     _pure_prompt_new_line \
     _pure_prompt_ssh \
@@ -30,10 +33,16 @@ set test_files \
     _pure_prompt_vimode \
     _pure_prompt_virtualenv \
     _pure_set_color \
+    _pure_set_default \
     _pure_string_width \
     _pure_uninstall \
-    _pure_set_default
-    # _pure_init \
+    # pure_tools_installer \
+    fish_greeting \
+    fish_mode_prompt \
+    fish_prompt \
+    fish_title \
+    migration-to-2.0.0 \
+    pure_tools_versions-compare
 
 set files_to_test _pure _pure_init
 
