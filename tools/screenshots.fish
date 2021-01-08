@@ -1,9 +1,10 @@
 # Script to create screenshot context
 
 set coming_from (pwd)
-function install_base16_plugin
-    fisher ls | grep --quiet smh/base16-shell-fish
-    or fisher install smh/base16-shell-fish
+function install_theme
+    fisher list | grep --quiet edouard-lopez/ayu-theme.fish
+    or fisher install edouard-lopez/ayu-theme.fish
+    and set --universal ayu_variant light && ayu_load_theme
 end
 
 set --global mock_directory $HOME/dev/
@@ -29,7 +30,7 @@ echo "teardown_mock_environment"
     rm --recursive --force $mock_directory /tmp/fake.git/
 
     set --erase colorscheme
-    functions --erase install_base16_plugin
+    functions --erase install_theme
     functions --erase pure
     functions --erase revert
     functions --erase setup_mock_environment
@@ -38,9 +39,12 @@ echo "teardown_mock_environment"
 end
 
 
-install_base16_plugin
+install_theme
 setup_mock_environment
 clear
 # PLAY ACTION HERE
-fish --interactive --init-command="cd $HOME; base16 $colorscheme; clear"
+sleep 6s; false
+cd $HOME/dev/pure
+git reset HEAD~1
+fish --interactive --init-command="cd $HOME; ; clear"
 and teardown_mock_environment
