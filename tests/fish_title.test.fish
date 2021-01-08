@@ -11,28 +11,19 @@ function setup
     function _pure_parse_directory; echo /tmp/current/directory; end
 end
 
-if fish_version_at_least '3.0.0'
-    @mesg (print_fish_version_at_least '3.0.0')
-    @test "fish_title: contains current directory and previous command" (
-        set --universal pure_symbol_title_bar_separator '-'
-        fish_title 'last-command'
-    ) = "directory: last-command - fish"
-end
+@test "fish_title: contains current directory and previous command" (
+    set --universal pure_symbol_title_bar_separator '-'
+    fish_title 'last-command'
+) = "directory: last-command - fish"
 
-if fish_version_at_least '3.0.0'
-    @mesg (print_fish_version_at_least '3.0.0')
-    @test "fish_title: contains current directory with an *empty* previous command" (
-        fish_title ''
-    ) = "/tmp/current/directory - fish"
-end
+@test "fish_title: contains current directory with an *empty* previous command" (
+    fish_title ''
+) = "/tmp/current/directory - fish"
 
-if fish_version_at_least '3.0.0'
-    @mesg (print_fish_version_at_least '3.0.0')
-    @test "fish_title: contains current path without a previous command" (
-        set --universal pure_symbol_title_bar_separator '-'
-        fish_title
-    ) = "/tmp/current/directory - fish"
-end
+@test "fish_title: contains current path without a previous command" (
+    set --universal pure_symbol_title_bar_separator '-'
+    fish_title
+) = "/tmp/current/directory - fish"
 
 function teardown
     functions --erase _pure_parse_directory
