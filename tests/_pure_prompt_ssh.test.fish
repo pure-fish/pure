@@ -19,14 +19,11 @@ end
     _pure_prompt_ssh
 ) $status -eq $SUCCESS
 
-if fish_version_at_least '3.0.0'
-    @mesg (print_fish_version_at_least '3.0.0')
-    @test "_pure_prompt_ssh: displays 'user@hostname' when on SSH connection (based on \$hostname variable)" (
-        set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
-        function id; echo 'user'; end  # mock
+@test "_pure_prompt_ssh: displays 'user@hostname' when on SSH connection (based on \$hostname variable)" (
+    set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
+    function id; echo 'user'; end  # mock
 
-        set prompt_ssh_host (_pure_prompt_ssh)
-        string match --quiet --regex 'user@[\w]+' $prompt_ssh_host
-        # $hostname is read-only, we cant determine it preceisely (e.g. is dynamic in docker container)
-    ) $status -eq $SUCCESS
-end
+    set prompt_ssh_host (_pure_prompt_ssh)
+    string match --quiet --regex 'user@[\w]+' $prompt_ssh_host
+    # $hostname is read-only, we cant determine it preceisely (e.g. is dynamic in docker container)
+) $status -eq $SUCCESS

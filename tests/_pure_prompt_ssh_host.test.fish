@@ -10,11 +10,8 @@ function setup
 end
 
 
-if fish_version_at_least '3.0.0'
-    @mesg (print_fish_version_at_least '3.0.0')
-    @test "_pure_prompt_ssh_host: use native \$hostname" (
-        set --universal pure_color_ssh_hostname grey
+@test "_pure_prompt_ssh_host: use native \$hostname" (
+    set --universal pure_color_ssh_hostname grey
 
-        _pure_prompt_ssh_host > /dev/null
-    ) $status -eq $SUCCESS
-end
+    _pure_prompt_ssh_host > /dev/null
+) $status -eq $SUCCESS
