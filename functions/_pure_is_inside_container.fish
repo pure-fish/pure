@@ -10,5 +10,5 @@ function _pure_is_inside_container \
                 --regex '(lxc|docker)' \
             <$cgroup_namespace
     end
-    or test $container = "lxc"
+    or test "$container" = "lxc"
 end

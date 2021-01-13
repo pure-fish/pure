@@ -21,7 +21,6 @@ end
     set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
     function id; echo 'user'; end  # mock
 
-    set prompt_ssh_host (_pure_prompt_ssh)
-    string match --quiet --regex 'user@[\w]+' $prompt_ssh_host
+    string match --quiet --regex 'user@[\w]+' (_pure_prompt_ssh)
     # $hostname is read-only, we cant determine it preceisely (e.g. is dynamic in docker container)
 ) $status -eq $SUCCESS

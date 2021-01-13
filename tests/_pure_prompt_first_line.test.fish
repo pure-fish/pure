@@ -14,6 +14,7 @@ function setup
 
     function _pure_print_prompt; string join ' ' $argv; end
     function _pure_prompt_ssh; echo 'user@hostname'; end
+    function _pure_prompt_container; end
     function _pure_prompt_git; echo 'master'; end
     function _pure_prompt_command_duration; echo '1s'; end
     function _pure_string_width; echo 15; end
@@ -23,6 +24,7 @@ end
 function teardown
     functions --erase _pure_print_prompt
     functions --erase _pure_prompt_ssh
+    functions --erase _pure_prompt_container
     functions --erase _pure_prompt_git
     functions --erase _pure_prompt_command_duration
     functions --erase _pure_string_width
@@ -62,3 +64,11 @@ end
 
     rm -rf /tmp/test
 ) = 'user@hostname /tmp/test master 1s'
+
+if test $USER = 'nemo'
+@test "_pure_prompt_first_line: displays 'nemo@hostname' when inside container" (
+    function _pure_prompt_container; echo $USER'@hostname'; end
+
+    string match --quiet --entire --regex "nemo@[\w]+" (_pure_prompt_container)
+) $status -eq $SUCCESS
+end
