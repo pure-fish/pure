@@ -9,7 +9,7 @@ function fish_version_below \
 		set actual $FISH_VERSION
 	end
 
-    if test $expected = $actual
+    if test "$expected" = $actual
         return $FAILURE
     end
 

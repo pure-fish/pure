@@ -10,13 +10,13 @@ function _pure_prompt_git_pending_commits
         set --local commit_to_push $git_status[1]
         set --local commit_to_pull $git_status[2]
 
-        if test $commit_to_push -gt 0  # upstream is behind local repo
+        if test "$commit_to_push" -gt 0  # upstream is behind local repo
             set --local git_unpushed_commits_color \
                 (_pure_set_color $pure_color_git_unpushed_commits)
             set git_unpushed_commits "$git_unpushed_commits_color$pure_symbol_git_unpushed_commits"
         end
 
-        if test $commit_to_pull -gt 0  # upstream is ahead of local repo
+        if test "$commit_to_pull" -gt 0  # upstream is ahead of local repo
             set --local git_unpulled_commits_color \
                 (_pure_set_color $pure_color_git_unpulled_commits)
             set git_unpulled_commits "$git_unpulled_commits_color$pure_symbol_git_unpulled_commits"

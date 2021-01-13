@@ -65,7 +65,7 @@ end
     rm -rf /tmp/test
 ) = 'user@hostname /tmp/test master 1s'
 
-if test $USER = 'nemo'
+if test "$USER" = 'nemo'
 @test "_pure_prompt_first_line: displays 'nemo@hostname' when inside container" (
     function _pure_prompt_container; echo $USER'@hostname'; end
 

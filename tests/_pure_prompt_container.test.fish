@@ -10,7 +10,7 @@ function setup
     _disable_colors
 end
 
-if test $USER = 'nemo'
+if test "$USER" = 'nemo'
 @test "_pure_prompt_container: displays 'user@hostname' when inside container" (
     string match --quiet --regex "$USER@[\w]+" (_pure_prompt_container)
 ) $status -eq $SUCCESS

@@ -1,7 +1,7 @@
 function _pure_check_for_new_release \
     --description "Check for new release and show command to install"
 
-    if test $pure_check_for_new_release = true
+    if test "$pure_check_for_new_release" = true
         echo "🛈 Checking for new release…"
         set latest (pure_get_latest_release_version "rafaelrinaldi/pure")
 
