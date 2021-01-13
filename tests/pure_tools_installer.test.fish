@@ -24,7 +24,7 @@ function setup
     _purge_configs
     _disable_colors
 
-    if test $USER = 'nemo'
+    if test "$USER" = 'nemo'
         rm --force $HOME/.config/fish/config.fish
         touch $HOME/.config/fish/config.fish
         remove_pure_files
@@ -113,7 +113,7 @@ end
     [ "$_pure_fresh_session" = true ]
 ) $status -eq $SUCCESS
 
-if test $USER = 'nemo'
+if test "$USER" = 'nemo'
     @test "installer: link configuration and functions to fish config directory" (
         pure_set_pure_install_path "" /tmp/.pure/ >/dev/null
         pure_symlinks_assets >/dev/null
@@ -126,7 +126,7 @@ if test $USER = 'nemo'
     ) $status -eq $SUCCESS
 end
 
-if test $USER = 'nemo'
+if test "$USER" = 'nemo'
     @test "installation methods: manually (with local installer)" (
         source $current_dirname/../tools/installer.fish
         and install_pure >/dev/null
@@ -139,7 +139,7 @@ if test $USER = 'nemo'
     ) $status -eq $SUCCESS
 end
 
-if test $USER = 'nemo'
+if test "$USER" = 'nemo'
     @test "installation methods: manually (with published installer)" (
         curl --silent --location git.io/pure-fish --output /tmp/installer.fish
         and source /tmp/installer.fish
@@ -150,7 +150,7 @@ if test $USER = 'nemo'
     ) $status -eq $SUCCESS
 end
 
-if test $USER = 'nemo'
+if test "$USER" = 'nemo'
     @test "installation methods: with fisher 4.x" (
         fish -c 'fisher install rafaelrinaldi/pure' >/dev/null 2>&1
 
@@ -159,7 +159,7 @@ if test $USER = 'nemo'
     ) $status -eq $SUCCESS
 end
 
-if test $USER = 'nemo'
+if test "$USER" = 'nemo'
 # don't move in different file otherwise there is a race conditions
     @test "_pure_uninstall: handler file is source correctly" (
         fish -c '\
@@ -169,7 +169,7 @@ if test $USER = 'nemo'
     ) $status = $FAILURE
 end
 
-if test $USER = 'nemo'
+if test "$USER" = 'nemo'
 # don't move in different file otherwise there is a race conditions
     @test "_pure_uninstall: uninstall handler is executed and remove config" (
         fish -c "\

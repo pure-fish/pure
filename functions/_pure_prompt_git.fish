@@ -1,7 +1,7 @@
 function _pure_prompt_git \
     --description 'Print git repository informations: branch name, dirty, upstream ahead/behind'
 
-    if set --query pure_enable_git; and test $pure_enable_git != true
+    if set --query pure_enable_git; and test "$pure_enable_git" != true
         return
     end
 

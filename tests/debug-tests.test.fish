@@ -60,7 +60,7 @@ for file in $test_files
     set make_status $status
 
     echo "^ ^ ^ ^ ^ ^" $files_to_test[1] | tee -a debug.txt
-    test $make_status -eq 0; or break
+    test "$make_status" -eq 0; or break
 
     set --append files_to_test $test_files[1]
     set --erase test_files[1]
