@@ -1,4 +1,4 @@
-> ##### ✋ Psst! Migrating from v1.x to v2.x? We got you. Check our [**migration guide**](https://github.com/rafaelrinaldi/pure/releases/tag/v2.0.0) and happy upgrading
+> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/rafaelrinaldi/pure/releases/tag/v4.0.0), done with :heart
 
 # pure [![github-ci-badge]][github-ci-link] ![fish-3]
 
