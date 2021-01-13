@@ -1,8 +1,6 @@
 source $current_dirname/fixtures/constants.fish
 source $current_dirname/../functions/_pure_prompt_ssh.fish
-source $current_dirname/../functions/_pure_prompt_ssh_user.fish
-source $current_dirname/../functions/_pure_prompt_ssh_separator.fish
-source $current_dirname/../functions/_pure_prompt_ssh_host.fish
+source $current_dirname/../functions/_pure_user_at_host.fish
 source $current_dirname/../tools/versions-compare.fish
 @mesg (_print_filename $current_filename)
 

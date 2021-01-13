@@ -158,28 +158,28 @@ end
     echo $pure_color_git_stash
 ) = pure_color_info
 
-@test "configure: pure_color_ssh_hostname"  (
-    set --erase pure_color_ssh_hostname
+@test "configure: pure_color_hostname"  (
+    set --erase pure_color_hostname
     source $current_dirname/../conf.d/pure.fish
-    echo $pure_color_ssh_hostname
+    echo $pure_color_hostname
 ) = pure_color_mute
 
-@test "configure: pure_color_ssh_separator"  (
-    set --erase pure_color_ssh_separator
+@test "configure: pure_color_at_sign"  (
+    set --erase pure_color_at_sign
     source $current_dirname/../conf.d/pure.fish
-    echo $pure_color_ssh_separator
+    echo $pure_color_at_sign
 ) = pure_color_mute
 
-@test "configure: pure_color_ssh_user_normal"  (
-    set --erase pure_color_ssh_user_normal
+@test "configure: pure_color_username_normal"  (
+    set --erase pure_color_username_normal
     source $current_dirname/../conf.d/pure.fish
-    echo $pure_color_ssh_user_normal
+    echo $pure_color_username_normal
 ) = pure_color_mute
 
-@test "configure: pure_color_ssh_user_root"  (
-    set --erase pure_color_ssh_user_root
+@test "configure: pure_color_username_root"  (
+    set --erase pure_color_username_root
     source $current_dirname/../conf.d/pure.fish
-    echo $pure_color_ssh_user_root
+    echo $pure_color_username_root
 ) = pure_color_light
 
 @test "configure: pure_color_prompt_on_error"  (
