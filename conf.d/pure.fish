@@ -32,7 +32,7 @@ _pure_set_default pure_color_git_branch pure_color_mute
 _pure_set_default pure_color_git_dirty pure_color_mute
 _pure_set_default pure_color_git_stash pure_color_info
 
-# SSH info
+# Remote info (user@hostname) for SSH and containers (Docker/LXC)
 _pure_set_default pure_color_hostname pure_color_mute
 _pure_set_default pure_color_at_sign pure_color_mute
 _pure_set_default pure_color_username_normal pure_color_mute
