@@ -16,7 +16,7 @@
 ### [Fisher](https://github.com/jorgebucaran/fisher)
 
 ```fish
-fisher install rafaelrinaldi/pure
+fisher install pure-fish/pure
 ```
 
 ### Manually
