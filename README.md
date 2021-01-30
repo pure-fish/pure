@@ -79,7 +79,7 @@ or changing the defaults in your `config.fish`, _e.g._:
 | **`pure_symbol_reverse_prompt`**       | `❮`     | VI non-insert mode symbol.                           |
 | **`pure_symbol_title_bar_separator`**  | `-`     | Separator in terminal's windows title.               |
 
-> :information_source: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki#safer-symbols)?
+> :information_source: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#safer-symbols)?
 
 ### 🔌 Features' Flags
 
