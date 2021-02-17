@@ -1,4 +1,4 @@
-> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/rafaelrinaldi/pure/releases/tag/v4.0.0), done with :heart
+> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart
 
 # pure [![github-ci-badge]][github-ci-link] ![fish-3]
 
@@ -132,14 +132,14 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 
 * [@andreiborisov](https://github.com/andreiborisov) for the [docker images][docker-images] ;
 * [@jorgebucaran](https://github.com/jorgebucaran/) for [fishtape](https://github.com/jorgebucaran/fishtape) ;
-* [@rafaelrinaldi](https://github.com/rafaelrinaldi/pure) for starting the project ;
+* [@rafaelrinaldi](https://github.com/pure-fish/pure) for starting the project ;
 
 ## :classical_building: License
 
 [MIT][MIT]
 
-[github-ci-link]: <https://github.com/rafaelrinaldi/pure/actions> "Github CI"
-[github-ci-badge]: <https://github.com/rafaelrinaldi/pure/workflows/Run%20tests%20on%20CI/badge.svg>
+[github-ci-link]: <https://github.com/pure-fish/pure/actions> "Github CI"
+[github-ci-badge]: <https://github.com/pure-fish/pure/workflows/Run%20tests%20on%20CI/badge.svg>
 [fish-3]: <https://img.shields.io/badge/fish-v3-007EC7.svg?style=flat-square> "Support Fish 3"
 [exit-code]: <https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character> "See pure-zsh wiki"
 [fish-releases]: https://github.com/fish-shell/fish-shell/releases

@@ -151,7 +151,7 @@ end
 
 if test "$USER" = 'nemo'
     @test "installation methods: with fisher 4.x" (
-        fish -c 'fisher install rafaelrinaldi/pure' >/dev/null 2>&1
+        fish -c 'fisher install pure-fish/pure' >/dev/null 2>&1
 
         set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
         fish_prompt | string match --entire --quiet '>'

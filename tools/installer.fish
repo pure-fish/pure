@@ -31,7 +31,7 @@ end
 function pure_fetch_source
     printf "\tFetching theme's source"
 
-    set --local package "https://github.com/rafaelrinaldi/pure/archive/master.tar.gz"
+    set --local package "https://github.com/pure-fish/pure/archive/master.tar.gz"
     mkdir -p $PURE_INSTALL_DIR
 
     command curl --silent --show-error --location "$package" | command tar -xzf- -C $PURE_INSTALL_DIR --strip-components=1; or begin;
