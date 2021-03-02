@@ -3,7 +3,7 @@ set --global FAILURE 1
 function _pure_prompt_first_line \
     --description 'Print contextual information before prompt.'
 
-    if not type --quiet --no-functions git  # exit if git is not available
+    if not type --query --no-functions git  # exit if git is not available
         return $FAILURE
     end
 
