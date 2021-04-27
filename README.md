@@ -114,6 +114,19 @@ or changing the defaults in your `config.fish`, _e.g._:
 | **`pure_color_primary`** | **`pure_color_current_directory`**                                                                                                                                                                                            | `blue`    |
 | **`pure_color_success`** | **`pure_color_prompt_on_success`**                                                                                                                                                                                            | `magenta` |
 | **`pure_color_warning`** | **`pure_color_command_duration`**                                                                                                                                                                                             | `yellow`  |
+### Async git prompt
+
+In order to ensure the git prompt updates without lag, you can add [fish-async-prompt](https://github.com/acomagu/fish-async-prompt) using `fisher`:
+
+``` console
+fisher add acomagu/fish-async-prompt
+```
+
+... and put this in your `config.fish`:
+
+``` console
+set -g async_prompt_functions _pure_prompt_git
+```
 
 ## :+1:  Contribute
 
