@@ -52,6 +52,7 @@ Fully **customizable** (colors, symbols and features):
   - Display `≡` when `git` repository is _stashed_ ;
   - Display `⇡` when branch is _ahead_ (commits to push) ;
   - Display `⇣` when branch is _behind_ (commits to pull) ;
+  - Async update when [configured with fish-async-prompt](https://github.com/pure-fish/pure/wiki/Async-git-Prompt) ;
 - Update terminal title with _current folder_ and _command_ ;
 
 ## :paintbrush: Configuration
@@ -114,19 +115,6 @@ or changing the defaults in your `config.fish`, _e.g._:
 | **`pure_color_primary`** | **`pure_color_current_directory`**                                                                                                                                                                                            | `blue`    |
 | **`pure_color_success`** | **`pure_color_prompt_on_success`**                                                                                                                                                                                            | `magenta` |
 | **`pure_color_warning`** | **`pure_color_command_duration`**                                                                                                                                                                                             | `yellow`  |
-### Async git prompt
-
-In order to ensure the git prompt updates without lag, you can add [fish-async-prompt](https://github.com/acomagu/fish-async-prompt) using `fisher`:
-
-``` console
-fisher add acomagu/fish-async-prompt
-```
-
-... and put this in your `config.fish`:
-
-``` console
-set -g async_prompt_functions _pure_prompt_git
-```
 
 ## :+1:  Contribute
 
