@@ -15,12 +15,12 @@ function _pure_prompt \
 
     echo (\
         _pure_print_prompt \
+        $space \
         $system_time \
         $root_prefix \
         $jobs \
         $virtualenv \
         $vimode_indicator \
-        $space \
         $pure_symbol \
     )
 end
