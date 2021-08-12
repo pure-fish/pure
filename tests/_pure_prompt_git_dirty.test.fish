@@ -21,7 +21,42 @@ function after_all
 end
 
 
-@test "_pure_prompt_git_dirty: untracked files make git repo as dirty" (
+@test "_pure_prompt_git_dirty: empty repo is not marked as dirty" (
+    set --universal pure_symbol_git_dirty '*'
+
+    _pure_prompt_git_dirty
+) = ''
+
+@test "_pure_prompt_git_dirty: untracked files in empty repo marked as dirty" (
+    touch file.txt
+    set --universal pure_symbol_git_dirty '*'
+
+    _pure_prompt_git_dirty
+) = '*'
+
+@test "_pure_prompt_git_dirty: staged files in empty repo marked as dirty" (
+    touch file.txt
+    git add file.txt
+    set --universal pure_symbol_git_dirty '*'
+
+    _pure_prompt_git_dirty
+) = '*'
+
+@test "_pure_prompt_git_dirty: clean is not marked as dirty" (
+    touch init.txt
+    git add init.txt
+    git commit --quiet --message 'initial commit'
+
+    set --universal pure_symbol_git_dirty '*'
+
+    _pure_prompt_git_dirty
+) = ''
+
+@test "_pure_prompt_git_dirty: untracked files mark git repo as dirty" (
+    touch init.txt
+    git add init.txt
+    git commit --quiet --message 'initial commit'
+
     touch file.txt
     set --universal pure_symbol_git_dirty '*'
 
@@ -29,6 +64,10 @@ end
 ) = '*'
 
 @test "_pure_prompt_git_dirty: staged files mark git repo as dirty" (
+    touch init.txt
+    git add init.txt
+    git commit --quiet --message 'initial commit'
+
     touch file.txt
     git add file.txt
     set --universal pure_symbol_git_dirty '*'
