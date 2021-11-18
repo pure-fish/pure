@@ -53,7 +53,7 @@ for file in $test_files
     make \
         build-pure-on \
         test-pure-on \
-        FISH_VERSION=3.1.2 \
+        FISH_VERSION=3.3.1 \
         CMD="fishtape tests/{$glob}.test.fish" \
     | grep --invert-match '^ok' | grep --invert-match 'only fish' \
     >> debug.txt
