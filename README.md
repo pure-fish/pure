@@ -57,15 +57,10 @@ Fully **customizable** (colors, symbols and features):
 
 ## :paintbrush: Configuration
 
-You can tweak `pure` behavior and color by changing [universal variables](https://fishshell.com/docs/current/tutorial.html#tut_universal) either directly in the terminal, _e.g._:
+You can tweak `pure` behavior and color by changing [universal variables](https://fishshell.com/docs/current/tutorial.html#tut_universal) either directly in the terminal or in your `config.fish`, _e.g._:
 
     set --universal pure_show_system_time true
     set --universal pure_color_system_time pure_color_mute
-
-or changing the defaults in your `config.fish`, _e.g._:
-
-    _pure_set_default pure_show_system_time false
-    _pure_set_default pure_color_system_time grey --reverse
 
 ### Prompt Symbol
 
