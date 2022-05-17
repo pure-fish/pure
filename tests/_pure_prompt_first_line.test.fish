@@ -35,7 +35,7 @@ end
 @test "_pure_prompt_first_line: fails when git is missing" (
     functions --copy type builtin_type
     function type  # mock, see https://github.com/fish-shell/fish-shell/issues/5444
-        if test "x$argv" = "x--quiet --no-functions git"
+        if test "x$argv" = "x-q --no-functions git"
             return 1
         end
 
@@ -48,7 +48,7 @@ end
     functions --erase type  # remove mock
     functions --copy builtin_type type  # restore built-in behavior for following test cases
     echo $exit_code
-) = 1
+) -eq $FAILURE
 
 @test "_pure_prompt_first_line: print current directory, git, user@hostname (ssh-only), command duration" (
     set --universal pure_enable_git true
