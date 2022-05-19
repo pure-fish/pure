@@ -2,8 +2,8 @@ source (dirname (status filename))/fixtures/constants.fish
 source (dirname (status filename))/../functions/_pure_prompt_git_pending_commits.fish
 @echo (_print_filename (status filename))
 
-
-function setup
+function before_each
+    after_each
     set --global fake_repo /tmp/pure
     set --global fake_remote /tmp/remote.git
 
@@ -20,9 +20,9 @@ function setup
 
     _purge_configs
     _disable_colors
-end; setup
+end
 
-function teardown
+function after_each
     rm -rf \
         $fake_repo \
         $fake_remote
@@ -32,12 +32,16 @@ end
 
 
 @test "_pure_prompt_git_pending_commits: print nothing when no upstream repo" (
+    before_each
+
     cd $fake_repo
 
     _pure_prompt_git_pending_commits
 ) = $EMPTY
 
 @test "_pure_prompt_git_pending_commits: show arrow UP when branch is AHEAD of upstream (need git push)" (
+    before_each
+
     git push --set-upstream --quiet origin master > /dev/null
     touch missing-on-upstream.txt
     git add missing-on-upstream.txt
@@ -49,6 +53,8 @@ end
 ) = '^'
 
 @test "_pure_prompt_git_pending_commits: show arrow DOWN when branch is BEHIND upstream (need git pull)" (
+    before_each
+
     touch another-file.txt
     git add another-file.txt
     git commit --quiet --message='another'
@@ -59,9 +65,11 @@ end
     set --universal pure_symbol_git_unpulled_commits 'v'
 
     _pure_prompt_git_pending_commits
-) = 'v'
+) = v
 
 @test "_pure_prompt_git_pending_commits: empty repo don't throw error" (
+    before_each
+
     set fake_empty_repo /tmp/empty-remote
     set fake_empty_remote /tmp/empty-remote.git
     rm -rf \
@@ -75,6 +83,8 @@ end
 ) = $EMPTY
 
 @test "_pure_prompt_git_pending_commits: symbol is colorized" (
+    before_each
+
     git push --set-upstream --quiet origin master > /dev/null
     touch missing-on-upstream.txt
     git add missing-on-upstream.txt
@@ -87,5 +97,4 @@ end
     _pure_prompt_git_pending_commits
 ) = (set_color cyan)'^'
 
-
-teardown
+after_each
