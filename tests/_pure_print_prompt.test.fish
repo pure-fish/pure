@@ -24,3 +24,11 @@ end; setup
 @test "_pure_print_prompt: allow colored argument" (
     _pure_print_prompt ""(set_color red)"hello"
 ) = (set_color red)'hello'
+
+@test "_pure_print_prompt: multiple arguments" (
+    _pure_print_prompt "#" ">"
+) = '# >'
+
+@test "_pure_print_prompt: multiple arguments with colors" (
+    _pure_print_prompt ""(set_color red)"#" ">"
+) = ""(set_color red)"# >"
