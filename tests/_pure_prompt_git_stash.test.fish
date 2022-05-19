@@ -3,9 +3,12 @@ source (dirname (status filename))/../functions/_pure_prompt_git_stash.fish
 @echo (_print_filename (status filename))
 
 
-function setup
-    mkdir -p /tmp/pure_pure_prompt_git_stash
-    and cd /tmp/pure_pure_prompt_git_stash
+function before_each
+    after_each
+    set --global fake_repo /tmp/pure
+
+    mkdir -p $fake_repo
+    and cd $fake_repo
 
     git init --quiet
     git config --local user.email "you@example.com"
@@ -13,14 +16,17 @@ function setup
 
     _purge_configs
     _disable_colors
-end; setup
+end;
 
-function teardown
-    rm -rf /tmp/pure_pure_prompt_git_stash
+function after_each
+    rm -rf \
+        $fake_repo
+    set --erase --global fake_repo
 end
 
 
 @test "_pure_prompt_git_stash: no indicator when no stash" (
+    before_each
     set --universal pure_symbol_git_stash '≡'
     touch init.file
     git add init.file
@@ -30,6 +36,7 @@ end
 ) = $EMPTY
 
 @test "_pure_prompt_git_stash: stashing file shows indicator" (
+    before_each
     set --universal pure_symbol_git_stash '≡'
     touch init.file stash.file
     git add init.file
@@ -41,6 +48,7 @@ end
 ) = ' ≡'
 
 @test "_pure_prompt_git_stash: symbol is colorized" (
+    before_each
     touch init.file stash.file
     git add init.file
     git commit --quiet --message 'mandatory initial commit'
@@ -55,4 +63,4 @@ end
 ) = (set_color cyan)' ≡'
 
 
-teardown
+after_each
