@@ -1,4 +1,6 @@
-function _pure_print_prompt
+function _pure_print_prompt \
+    --description 'Concatenate parts single prompt string' \
+
     set --local prompt
 
     for prompt_part in $argv

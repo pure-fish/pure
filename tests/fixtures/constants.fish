@@ -5,7 +5,7 @@ set --global EMPTY ''
 set --global NONE 0
 set --global SPACE ' '
 
-function _purge_configs --description "Erase all existing pure configurations"
+function _purge_configs --description "Erase all existing pure configurations, to avoid unwanted side-effect"
     if test "$USER" = 'nemo'
         for variable in (set --names | string match --regex --entire '^pure_')
             set --erase --local $variable
@@ -15,7 +15,7 @@ function _purge_configs --description "Erase all existing pure configurations"
     end
 end
 
-function _disable_colors --description "Set all color to empty value"
+function _disable_colors --description "Set all color to empty value, to avoid unwanted side-effect"
     if test "$USER" = 'nemo'
         for color_config in (set --names | string match --regex --entire '^pure_color_')
             set --universal $color_config $EMPTY
