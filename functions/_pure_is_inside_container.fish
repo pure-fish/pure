@@ -5,10 +5,9 @@ function _pure_is_inside_container \
     begin
         test -r $cgroup_namespace
         and string match \
-                --quiet \
-                --entire \
-                --regex '(lxc|docker)' \
-            <$cgroup_namespace
+            --quiet \
+            --entire \
+            --regex '(lxc|docker)' <$cgroup_namespace
     end
-    or test "$container" = "lxc"
+    or test -n "$container"
 end
