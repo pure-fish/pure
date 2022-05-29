@@ -33,20 +33,18 @@ end
 
 
 @test "_pure_prompt_first_line: fails when git is missing" (
-    functions --copy type builtin_type
     function type  # mock, see https://github.com/fish-shell/fish-shell/issues/5444
         if test "x$argv" = "x-q --no-functions git"
             return 1
         end
 
-        builtin_type $argv
+        builtin type $argv
     end
 
     _pure_prompt_first_line
     set --local exit_code $status
 
     functions --erase type  # remove mock
-    functions --copy builtin_type type  # restore built-in behavior for following test cases
     echo $exit_code
 ) -eq $FAILURE
 
