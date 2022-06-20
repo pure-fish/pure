@@ -3,14 +3,8 @@ source (dirname (status filename))/../functions/_pure_prompt_vimode.fish
 @echo (_print_filename (status filename))
 
 
-function setup
-    _purge_configs
-    _disable_colors
-end; setup
-
-
 @test "_pure_prompt_vimode: hides vimode prompt by default" (
-     echo (_pure_prompt_vimode)
+    echo (_pure_prompt_vimode)
 ) = $EMPTY
 
 @test "_pure_prompt_vimode: show reverse prompt symbol when enable" (
@@ -25,4 +19,4 @@ end; setup
 
     _pure_prompt_vimode
     set fish_key_bindings fish_default_key_bindings
-) = (set_color --bold --background red white)'[N] '(set_color normal)' '
+) = (set_color --bold red)'[N] '(set_color normal)' ' # see value from https://github.com/fish-shell/fish-shell/blob/master/share/functions/fish_default_mode_prompt.fish
