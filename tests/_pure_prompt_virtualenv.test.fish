@@ -3,39 +3,41 @@ source (dirname (status filename))/../functions/_pure_prompt_virtualenv.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _disable_colors
-end; setup
+end
+before_all
 
-function teardown
+function before_each
     set --erase --global VIRTUAL_ENV
     set --erase --global CONDA_DEFAULT_ENV
 end
 
 
 @test "_pure_prompt_virtualenv: hide virtualenv prompt when not activated" (
+    before_each
     set --erase VIRTUAL_ENV
 
     _pure_prompt_virtualenv
 ) $status -eq $SUCCESS
 
 @test "_pure_prompt_virtualenv: displays virtualenv directory prompt" (
+    before_each
     set VIRTUAL_ENV /home/test/fake/project/
 
     _pure_prompt_virtualenv
-) = 'project'
+) = project
 
-@test "_pure_prompt_virtualenv: hide Conda virtualenv prompt when not activated" (
+@test "_pure_prompt_virtualenv: hides Conda virtualenv prompt when not activated" (
+    before_each
     set --erase CONDA_DEFAULT_ENV
 
     _pure_prompt_virtualenv
 ) $status -eq $SUCCESS
 
 @test "_pure_prompt_virtualenv: displays Conda virtualenv directory prompt" (
+    before_each
     set CONDA_DEFAULT_ENV /home/test/fake/project/
 
     _pure_prompt_virtualenv
-) = 'project'
-
-
-teardown
+) = project
