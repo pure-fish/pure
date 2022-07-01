@@ -3,8 +3,10 @@ source (dirname (status filename))/fixtures/constants.fish
 
 
 function setup
+    # tests/fixtures/ permissions are o=rwx /!\
     cp tests/fixtures/{config.mock.fish,config.fish}
-end; setup
+end
+setup
 
 function teardown
     rm tests/fixtures/config.fish

@@ -25,6 +25,7 @@ build-pure-on:
 .PHONY: dev-pure-on
 dev-pure-on: CMD?=fish
 dev-pure-on:
+	chmod o=rwx tests/fixtures/ # for migration-to-4.0.0.test.fish only
 	docker run \
 		--name run-pure-on-${FISH_VERSION} \
 		--rm \
@@ -32,6 +33,7 @@ dev-pure-on:
 		--tty \
 		--volume=$$(pwd):/tmp/.pure/ \
 		pure-on-fish-${FISH_VERSION} "${CMD}"
+	chmod o=r-x tests/fixtures/ # for migration-to-4.0.0.test.fish only
 
 # Don't override COPY directive as `--volume` doesnt play nice with Travis
 .PHONY: test-pure-on
