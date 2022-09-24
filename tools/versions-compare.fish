@@ -1,22 +1,22 @@
-source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/../tests/fixtures/constants.fish
 
 
 function fish_version_below \
     --description "Compare versions.  By default this tests \$FISH_VERSION, but if a second argument is provided it tests against that version." \
     --argument-names expected actual
 
-	if test -z "$actual"
-		set actual $FISH_VERSION
-	end
+    if test -z "$actual"
+        set actual $FISH_VERSION
+    end
 
     if test "$expected" = $actual
         return $FAILURE
     end
 
     # busybox compatibility (see https://github.com/fish-shell/fish-shell/issues/4419#issuecomment-453512461)
-	printf '%s\n' $actual $expected | sort -c -t. -k 1,1n -k 2,2n -k 3,3n 2> /dev/null
+    printf '%s\n' $actual $expected | sort -c -t. -k 1,1n -k 2,2n -k 3,3n 2>/dev/null
 
-	return $status
+    return $status
 end
 
 function fish_version_at_least \
