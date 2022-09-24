@@ -17,11 +17,14 @@ jobs:
     strategy:
       matrix:
         fish_version:
+          # - "3.5.1"
+          # - "3.5.0"x
           - "3.3.1"
           - "3.1.2"
     steps:
       - uses: actions/checkout@v2
       - run: make build-pure-on FISH_VERSION=${{ matrix.fish_version }}
+      - run: docker --version
       - run: make test-pure-on FISH_VERSION=${{ matrix.fish_version }}
 
   test-macos:

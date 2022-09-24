@@ -5,13 +5,14 @@ source (dirname (status filename))/../functions/_pure_prompt_container.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_each
     _purge_configs
     _disable_colors
-end; setup
+end
 
-if test "$USER" = 'nemo'
-@test "_pure_prompt_container: displays 'user@hostname' when inside container" (
+before_each
+if test "$USER" = nemo
+    @test "_pure_prompt_container: displays 'user@hostname' when inside container" (
     string match --quiet --regex "$USER@[\w]+" (_pure_prompt_container)
-) $status -eq $SUCCESS
+    ) $status -eq $SUCCESS
 end
