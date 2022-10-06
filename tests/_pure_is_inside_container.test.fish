@@ -16,6 +16,12 @@ function setup
 end
 setup
 
+function before_each
+    functions --erase _pure_detect_container_by_pid_method
+    functions --erase _pure_detect_container_by_cgroup_method
+    functions --erase  uname
+end
+
 function teardown
     rm -rf \
         $namespace \
@@ -28,18 +34,29 @@ end
     _pure_is_inside_container
 ) $status -eq $SUCCESS
 
+before_each
 @test "_pure_is_inside_container: detect with pid method" (
     function _pure_detect_container_by_pid_method; echo "called: "(status function); end # spy
 
     _pure_is_inside_container
 ) = "called: _pure_detect_container_by_pid_method"
 
+before_each
 @test "_pure_is_inside_container: detect with cgroup method" (
     function _pure_detect_container_by_pid_method; false; end # spy
     function _pure_detect_container_by_cgroup_method; echo "called: "(status function); end # spy
 
     _pure_is_inside_container
 ) = "called: _pure_detect_container_by_cgroup_method"
+
+before_each
+@test "_pure_is_inside_container: skip pid method on MacOS" (
+    function uname; echo "Darwin"; end # mock
+    function _pure_detect_container_by_pid_method; echo "should not be called"; end # spy
+    function _pure_detect_container_by_cgroup_method; echo "dummy output"; end # spy
+
+    _pure_is_inside_container
+) != "called: _pure_detect_container_by_pid_method"
 
 
 teardown
