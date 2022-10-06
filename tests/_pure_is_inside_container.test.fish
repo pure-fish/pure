@@ -1,5 +1,7 @@
 source (dirname (status filename))/fixtures/constants.fish
 source (dirname (status filename))/../functions/_pure_is_inside_container.fish
+source (dirname (status filename))/../functions/_pure_detect_container_by_pid_method.fish
+source (dirname (status filename))/../functions/_pure_detect_container_by_cgroup_method.fish
 @echo (_print_filename (status filename))
 
 
@@ -22,9 +24,22 @@ function teardown
     set --erase namespace
 end
 
-@test "_pure_is_inside_container: true for Github Action" ( # docker >=v20?
+@test "_pure_is_inside_container: true for Github Action" (
     _pure_is_inside_container
 ) $status -eq $SUCCESS
+
+@test "_pure_is_inside_container: detect with pid method" (
+    function _pure_detect_container_by_pid_method; echo "called: "(status function); end # spy
+
+    _pure_is_inside_container
+) = "called: _pure_detect_container_by_pid_method"
+
+@test "_pure_is_inside_container: detect with cgroup method" (
+    function _pure_detect_container_by_pid_method; false; end # spy
+    function _pure_detect_container_by_cgroup_method; echo "called: "(status function); end # spy
+
+    _pure_is_inside_container
+) = "called: _pure_detect_container_by_cgroup_method"
 
 
 teardown
