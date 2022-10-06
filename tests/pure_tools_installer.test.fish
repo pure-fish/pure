@@ -24,7 +24,7 @@ function before_each
     _disable_colors
 
     if test "$USER" = nemo
-        rm --force $HOME/.config/fish/config.fish
+        rm -f $HOME/.config/fish/config.fish
         touch $HOME/.config/fish/config.fish
         remove_pure_files
         remove_fish_prompt_files
@@ -83,7 +83,7 @@ before_each
 before_each
 @test "installer: backup existing theme prompt" (
     touch $FISH_CONFIG_DIR/functions/fish_prompt.fish
-    rm --force $FISH_CONFIG_DIR/functions/fish_prompt.fish.ignore
+    rm -f $FISH_CONFIG_DIR/functions/fish_prompt.fish.ignore
 
     pure_backup_existing_theme >/dev/null
 ) -e "$FISH_CONFIG_DIR/functions/fish_prompt.fish.ignore"
