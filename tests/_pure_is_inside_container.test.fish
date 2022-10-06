@@ -49,14 +49,5 @@ before_each
     _pure_is_inside_container
 ) = "called: _pure_detect_container_by_cgroup_method"
 
-before_each
-@test "_pure_is_inside_container: skip pid method on MacOS" (
-    function uname; echo "Darwin"; end # mock
-    function _pure_detect_container_by_pid_method; echo "should not be called"; end # spy
-    function _pure_detect_container_by_cgroup_method; echo "dummy output"; end # spy
-
-    _pure_is_inside_container
-) != "called: _pure_detect_container_by_pid_method"
-
 
 teardown
