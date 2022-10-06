@@ -3,7 +3,6 @@ function _pure_detect_container_by_cgroup_method \
     --argument-names cgroup_namespace
     set --query cgroup_namespace[1]; or set cgroup_namespace /proc/1/cgroup
 
-    # echo "cgroup_namespace: $cgroup_namespace"
     string match \
         --quiet \
         --entire \
