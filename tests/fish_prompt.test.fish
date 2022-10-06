@@ -6,6 +6,9 @@ source (dirname (status filename))/../functions/_pure_is_single_line_prompt.fish
 
 
 function before_all
+    _purge_configs
+    _disable_colors
+
     function _pure_prompt_beginning --description "stub function"
         echo '['
     end
