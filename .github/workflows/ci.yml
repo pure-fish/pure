@@ -25,3 +25,16 @@ jobs:
       - run: docker --version
       - run: make test-pure-on FISH_VERSION=${{ matrix.fish_version }}
 
+  test-macos:
+      name: Test on fish on MacOS
+      runs-on: macos-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Install Fish
+          run: brew install fish
+        - name: Install Fisher > Fishtape > Pure
+          run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
+          shell: fish {0}
+        - name: Test Pure
+          run: fishtape tests/*.test.fish
+          shell: fish {0}
