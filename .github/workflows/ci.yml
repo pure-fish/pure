@@ -30,12 +30,17 @@ jobs:
   test-macos:
     name: Test on fish on MacOS
     runs-on: macos-latest
+    strategy:
+      matrix:
+        fish_version:
+          # - "3.5.1"
+          # - "3.5.0"x
+          - "3.3.1"
+          - "3.1.2"
     steps:
       - uses: actions/checkout@v2
       - name: Install Fish
-        run: brew install fish
-      - name: Fish version
-        run: fish --version
+        run: brew install fish@${{ matrix.fish_version }}
       - name: Install Fisher > Fishtape > Pure
         run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
         shell: fish {0}
