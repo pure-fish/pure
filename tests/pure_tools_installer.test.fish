@@ -1,6 +1,6 @@
-source $current_dirname/fixtures/constants.fish
-source $current_dirname/../tools/installer.fish
-@mesg (_print_filename $current_filename)
+source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/../tools/installer.fish
+@echo (_print_filename (status filename))
 
 
 function remove_pure_files
@@ -19,51 +19,58 @@ function remove_fish_prompt_files
     end
 end
 
-function setup
+function before_each
     _purge_configs
     _disable_colors
 
-    if test "$USER" = 'nemo'
+    if test "$USER" = nemo
         rm --force $HOME/.config/fish/config.fish
         touch $HOME/.config/fish/config.fish
         remove_pure_files
         remove_fish_prompt_files
-        echo '' > $HOME/.config/fish/config.fish
+        echo '' >$HOME/.config/fish/config.fish
     end
 end
 
 
+before_each
 @test "installer: pass argument to set $FISH_CONFIG_DIR" (
     pure_set_fish_config_path "/custom/config/path" >/dev/null
     echo "$FISH_CONFIG_DIR"
-) = "/custom/config/path"
+) = /custom/config/path
 
+before_each
 @test 'installer: set $FISH_CONFIG_DIR to default value' (
     pure_set_fish_config_path >/dev/null
     echo "$FISH_CONFIG_DIR"
 ) = "$HOME/.config/fish"
 
+before_each
 @test "installer: pass arguments to set $PURE_INSTALL_DIR" (
     pure_set_pure_install_path "/custom/config/path" "/custom/theme/path" >/dev/null
     echo "$PURE_INSTALL_DIR"
-) = "/custom/theme/path"
+) = /custom/theme/path
 
+before_each
 @test 'installer: set $PURE_INSTALL_DIR to default value' (
     pure_set_pure_install_path >/dev/null
     echo $PURE_INSTALL_DIR
 ) = "$FISH_CONFIG_DIR/functions/theme-pure"
 
+before_each
 @test "installer: pure_scaffold_fish_directories $FISH_CONFIG_DIR/{functions,conf.d}" (
     pure_scaffold_fish_directories >/dev/null
 
     test -d $FISH_CONFIG_DIR/functions -a -d $FISH_CONFIG_DIR/conf.d
 ) $status -eq $SUCCESS
 
+before_each
 @test "installer: pure_fetch_source create install directory $PURE_INSTALL_DIR" (
     pure_fetch_source >/dev/null
     test -d $PURE_INSTALL_DIR -a -O $PURE_INSTALL_DIR
 ) $status -eq $SUCCESS
 
+before_each
 @test "installer: pure_fetch_source extract source correctly" (
     function curl; echo $argv; end # mock
     pure_fetch_source >/dev/null
@@ -73,6 +80,7 @@ end
 ) $status -eq $SUCCESS
 
 
+before_each
 @test "installer: backup existing theme prompt" (
     touch $FISH_CONFIG_DIR/functions/fish_prompt.fish
     rm --force $FISH_CONFIG_DIR/functions/fish_prompt.fish.ignore
@@ -80,6 +88,7 @@ end
     pure_backup_existing_theme >/dev/null
 ) -e "$FISH_CONFIG_DIR/functions/fish_prompt.fish.ignore"
 
+before_each
 @test "installer: inject autoloading in config" (
     set FISH_CONFIG_DIR "$HOME/.config/fish"
     mkdir -p $PURE_INSTALL_DIR/conf.d/
@@ -90,12 +99,14 @@ end
 ) $status -eq $SUCCESS
 
 
+before_each
 @test "installer: activate prompt" (
     pure_enable_autoloading >/dev/null
 
     grep -c "pure.fish" $FISH_CONFIG_DIR/config.fish
 ) = $IS_PRESENT
 
+before_each
 @test "installer: app path to theme's functions" (
     touch $FISH_CONFIG_DIR/config.fish
 
@@ -104,6 +115,7 @@ end
     [ "$fish_function_path[1]" = "$PURE_INSTALL_DIR/functions/" ];
 ) $status -eq $SUCCESS
 
+before_each
 @test "installer: load theme file" (
     echo 'set --global _pure_fresh_session true' > $FISH_CONFIG_DIR/config.fish
 
@@ -112,7 +124,8 @@ end
     [ "$_pure_fresh_session" = true ]
 ) $status -eq $SUCCESS
 
-if test "$USER" = 'nemo'
+if test "$USER" = nemo
+    before_each
     @test "installer: link configuration and functions to fish config directory" (
         pure_set_pure_install_path "" /tmp/.pure/ >/dev/null
         pure_symlinks_assets >/dev/null
@@ -125,9 +138,10 @@ if test "$USER" = 'nemo'
     ) $status -eq $SUCCESS
 end
 
-if test "$USER" = 'nemo'
+if test "$USER" = nemo
+    before_each
     @test "installation methods: manually (with local installer)" (
-        source $current_dirname/../tools/installer.fish
+        source (dirname (status filename))/../tools/installer.fish
         and install_pure >/dev/null
         for config in $PURE_INSTALL_DIR/conf.d/*
             source $config
@@ -138,7 +152,8 @@ if test "$USER" = 'nemo'
     ) $status -eq $SUCCESS
 end
 
-if test "$USER" = 'nemo'
+if test "$USER" = nemo
+    before_each
     @test "installation methods: manually (with published installer)" (
         curl --silent --location git.io/pure-fish --output /tmp/installer.fish
         and source /tmp/installer.fish
@@ -149,7 +164,8 @@ if test "$USER" = 'nemo'
     ) $status -eq $SUCCESS
 end
 
-if test "$USER" = 'nemo'
+if test "$USER" = nemo
+    before_each
     @test "installation methods: with fisher 4.x" (
         fish -c 'fisher install pure-fish/pure' >/dev/null 2>&1
 
@@ -158,8 +174,9 @@ if test "$USER" = 'nemo'
     ) $status -eq $SUCCESS
 end
 
-if test "$USER" = 'nemo'
-# don't move in different file otherwise there is a race conditions
+if test "$USER" = nemo
+    # don't move in different file otherwise there is a race conditions
+    before_each
     @test "_pure_uninstall: handler file is source correctly" (
         fish -c '\
             cd $HOME
@@ -168,8 +185,9 @@ if test "$USER" = 'nemo'
     ) $status = $FAILURE
 end
 
-if test "$USER" = 'nemo'
-# don't move in different file otherwise there is a race conditions
+if test "$USER" = nemo
+    # don't move in different file otherwise there is a race conditions
+    before_each
     @test "_pure_uninstall: uninstall handler is executed and remove config" (
         fish -c "\
             fisher install /tmp/.pure >/dev/null 2>&1; \

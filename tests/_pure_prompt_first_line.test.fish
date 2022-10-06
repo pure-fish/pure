@@ -1,6 +1,6 @@
-source $current_dirname/fixtures/constants.fish
-source $current_dirname/../functions/_pure_prompt_first_line.fish
-@mesg (_print_filename $current_filename)
+source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/../functions/_pure_prompt_first_line.fish
+@echo (_print_filename (status filename))
 
 
 function setup
@@ -19,7 +19,7 @@ function setup
     function _pure_prompt_command_duration; echo '1s'; end
     function _pure_string_width; echo 15; end
     function _pure_prompt_current_folder; pwd; end
-end
+end; setup
 
 function teardown
     functions --erase _pure_print_prompt
@@ -31,23 +31,22 @@ function teardown
     functions --erase _pure_prompt_current_folder
 end
 
+
 @test "_pure_prompt_first_line: fails when git is missing" (
-    functions --copy type builtin_type
     function type  # mock, see https://github.com/fish-shell/fish-shell/issues/5444
-        if test "x$argv" = "x--quiet --no-functions git"
+        if test "x$argv" = "x-q --no-functions git"
             return 1
         end
 
-        builtin_type $argv
+        builtin type $argv
     end
 
     _pure_prompt_first_line
     set --local exit_code $status
 
     functions --erase type  # remove mock
-    functions --copy builtin_type type  # restore built-in behavior for following test cases
     echo $exit_code
-) = 1
+) -eq $FAILURE
 
 @test "_pure_prompt_first_line: print current directory, git, user@hostname (ssh-only), command duration" (
     set --universal pure_enable_git true
@@ -72,3 +71,6 @@ if test "$USER" = 'nemo'
     string match --quiet --entire --regex "nemo@[\w]+" (_pure_prompt_container)
 ) $status -eq $SUCCESS
 end
+
+
+teardown

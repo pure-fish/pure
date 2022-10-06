@@ -57,15 +57,10 @@ Fully **customizable** (colors, symbols and features):
 
 ## :paintbrush: Configuration
 
-You can tweak `pure` behavior and color by changing [universal variables](https://fishshell.com/docs/current/tutorial.html#tut_universal) either directly in the terminal, _e.g._:
+You can tweak `pure` behavior and color by changing [universal variables](https://fishshell.com/docs/current/tutorial.html#tut_universal) either directly in the terminal or in your `config.fish`, _e.g._:
 
     set --universal pure_show_system_time true
     set --universal pure_color_system_time pure_color_mute
-
-or changing the defaults in your `config.fish`, _e.g._:
-
-    _pure_set_default pure_show_system_time false
-    _pure_set_default pure_color_system_time grey --reverse
 
 ### Prompt Symbol
 
@@ -104,17 +99,17 @@ or changing the defaults in your `config.fish`, _e.g._:
 
 > :warning: The absence of `$` sign is expected in `pure_` named colours.
 
-| Base Color               | Inherited by                                                                                                                                                                                                                  | Default   |
-| :----------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------- |
-| **`pure_color_danger`**  | **`pure_color_prompt_on_error`**                                                                                                                                                                                              | `red`     |
-| **`pure_color_dark`**    |                                                                                                                                                                                                                               | `black`   |
-| **`pure_color_info`**    | **`pure_color_git_unpulled_commits`**<br>**`pure_color_git_unpushed_commits`**                                                                                                                                                | `cyan`    |
-| **`pure_color_light`**   | **`pure_color_username_root`**                                                                                                                                                                                                | `white`   |
+| Base Color               | Inherited by                                                                                                                                                                                                        | Default   |
+| :----------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------- |
+| **`pure_color_danger`**  | **`pure_color_prompt_on_error`**                                                                                                                                                                                    | `red`     |
+| **`pure_color_dark`**    |                                                                                                                                                                                                                     | `black`   |
+| **`pure_color_info`**    | **`pure_color_git_unpulled_commits`**<br>**`pure_color_git_unpushed_commits`**                                                                                                                                      | `cyan`    |
+| **`pure_color_light`**   | **`pure_color_username_root`**                                                                                                                                                                                      | `white`   |
 | **`pure_color_mute`**    | **`pure_color_git_branch`**<br>**`pure_color_git_dirty`**<br>**`pure_color_git_stash`**<br>**`pure_color_hostname`**<br>**`pure_color_at_sign`**<br>**`pure_color_username_normal`**<br>**`pure_color_virtualenv`** | `brblack` |
-| **`pure_color_normal`**  | **`pure_color_jobs`**                                                                                                                                                                                                         | `normal`  |
-| **`pure_color_primary`** | **`pure_color_current_directory`**                                                                                                                                                                                            | `blue`    |
-| **`pure_color_success`** | **`pure_color_prompt_on_success`**                                                                                                                                                                                            | `magenta` |
-| **`pure_color_warning`** | **`pure_color_command_duration`**                                                                                                                                                                                             | `yellow`  |
+| **`pure_color_normal`**  | **`pure_color_jobs`**                                                                                                                                                                                               | `normal`  |
+| **`pure_color_primary`** | **`pure_color_current_directory`**                                                                                                                                                                                  | `blue`    |
+| **`pure_color_success`** | **`pure_color_prompt_on_success`**                                                                                                                                                                                  | `magenta` |
+| **`pure_color_warning`** | **`pure_color_command_duration`**                                                                                                                                                                                   | `yellow`  |
 
 ## :+1:  Contribute
 
@@ -122,8 +117,8 @@ or changing the defaults in your `config.fish`, _e.g._:
 
 Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by the container:
 
-    make build-pure-on FISH_VERSION=3.1.2
-    make dev-pure-on FISH_VERSION=3.1.2 CMD="fishtape tests/*.test.fish"
+    make build-pure-on FISH_VERSION=3.3.1
+    make dev-pure-on FISH_VERSION=3.3.1 CMD="fishtape tests/*.test.fish"
 
 ## :man_technologist: Maintainer
 

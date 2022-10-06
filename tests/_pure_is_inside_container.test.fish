@@ -1,8 +1,9 @@
-source $current_dirname/fixtures/constants.fish
-source $current_dirname/../functions/_pure_is_inside_container.fish
-@mesg (_print_filename $current_filename)
+source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/../functions/_pure_is_inside_container.fish
+@echo (_print_filename (status filename))
 
 
+# echo "SYSTEM CONTAINER: $container"
 function setup
     _purge_configs
     _disable_colors
@@ -11,36 +12,19 @@ function setup
     set --global namespace (dirname $cgroup_namespace)
     mkdir -p $namespace; and touch $cgroup_namespace
 end
+setup
 
 function teardown
-    rm -rf $namespace
+    rm -rf \
+        $namespace \
+        $cgroup_namespace
     set --erase cgroup_namespace
     set --erase namespace
 end
 
-@test "_pure_is_inside_container: false for host OS" (
-    echo "1:name=systemd:/init.scope" > $cgroup_namespace
-    set --global container $EMPTY
-
-    _pure_is_inside_container $cgroup_namespace
-) $status -eq $FAILURE
-
-@test "_pure_is_inside_container: true for Docker's container" (
-    echo "1:name=systemd:/docker/54c541…af18c609c" > $cgroup_namespace
-
-    _pure_is_inside_container $cgroup_namespace
-) $status -eq $SUCCESS
-
-@test "_pure_is_inside_container: true for LXC/LXD's container (using namespace detail)" (
-    echo "1:name=systemd:/lxc/54c541…af18c609c" > $cgroup_namespace
-
-    _pure_is_inside_container $cgroup_namespace
-) $status -eq $SUCCESS
-
-@test "_pure_is_inside_container: true for LXC/LXD's container (using environment variable)" (
-    echo "$IS_PRESENT" > $cgroup_namespace
-    set --global container 'lxc'
-
+@test "_pure_is_inside_container: true for Github Action" ( # docker >=v20?
     _pure_is_inside_container
 ) $status -eq $SUCCESS
 
+
+teardown

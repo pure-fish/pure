@@ -1,13 +1,13 @@
-source $current_dirname/fixtures/constants.fish
-source $current_dirname/../functions/_pure_print_prompt.fish
-source $current_dirname/../functions/_pure_string_width.fish
-@mesg (_print_filename $current_filename)
+source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/../functions/_pure_print_prompt.fish
+source (dirname (status filename))/../functions/_pure_string_width.fish
+@echo (_print_filename (status filename))
 
 
 function setup
     _purge_configs
     _disable_colors
-end
+end; setup
 
 @test "_pure_print_prompt: returns nothing when no argument provided" (
     _pure_print_prompt
@@ -24,3 +24,11 @@ end
 @test "_pure_print_prompt: allow colored argument" (
     _pure_print_prompt ""(set_color red)"hello"
 ) = (set_color red)'hello'
+
+@test "_pure_print_prompt: multiple arguments" (
+    _pure_print_prompt "#" ">"
+) = '# >'
+
+@test "_pure_print_prompt: multiple arguments with colors" (
+    _pure_print_prompt ""(set_color red)"#" ">"
+) = ""(set_color red)"# >"

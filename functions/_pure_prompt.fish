@@ -9,6 +9,7 @@ function _pure_prompt \
     set --local system_time (_pure_prompt_system_time)
     set --local root_prefix (_pure_prefix_root_prompt)
     set --local space
+
     if _pure_is_single_line_prompt
         set space ' '
     end
