@@ -8,7 +8,7 @@ function _pure_is_inside_container \
     end
 
     set --local os_name (uname -s)
-    if test $os_name = "Linux"
+    if test $os_name = Linux
         if _pure_detect_container_by_pid_method
             return $success
         end

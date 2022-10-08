@@ -19,7 +19,8 @@ setup
 function before_each
     functions --erase _pure_detect_container_by_pid_method
     functions --erase _pure_detect_container_by_cgroup_method
-    functions --erase  uname
+    functions --erase uname
+    set --global container ""
 end
 
 function teardown
@@ -34,23 +35,29 @@ end
     _pure_is_inside_container
 ) $status -eq $SUCCESS
 
-if test (uname -s) = "Linux"
-before_each
-@test "_pure_is_inside_container: detect with pid method" (
-function _pure_detect_container_by_pid_method; echo "called: "(status function); end # spy
-
-_pure_is_inside_container
-) = "called: _pure_detect_container_by_pid_method"
-end
-
-if test (uname -s) = "Linux"
-before_each
-@test "_pure_is_inside_container: detect with cgroup method" (
-    function _pure_detect_container_by_pid_method; false; end # spy
-    function _pure_detect_container_by_cgroup_method; echo "called: "(status function); end # spy
+@test "_pure_is_inside_container: detect with $container variable" (
+    set --global container "fake"
 
     _pure_is_inside_container
-) = "called: _pure_detect_container_by_cgroup_method"
+) $status -eq $SUCCESS
+
+if test (uname -s) = Linux
+    before_each
+    @test "_pure_is_inside_container: detect with pid method" (
+    function _pure_detect_container_by_pid_method; echo "called: "(status function); end # spy
+
+    _pure_is_inside_container
+    ) = "called: _pure_detect_container_by_pid_method"
+end
+
+if test (uname -s) = Linux
+    before_each
+    @test "_pure_is_inside_container: detect with cgroup method" (
+        function _pure_detect_container_by_pid_method; false; end # spy
+        function _pure_detect_container_by_cgroup_method; echo "called: "(status function); end # spy
+
+        _pure_is_inside_container
+    ) = "called: _pure_detect_container_by_cgroup_method"
 end
 
 
