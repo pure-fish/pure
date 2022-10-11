@@ -82,3 +82,6 @@ _pure_set_default pure_color_prefix_root_prompt pure_color_danger
 
 # Compact mode
 _pure_set_default pure_enable_single_line_prompt false
+
+# Detect when running in container (e.g. docker, podman, LXC/LXD)
+_pure_set_default pure_enable_container_detection true
