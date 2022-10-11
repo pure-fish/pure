@@ -9,11 +9,11 @@ function _pure_is_inside_container \
 
     set --local os_name (uname -s)
     if test $os_name = Linux
-        if _pure_detect_container_by_pid_method
+        if _pure_detect_container_by_cgroup_method $cgroup_namespace
             return $success
         end
 
-        if _pure_detect_container_by_cgroup_method $cgroup_namespace
+        if _pure_detect_container_by_pid_method
             return $success
         end
     end
