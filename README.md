@@ -54,6 +54,7 @@ Fully **customizable** (colors, symbols and features):
   - Display `⇣` when branch is _behind_ (commits to pull) ;
   - Async update when [configured with fish-async-prompt](https://github.com/pure-fish/pure/wiki/Async-git-Prompt) ;
 - Update terminal title with _current folder_ and _command_ ;
+- Detect when running in a container
 
 ## :paintbrush: Configuration
 
@@ -84,6 +85,7 @@ You can tweak `pure` behavior and color by changing [universal variables](https:
 | **`pure_begin_prompt_with_current_directory`** | `true`  | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_.             |
 | **`pure_check_for_new_release`**               | `false` | `true`: check repo for new release (on every shell start)                                       |
 | **`pure_enable_git`**                          | `true`  | Show info about Git repository.                                                                 |
+| **`pure_enable_container_detection`**           | `true` | `false`: Do not check if run in container (e.g. `docker`, `podman`, `LXC`/`LXD`, etc.).<br/>:warning: Detection is a bit [tricky across OSes][container-detection].                                                         |
 | **`pure_enable_single_line_prompt`**           | `false` | `true`: Compact prompt as a single line                                                         |
 | **`pure_reverse_prompt_symbol_in_vimode`**     | `true`  | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`. |
 | **`pure_separate_prompt_on_error`**            | `false` | Show last command [exit code as a separate character][exit-code].                               |
@@ -142,3 +144,4 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 [docker-images]: https://github.com/andreiborisov/docker-fish/
 [MIT]: LICENSE.md
 [fish-set-color]: https://fishshell.com/docs/current/cmds/set_color.html
+[container-detection]: https://stackoverflow.com/q/23513045/802365
