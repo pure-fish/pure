@@ -1,4 +1,4 @@
-> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart:
+> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart
 
 # pure [![github-ci-badge]][github-ci-link] ![fish-3]
 
@@ -55,6 +55,8 @@ Fully **customizable** (colors, symbols and features):
   - Async update when [configured with fish-async-prompt](https://github.com/pure-fish/pure/wiki/Async-git-Prompt) ;
 - Update terminal title with _current folder_ and _command_ ;
 - Detect when running in a container
+
+🏳️: Enabled or disabled via a [feature flag](#-features-flags).
 
 ## :paintbrush: Configuration
 
@@ -128,9 +130,9 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 
 ## :clap: Thanks
 
-* [@andreiborisov](https://github.com/andreiborisov) for the [docker images][docker-images] ;
-* [@jorgebucaran](https://github.com/jorgebucaran/) for [fishtape](https://github.com/jorgebucaran/fishtape) ;
-* [@rafaelrinaldi](https://github.com/pure-fish/pure) for starting the project ;
+- [@andreiborisov](https://github.com/andreiborisov) for the [docker images][docker-images] ;
+- [@jorgebucaran](https://github.com/jorgebucaran/) for [fishtape](https://github.com/jorgebucaran/fishtape) ;
+- [@rafaelrinaldi](https://github.com/pure-fish/pure) for starting the project ;
 
 ## :classical_building: License
 
