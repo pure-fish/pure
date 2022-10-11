@@ -284,3 +284,9 @@ end; setup
     echo $pure_enable_single_line_prompt
 ) = false
 
+@test "configure: pure_enable_container_detection" (
+    set --erase pure_enable_container_detection
+    source (dirname (status filename))/../conf.d/pure.fish
+    echo $pure_enable_container_detection
+) = true
+
