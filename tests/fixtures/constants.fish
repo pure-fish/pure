@@ -27,3 +27,14 @@ end
 function _print_filename --argument-names filename
     echo (set_color cyan)$filename(set_color normal)
 end
+
+function _has_called \
+    --description "check spy method XYZ write to the /tmp/called file when called" \
+    --argument-names spy # name of the method
+
+    if test -r /tmp/called
+        grep -c -q $spy /tmp/called # check spy was called
+    else
+        return $FAILURE
+    end
+end
