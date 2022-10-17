@@ -19,7 +19,11 @@ end
     releaser
 ) = "missing argument: \$new_version"
 
-@test "releaser: bump version in ./conf.d/pure.fish" (
+# releaser is used by maintainers of the project,
+# it doesn't really matter it's not tested for old versions
+# https://github.com/fish-shell/fish-shell/releases/tag/3.2.0
+if fish_version_at_least 3.2.0
+    @test "releaser: bump version in ./conf.d/pure.fish" (
     releaser $new_version
 
     head -n 1 (dirname (status filename))/../conf.d/pure.fish \
@@ -27,6 +31,7 @@ end
 
     echo $value
 ) = "$new_version"
+end
 
 @test "releaser: commit bump version" (
     function git; echo (status function) "$argv" > /tmp/called; end # spy
