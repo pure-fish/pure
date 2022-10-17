@@ -4,6 +4,8 @@ set --global IS_PRESENT 1 # when using grep
 set --global EMPTY ''
 set --global NONE 0
 set --global SPACE ' '
+set --global PURE_CONFIG_VERSION_REGEX '(?<=pure_version )(?<value>[^\s#]+)'
+set --global PURE_VERSION_NUMBER_REGEX '(\d+.\d+.\d+)$'
 
 function _purge_configs --description "Erase all existing pure configurations, to avoid unwanted side-effect"
     if test "$USER" = 'nemo'
