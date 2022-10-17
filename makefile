@@ -44,3 +44,5 @@ test-pure-on:
 		--rm \
 		--tty \
 		pure-on-fish-${FISH_VERSION} "${CMD}"
+
+release:
