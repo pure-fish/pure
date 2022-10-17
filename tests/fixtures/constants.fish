@@ -33,7 +33,8 @@ function _has_called \
     --argument-names spy # name of the method
 
     if test -r /tmp/called
-        grep -c -q $spy /tmp/called # check spy was called
+        grep -c -q "$spy" /tmp/called \
+        || echo 'DEBUG: '(status function)': '(cat /tmp/called) # check spy was called
     else
         return $FAILURE
     end
