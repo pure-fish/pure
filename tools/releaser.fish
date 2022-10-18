@@ -28,7 +28,6 @@ function commit \
 
     git add ./conf.d/pure.fish
     git commit \
-        --amend \
         --quiet \
         --message "chore: bump version $new_version"
 end
