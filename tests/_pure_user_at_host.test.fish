@@ -35,5 +35,5 @@ end; setup
     set --universal pure_color_at_sign grey
     set --universal pure_color_hostname blue
 
-    string match --quiet --regex (set_color green)'root'(set_color grey)'@'(set_color blue)'[\w]+' (_pure_user_at_host)
+    string match --quiet --regex '^'(set_color green)'root'(set_color grey)'@'(set_color blue)'[\w]+' (_pure_user_at_host)'$'
 ) $status -eq $SUCCESS

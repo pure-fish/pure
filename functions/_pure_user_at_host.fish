@@ -9,5 +9,5 @@ function _pure_user_at_host
         set username_color (_pure_set_color $pure_color_username_root) # different color for root
     end
 
-    echo "2<$username_color$username$at_sign_color$at_sign$hostname_color$hostname>2"
+    echo "$username_color$username$at_sign_color$at_sign$hostname_color$hostname"
 end
