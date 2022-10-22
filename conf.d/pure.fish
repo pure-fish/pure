@@ -19,6 +19,7 @@ _pure_set_default pure_color_prompt_on_success pure_color_success
 
 # Current Working Directory
 _pure_set_default pure_color_current_directory pure_color_primary
+_pure_set_default pure_shorten_prompt_current_directory_length 0
 
 # Git
 _pure_set_default pure_enable_git true
@@ -71,6 +72,7 @@ _pure_set_default pure_reverse_prompt_symbol_in_vimode true
 
 # Title
 _pure_set_default pure_symbol_title_bar_separator -
+_pure_set_default pure_shorten_window_title_current_directory_length 0
 
 # Check for new release on startup
 _pure_set_default pure_check_for_new_release false

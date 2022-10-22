@@ -7,18 +7,12 @@ function setup
     mkdir -p /tmp/current/directory/
     cd /tmp/current/directory/
 
-    function _pure_parse_directory; echo /tmp/current/directory; end
 end; setup
-
-function teardown
-    functions --erase _pure_parse_directory
-end
-
 
 @test "fish_title: contains current directory and previous command" (
     set --universal pure_symbol_title_bar_separator '-'
     fish_title 'last-command'
-) = "directory: last-command - fish"
+) = "/tmp/current/directory: last-command - fish"
 
 @test "fish_title: contains current directory with an *empty* previous command" (
     fish_title ''
@@ -29,5 +23,12 @@ end
     fish_title
 ) = "/tmp/current/directory - fish"
 
+@test "fish_title: contains shorten (1) current path" (
+    set --universal pure_shorten_window_title_current_directory_length 1
+    fish_title
+) = "/t/c/directory - fish"
 
-teardown
+@test "fish_title: contains shorten (2) current path" (
+    set --universal pure_shorten_window_title_current_directory_length 2
+    fish_title
+) = "/tm/cu/directory - fish"
