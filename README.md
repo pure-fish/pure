@@ -39,7 +39,7 @@ Fully **customizable** (colors, symbols and features):
   - Change `❯` to red when previous command has failed ;
   - Start prompt with _current working directory_ 🏴 ;
   - Compact-mode (single-line prompt) 🏴 ;
-- Display current directory tail ;
+- Display _current folder_  tail ;
 - check for new release on start 🏴 ;
 - Display _username_ and _hostname_ when in an `SSH` session ;
 - Display command _duration_ when longer than `5` seconds ;
@@ -55,7 +55,8 @@ Fully **customizable** (colors, symbols and features):
   - Display `⇣` when branch is _behind_ (commits to pull) ;
   - Async update when [configured with fish-async-prompt](https://github.com/pure-fish/pure/wiki/Async-git-Prompt) ;
 - Update terminal title with _current folder_ and _command_ ;
-- Detect when running in a container
+- Detect when running in a container ;
+- Shorten _current folder_ component 🏳️;
 
 🏴: Enabled or disabled via a [feature flag](#-features-flags).
 
@@ -97,6 +98,8 @@ You can tweak `pure` behavior and color by changing [universal variables](https:
 | **`pure_show_subsecond_command_duration`**     | `false` | Show subsecond (ex. 1.5s) in command duration.                                                  |
 | **`pure_show_system_time`**                    | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                             |
 | **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
+| **`pure_shorten_prompt_current_directory_length`** | `0` | Shorten every prompt path component but the last to X characters (0 do not shorten)             |
+| **`pure_shorten_window_title_current_directory_length`** | `0` | Shorten every window title path component but the last to X characters (0 do not shorten) |
 
 ### 🎨 Colours
 

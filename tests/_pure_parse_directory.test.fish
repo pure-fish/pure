@@ -26,3 +26,12 @@ end; setup
 @test '_pure_parse_directory: shortens directory in prompt' (
     string length (_pure_parse_directory 1)
 ) -lt (string length $PWD)
+
+@test '_pure_parse_directory: shorten current directory' (
+    set --universal pure_shorten_prompt_current_directory_length 2
+
+    mkdir -p /tmp/current/directory/
+    cd /tmp/current/directory/
+
+    _pure_parse_directory
+) = "/tm/cu/directory"
