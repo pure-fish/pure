@@ -36,18 +36,18 @@ Fully **customizable** (colors, symbols and features):
 
 - Excellent prompt character `❯` :
   - Change `❯` to red when previous command has failed ;
-  - Start prompt with _current working directory_ 🏳️ ;
-  - Compact-mode (single-line prompt) 🏳️ ;
+  - Start prompt with _current working directory_ 🏴 ;
+  - Compact-mode (single-line prompt) 🏴 ;
 - Display current directory tail ;
-- check for new release on start 🏳️ ;
+- check for new release on start 🏴 ;
 - Display _username_ and _hostname_ when in an `SSH` session ;
 - Display command _duration_ when longer than `5` seconds ;
 - Display `Python` _virtualenv_ when activated ;
-- Display `VI` mode and custom symbol for non-insert mode 🏳️ ;
-- Show system time 🏳️ ;
-- Show number of running jobs 🏳️ ;
-- Prefix when `root` 🏳️ ;
-- Display `git` branch name 🏳️ ;
+- Display `VI` mode and custom symbol for non-insert mode 🏴 ;
+- Show system time 🏴 ;
+- Show number of running jobs 🏴 ;
+- Prefix when `root` 🏴 ;
+- Display `git` branch name 🏴 ;
   - Display `*` when `git` repository is _dirty_ ;
   - Display `≡` when `git` repository is _stashed_ ;
   - Display `⇡` when branch is _ahead_ (commits to push) ;
@@ -56,7 +56,7 @@ Fully **customizable** (colors, symbols and features):
 - Update terminal title with _current folder_ and _command_ ;
 - Detect when running in a container
 
-🏳️: Enabled or disabled via a [feature flag](#-features-flags).
+🏴: Enabled or disabled via a [feature flag](#-features-flags).
 
 ## :paintbrush: Configuration
 
