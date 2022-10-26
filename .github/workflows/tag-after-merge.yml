@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    paths:
+      - ./conf.d/pure.fish
 
 jobs:
   tag-on-merge:
