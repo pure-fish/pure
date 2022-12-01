@@ -290,3 +290,14 @@ end; setup
     echo $pure_enable_container_detection
 ) = true
 
+@test "configure: pure_symbol_container_prefix" (
+    set --erase pure_symbol_container_prefix
+    source (dirname (status filename))/../conf.d/pure.fish
+    echo $pure_symbol_container_prefix
+) = ""
+
+@test "configure: pure_symbol_ssh_prefix" (
+    set --erase pure_symbol_ssh_prefix
+    source (dirname (status filename))/../conf.d/pure.fish
+    echo $pure_symbol_ssh_prefix
+) = ""

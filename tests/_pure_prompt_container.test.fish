@@ -12,9 +12,16 @@ function before_each
     _disable_colors
 end
 
-before_each
 if test "$USER" = nemo
+    before_each
     @test "_pure_prompt_container: displays 'user@hostname' when inside container" (
-    string match --quiet --regex "$USER@[\w]+" (_pure_prompt_container)
+        string match --quiet --regex "$USER@[\w]+" (_pure_prompt_container)
+    ) $status -eq $SUCCESS
+
+    before_each
+    @test "_pure_prompt_container: displays container prefix when inside container" (
+        set --universal pure_symbol_container_prefix "🐋"
+
+        string match --quiet --regex "🐋" (_pure_prompt_container)
     ) $status -eq $SUCCESS
 end

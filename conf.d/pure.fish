@@ -85,3 +85,7 @@ _pure_set_default pure_enable_single_line_prompt false
 
 # Detect when running in container (e.g. docker, podman, LXC/LXD)
 _pure_set_default pure_enable_container_detection true
+_pure_set_default pure_symbol_container_prefix "" # suggestion: '🐋' or '📦'
+
+# Detect when running in SSH
+_pure_set_default pure_symbol_ssh_prefix "" # suggestion: 'ssh:/' or '🔗🔐🔒🌐'
