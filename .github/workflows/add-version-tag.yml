@@ -1,17 +1,19 @@
-name: Add New Tag After Merge
+name: Add version tag
 
 on:
   push:
     branches:
       - master
     paths:
-      - ./conf.d/pure.fish
+      - conf.d/pure.fish
 
 jobs:
-  tag-on-merge:
+  add-version-tag:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Clone repository
+        uses: actions/checkout@v3
+
       - uses: butlerlogic/action-autotag@stable
         with:
           root: "./conf.d/pure.fish"

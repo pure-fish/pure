@@ -1,0 +1,53 @@
+name: Bump version # only when test
+
+on:
+  workflow_call:
+    secrets:
+      CI_TOKEN_TO_TRIGGER_PUSH_WORKFLOW:
+        description: "A token passed from the caller workflow so git push can trigger workflow"
+        required: true
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          token: ${{ secrets.CI_TOKEN_TO_TRIGGER_PUSH_WORKFLOW }}
+
+      - name: Get next version
+        id: next_version
+        uses: thenativeweb/get-next-version@main
+
+      - name: Show the next version
+        run: |
+          echo ${{ steps.next_version.outputs.version }}
+          echo ${{ steps.next_version.outputs.hasNextVersion }}
+
+      - name: Bump version file
+        if: steps.next_version.outputs.hasNextVersion == 'true'
+        run: |
+          perl -i -p -e \
+            "s/(pure_version)\s(\d+(\.)?){3}/\1 ${{ steps.next_version.outputs.version }}/" \
+            ./conf.d/pure.fish
+
+      - name: Set git user metadata
+        if: steps.next_version.outputs.hasNextVersion == 'true'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Commit new version file
+        if: steps.next_version.outputs.hasNextVersion == 'true'
+        run: |
+          git add --verbose ./conf.d/pure.fish \
+          && git commit --allow-empty --message "chore: bump version ${{ steps.next_version.outputs.version }}"
+
+      - name: Push bump commit
+        if: steps.next_version.outputs.hasNextVersion == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.CI_TOKEN_TO_TRIGGER_PUSH_WORKFLOW }}
