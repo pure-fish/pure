@@ -59,6 +59,9 @@ _pure_set_default pure_enable_virtualenv true
 _pure_set_default pure_symbol_virtualenv_prefix "" # 🐍
 _pure_set_default pure_color_virtualenv pure_color_mute
 
+# AWS profile name
+_pure_set_default pure_color_aws_profile pure_color_warning
+
 # Print current working directory at the beginning of prompt
 # true (default):   current directory, git, user@hostname (ssh-only), command duration
 # false:            user@hostname (ssh-only), current directory, git, command duration

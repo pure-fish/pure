@@ -13,6 +13,7 @@ Fully **customizable** (colors, symbols and features):
 * [Display _username_ and _hostname_ when in an `SSH` session 🛠][ssh-session] ;
 * [Display command _duration_ when longer than `5` seconds 🛠][time-duration] ;
 * [Display `Python` _virtualenv_ when activated 🏴🛠][python-virtualenv] ;
+* [Display `AWS`  profile when set 🏴🛠][aws-profile] ;
 * [Display `VI` mode and custom symbol for non-insert mode 🏴🛠][vi-mode] ;
 * [Display `kubernetes` context and namespace 🏴🛠][kubernetes] ;
 * [Detect when running in a container (e.g. `docker`, `podman`, `LXC`/`LXD`) 🏴🛠][container-detection-docker]
@@ -45,6 +46,7 @@ Fully **customizable** (colors, symbols and features):
 [nix-os]: #nix-os
 [prompt-symbol]: #prompt-symbol
 [python-virtualenv]: #python-virtualenv
+[aws-profile]: #aws-profile
 [separate-error-symbol]: #separate-error-symbol
 [single-line-prompt]: #single-line-prompt
 [ssh-session]: #ssh-session
