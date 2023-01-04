@@ -31,7 +31,7 @@ dev-pure-on:
 		--rm \
 		--interactive \
 		--tty \
-		--volume=$$(pwd):/tmp/.pure/ \
+		--volume=$$(pwd):/home/nemo/.config/fish/ \
 		pure-on-fish-${FISH_VERSION} "${CMD}"
 	chmod o=r-x tests/fixtures/ # for migration-to-4.0.0.test.fish only
 
@@ -40,7 +40,7 @@ dev-pure-on:
 test-pure-on: export CMD=fishtape tests/*.test.fish  # can be overriden by user
 test-pure-on:
 	docker run \
-		--name run-pure-on-${FISH_VERSION} \
+		--name test-pure-on-${FISH_VERSION} \
 		--rm \
 		--tty \
 		pure-on-fish-${FISH_VERSION} "${CMD}"
