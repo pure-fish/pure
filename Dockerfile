@@ -19,6 +19,10 @@ RUN apk add \
     shadow \
     vim
 
+RUN echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel \
+    && usermod -g wheel nemo \
+    && echo "nemo:123" | sudo chpasswd
+
 USER nemo
 # Copy source code
 COPY --chown=nemo:nemo . /tmp/.pure/
