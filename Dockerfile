@@ -14,7 +14,10 @@ RUN apk add \
     coreutils \
     gawk \
     gzip \
-    tar
+    tar \
+    sudo \
+    shadow \
+    vim
 
 USER nemo
 # Copy source code
