@@ -127,7 +127,7 @@ before_each
 if test "$USER" = nemo
     before_each
     @test "installer: link configuration and functions to fish config directory" (
-        pure_set_pure_install_path "" /tmp/.pure/ >/dev/null
+        pure_set_pure_install_path "" /home/nemo/.config/fish/ >/dev/null
         pure_symlinks_assets >/dev/null
 
         set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
