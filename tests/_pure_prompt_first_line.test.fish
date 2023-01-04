@@ -32,22 +32,6 @@ function teardown
 end
 
 
-@test "_pure_prompt_first_line: fails when git is missing" (
-    function type  # mock, see https://github.com/fish-shell/fish-shell/issues/5444
-        if test "x$argv" = "x-q --no-functions git"
-            return 1
-        end
-
-        builtin type $argv
-    end
-
-    _pure_prompt_first_line
-    set --local exit_code $status
-
-    functions --erase type  # remove mock
-    echo $exit_code
-) -eq $FAILURE
-
 @test "_pure_prompt_first_line: print current directory, git, user@hostname (ssh-only), command duration" (
     set --universal pure_enable_git true
     set --universal pure_begin_prompt_with_current_directory true

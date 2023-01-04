@@ -1,8 +1,14 @@
 function _pure_prompt_git \
     --description 'Print git repository informations: branch name, dirty, upstream ahead/behind'
 
+    set ABORT_FEATURE 2
+
     if set --query pure_enable_git; and test "$pure_enable_git" != true
         return
+    end
+
+    if not type -q --no-functions git  # skip git-related features when `git` is not available
+        return $ABORT_FEATURE
     end
 
     set --local is_git_repository (command git rev-parse --is-inside-work-tree 2>/dev/null)

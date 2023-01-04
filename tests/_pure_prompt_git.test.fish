@@ -20,6 +20,21 @@ function teardown
 end
 
 
+@test "_pure_prompt_git: fails when git is missing" (
+    set --universal pure_enable_git true
+    function type  # mock git absence, see https://github.com/fish-shell/fish-shell/issues/5444
+        if test "x$argv" = "x-q --no-functions git"
+            return $FAILURE
+        end
+    end
+
+    _pure_prompt_git
+    set exit_status $status
+
+    functions --erase type  # remove mock
+    echo $exit_status
+) -eq $ABORT_FEATURE
+
 @test "_pure_prompt_git: ignores directory that are not git repository" (
     function _pure_prompt_git_dirty; echo $EMPTY; end
     function _pure_prompt_git_pending_commits; echo $EMPTY; end
