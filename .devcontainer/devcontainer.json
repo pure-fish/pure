@@ -23,7 +23,12 @@
         "vscode": {
             "settings": {
                 "terminal.integrated.defaultProfile.linux": "fish"
-            }
+			},
+			"extensions": [
+				"redhat.vscode-yaml",
+				"bierner.markdown-preview-github-styles",
+				"bierner.markdown-emoji"
+			]
         }
     }
 }
