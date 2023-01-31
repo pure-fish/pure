@@ -127,11 +127,16 @@ before_each
 if test "$USER" = nemo
     before_each
     @test "installer: link configuration and functions to fish config directory" (
-        pure_set_pure_install_path "" /home/nemo/.config/fish/ >/dev/null
+        set install_directory (mktemp --directory)
+        pure_set_pure_install_path "$EMPTY" "$install_directory" >/dev/null
+        mkdir -p $PURE_INSTALL_DIR/{functions,conf.d}/
+        touch $PURE_INSTALL_DIR/functions/fake_prompt.fish
+        touch $PURE_INSTALL_DIR/conf.d/fake_config.fish
+
         pure_symlinks_assets >/dev/null
 
-        set --local active_prompt $FISH_CONFIG_DIR/functions/fish_prompt.fish
-        set --local pure_config $FISH_CONFIG_DIR/conf.d/pure.fish
+        set --local active_prompt $FISH_CONFIG_DIR/functions/fake_prompt.fish
+        set --local pure_config $FISH_CONFIG_DIR/conf.d/fake_config.fish
         test \
             -r "$active_prompt" -a -L "$active_prompt" \
             -a -r "$pure_config" -a -L "$pure_config"   # configs and functions are a readable symlink
