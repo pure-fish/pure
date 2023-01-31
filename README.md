@@ -1,6 +1,7 @@
 > ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart
 
-# pure [![github-ci-badge]][github-ci-link] ![fish-3]
+# pure [![ci-status]][ci-link] ![fish-3] ![GitHub tag (latest SemVer)][badge-version] [![sponsors]][sponsor-link]
+
 
 > Pretty, minimal and fast Fish 🐟 prompt, ported from [`zsh`](https://github.com/sindresorhus/pure).
 
@@ -138,8 +139,9 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 
 [MIT][MIT]
 
-[github-ci-link]: <https://github.com/pure-fish/pure/actions> "Github CI"
-[github-ci-badge]: <https://github.com/pure-fish/pure/workflows/Run%20tests%20on%20CI/badge.svg>
+[ci-link]: <https://github.com/pure-fish/pure/actions> "Github CI"
+[ci-status]: https://img.shields.io/github/actions/workflow/status/pure-fish/pure/.github/workflows/ci.yml?style=flat-square
+
 [fish-3]: <https://img.shields.io/badge/fish-v3-007EC7.svg?style=flat-square> "Support Fish 3"
 [exit-code]: <https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character> "See pure-zsh wiki"
 [fish-releases]: https://github.com/fish-shell/fish-shell/releases
@@ -147,3 +149,7 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 [MIT]: LICENSE.md
 [fish-set-color]: https://fishshell.com/docs/current/cmds/set_color.html
 [container-detection]: https://stackoverflow.com/q/23513045/802365
+
+[badge-version]: https://img.shields.io/github/v/tag/pure-fish/pure?label=latest%20&style=flat-square
+[sponsors]: https://img.shields.io/github/sponsors/edouard-lopez?label=💰&style=flat-square "GitHub Sponsors"
+[sponsor-link]: https://github.com/sponsors/edouard-lopez/ "Become a sponsor"
