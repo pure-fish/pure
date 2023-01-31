@@ -44,12 +44,3 @@ test-pure-on:
 		--rm \
 		--tty \
 		pure-on-fish-${FISH_VERSION} "${CMD}"
-
-.PHONY: release
-release: VERSION="missing-version"
-release:
-	@if [[ -n "${VERSION}" ]] && [[ "${VERSION}" != 'missing-version' ]]; then \
-		fish -c 'source ./tools/releaser.fish && releaser "${VERSION}"'; \
-	else \
-		printf "Error: Missing value, please provide a SemVer version number.\n"; \
-	fi
