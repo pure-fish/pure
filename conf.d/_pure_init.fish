@@ -11,4 +11,5 @@ function _pure_uninstall --on-event pure_uninstall
     set --names \
         | string replace --filter --regex '(^_?pure)' 'set --erase $1' \
         | source
+    cp {$__fish_data_dir,$__fish_config_dir}/functions/fish_prompt.fish
 end
