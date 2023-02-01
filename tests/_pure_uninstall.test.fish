@@ -31,3 +31,25 @@ end; setup
 
     fish_prompt >/dev/null
 ) $status -eq $SUCCESS
+
+@test "init/_pure_uninstall: remove pure-related files"  (
+    functions --erase _pure_uninstall
+    source (dirname (status filename))/../conf.d/_pure_init.fish
+    touch $__fish_config_dir/functions/_pure_foo
+    touch $__fish_config_dir/conf.d/_pure_bar
+
+    _pure_uninstall
+
+    count $__fish_config_dir/{functions,conf.d}/_pure_*
+) = $NONE
+
+
+@test "init/_pure_uninstall: remove pure-related files"  (
+    functions --erase _pure_uninstall
+    source (dirname (status filename))/../conf.d/_pure_init.fish
+    function _pure_foo; end
+
+    _pure_uninstall
+
+    functions --names --all | string match --all --entire '_pure' | count 
+) = $NONE
