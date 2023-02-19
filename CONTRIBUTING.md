@@ -7,13 +7,7 @@
 
 ## Release
 
-Note, we follow [semver](https://semver.org/).
-
-Todo upon release:
-
-* [ ] Updated `pure_version` (in [_conf.d/pure.fish_](conf.d/pure.fish)) ;
-* [ ] Create a commit only containing above edit ;
-* [ ] Create a git tag for said commit.
+Note, we follow [semver](https://semver.org/), release is manage in the pipeline, see [RELEASE.md](./RELEASE.md)
 
 ## Code Conventions for `pure`
 
