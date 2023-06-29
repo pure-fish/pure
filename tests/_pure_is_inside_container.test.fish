@@ -67,6 +67,12 @@ cleanup_spy
     _pure_is_inside_container
 ) $status -eq $SUCCESS
 
+@test "_pure_is_inside_container: returns false as default behavior" (
+    set --universal pure_enable_container_detection false
+
+    _pure_is_inside_container
+) $status -eq $FAILURE
+
 cleanup_detection_methods
 if test (uname -s) = Linux
     @test "_pure_is_inside_container: detect with pid method" (

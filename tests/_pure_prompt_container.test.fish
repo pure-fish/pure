@@ -15,11 +15,13 @@ end
 if test "$USER" = nemo
     before_each
     @test "_pure_prompt_container: displays 'user@hostname' when inside container" (
+        set --universal pure_enable_container_detection true
         string match --quiet --regex "$USER@[\w]+" (_pure_prompt_container)
     ) $status -eq $SUCCESS
 
     before_each
     @test "_pure_prompt_container: displays container prefix when inside container" (
+        set --universal pure_enable_container_detection true
         set --universal pure_symbol_container_prefix "🐋"
 
         string match --quiet --regex "🐋" (_pure_prompt_container)
