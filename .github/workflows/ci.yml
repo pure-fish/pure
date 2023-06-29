@@ -32,7 +32,8 @@ jobs:
             { fish: 3.3.1, alpine: 3.15 },
             { fish: 3.4.1, alpine: 3.16 },
             { fish: 3.5.1, alpine: 3.17 },
-            { fish: 3.6.0, alpine: 'edge' },
+            { fish: 3.6.1, alpine: 3.18 },
+            # { fish: 3.6.2, alpine: 'edge' },
           ]
     steps:
       - uses: actions/checkout@v2
