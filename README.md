@@ -1,4 +1,4 @@
-> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart
+> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart:
 
 # pure [![ci-status]][ci-link] ![fish-3] ![GitHub tag (latest SemVer)][badge-version] [![sponsors]][sponsor-link]
 
