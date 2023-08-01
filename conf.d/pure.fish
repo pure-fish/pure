@@ -47,7 +47,7 @@ _pure_set_default pure_color_jobs pure_color_normal
 _pure_set_default pure_show_system_time false
 _pure_set_default pure_color_system_time pure_color_mute
 
-# Virtualenv for Python
+#  env for Python
 _pure_set_default pure_color_virtualenv pure_color_mute
 
 # Print current working directory at the beginning of prompt
@@ -91,3 +91,9 @@ _pure_set_default pure_symbol_container_prefix "" # suggestion: '🐋' or '📦'
 
 # Detect when running in SSH
 _pure_set_default pure_symbol_ssh_prefix "" # suggestion: 'ssh:/' or '🔗🔐🔒🌐'
+
+# Display Kubernetes/k8s context and namespace
+_pure_set_default pure_enable_k8s false
+_pure_set_default pure_symbol_k8s_prefix "☸" # ☸️
+_pure_set_default pure_color_k8s_context pure_color_success
+_pure_set_default pure_color_k8s_namespace pure_color_primary
