@@ -47,6 +47,7 @@ Fully **customizable** (colors, symbols and features):
 - Display `Python` _virtualenv_ when activated ;
 - Display `VI` mode and custom symbol for non-insert mode 🏴 ;
 - Display `kubernetes` context and namespace
+- Display container indicator (e.g. `docker`, `podman`, `LXC`/`LXD`) 🏴
 - Show system time 🏴 ;
 - Show number of running jobs 🏴 ;
 - Prefix when `root` 🏴 ;
@@ -58,7 +59,7 @@ Fully **customizable** (colors, symbols and features):
   - Async update when [configured with fish-async-prompt](https://github.com/pure-fish/pure/wiki/Async-git-Prompt) ;
 - Update terminal title with _current folder_ and _command_ ;
 - Detect when running in a container ;
-- Shorten _current folder_ component 🏳️;
+- Shorten _current folder_ component 🏴;
 
 🏴: Enabled or disabled via a [feature flag](#-features-flags).
 
