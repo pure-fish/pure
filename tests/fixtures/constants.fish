@@ -37,7 +37,7 @@ function _has_called \
 
     if test -r /tmp/called
         grep -c -q "$spy" /tmp/called \
-        || echo 'DEBUG: '(status function)': '(cat /tmp/called) # check spy was called
+            || printf "DEBUG: %s: received: `%s` expected: `%s`\n\n" (status function) (cat /tmp/called) $spy # check spy was called
     else
         return $FAILURE
     end
