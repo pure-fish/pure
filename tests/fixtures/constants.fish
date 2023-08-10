@@ -9,7 +9,7 @@ set --global PURE_CONFIG_VERSION_REGEX '(?<=pure_version )(?<value>[^\s#]+)'
 set --global PURE_VERSION_NUMBER_REGEX '(\d+.\d+.\d+)$'
 
 function _purge_configs --description "Erase all existing pure configurations, to avoid unwanted side-effect"
-    if test "$USER" = 'nemo'
+    if test "$USER" = nemo
         for variable in (set --names | string match --regex --entire '^pure_')
             set --erase --local $variable
             set --erase --global $variable
@@ -19,11 +19,13 @@ function _purge_configs --description "Erase all existing pure configurations, t
 end
 
 function _disable_colors --description "Set all color to empty value, to avoid unwanted side-effect"
-    if test "$USER" = 'nemo'
+    if test "$USER" = nemo
         for color_config in (set --names | string match --regex --entire '^pure_color_')
             set --universal $color_config $EMPTY
         end
-        function _pure_set_color; echo; end
+        function _pure_set_color
+            echo
+        end
     end
 end
 
