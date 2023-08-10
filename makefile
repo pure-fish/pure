@@ -32,6 +32,7 @@ dev-pure-on:
 		--interactive \
 		--tty \
 		--volume=$$(pwd):/home/nemo/.config/fish/ \
+		--workdir /home/nemo/.config/fish/ \
 		pure-on-fish-${FISH_VERSION} "${CMD}"
 	chmod o=r-x tests/fixtures/ # for migration-to-4.0.0.test.fish only
 
