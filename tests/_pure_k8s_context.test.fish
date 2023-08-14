@@ -10,7 +10,7 @@ end
 
 
 before_each
-@test "__pure_k8s_context: return context" (
+@test "_pure_k8s_context: return context" (
     function kubectl
         echo foo-bar-cluster-eu-west-3
     end # mock
@@ -19,7 +19,7 @@ before_each
 ) = foo-bar-cluster-eu-west-3
 
 before_each
-@test "__pure_k8s_context: call `kubectl config current-context`" (
+@test "_pure_k8s_context: call `kubectl config current-context`" (
     function kubectl; echo (status function) $argv > /tmp/called; end # spy
 
     _pure_k8s_context
