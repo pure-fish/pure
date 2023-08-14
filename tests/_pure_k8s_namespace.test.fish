@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_k8s_namespace.fish
 @echo (_print_filename (status filename))
 
@@ -11,9 +12,7 @@ end
 
 before_each
 @test "_pure_k8s_namespace: return context" (
-    function kubectl
-        echo my-namespace
-    end # mock
+    _mock kubectl
 
     _pure_k8s_namespace
 ) = my-namespace
