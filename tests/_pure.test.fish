@@ -302,3 +302,28 @@ setup
     source (dirname (status filename))/../conf.d/pure.fish
     echo $pure_symbol_ssh_prefix
 ) = ""
+
+
+@test "configure: pure_enable_k8s" (
+    set --erase pure_enable_k8s
+    source (dirname (status filename))/../conf.d/pure.fish
+    echo $pure_enable_k8s
+) = false
+
+@test "configure: pure_symbol_k8s_prefix" (
+    set --erase pure_symbol_k8s_prefix
+    source (dirname (status filename))/../conf.d/pure.fish
+    echo $pure_symbol_k8s_prefix
+) = "☸"
+
+@test "configure: pure_color_k8s_context" (
+    set --erase pure_color_k8s_context
+    source (dirname (status filename))/../conf.d/pure.fish
+    echo $pure_color_k8s_context
+) = pure_color_success
+
+@test "configure: pure_color_k8s_namespace" (
+    set --erase pure_color_k8s_namespace
+    source (dirname (status filename))/../conf.d/pure.fish
+    echo $pure_color_k8s_namespace
+) = pure_color_primary
