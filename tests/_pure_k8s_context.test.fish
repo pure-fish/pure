@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_k8s_context.fish
 @echo (_print_filename (status filename))
 
@@ -11,12 +12,11 @@ end
 
 before_each
 @test "_pure_k8s_context: return context" (
-    function kubectl
-        echo foo-bar-cluster-eu-west-3
-    end # mock
+    _mock kubectl
+
 
     _pure_k8s_context
-) = foo-bar-cluster-eu-west-3
+) = my-context
 
 before_each
 @test "_pure_k8s_context: call `kubectl config current-context`" (
