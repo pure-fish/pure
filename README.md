@@ -1,7 +1,6 @@
-> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart:
+> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart
 
 # pure [![ci-status]][ci-link] ![fish-3] ![GitHub tag (latest SemVer)][badge-version] [![sponsors]][sponsor-link]
-
 
 > Pretty, minimal and fast Fish 🐟 prompt, ported from [`zsh`](https://github.com/sindresorhus/pure).
 
@@ -16,7 +15,7 @@
 
 ### [Fisher](https://github.com/jorgebucaran/fisher)
 
-```fish
+```shell
 fisher install pure-fish/pure
 ```
 
@@ -24,7 +23,7 @@ fisher install pure-fish/pure
 
 Via [cURL](https://curl.haxx.se):
 
-```sh
+```shell
 # Download the installer to `/tmp`
 curl git.io/pure-fish --output /tmp/pure_installer.fish --location --silent
 # Source and trigger the installer
@@ -64,8 +63,10 @@ Fully **customizable** (colors, symbols and features):
 
 You can tweak `pure` behavior and color by changing [universal variables](https://fishshell.com/docs/current/tutorial.html#tut_universal) either directly in the terminal or in your `config.fish`, _e.g._:
 
-    set --universal pure_show_system_time true
-    set --universal pure_color_system_time pure_color_mute
+```shell
+set --universal pure_show_system_time true
+set --universal pure_color_system_time pure_color_mute
+```
 
 ### Prompt Symbol
 
@@ -84,22 +85,22 @@ You can tweak `pure` behavior and color by changing [universal variables](https:
 
 ### 🔌 Features' Flags
 
-| Option                                         | Default | Description                                                                                     |
-| :--------------------------------------------- | :------ | :---------------------------------------------------------------------------------------------- |
-| **`pure_begin_prompt_with_current_directory`** | `true`  | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_.             |
-| **`pure_check_for_new_release`**               | `false` | `true`: check repo for new release (on every shell start)                                       |
-| **`pure_enable_git`**                          | `true`  | Show info about Git repository.                                                                 |
-| **`pure_enable_container_detection`**           | `true` | `false`: Do not check if run in container (e.g. `docker`, `podman`, `LXC`/`LXD`, etc.).<br/>:warning: Detection is a bit [tricky across OSes][container-detection].                                                         |
-| **`pure_enable_single_line_prompt`**           | `false` | `true`: Compact prompt as a single line                                                         |
-| **`pure_reverse_prompt_symbol_in_vimode`**     | `true`  | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`. |
-| **`pure_separate_prompt_on_error`**            | `false` | Show last command [exit code as a separate character][exit-code].                               |
-| **`pure_show_jobs`**                           | `false` | Show Number of running jobs                                                                     |
-| **`pure_show_prefix_root_prompt`**             | `false` | `true`: shows prompt prefix when logged in as `root`.                                           |
-| **`pure_show_subsecond_command_duration`**     | `false` | Show subsecond (ex. 1.5s) in command duration.                                                  |
-| **`pure_show_system_time`**                    | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                             |
-| **`pure_threshold_command_duration`**          | `5`     | Show command duration when above this value (seconds).                                          |
-| **`pure_shorten_prompt_current_directory_length`** | `0` | Shorten every prompt path component but the last to X characters (0 do not shorten)             |
-| **`pure_shorten_window_title_current_directory_length`** | `0` | Shorten every window title path component but the last to X characters (0 do not shorten) |
+| Option                                                   | Default | Description                                                                                                                                                         |
+| :------------------------------------------------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **`pure_begin_prompt_with_current_directory`**           | `true`  | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_.                                                                                 |
+| **`pure_check_for_new_release`**                         | `false` | `true`: check repo for new release (on every shell start)                                                                                                           |
+| **`pure_enable_git`**                                    | `true`  | Show info about Git repository.                                                                                                                                     |
+| **`pure_enable_container_detection`**                    | `true`  | `false`: Do not check if run in container (e.g. `docker`, `podman`, `LXC`/`LXD`, etc.).<br/>:warning: Detection is a bit [tricky across OSes][container-detection]. |
+| **`pure_enable_single_line_prompt`**                     | `false` | `true`: Compact prompt as a single line                                                                                                                             |
+| **`pure_reverse_prompt_symbol_in_vimode`**               | `true`  | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`.                                                                     |
+| **`pure_separate_prompt_on_error`**                      | `false` | Show last command [exit code as a separate character][exit-code].                                                                                                   |
+| **`pure_show_jobs`**                                     | `false` | Show Number of running jobs                                                                                                                                         |
+| **`pure_show_prefix_root_prompt`**                       | `false` | `true`: shows prompt prefix when logged in as `root`.                                                                                                               |
+| **`pure_show_subsecond_command_duration`**               | `false` | Show subsecond (ex. 1.5s) in command duration.                                                                                                                      |
+| **`pure_show_system_time`**                              | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                                                                                                 |
+| **`pure_threshold_command_duration`**                    | `5`     | Show command duration when above this value (seconds).                                                                                                              |
+| **`pure_shorten_prompt_current_directory_length`**       | `0`     | Shorten every prompt path component but the last to X characters (0 do not shorten)                                                                                 |
+| **`pure_shorten_window_title_current_directory_length`** | `0`     | Shorten every window title path component but the last to X characters (0 do not shorten)                                                                           |
 
 ### 🎨 Colours
 
