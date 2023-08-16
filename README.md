@@ -119,9 +119,9 @@ You can tweak `pure` behavior and color by changing [universal variables](https:
 | **`pure_color_success`** | **`pure_color_prompt_on_success`**                                                                                                                                                                                  | `magenta` |
 | **`pure_color_warning`** | **`pure_color_command_duration`**                                                                                                                                                                                   | `yellow`  |
 
-## :+1:  Contribute
+## :+1: Contribute
 
-> **requirements:** [`docker`](https://docs.docker.com/install/) (isolate from your environment)
+**requirements:** [`docker`](https://docs.docker.com/install/) (isolate from your environment), get familiar with [CONTRIBUTING.md][contributing] guidelines.
 
 Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by the container:
 
@@ -156,3 +156,4 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 [badge-version]: https://img.shields.io/github/v/tag/pure-fish/pure?label=latest%20&style=flat-square
 [sponsors]: https://img.shields.io/github/sponsors/edouard-lopez?label=💰&style=flat-square "GitHub Sponsors"
 [sponsor-link]: https://github.com/sponsors/edouard-lopez/ "Become a sponsor"
+[contributing]: CONTRIBUTING.md
