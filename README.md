@@ -1,4 +1,6 @@
 > ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart
+>
+> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart
 
 # pure [![ci-status]][ci-link] ![fish-3] ![GitHub tag (latest SemVer)][badge-version] [![sponsors]][sponsor-link]
 
@@ -44,6 +46,7 @@ Fully **customizable** (colors, symbols and features):
 - Display command _duration_ when longer than `5` seconds ;
 - Display `Python` _virtualenv_ when activated ;
 - Display `VI` mode and custom symbol for non-insert mode 🏴 ;
+- Display `kubernetes` context and namespace
 - Show system time 🏴 ;
 - Show number of running jobs 🏴 ;
 - Prefix when `root` 🏴 ;
@@ -70,16 +73,20 @@ set --universal pure_color_system_time pure_color_mute
 
 ### Prompt Symbol
 
-| Option                                 | Default | Description                                          |
-| :------------------------------------- | :------ | :--------------------------------------------------- |
-| **`pure_symbol_git_dirty`**            | `*`     | Repository is Dirty (uncommitted/untracked changes). |
-| **`pure_symbol_git_stash`**            | `≡`     | Repository git stash status.                         |
-| **`pure_symbol_git_unpulled_commits`** | `⇣`     | Branch is behind upstream (commits to pull).         |
-| **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).          |
-| **`pure_symbol_prefix_root_prompt`**   | `#`     | Prefix prompt when logged in as `root`.              |
-| **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                       |
-| **`pure_symbol_reverse_prompt`**       | `❮`     | VI non-insert mode symbol.                           |
-| **`pure_symbol_title_bar_separator`**  | `-`     | Separator in terminal's windows title.               |
+| Option                                 | Default | Description                                                         |
+| :------------------------------------- | :------ | :------------------------------------------------------------------ |
+| **`pure_symbol_container_prefix`**     |         | Prefix when being inside a container ([to customize][to-set])       |
+| **`pure_symbol_git_dirty`**            | `*`     | Repository is Dirty (uncommitted/untracked changes).                |
+| **`pure_symbol_git_stash`**            | `≡`     | Repository git stash status.                                        |
+| **`pure_symbol_git_unpulled_commits`** | `⇣`     | Branch is behind upstream (commits to pull).                        |
+| **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).                         |
+| **`pure_symbol_k8s_prefix`**           | `☸`     | Prefix when being connected to Kubernetes/K8s                       |
+| **`pure_symbol_prefix_root_prompt`**   | `#`     | Prefix prompt when logged in as `root`.                             |
+| **`pure_symbol_prefix_root_prompt`**   | `#`     | Prefix when being root user                                         |
+| **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                                      |
+| **`pure_symbol_reverse_prompt`**       | `❮`     | VI non-insert mode symbol.                                          |
+| **`pure_symbol_ssh_prefix`**           |         | Prefix when being connected to SSH session ([to customize][to-set]) |
+| **`pure_symbol_title_bar_separator`**  | `-`     | Separator in terminal's windows title.                              |
 
 > :information_source: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#safer-symbols)?
 
@@ -89,18 +96,19 @@ set --universal pure_color_system_time pure_color_mute
 | :------------------------------------------------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **`pure_begin_prompt_with_current_directory`**           | `true`  | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_.                                                                                 |
 | **`pure_check_for_new_release`**                         | `false` | `true`: check repo for new release (on every shell start)                                                                                                           |
-| **`pure_enable_git`**                                    | `true`  | Show info about Git repository.                                                                                                                                     |
 | **`pure_enable_container_detection`**                    | `true`  | `false`: Do not check if run in container (e.g. `docker`, `podman`, `LXC`/`LXD`, etc.).<br/>:warning: Detection is a bit [tricky across OSes][container-detection]. |
+| **`pure_enable_git`**                                    | `true`  | Show info about Git repository.                                                                                                                                     |
+| **`pure_enable_k8s`**                                    | `false` | `true`: shows `kubernetes` context and namespace.                                                                                                                   |
 | **`pure_enable_single_line_prompt`**                     | `false` | `true`: Compact prompt as a single line                                                                                                                             |
 | **`pure_reverse_prompt_symbol_in_vimode`**               | `true`  | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`.                                                                     |
 | **`pure_separate_prompt_on_error`**                      | `false` | Show last command [exit code as a separate character][exit-code].                                                                                                   |
+| **`pure_shorten_prompt_current_directory_length`**       | `0`     | Shorten every prompt path component but the last to X characters (0 do not shorten)                                                                                 |
+| **`pure_shorten_window_title_current_directory_length`** | `0`     | Shorten every window title path component but the last to X characters (0 do not shorten)                                                                           |
 | **`pure_show_jobs`**                                     | `false` | Show Number of running jobs                                                                                                                                         |
 | **`pure_show_prefix_root_prompt`**                       | `false` | `true`: shows prompt prefix when logged in as `root`.                                                                                                               |
 | **`pure_show_subsecond_command_duration`**               | `false` | Show subsecond (ex. 1.5s) in command duration.                                                                                                                      |
 | **`pure_show_system_time`**                              | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                                                                                                 |
 | **`pure_threshold_command_duration`**                    | `5`     | Show command duration when above this value (seconds).                                                                                                              |
-| **`pure_shorten_prompt_current_directory_length`**       | `0`     | Shorten every prompt path component but the last to X characters (0 do not shorten)                                                                                 |
-| **`pure_shorten_window_title_current_directory_length`** | `0`     | Shorten every window title path component but the last to X characters (0 do not shorten)                                                                           |
 
 ### 🎨 Colours
 
@@ -143,6 +151,7 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 
 [MIT][MIT]
 
+[to-set]: #paintbrush-configuration
 [ci-link]: <https://github.com/pure-fish/pure/actions> "Github CI"
 [ci-status]: https://img.shields.io/github/actions/workflow/status/pure-fish/pure/.github/workflows/ci.yml?style=flat-square
 
@@ -157,4 +166,5 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 [badge-version]: https://img.shields.io/github/v/tag/pure-fish/pure?label=latest%20&style=flat-square
 [sponsors]: https://img.shields.io/github/sponsors/edouard-lopez?label=💰&style=flat-square "GitHub Sponsors"
 [sponsor-link]: https://github.com/sponsors/edouard-lopez/ "Become a sponsor"
+
 [contributing]: CONTRIBUTING.md
