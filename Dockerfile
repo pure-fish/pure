@@ -25,8 +25,10 @@ RUN echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel \
 
 USER nemo
 # Copy source code
-COPY --chown=nemo:nemo . /tmp/.pure/
-WORKDIR /tmp/.pure/
+COPY --chown=nemo:nemo ./conf.d/* /home/nemo/.config/fish/conf.d/
+COPY --chown=nemo:nemo ./functions/* /home/nemo/.config/fish/functions/
+COPY --chown=nemo:nemo ./tests/* /home/nemo/.config/fish/tests/
+WORKDIR /home/nemo/.config/fish/
 
 ENTRYPOINT ["fish", "-c"]
 CMD ["fishtape tests/*.test.fish"]

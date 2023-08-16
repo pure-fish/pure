@@ -33,7 +33,7 @@ dev-pure-on:
 		--tty \
 		--volume=$$(pwd):/home/nemo/.config/fish/pure/ \
 		--workdir /home/nemo/.config/fish/pure/ \
-		pure-on-fish-${FISH_VERSION} "set --append fish_function_path $$__fish_config_dir/pure; ${CMD}"
+		pure-on-fish-${FISH_VERSION} "${CMD}"
 	chmod o=r-x tests/fixtures/ # for migration-to-4.0.0.test.fish only
 
 # Don't override COPY directive as `--volume` doesnt play nice with Travis
