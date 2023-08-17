@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_detect_container_by_pid_method.fish
 @echo (_print_filename (status filename))
 
@@ -26,7 +27,7 @@ end
 before_each
 @test "_pure_detect_container_by_pid_method: ignored when /proc/*/scheg is missing" (
     rm -rf $proc_sched
-    function head; echo (status function) > /tmp/called; end # spy
+    _spy head
 
     _pure_detect_container_by_pid_method $proc_sched
     _has_called head
@@ -36,7 +37,7 @@ before_each
 before_each
 @test "_pure_detect_container_by_pid_method: when /proc/*/scheg exists" (
     _create_proc_sched_file $proc_sched
-    function head; echo (status function) > /tmp/called; end # spy
+    _spy head
 
     _pure_detect_container_by_pid_method $proc_sched
     _has_called head
