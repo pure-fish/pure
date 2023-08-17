@@ -21,7 +21,7 @@ function before_each
     set --universal pure_symbol_prompt '>' # using default ❯ break following tests
 end
 
-function teardown
+function after_all
     functions --erase id
 end
 
@@ -68,4 +68,4 @@ end
 ) = "$SPACE>"
 
 
-teardown
+after_all

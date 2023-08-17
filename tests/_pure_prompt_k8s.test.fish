@@ -11,7 +11,7 @@ function before_each
     _disable_colors
 end
 
-function teardown
+function after_all
     _clean_all_mocks
 end
 
@@ -35,4 +35,4 @@ before_each
     _pure_prompt_k8s
 ) = '☸ my-context/my-namespace'
 
-teardown
+after_all

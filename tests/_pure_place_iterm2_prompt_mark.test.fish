@@ -3,10 +3,11 @@ source (dirname (status filename))/../functions/_pure_place_iterm2_prompt_mark.f
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
-end; setup
+end
+before_all
 
 
 @test "_pure_place_iterm2_prompt_mark: no iterm2 prompt mark when NOT in iTerm" (
@@ -17,4 +18,4 @@ end; setup
     function iterm2_prompt_mark; echo 'iterm2-mark'; end
 
     echo (_pure_place_iterm2_prompt_mark)
-) = 'iterm2-mark'
+) = iterm2-mark

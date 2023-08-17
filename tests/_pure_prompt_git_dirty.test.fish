@@ -3,7 +3,7 @@ source (dirname (status filename))/../functions/_pure_prompt_git_dirty.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     mkdir -p /tmp/pure_pure_prompt_git_dirty # prevent conflict between parallel test files
     and cd /tmp/pure_pure_prompt_git_dirty
 
@@ -13,9 +13,10 @@ function setup
 
     _purge_configs
     _disable_colors
-end; setup
+end
+before_all
 
-function teardown
+function after_all
     rm -rf /tmp/pure_pure_prompt_git_dirty
 end
 
@@ -46,4 +47,4 @@ end
 ) = (set_color brblack)'*'
 
 
-teardown
+after_all

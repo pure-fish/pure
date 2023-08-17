@@ -3,14 +3,15 @@ source (dirname (status filename))/../functions/_pure_prompt_jobs.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
 
     set --global JOB_DURATION 1.5
-end; setup
+end
+before_all
 
-function teardown
+function after_all
     set --erase --global JOB_DURATION
 end
 
@@ -37,4 +38,4 @@ end
 ) = (set_color grey)'[1]'
 
 
-teardown
+after_all

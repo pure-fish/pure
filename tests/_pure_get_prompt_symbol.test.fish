@@ -3,16 +3,17 @@ source (dirname (status filename))/../functions/_pure_get_prompt_symbol.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
     set --universal pure_symbol_prompt '❯'
     set --universal pure_symbol_reverse_prompt '❮'
-end; setup
+end
+before_all
 
-function teardown
+function after_all
     set fish_key_bindings fish_default_key_bindings
-    set fish_bind_mode 'default'
+    set fish_bind_mode default
 end
 
 
@@ -71,4 +72,4 @@ end
 ) = '❮'
 
 
-teardown
+after_all

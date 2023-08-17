@@ -2,19 +2,19 @@ source (dirname (status filename))/fixtures/constants.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     # tests/fixtures/ permissions are o=rwx /!\
     cp tests/fixtures/{config.mock.fish,config.fish}
 end
-setup
+before_all
 
-function teardown
+function after_all
     rm tests/fixtures/config.fish
 end
 
 
 @test "migrate all variables" (
-    set file_to_migrate (dirname (status filename))/fixtures/config.mock.fish  # created during 'setup'
+    set file_to_migrate (dirname (status filename))/fixtures/config.mock.fish  # created during 'before_all'
 
     fish (dirname (status filename))/../tools/migration-to-4.0.0.fish $file_to_migrate 2>&1 >/dev/null
 
@@ -22,4 +22,4 @@ end
 ) $status -eq $SUCCESS
 
 
-teardown
+after_all

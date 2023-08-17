@@ -7,15 +7,16 @@ source (dirname (status filename))/../functions/_pure_prompt_git_stash.fish
 @echo (_print_filename (status filename))
 
 
-function setup
-    mkdir -p /tmp/test_pure_prompt_git  # prevent conflict between parallel test files
+function before_all
+    mkdir -p /tmp/test_pure_prompt_git # prevent conflict between parallel test files
     and cd /tmp/test_pure_prompt_git
 
     _purge_configs
     _disable_colors
-end; setup
+end
+before_all
 
-function teardown
+function after_all
     rm -rf /tmp/test_pure_prompt_git
 end
 
@@ -50,7 +51,7 @@ end
     set --universal pure_enable_git true
 
     _pure_prompt_git
-) = 'master'
+) = master
 
 @test "_pure_prompt_git: activates on dirty repository" (
     git init --quiet
@@ -83,4 +84,4 @@ end
 ) $status -eq $SUCCESS
 
 
-teardown
+after_all
