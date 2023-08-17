@@ -6,7 +6,7 @@ source (dirname (status filename))/../functions/_pure_k8s_namespace.fish
 
 function before_each
     functions --erase head
-    _cleanup_calls
+    _cleanup_spy_calls
 end
 
 

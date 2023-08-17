@@ -17,7 +17,7 @@ end
 function before_each
     set --global proc_sched /tmp/1/sched
     functions --erase head
-    _cleanup_calls
+    _cleanup_spy_calls
 end
 
 function _create_proc_sched_file --argument-names proc_sched
