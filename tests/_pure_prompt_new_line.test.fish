@@ -4,10 +4,11 @@ source (dirname (status filename))/../functions/_pure_prompt_new_line.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
-end; setup
+end
+before_all
 
 
 @test "_pure_prompt_new_line: print prompt with newline for existing session" (

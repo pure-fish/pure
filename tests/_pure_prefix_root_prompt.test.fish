@@ -3,11 +3,12 @@ source (dirname (status filename))/../functions/_pure_prefix_root_prompt.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
     set --universal pure_symbol_prefix_root_prompt '#'
-end; setup
+end
+before_all
 
 @test "_pure_prefix_root_prompt: is empty for unprivileged user" (
     set --universal pure_show_prefix_root_prompt true

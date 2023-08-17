@@ -4,13 +4,16 @@ source (dirname (status filename))/../functions/_pure_print_prompt_rows.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
-    function _pure_prompt_first_line; echo $EMPTY; end
-end; setup
+    function _pure_prompt_first_line
+        echo $EMPTY
+    end
+end
+before_all
 
-function teardown
+function after_all
     functions --erase _pure_prompt_first_line
 end
 
@@ -26,4 +29,4 @@ end
 ) = 0
 
 
-teardown
+after_all

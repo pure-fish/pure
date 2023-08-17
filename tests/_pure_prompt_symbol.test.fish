@@ -4,12 +4,13 @@ source (dirname (status filename))/../functions/_pure_get_prompt_symbol.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
 
-    set --universal pure_symbol_prompt '>'  # using default ❯ break following tests
-end; setup
+    set --universal pure_symbol_prompt '>' # using default ❯ break following tests
+end
+before_all
 
 
 @test "_pure_prompt_symbol: colorizes prompt in green when last command succeed" (

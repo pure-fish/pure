@@ -6,7 +6,7 @@ source (dirname (status filename))/../functions/_pure_detect_container_by_cgroup
 
 
 # echo "SYSTEM CONTAINER: $container"
-function setup
+function before_all
     _purge_configs
     _disable_colors
 
@@ -14,7 +14,7 @@ function setup
     set --global namespace (dirname $cgroup_namespace)
     mkdir -p $namespace; and touch $cgroup_namespace
 end
-setup
+before_all
 
 function cleanup_detection_methods
     functions --erase _pure_detect_container_by_pid_method
@@ -26,7 +26,7 @@ function cleanup_spy
     functions --erase uname
 end
 
-function teardown
+function after_all
     rm -rf \
         $namespace \
         $cgroup_namespace
@@ -95,4 +95,4 @@ if test (uname -s) = Linux
 end
 
 
-teardown
+after_all

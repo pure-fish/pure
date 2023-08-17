@@ -3,7 +3,7 @@ source (dirname (status filename))/../functions/_pure_parse_git_branch.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
     mkdir -p /tmp/test_pure_parse_git_branch # prevent conflict between parallel test files
@@ -12,9 +12,10 @@ function setup
     git init --quiet
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"
-end; setup
+end
+before_all
 
-function teardown
+function after_all
     rm -rf /tmp/test_pure_parse_git_branch
 end
 
@@ -23,7 +24,7 @@ end
     cd /tmp/test_pure_parse_git_branch
 
     _pure_parse_git_branch
-) = 'master'
+) = master
 
 
 @test "_pure_parse_git_branch: returns number of commits behind current branch" (
@@ -41,4 +42,4 @@ end
 ) = 'master~1'
 
 
-teardown
+after_all

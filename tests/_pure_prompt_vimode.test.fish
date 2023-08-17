@@ -9,7 +9,7 @@ function before_each
     _disable_colors
 end
 
-function teardown
+function after_all
     set fish_key_bindings fish_default_key_bindings
 end
 
@@ -32,7 +32,7 @@ if fish_version_below 3.3.0
     set --universal pure_reverse_prompt_symbol_in_vimode false
 
     _pure_prompt_vimode
-    teardown
+    after_all
 ) = (set_color --bold --background red white)'[N] '(set_color normal)' '
 end
 
@@ -44,6 +44,6 @@ if fish_version_at_least 3.3.0
     set --universal pure_reverse_prompt_symbol_in_vimode false
 
     _pure_prompt_vimode
-    teardown
+    after_all
 ) = (set_color --bold red)'[N] '(set_color normal)' ' # see value from https://github.com/fish-shell/fish-shell/blob/master/share/functions/fish_default_mode_prompt.fish
 end

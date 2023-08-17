@@ -4,10 +4,11 @@ source (dirname (status filename))/../functions/_pure_prompt_command_duration.fi
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
-end; setup
+end
+before_all
 
 
 @test "_pure_prompt_command_duration: hide command duration when it's zero" (
@@ -21,7 +22,7 @@ end; setup
     set --universal pure_threshold_command_duration 5 # in seconds
 
     _pure_prompt_command_duration
-) = '6s'
+) = 6s
 
 @test "_pure_prompt_command_duration: displays command duration with ms when non-zero" (
     set CMD_DURATION 6053 # in milliseconds

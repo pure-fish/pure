@@ -3,10 +3,11 @@ source (dirname (status filename))/../functions/_pure_format_time.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
-end; setup
+end
+before_all
 
 set --local threshold 0 # in seconds
 
@@ -25,7 +26,7 @@ set --local threshold 0 # in seconds
 @test "_pure_format_time: format 1s to human" (
     set --local millisecond 1000 # express as milliseconds
     _pure_format_time (math "1*$millisecond") $threshold
-) = '1s'
+) = 1s
 
 @test "_pure_format_time: format 1050ms to human (show milliseconds)" (
     set --local milliseconds 1053 # express as milliseconds
@@ -35,32 +36,32 @@ set --local threshold 0 # in seconds
 @test "_pure_format_time: format 60s as a minutes to human" (
     set --local millisecond 1000 # express as milliseconds
     _pure_format_time (math "60*$millisecond") $threshold
-) = '1m'
+) = 1m
 
 @test "_pure_format_time: format 59 minutes to human" (
     set --local minute 60000 # express as milliseconds
     _pure_format_time (math "59*$minute") $threshold
-) = '59m'
+) = 59m
 
 @test "_pure_format_time: format 60min as an hour to human" (
     set --local minute 60000 # express as milliseconds
     _pure_format_time (math "60*$minute") $threshold
-) = '1h'
+) = 1h
 
 @test "_pure_format_time: format 23 hours to human" (
     set --local hour 3600000 # express as milliseconds
     _pure_format_time (math "23*$hour") $threshold
-) = '23h'
+) = 23h
 
 @test "_pure_format_time: format 24 hours as a day to human" (
     set --local hour 3600000 # express as milliseconds
     _pure_format_time (math "24*$hour") $threshold
-) = '1d'
+) = 1d
 
 @test "_pure_format_time: format days to human" (
     set --local day 86400000 # express as milliseconds
     _pure_format_time (math "100*$day") $threshold
-) = '100d'
+) = 100d
 
 @test "_pure_format_time: format complex duration to human" (
     _pure_format_time 123456789 $threshold

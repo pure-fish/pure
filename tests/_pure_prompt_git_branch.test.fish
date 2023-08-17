@@ -4,8 +4,8 @@ source (dirname (status filename))/../functions/_pure_parse_git_branch.fish
 @echo (_print_filename (status filename))
 
 
-function setup
-    mkdir -p /tmp/test_pure_prompt_git_branch  # prevent conflict between parallel test files
+function before_all
+    mkdir -p /tmp/test_pure_prompt_git_branch # prevent conflict between parallel test files
     and cd /tmp/test_pure_prompt_git_branch
 
     git init --quiet
@@ -14,16 +14,17 @@ function setup
 
     _purge_configs
     _disable_colors
-end; setup
+end
+before_all
 
-function teardown
+function after_all
     rm -rf /tmp/test_pure_prompt_git_branch
 end
 
 
 @test "_pure_prompt_git_branch: show branch name" (
     _pure_prompt_git_branch
-) = 'master'
+) = master
 
 @test "_pure_prompt_git_branch: colorize branch name" (
     source (dirname (status filename))/../functions/_pure_set_color.fish # enable colors
@@ -32,4 +33,4 @@ end
 ) = (set_color grey)'master'
 
 
-teardown
+after_all

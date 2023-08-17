@@ -3,10 +3,11 @@ source (dirname (status filename))/../functions/_pure_is_single_line_prompt.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
-end; setup
+end
+before_all
 
 @test "_pure_is_single_line_prompt: fail when unset" (
     set --erase pure_enable_single_line_prompt

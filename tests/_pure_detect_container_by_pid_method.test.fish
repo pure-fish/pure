@@ -3,13 +3,13 @@ source (dirname (status filename))/../functions/_pure_detect_container_by_pid_me
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
 end
-setup
+before_all
 
-function teardown
+function after_all
     functions --erase uname
 end
 
@@ -73,4 +73,4 @@ if test (uname -s) = Linux
     ) $status -eq $SUCCESS
 end
 
-# teardown
+# after_all

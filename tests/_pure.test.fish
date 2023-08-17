@@ -3,11 +3,11 @@ source (dirname (status filename))/../functions/_pure_set_default.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
 end
-setup
+before_all
 
 @test "configure: pure_version" (
     set --erase pure_version

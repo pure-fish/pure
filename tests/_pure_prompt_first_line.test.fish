@@ -3,7 +3,7 @@ source (dirname (status filename))/../functions/_pure_prompt_first_line.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
 
@@ -12,17 +12,32 @@ function setup
     git init --quiet
     set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
 
-    function _pure_print_prompt; string join ' ' $argv; end
-    function _pure_prompt_ssh; echo 'user@hostname'; end
-    function _pure_prompt_container; end
-    function _pure_prompt_k8s; end
-    function _pure_prompt_git; echo 'master'; end
-    function _pure_prompt_command_duration; echo '1s'; end
-    function _pure_string_width; echo 15; end
-    function _pure_prompt_current_folder; pwd; end
-end; setup
+    function _pure_print_prompt
+        string join ' ' $argv
+    end
+    function _pure_prompt_ssh
+        echo 'user@hostname'
+    end
+    function _pure_prompt_container
+    end
+    function _pure_prompt_k8s
+    end
+    function _pure_prompt_git
+        echo master
+    end
+    function _pure_prompt_command_duration
+        echo 1s
+    end
+    function _pure_string_width
+        echo 15
+    end
+    function _pure_prompt_current_folder
+        pwd
+    end
+end
+before_all
 
-function teardown
+function after_all
     functions --erase _pure_print_prompt
     functions --erase _pure_prompt_ssh
     functions --erase _pure_prompt_container
@@ -50,8 +65,8 @@ end
     rm -rf /tmp/test
 ) = 'user@hostname /tmp/test master 1s'
 
-if test "$USER" = 'nemo'
-@test "_pure_prompt_first_line: displays 'nemo@hostname' when inside container" (
+if test "$USER" = nemo
+    @test "_pure_prompt_first_line: displays 'nemo@hostname' when inside container" (
     function _pure_prompt_container; echo $USER'@hostname'; end
 
     string match --quiet --entire --regex "nemo@[\w]+" (_pure_prompt_first_line)
@@ -64,4 +79,4 @@ end
     string match --quiet --entire --regex "context/namespace" (_pure_prompt_first_line)
 ) $status -eq $SUCCESS
 
-teardown
+after_all

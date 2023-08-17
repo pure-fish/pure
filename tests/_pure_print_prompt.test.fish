@@ -4,10 +4,11 @@ source (dirname (status filename))/../functions/_pure_string_width.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
-end; setup
+end
+before_all
 
 @test "_pure_print_prompt: returns nothing when no argument provided" (
     _pure_print_prompt
