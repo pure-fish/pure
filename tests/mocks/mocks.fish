@@ -1,5 +1,5 @@
 function _mock \
-    --description "Invoke a mock function" \
+    --description "Invoke a mock function located in tests/mocks/" \
     --argument-names \
     function_name # name of the method to mock
 
