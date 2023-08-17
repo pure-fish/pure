@@ -1,7 +1,7 @@
 function _mock \
     --description "Invoke a mock function" \
     --argument-names \
-    function_name
+    function_name # name of the method to mock
 
     set mock_filepath (dirname (status filename))/$function_name.mock.fish
     if test -e $mock_filepath
@@ -28,4 +28,14 @@ function _clean_all_mocks \
         end
     end
     set --global __mocks
+end
+
+function _spy \
+    --description "Create a spy around method" \
+    --argument-names \
+    function_name # name of the method to spy
+
+    function $function_name
+        echo (status function) >/tmp/called
+    end # spy
 end
