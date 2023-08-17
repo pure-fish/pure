@@ -7,7 +7,8 @@ source (dirname (status filename))/../functions/_pure_parse_directory.fish
 function setup
     _purge_configs
     _disable_colors
-end; setup
+end
+setup
 
 
 @test "_pure_prompt_current_folder: fails if no argument given" (
@@ -17,6 +18,7 @@ end; setup
 @test "_pure_prompt_current_folder: returns current folder" (
     set COLUMNS 20
     set current_prompt_width 10
+    set pure_shorten_prompt_current_directory_length 0
     mkdir -p /tmp/.pure;
     and cd /tmp/.pure
 
