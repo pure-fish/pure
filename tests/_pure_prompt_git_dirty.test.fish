@@ -3,7 +3,7 @@ source (dirname (status filename))/../functions/_pure_prompt_git_dirty.fish
 @echo (_print_filename (status filename))
 
 
-function before_all
+function before_each
     mkdir -p /tmp/pure_pure_prompt_git_dirty # prevent conflict between parallel test files
     and cd /tmp/pure_pure_prompt_git_dirty
 
@@ -14,19 +14,21 @@ function before_all
     _purge_configs
     _disable_colors
 end
-before_all
 
-function after_all
+function after_each
     rm -rf /tmp/pure_pure_prompt_git_dirty
 end
 
 
+before_each
 @test "_pure_prompt_git_dirty: empty repo is not marked as dirty" (
     set --universal pure_symbol_git_dirty '*'
 
     _pure_prompt_git_dirty
 ) = ''
+after_each
 
+before_each
 @test "_pure_prompt_git_dirty: untracked files in empty repo marked as dirty" (
     touch file.txt
 
@@ -34,7 +36,9 @@ end
 
     _pure_prompt_git_dirty
 ) = '*'
+after_each
 
+before_each
 @test "_pure_prompt_git_dirty: staged files in empty repo marked as dirty" (
     echo "staged" >> file.txt
     git add file.txt
@@ -43,7 +47,9 @@ end
 
     _pure_prompt_git_dirty
 ) = '*'
+after_each
 
+before_each
 @test "_pure_prompt_git_dirty: clean is not marked as dirty" (
     echo "clean" >> file.txt
     git add file.txt
@@ -53,7 +59,9 @@ end
 
     _pure_prompt_git_dirty
 ) = ''
+after_each
 
+before_each
 @test "_pure_prompt_git_dirty: untracked files mark git repo as dirty" (
     touch file_2.txt
 
@@ -61,7 +69,9 @@ end
 
     _pure_prompt_git_dirty
 ) = '*'
+after_each
 
+before_each
 @test "_pure_prompt_git_dirty: staged files mark git repo as dirty" (
     echo "staged" >> file_2.txt
     git add file_2.txt
@@ -70,7 +80,9 @@ end
 
     _pure_prompt_git_dirty
 ) = '*'
+after_each
 
+before_each
 @test "_pure_prompt_git_dirty: symbol is colorized" (
     echo "colorized" >> file.txt
 
@@ -80,6 +92,4 @@ end
 
     _pure_prompt_git_dirty
 ) = (set_color brblack)'*'
-
-
-after_all
+after_each
