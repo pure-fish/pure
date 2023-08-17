@@ -1,7 +1,7 @@
 # Specify fish version to use during build
 # docker build -t <image> --build-arg FISH_VERSION=<version>
 ARG FISH_VERSION
-FROM purefish/docker-fish:${FISH_VERSION} AS fish-only
+FROM purefish/docker-fish:${FISH_VERSION} AS only-fish
 
 # Redeclare ARG so its value is available after FROM (cf. https://github.com/moby/moby/issues/34129#issuecomment-417609075)
 ARG FISH_VERSION
@@ -25,14 +25,15 @@ RUN echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel \
     && usermod -g wheel nemo \
     && echo "nemo:123" | sudo chpasswd
 
+# create an image with pure's source code
+FROM only-fish AS with-pure-source
 USER nemo
-WORKDIR /home/nemo/.config/fish/
+WORKDIR /home/nemo/.config/fish/pure/
+COPY --chown=nemo:nemo ./    /home/nemo/.config/fish/pure/
 
-FROM fish-only AS with-pure
-# Copy source code
-COPY --chown=nemo:nemo ./conf.d/* /home/nemo/.config/fish/conf.d/
-COPY --chown=nemo:nemo ./functions/* /home/nemo/.config/fish/functions/
-COPY --chown=nemo:nemo ./tests/* /home/nemo/.config/fish/tests/
+# create an image with pure installed as prompt
+FROM with-pure-source AS with-pure-installed
+RUN cp ./pure/ ./
 
 ENTRYPOINT ["fish", "-c"]
 CMD ["fishtape tests/*.test.fish"]

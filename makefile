@@ -14,13 +14,14 @@ usage:
 	@printf "\tmake dev-pure-on   FISH_VERSION=3.3.1\t# dev in container\n"
 
 .PHONY: build-pure-on
+build-pure-on: STAGE?=only-fish
 build-pure-on:
 	docker build \
 		--quiet \
 		--file ./Dockerfile \
-		--target fish-only \
+		--target ${STAGE} \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
-		--tag=pure-on-fish-${FISH_VERSION} \
+		--tag=pure-${STAGE}-${FISH_VERSION} \
 		./
 
 .PHONY: dev-pure-on
@@ -34,15 +35,25 @@ dev-pure-on:
 		--tty \
 		--volume=$$(pwd):/home/nemo/.config/fish/pure/ \
 		--workdir /home/nemo/.config/fish/pure/ \
-		pure-on-fish-${FISH_VERSION} "${CMD}"
+		pure-${STAGE}-${FISH_VERSION} "${CMD}"
 	chmod o=r-x tests/fixtures/ # for migration-to-4.0.0.test.fish only
 
-# Don't override COPY directive as `--volume` doesnt play nice with Travis
 .PHONY: test-pure-on
-test-pure-on: export CMD=fishtape tests/*.test.fish  # can be overriden by user
-test-pure-on:
+test-pure-on: CMD?=fishtape tests/*.test.fish
+test-pure-on: STAGE?=with-pure-source
+test-pure-on: build-with-pure-source
 	docker run \
-		--name test-pure-on-${FISH_VERSION} \
+		--name run-pure-on-${FISH_VERSION} \
 		--rm \
 		--tty \
-		pure-on-fish-${FISH_VERSION} "${CMD}"
+		pure-${STAGE}-${FISH_VERSION} "${CMD}"
+
+.PHONY: build-with-pure-source
+build-with-pure-source:
+	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-source
+
+.PHONY: build-with-pure-installed
+build-with-pure-installed:
+	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-installed
+
+
