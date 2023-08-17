@@ -2,29 +2,63 @@ source (dirname (status filename))/fixtures/constants.fish
 @echo (_print_filename (status filename))
 
 
-function setup
-    _purge_configs
+function before_all
+    # _purge_configs # we need the context to uninstall
     _disable_colors
-end; setup
+end
+before_all
 
-
-@test "init/_pure_uninstall: handler is available"  (
+function before_each
     functions --erase _pure_uninstall
+    cp (dirname (status filename))/../conf.d/pure.fish $__fish_config_dir/conf.d/
+    cp (dirname (status filename))/../functions/* $__fish_config_dir/functions
+end
+
+function after_all
+    touch $__fish_config_dir/functions/fish_prompt.fish
+end
+
+before_each
+@test "init/_pure_uninstall: handler is available" (
+    source (dirname (status filename))/../functions/_pure_set_default.fish
     source (dirname (status filename))/../conf.d/_pure_init.fish
     functions --query _pure_uninstall
 ) $status -eq $SUCCESS
 
-@test "init/_pure_uninstall: restore default 'fish_prompt'"  (
-    functions --erase _pure_uninstall
+before_each
+@test "init/_pure_uninstall: backup current 'fish_prompt'" (
+    source (dirname (status filename))/../conf.d/_pure_init.fish
+
+    _pure_uninstall
+) -e $__fish_config_dir/functions/fish_prompt.pure-backup.fish
+
+before_each
+@test "init/_pure_uninstall: restore default 'fish_prompt'" (
     source (dirname (status filename))/../conf.d/_pure_init.fish
 
     _pure_uninstall
 
-    diff -q {$__fish_data_dir,$__fish_config_dir}/functions/fish_prompt.fish
+    diff -q {$__fish_data_dir,$__fish_config_dir}/functions/fish_title.fish
 ) $status -eq $SUCCESS
 
-@test "init/_pure_uninstall: restore a working fish_prompt"  (
-    functions --erase _pure_uninstall
+before_each
+@test "init/_pure_uninstall: backup current 'fish_title'" (
+    source (dirname (status filename))/../conf.d/_pure_init.fish
+
+    _pure_uninstall
+) -e $__fish_config_dir/functions/fish_title.pure-backup.fish
+
+before_each
+@test "init/_pure_uninstall: restore default 'fish_title'" (
+    source (dirname (status filename))/../conf.d/_pure_init.fish
+
+    _pure_uninstall
+
+    diff -q {$__fish_data_dir,$__fish_config_dir}/functions/fish_title.fish
+) $status -eq $SUCCESS
+
+before_each
+@test "init/_pure_uninstall: restore a working fish_prompt" (
     source (dirname (status filename))/../conf.d/_pure_init.fish
 
     _pure_uninstall
@@ -32,8 +66,8 @@ end; setup
     fish_prompt >/dev/null
 ) $status -eq $SUCCESS
 
-@test "init/_pure_uninstall: remove pure-related files"  (
-    functions --erase _pure_uninstall
+before_each
+@test "init/_pure_uninstall: remove pure-related files" (
     source (dirname (status filename))/../conf.d/_pure_init.fish
     touch $__fish_config_dir/functions/_pure_foo
     touch $__fish_config_dir/conf.d/_pure_bar
@@ -43,13 +77,15 @@ end; setup
     count $__fish_config_dir/{functions,conf.d}/_pure_*
 ) = $NONE
 
-
-@test "init/_pure_uninstall: remove pure-related files"  (
-    functions --erase _pure_uninstall
+before_each
+@test "init/_pure_uninstall: remove pure-related functions" (
+    # source (dirname (status filename))/../functions/_pure_set_default.fish
     source (dirname (status filename))/../conf.d/_pure_init.fish
     function _pure_foo; end
 
     _pure_uninstall
 
-    functions --names --all | string match --all --entire '_pure' | count 
+    functions --names --all | string match --all --entire '_pure' | count
 ) = $NONE
+
+after_all
