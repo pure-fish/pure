@@ -3,11 +3,12 @@ source (dirname (status filename))/../functions/fish_title.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     mkdir -p /tmp/current/directory/
     cd /tmp/current/directory/
-
-end; setup
+    set --universal pure_shorten_window_title_current_directory_length 0
+end
+before_all
 
 @test "fish_title: contains current directory and previous command" (
     set --universal pure_symbol_title_bar_separator '-'
