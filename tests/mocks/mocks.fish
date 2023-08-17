@@ -39,3 +39,22 @@ function _spy \
         echo (status function) >/tmp/called
     end # spy
 end
+
+
+function _cleanup_spy_calls
+    if test -r /tmp/called
+        rm /tmp/called
+    end
+end
+
+function _has_called \
+    --description "check spy method XYZ write to the /tmp/called file when called" \
+    --argument-names spy # name of the method
+
+    if test -r /tmp/called
+        grep -c -q "$spy" /tmp/called \
+            || printf "DEBUG: %s: received: `%s` expected: `%s`\n\n" (status function) (cat /tmp/called) $spy # check spy was called
+    else
+        return $FAILURE
+    end
+end
