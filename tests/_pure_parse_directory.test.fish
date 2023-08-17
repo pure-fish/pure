@@ -3,12 +3,17 @@ source (dirname (status filename))/../functions/_pure_parse_directory.fish
 @echo (_print_filename (status filename))
 
 
-function setup
+function before_all
     _purge_configs
     _disable_colors
-end; setup
+    set --universal pure_shorten_prompt_current_directory_length 0
+end
 
+function after_all
+    set --erase pure_shorten_prompt_current_directory_length
+end
 
+before_all
 @test "_pure_parse_directory: returns current directory" (
     mkdir -p /tmp/current/directory/
     cd /tmp/current/directory/
@@ -34,4 +39,6 @@ end; setup
     cd /tmp/current/directory/
 
     _pure_parse_directory
-) = "/tm/cu/directory"
+) = /tm/cu/directory
+
+after_all
