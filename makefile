@@ -18,6 +18,7 @@ build-pure-on:
 	docker build \
 		--quiet \
 		--file ./Dockerfile \
+		--target fish-only \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
 		--tag=pure-on-fish-${FISH_VERSION} \
 		./
