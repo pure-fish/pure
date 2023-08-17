@@ -11,12 +11,13 @@ end
 before_all
 
 function after_all
-    functions --erase uname
+    set --erase proc_sched
 end
 
-set proc_sched /tmp/1/sched
 function before_each
+    set --global proc_sched /tmp/1/sched
     functions --erase head
+    _cleanup_calls
 end
 
 function _create_proc_sched_file --argument-names proc_sched
@@ -73,5 +74,3 @@ if test (uname -s) = Linux
         _pure_detect_container_by_pid_method $proc_sched
     ) $status -eq $SUCCESS
 end
-
-# after_all
