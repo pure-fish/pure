@@ -219,6 +219,12 @@ before_all
     echo $pure_color_system_time
 ) = pure_color_mute
 
+@test "configure: pure_enable_virtualenv" (
+    set --erase pure_enable_virtualenv
+    source (dirname (status filename))/../conf.d/pure.fish
+    echo $pure_enable_virtualenv
+) = true
+
 @test "configure: pure_color_virtualenv" (
     set --erase pure_color_virtualenv
     source (dirname (status filename))/../conf.d/pure.fish
@@ -302,7 +308,6 @@ before_all
     source (dirname (status filename))/../conf.d/pure.fish
     echo $pure_symbol_ssh_prefix
 ) = ""
-
 
 @test "configure: pure_enable_k8s" (
     set --erase pure_enable_k8s

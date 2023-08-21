@@ -1,4 +1,9 @@
 function _pure_prompt_virtualenv --description "Display virtualenv directory"
+
+    if set --query pure_enable_virtualenv;
+        and test "$pure_enable_virtualenv" = true
+        # todo
+    end
     if test -n "$VIRTUAL_ENV"
         set --local virtualenv (basename "$VIRTUAL_ENV")
         set --local virtualenv_color (_pure_set_color $pure_color_virtualenv)
