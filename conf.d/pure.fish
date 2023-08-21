@@ -48,7 +48,8 @@ _pure_set_default pure_show_system_time false
 _pure_set_default pure_color_system_time pure_color_mute
 
 #  env for Python
-# _pure_set_default pure_enable_virtualenv true
+_pure_set_default pure_enable_virtualenv true
+_pure_set_default pure_symbol_virtualenv_prefix "" # 🐍
 _pure_set_default pure_color_virtualenv pure_color_mute
 
 # Print current working directory at the beginning of prompt
