@@ -44,7 +44,7 @@ Fully **customizable** (colors, symbols and features):
 - check for new release on start 🏴 ;
 - Display _username_ and _hostname_ when in an `SSH` session ;
 - Display command _duration_ when longer than `5` seconds ;
-- Display `Python` _virtualenv_ when activated ;
+- Display `Python` _virtualenv_ when activated 🏴 ;
 - Display `VI` mode and custom symbol for non-insert mode 🏴 ;
 - Display `kubernetes` context and namespace
 - Display container indicator (e.g. `docker`, `podman`, `LXC`/`LXD`) 🏴
@@ -74,20 +74,21 @@ set --universal pure_color_system_time pure_color_mute
 
 ### Prompt Symbol
 
-| Option                                 | Default | Description                                                         |
-| :------------------------------------- | :------ | :------------------------------------------------------------------ |
-| **`pure_symbol_container_prefix`**     |         | Prefix when being inside a container ([to customize][to-set])       |
-| **`pure_symbol_git_dirty`**            | `*`     | Repository is Dirty (uncommitted/untracked changes).                |
-| **`pure_symbol_git_stash`**            | `≡`     | Repository git stash status.                                        |
-| **`pure_symbol_git_unpulled_commits`** | `⇣`     | Branch is behind upstream (commits to pull).                        |
-| **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).                         |
-| **`pure_symbol_k8s_prefix`**           | `☸`     | Prefix when being connected to Kubernetes/K8s                       |
-| **`pure_symbol_prefix_root_prompt`**   | `#`     | Prefix prompt when logged in as `root`.                             |
-| **`pure_symbol_prefix_root_prompt`**   | `#`     | Prefix when being root user                                         |
-| **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                                      |
-| **`pure_symbol_reverse_prompt`**       | `❮`     | VI non-insert mode symbol.                                          |
-| **`pure_symbol_ssh_prefix`**           |         | Prefix when being connected to SSH session ([to customize][to-set]) |
-| **`pure_symbol_title_bar_separator`**  | `-`     | Separator in terminal's windows title.                              |
+| Option                                 | Default | Description                                                                  |
+| :------------------------------------- | :------ | :--------------------------------------------------------------------------- |
+| **`pure_symbol_container_prefix`**     |         | Prefix when being inside a container ([to customize][to-set])                |
+| **`pure_symbol_git_dirty`**            | `*`     | Repository is Dirty (uncommitted/untracked changes).                         |
+| **`pure_symbol_git_stash`**            | `≡`     | Repository git stash status.                                                 |
+| **`pure_symbol_git_unpulled_commits`** | `⇣`     | Branch is behind upstream (commits to pull).                                 |
+| **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).                                  |
+| **`pure_symbol_k8s_prefix`**           | `☸`     | Prefix when being connected to Kubernetes/K8s                                |
+| **`pure_symbol_prefix_root_prompt`**   | `#`     | Prefix prompt when logged in as `root`.                                      |
+| **`pure_symbol_prefix_root_prompt`**   | `#`     | Prefix when being root user                                                  |
+| **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                                               |
+| **`pure_symbol_reverse_prompt`**       | `❮`     | VI non-insert mode symbol.                                                   |
+| **`pure_symbol_ssh_prefix`**           |         | Prefix when being connected to SSH session (default: [undefined][to-set])    |
+| **`pure_symbol_title_bar_separator`**  | `-`     | Separator in terminal's windows title.                                       |
+| **`pure_symbol_virtualenv_prefix`**    |         | Prefix when a Python virtual env is activated (default: [undefined][to-set]) |
 
 > :information_source: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#safer-symbols)?
 
@@ -101,6 +102,7 @@ set --universal pure_color_system_time pure_color_mute
 | **`pure_enable_git`**                                    | `true`  | Show info about Git repository.                                                                                                                                     |
 | **`pure_enable_k8s`**                                    | `false` | `true`: shows `kubernetes` context and namespace.                                                                                                                   |
 | **`pure_enable_single_line_prompt`**                     | `false` | `true`: Compact prompt as a single line                                                                                                                             |
+| **`pure_enable_virtualenv`**                             | `true`  | Show virtual env name (based on `VIRTUAL_ENV` or `CONDA_DEFAULT_ENV`).                                                                                              |
 | **`pure_reverse_prompt_symbol_in_vimode`**               | `true`  | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`.                                                                     |
 | **`pure_separate_prompt_on_error`**                      | `false` | Show last command [exit code as a separate character][exit-code].                                                                                                   |
 | **`pure_shorten_prompt_current_directory_length`**       | `0`     | Shorten every prompt path component but the last to X characters (0 do not shorten)                                                                                 |
