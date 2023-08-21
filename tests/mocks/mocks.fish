@@ -58,6 +58,11 @@ function _clean_all_mocks \
         if functions --query $mock
             functions --erase $mock
         end
+
+        if functions --query __backup_$function_name # restore original function
+            functions --copy __backup_$function_name $function_name
+            functions --erase __backup_$function_name
+        end
     end
     set --global __mocks # clear mocks
 end
@@ -66,6 +71,8 @@ function _spy \
     --description "Create a spy around method" \
     --argument-names \
     function_name # name of the method to spy
+
+    backup $function_name
 
     function $function_name
         echo (status current-function) >/tmp/(status current-function).mock_calls
@@ -82,13 +89,14 @@ function _cleanup_spy_calls
 end
 
 function _has_called \
-    --description "check spy method XYZ write to the /tmp/$spy.mock_calls file when called" \
+    --description "check spy method XYZ write to the /tmp/$function_name.mock_calls file when called" \
     --argument-names \
-    spy \
-    spy_args # arguments to passed to the spy
+    function_name \
+    function_args # arguments to passed to the spy
 
-    if test -r /tmp/$spy.mock_calls
-        grep -c -q "$spy_args" /tmp/$spy.mock_calls \
+    set --query function_args[1]; or set function_args $function_name # ue
+    if test -r /tmp/$function_name.mock_calls
+        grep -c -q "$function_args" /tmp/$function_name.mock_calls \
             || printf "DEBUG: %s: received: `%s` expected: `%s`\n\n" (status current-function) (cat /tmp/$spy.mock_calls) $spy # check spy was called
     else
         return $FAILURE
