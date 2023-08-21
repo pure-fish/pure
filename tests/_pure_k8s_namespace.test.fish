@@ -19,8 +19,8 @@ before_each
 
 before_each
 @test "_pure_k8s_namespace: call `kubectl config view…`" (
-    function kubectl; echo (status function) $argv > /tmp/called; end # spy
+    function kubectl; echo (status current-function) $argv > /tmp/(status current-function).mock_calls; end # spy
 
     _pure_k8s_namespace
-    _has_called "kubectl config view --minify --output jsonpath={..namespace}"
+    _has_called kubectl "config view --minify --output jsonpath={..namespace}"
 ) $status -eq $SUCCESS
