@@ -20,8 +20,8 @@ before_each
 
 before_each
 @test "_pure_k8s_context: call `kubectl config current-context`" (
-    function kubectl; echo (status function) $argv > /tmp/called; end # spy
+    function kubectl; echo (status current-function) $argv > /tmp/(status current-function).mock_calls; end # spy
 
     _pure_k8s_context
-    _has_called "kubectl config current-context"
+    _has_called kubectl "config current-context"
 ) $status -eq $SUCCESS
