@@ -225,6 +225,12 @@ before_all
     echo $pure_enable_virtualenv
 ) = true
 
+@test "configure: pure_symbol_virtualenv_prefix" (
+    set --erase pure_symbol_virtualenv_prefix
+    source (dirname (status filename))/../conf.d/pure.fish
+    echo $pure_symbol_virtualenv_prefix
+) = $EMPTY
+
 @test "configure: pure_color_virtualenv" (
     set --erase pure_color_virtualenv
     source (dirname (status filename))/../conf.d/pure.fish
