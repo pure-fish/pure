@@ -7,5 +7,5 @@ function _pure_prompt_new_line \
         set new_line "\n"
     end
 
-    echo -e -n "$new_line"
+    echo -e -n (_pure_prompt_beginning)"$new_line"
 end
