@@ -53,8 +53,9 @@ test-pure-on: build-with-pure-source
 build-with-pure-source:
 	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-source
 
-.PHONY: build-with-pure-installed
-build-with-pure-installed:
+.PHONY: dev-with-pure-installed
+dev-with-pure-installed:
 	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-installed
+	$(MAKE) dev-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-installed
 
 

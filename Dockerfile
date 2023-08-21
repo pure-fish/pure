@@ -33,7 +33,10 @@ COPY --chown=nemo:nemo ./    /home/nemo/.config/fish/pure/
 
 # create an image with pure installed as prompt
 FROM with-pure-source AS with-pure-installed
-RUN cp ./pure/ ./
+RUN echo 'Symlink dev files' \
+    && ln -nfs "$(pwd)"/completions/*.fish ../completions/ \
+    && ln -nfs "$(pwd)"/conf.d/*.fish ../conf.d/ \
+    && ln -nfs "$(pwd)"/functions/*.fish ../functions/
 
 ENTRYPOINT ["fish", "-c"]
 CMD ["fishtape tests/*.test.fish"]
