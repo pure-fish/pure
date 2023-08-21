@@ -78,7 +78,7 @@ if test (uname -s) = Linux
     @test "_pure_is_inside_container: detect with pid method" (
         set --universal pure_enable_container_detection true
         function _pure_detect_container_by_cgroup_method; false; end # spy
-        function _pure_detect_container_by_pid_method; echo "called: "(status function); end # spy
+        function _pure_detect_container_by_pid_method; echo "called: "(status current-function); end # spy
 
         _pure_is_inside_container
     ) = "called: _pure_detect_container_by_pid_method"
@@ -88,7 +88,7 @@ cleanup_detection_methods
 if test (uname -s) = Linux
     @test "_pure_is_inside_container: detect with cgroup method" (
         set --universal pure_enable_container_detection true
-        function _pure_detect_container_by_cgroup_method; echo "called: "(status function); end # spy
+        function _pure_detect_container_by_cgroup_method; echo "called: "(status current-function); end # spy
 
         _pure_is_inside_container
     ) = "called: _pure_detect_container_by_cgroup_method"
