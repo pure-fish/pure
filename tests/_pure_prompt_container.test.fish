@@ -12,7 +12,7 @@ function before_each
     _disable_colors
 end
 
-if test "$USER" = nemo
+if test "$USER" = nemo # we need to be in a container for those to work
     before_each
     @test "_pure_prompt_container: displays 'user@hostname' when inside container" (
         set --universal pure_enable_container_detection true
