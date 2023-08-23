@@ -1,8 +1,14 @@
-> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart
->
-> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with :heart
+<div align="center">
 
-# pure [![ci-status]][ci-link] ![fish-3] ![GitHub tag (latest SemVer)][badge-version] [![sponsors]][sponsor-link]
+<img src="https://user-images.githubusercontent.com/1212392/262604075-db5d0ad2-a7ed-4a62-a1cc-ec677cf76351.png" width="61.8%"/><br>
+
+[![ci-status]][ci-link] ![fish-3] [![release-version]][release-link] [![sponsors]][sponsor-link] <!-- 0 width spaces on this line -->
+
+</div>
+
+> ##### :arrow_up: Hey! Want to migrate from v3.x to v4.x? Check our [**migration guide**](https://github.com/pure-fish/pure/releases/tag/v4.0.0), done with ❤️
+
+# pure
 
 > Pretty, minimal and fast Fish 🐟 prompt, ported from [`zsh`](https://github.com/sindresorhus/pure).
 
@@ -166,7 +172,8 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 [fish-set-color]: https://fishshell.com/docs/current/cmds/set_color.html
 [container-detection]: https://stackoverflow.com/q/23513045/802365
 
-[badge-version]: https://img.shields.io/github/v/tag/pure-fish/pure?label=latest%20&style=flat-square
+[release-version]: https://img.shields.io/github/v/tag/pure-fish/pure?label=latest%20&style=flat-square
+[release-link]: https://github.com/pure-fish/pure/releases "GitHub tag (latest SemVer)"
 [sponsors]: https://img.shields.io/github/sponsors/edouard-lopez?label=💰&style=flat-square "GitHub Sponsors"
 [sponsor-link]: https://github.com/sponsors/edouard-lopez/ "Become a sponsor"
 
