@@ -23,9 +23,6 @@ function _disable_colors --description "Set all color to empty value, to avoid u
         for color_config in (set --names | string match --regex --entire '^pure_color_')
             set --universal $color_config $EMPTY
         end
-        function _pure_set_color
-            echo
-        end
     end
 end
 

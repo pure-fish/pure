@@ -64,7 +64,6 @@ after_each
 before_each
 @test "_pure_prompt_git_dirty: untracked files mark git repo as dirty" (
     touch file_2.txt
-
     set --universal pure_symbol_git_dirty '*'
 
     _pure_prompt_git_dirty
