@@ -9,11 +9,9 @@ function before_each
     _cleanup_spy_calls
 end
 
-
 before_each
 @test "_pure_k8s_context: return context" (
     _mock kubectl
-
 
     _pure_k8s_context
 ) = my-context
