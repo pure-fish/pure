@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_prompt.fish
 source (dirname (status filename))/../functions/_pure_prompt_jobs.fish
 source (dirname (status filename))/../functions/_pure_prompt_virtualenv.fish
@@ -17,7 +18,8 @@ function before_each
     _purge_configs
     _disable_colors
 
-    source (dirname (status filename))/../functions/_pure_set_color.fish
+    _pure_unmock _pure_set_color # enable colors
+
     set --universal pure_symbol_prompt '>' # using default ❯ break following tests
 end
 

@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_prompt_git_branch.fish
 source (dirname (status filename))/../functions/_pure_parse_git_branch.fish
 @echo (_print_filename (status filename))
@@ -27,7 +28,7 @@ end
 ) = master
 
 @test "_pure_prompt_git_branch: colorize branch name" (
-    source (dirname (status filename))/../functions/_pure_set_color.fish # enable colors
+    _pure_unmock _pure_set_color # enable colors
     set --universal pure_color_git_branch grey
     _pure_prompt_git_branch
 ) = (set_color grey)'master'

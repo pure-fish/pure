@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_prefix_root_prompt.fish
 @echo (_print_filename (status filename))
 
@@ -25,7 +26,7 @@ before_all
 ) = "#"
 
 @test "_pure_prefix_root_prompt: colorize root prefix symbol" (
-    source (dirname (status filename))/../functions/_pure_set_color.fish
+    _pure_unmock _pure_set_color # enable colors
     set --universal pure_show_prefix_root_prompt true
     set --universal pure_color_prefix_root_prompt red
     function id; echo 'root'; end # mock

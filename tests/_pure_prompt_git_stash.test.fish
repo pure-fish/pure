@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_prompt_git_stash.fish
 @echo (_print_filename (status filename))
 
@@ -16,7 +17,7 @@ function before_each
 
     _purge_configs
     _disable_colors
-end;
+end
 
 function after_each
     rm -rf \
@@ -55,7 +56,7 @@ end
     git add stash.file
     git stash --quiet
 
-    source (dirname (status filename))/../functions/_pure_set_color.fish # enable colors
+    _pure_unmock _pure_set_color # enable colors
     set --universal pure_symbol_git_stash '≡'
     set --universal pure_color_git_stash cyan
 

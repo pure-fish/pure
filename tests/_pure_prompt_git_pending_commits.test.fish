@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_prompt_git_pending_commits.fish
 @echo (_print_filename (status filename))
 
@@ -90,7 +91,7 @@ end
     git add missing-on-upstream.txt
     git commit --quiet --message='missing on upstream'
 
-    source (dirname (status filename))/../functions/_pure_set_color.fish # enable colors
+    _pure_unmock _pure_set_color # enable colors
     set --universal pure_symbol_git_unpushed_commits '^'
     set --universal pure_color_git_unpushed_commits cyan
 

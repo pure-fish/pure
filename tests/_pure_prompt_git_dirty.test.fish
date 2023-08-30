@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_prompt_git_dirty.fish
 @echo (_print_filename (status filename))
 
@@ -85,7 +86,7 @@ before_each
 @test "_pure_prompt_git_dirty: symbol is colorized" (
     echo "colorized" >> file.txt
 
-    source (dirname (status filename))/../functions/_pure_set_color.fish # enable colors
+    _pure_unmock _pure_set_color # enable colors
     set --universal pure_symbol_git_dirty '*'
     set --universal pure_color_git_dirty brblack
 
