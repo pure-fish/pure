@@ -10,8 +10,10 @@ before_all
 
 function before_each
     functions --erase _pure_uninstall
+    mkdir -p $__fish_config_dir/{conf.d,functions}/
+
     cp (status dirname)/../conf.d/pure.fish $__fish_config_dir/conf.d/
-    cp (status dirname)/../functions/* $__fish_config_dir/functions
+    cp (status dirname)/../functions/* $__fish_config_dir/functions/
 end
 
 function after_all
