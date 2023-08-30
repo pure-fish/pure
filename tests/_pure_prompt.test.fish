@@ -22,44 +22,51 @@ function before_each
 end
 
 function after_all
-    functions --erase id
+    _clean_all_mocks
 end
 
+before_each
 @test "_pure_prompt: print prompt after succeeding command" (
-    before_each
+    set --universal pure_enable_single_line_prompt false
     set --universal pure_color_prompt_on_success magenta
 
     _pure_prompt $SUCCESS
 ) = (set_color $pure_color_prompt_on_success)'>'
 
+before_each
 @test "_pure_prompt: print prompt after failing command" (
-    before_each
+    set --universal pure_enable_single_line_prompt false
     set --universal pure_color_prompt_on_error red
 
     _pure_prompt $FAILURE
 ) = (set_color $pure_color_prompt_on_error)'>'
 
+before_each
 @test "_pure_prompt: print root prefix" (
-    before_each
+    set --universal pure_enable_single_line_prompt false
     set --universal pure_show_prefix_root_prompt true
     set --universal pure_symbol_prefix_root_prompt '#'
     set --universal pure_color_prompt_on_success magenta
     set --universal pure_color_prefix_root_prompt red
-    function id; echo 'root'; end # mock
+    _mock_response id 'root'
 
     _pure_prompt $SUCCESS
 ) = (set_color $pure_color_prefix_root_prompt)"# "(set_color $pure_color_prompt_on_success)">"
 
+before_each
 @test "_pure_prompt: no space before symbol in 2-lines prompt" (
-    before_each
     set --universal pure_enable_single_line_prompt false
+    _mock _pure_set_color
+    _mock_response id 'nemo'
 
     _pure_prompt $SUCCESS
 ) = ">"
 
+before_each
 @test "_pure_prompt: space before symbol in 1-line prompt" (
-    before_each
     set --universal pure_enable_single_line_prompt true
+    _mock _pure_set_color
+    _mock_response id 'nemo'
 
     _pure_prompt $SUCCESS
 ) = "$SPACE>"

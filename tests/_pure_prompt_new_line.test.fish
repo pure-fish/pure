@@ -19,12 +19,14 @@ end
 
 
 @test "_pure_prompt_new_line: print prompt with newline for existing session" (
+    set --universal pure_enable_single_line_prompt false
     set _pure_fresh_session false
 
     _pure_prompt_new_line | wc -l
 ) -eq $IS_PRESENT
 
 @test "_pure_prompt_new_line: print prompt without newline for new session" (
+    set --universal pure_enable_single_line_prompt false
     set _pure_fresh_session true
 
     _pure_prompt_new_line | wc -l
