@@ -1,16 +1,16 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/mocks/mocks.fish
-source (dirname (status filename))/../functions/_pure_prompt.fish
-source (dirname (status filename))/../functions/_pure_prompt_jobs.fish
-source (dirname (status filename))/../functions/_pure_prompt_virtualenv.fish
-source (dirname (status filename))/../functions/_pure_prompt_vimode.fish
-source (dirname (status filename))/../functions/_pure_prompt_symbol.fish
-source (dirname (status filename))/../functions/_pure_get_prompt_symbol.fish
-source (dirname (status filename))/../functions/_pure_print_prompt.fish
-source (dirname (status filename))/../functions/_pure_string_width.fish
-source (dirname (status filename))/../functions/_pure_prompt_system_time.fish
-source (dirname (status filename))/../functions/_pure_prefix_root_prompt.fish
-source (dirname (status filename))/../functions/_pure_is_single_line_prompt.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/mocks/mocks.fish
+source (status dirname)/../functions/_pure_prompt.fish
+source (status dirname)/../functions/_pure_prompt_jobs.fish
+source (status dirname)/../functions/_pure_prompt_virtualenv.fish
+source (status dirname)/../functions/_pure_prompt_vimode.fish
+source (status dirname)/../functions/_pure_prompt_symbol.fish
+source (status dirname)/../functions/_pure_get_prompt_symbol.fish
+source (status dirname)/../functions/_pure_print_prompt.fish
+source (status dirname)/../functions/_pure_string_width.fish
+source (status dirname)/../functions/_pure_prompt_system_time.fish
+source (status dirname)/../functions/_pure_prefix_root_prompt.fish
+source (status dirname)/../functions/_pure_is_single_line_prompt.fish
 @echo (_print_filename (status filename))
 
 

@@ -1,5 +1,5 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/../functions/_pure_is_single_line_prompt.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/../functions/_pure_is_single_line_prompt.fish
 @echo (_print_filename (status filename))
 
 

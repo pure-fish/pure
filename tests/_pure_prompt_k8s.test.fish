@@ -1,9 +1,9 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/mocks/mocks.fish
-source (dirname (status filename))/../functions/_pure_prompt_k8s.fish
-source (dirname (status filename))/../functions/_pure_k8s_context.fish
-source (dirname (status filename))/../functions/_pure_k8s_namespace.fish
-source (dirname (status filename))/../functions/_pure_check_availability.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/mocks/mocks.fish
+source (status dirname)/../functions/_pure_prompt_k8s.fish
+source (status dirname)/../functions/_pure_k8s_context.fish
+source (status dirname)/../functions/_pure_k8s_namespace.fish
+source (status dirname)/../functions/_pure_check_availability.fish
 @echo (_print_filename (status filename))
 
 function before_each

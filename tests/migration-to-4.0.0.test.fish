@@ -1,4 +1,4 @@
-source (dirname (status filename))/fixtures/constants.fish
+source (status dirname)/fixtures/constants.fish
 @echo (_print_filename (status filename))
 
 
@@ -14,11 +14,11 @@ end
 
 
 @test "migrate all variables" (
-    set file_to_migrate (dirname (status filename))/fixtures/config.mock.fish  # created during 'before_all'
+    set file_to_migrate (status dirname)/fixtures/config.mock.fish  # created during 'before_all'
 
-    fish (dirname (status filename))/../tools/migration-to-4.0.0.fish $file_to_migrate 2>&1 >/dev/null
+    fish (status dirname)/../tools/migration-to-4.0.0.fish $file_to_migrate 2>&1 >/dev/null
 
-    diff -U $NONE (dirname (status filename))/fixtures/config.expected.fish $file_to_migrate
+    diff -U $NONE (status dirname)/fixtures/config.expected.fish $file_to_migrate
 ) $status -eq $SUCCESS
 
 

@@ -1,5 +1,5 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/../functions/_pure_detect_container_by_cgroup_method.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/../functions/_pure_detect_container_by_cgroup_method.fish
 @echo (_print_filename (status filename))
 
 

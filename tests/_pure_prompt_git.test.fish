@@ -1,9 +1,9 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/../functions/_pure_prompt_git.fish
-source (dirname (status filename))/../functions/_pure_prompt_git_branch.fish
-source (dirname (status filename))/../functions/_pure_parse_git_branch.fish
-source (dirname (status filename))/../functions/_pure_string_width.fish
-source (dirname (status filename))/../functions/_pure_prompt_git_stash.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/../functions/_pure_prompt_git.fish
+source (status dirname)/../functions/_pure_prompt_git_branch.fish
+source (status dirname)/../functions/_pure_parse_git_branch.fish
+source (status dirname)/../functions/_pure_string_width.fish
+source (status dirname)/../functions/_pure_prompt_git_stash.fish
 @echo (_print_filename (status filename))
 
 

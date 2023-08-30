@@ -1,5 +1,5 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/../tools/installer.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/../tools/installer.fish
 @echo (_print_filename (status filename))
 
 
@@ -146,7 +146,7 @@ end
 if test "$USER" = nemo # avoid destroying other user's configuration
     before_each
     @test "installation methods: manually (with local installer)" (
-        source (dirname (status filename))/../tools/installer.fish
+        source (status dirname)/../tools/installer.fish
         and install_pure >/dev/null
         for config in $PURE_INSTALL_DIR/conf.d/*
             source $config

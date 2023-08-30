@@ -3,9 +3,9 @@ function _mock \
     --argument-names \
     function_name # name of the method to mock
 
-    set mock_filepath (dirname (status filename))/$function_name.mock.fish
+    set mock_filepath (status dirname)/$function_name.mock.fish
     if test -e $mock_filepath
-        source (dirname (status filename))/$function_name.mock.fish
+        source (status dirname)/$function_name.mock.fish
         set --global --append __mocks $function_name
     end
 end

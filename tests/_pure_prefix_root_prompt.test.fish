@@ -1,6 +1,6 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/mocks/mocks.fish
-source (dirname (status filename))/../functions/_pure_prefix_root_prompt.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/mocks/mocks.fish
+source (status dirname)/../functions/_pure_prefix_root_prompt.fish
 @echo (_print_filename (status filename))
 
 
