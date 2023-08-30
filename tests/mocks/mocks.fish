@@ -22,6 +22,26 @@ function backup \
     end
 end
 
+function _mock_exit_status \
+    --description "Mock a response exit status for a mock function" \
+    --argument-names \
+    function_name \
+    status_code # response to return
+
+    echo $status_code >/tmp/$function_name.mock_status_code
+    backup $function_name
+
+    # redefine function to return mock status_code
+    function $function_name \
+        --description "Mocking $function_name with exit code="$status_code \
+        --argument-names status_code
+        echo (status current-function) >/tmp/(status current-function).mock_calls
+        return (command cat /tmp/(status current-function).mock_status_code)
+    end
+    set --global --append __mocks $function_name
+    set --global --append __mocks_backup __backup_$function_nameend
+end
+
 function _mock_response \
     --description "Mock a response for a mock function" \
     --argument-names \
@@ -36,7 +56,7 @@ function _mock_response \
         --description "Mocking $function_name response" \
         --argument-names mock_reponse
         echo (status current-function) >/tmp/(status current-function).mock_calls
-        return (command cat /tmp/(status current-function).mock_response)
+        command cat /tmp/(status current-function).mock_response
     end
     set --global --append __mocks $function_name
     set --global --append __mocks_backup __backup_$function_name
