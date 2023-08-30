@@ -35,7 +35,7 @@ end
 
 @test "_pure_prompt_container: print nothing when outside a container" (
     set --universal pure_enable_container_detection true
-    _mock_response _pure_is_inside_container $FAILURE
+    _mock_exit_status _pure_is_inside_container $FAILURE
 
     echo (_pure_prompt_container)
 ) = $EMPTY
@@ -43,7 +43,7 @@ after_each
 
 @test "_pure_prompt_container: check is inside a container" (
     set --universal pure_enable_container_detection true
-    _mock_response _pure_is_inside_container $FAILURE
+    _mock_exit_status _pure_is_inside_container $FAILURE
 
     _pure_prompt_container
     _has_called _pure_is_inside_container

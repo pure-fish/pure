@@ -13,20 +13,17 @@ source (status dirname)/../functions/_pure_prefix_root_prompt.fish
 source (status dirname)/../functions/_pure_is_single_line_prompt.fish
 @echo (_print_filename (status filename))
 
-
 function before_each
     _purge_configs
     _disable_colors
 
     _pure_unmock _pure_set_color # enable colors
-
     set --universal pure_symbol_prompt '>' # using default ❯ break following tests
 end
 
 function after_all
     functions --erase id
 end
-
 
 @test "_pure_prompt: print prompt after succeeding command" (
     before_each
@@ -60,11 +57,9 @@ end
     _pure_prompt $SUCCESS
 ) = ">"
 
-
 @test "_pure_prompt: space before symbol in 1-line prompt" (
     before_each
     set --universal pure_enable_single_line_prompt true
-
 
     _pure_prompt $SUCCESS
 ) = "$SPACE>"
