@@ -1,4 +1,8 @@
+# yamllint disable rule:braces
+# yamllint disable rule:indentation
+---
 name: Run tests on CI
+# yamllint disable-line rule:truthy
 on:
   push:
     branches:
@@ -24,8 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version:
-          [
+        version: [
             { fish: 3.0.2, alpine: 3.11 },
             { fish: 3.1.2, alpine: 3.13 },
             { fish: 3.2.2, alpine: 3.14 },
@@ -40,6 +43,21 @@ jobs:
       - run: make build-pure-on FISH_VERSION=${{ matrix.version.fish }}
       - run: docker --version
       - run: make test-pure-on FISH_VERSION=${{ matrix.version.fish }}
+
+  test-nixos:
+    name: Test `pure` with Fish ${{ matrix.version.fish }} on NixOS container
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [
+            { fish: 3.6.1, alpine: 3.18 },
+            # { fish: 3.6.2, alpine: 'edge' },
+          ]
+    steps:
+      - uses: actions/checkout@v2
+      - run: make build-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
+      - run: docker --version
+      - run: make test-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
 
   # test-macos:
   #   name: Test on fish on MacOS
