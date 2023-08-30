@@ -15,7 +15,7 @@ docker run \
     --tty \
     --rm \
     --volume=(pwd):/tmp/.pure/ \
-    pure-on-nix 
+    pure-on-nix
     fish
 ```
 

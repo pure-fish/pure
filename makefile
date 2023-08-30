@@ -18,7 +18,7 @@ build-pure-on: STAGE?=only-fish
 build-pure-on:
 	docker build \
 		--quiet \
-		--file ./Dockerfile \
+		--file ./docker/Dockerfile \
 		--target ${STAGE} \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
 		--tag=pure-${STAGE}-${FISH_VERSION} \
@@ -30,7 +30,7 @@ dev-pure-on: STAGE?=with-pure-source
 dev-pure-on:
 	chmod o=rwx tests/fixtures/ # for migration-to-4.0.0.test.fish only
 	docker run \
-		--name run-pure-on-${FISH_VERSION} \
+		--name dev-pure-on-${FISH_VERSION} \
 		--rm \
 		--interactive \
 		--tty \
@@ -44,7 +44,7 @@ test-pure-on: CMD?=fishtape tests/*.test.fish
 test-pure-on: STAGE?=with-pure-source
 test-pure-on: build-with-pure-source
 	docker run \
-		--name run-pure-on-${FISH_VERSION} \
+		--name test-pure-on-${FISH_VERSION} \
 		--rm \
 		--tty \
 		pure-${STAGE}-${FISH_VERSION} "${CMD}"
@@ -59,3 +59,29 @@ dev-with-pure-installed:
 	$(MAKE) dev-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-installed
 
 
+build-pure-on-nix: STAGE?=nix
+build-pure-on-nix:
+	docker build \
+		--file ./docker/${STAGE}.Dockerfile \
+		--build-arg FISH_VERSION=${FISH_VERSION} \
+		--tag=pure-${STAGE}-${FISH_VERSION} \
+		./
+
+dev-pure-on-nix: STAGE?=nix
+dev-pure-on-nix: CMD?=fish
+dev-pure-on-nix:
+	echo ${CMD} + ${STAGE}
+	chmod o=rwx ./tests/fixtures/ # for migration-to-4.0.0.test.fish only
+	docker run \
+		--name dev-pure-on-${FISH_VERSION} \
+		--rm \
+		--interactive \
+		--tty \
+		--volume=$$(pwd):/tmp/.pure/ \
+		--workdir /tmp/.pure/ \
+		pure-${STAGE}-${FISH_VERSION} "${CMD}"
+	chmod o=r-x ./tests/fixtures/ # for migration-to-4.0.0.test.fish only
+
+test-pure-on-nix: CMD?=fishtape tests/*.test.fish
+test-pure-on-nix:
+	$(MAKE) dev-pure-on-nix CMD="${CMD}"
