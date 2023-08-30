@@ -1,3 +1,5 @@
+source (status dirname)/../mocks/mocks.fish
+
 set --global SUCCESS 0
 set --global FAILURE 1
 set --global IS_PRESENT 1 # when using grep
@@ -24,6 +26,7 @@ function _disable_colors --description "Set all color to empty value, to avoid u
             set --universal $color_config $EMPTY
         end
     end
+    _mock _pure_set_color
 end
 
 function _print_filename --argument-names filename
