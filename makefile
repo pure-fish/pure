@@ -69,14 +69,14 @@ build-pure-on-nix:
 
 dev-pure-on-nix: STAGE?=nix
 dev-pure-on-nix: CMD?=fish
+dev-pure-on-nix: TTY?=--tty
 dev-pure-on-nix:
-	echo ${CMD} + ${STAGE}
 	chmod o=rwx ./tests/fixtures/ # for migration-to-4.0.0.test.fish only
 	docker run \
 		--name dev-pure-on-${FISH_VERSION} \
 		--rm \
 		--interactive \
-		--tty \
+		${TTY} \
 		--volume=$$(pwd):/tmp/.pure/ \
 		--workdir /tmp/.pure/ \
 		pure-${STAGE}-${FISH_VERSION} "${CMD}"
@@ -84,4 +84,4 @@ dev-pure-on-nix:
 
 test-pure-on-nix: CMD?=fishtape tests/*.test.fish
 test-pure-on-nix:
-	$(MAKE) dev-pure-on-nix CMD="${CMD}"
+	$(MAKE) dev-pure-on-nix CMD="${CMD}" TTY=
