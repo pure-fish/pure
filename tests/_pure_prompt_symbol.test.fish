@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_prompt_symbol.fish
 source (dirname (status filename))/../functions/_pure_get_prompt_symbol.fish
 @echo (_print_filename (status filename))
@@ -14,7 +15,7 @@ before_all
 
 
 @test "_pure_prompt_symbol: colorizes prompt in green when last command succeed" (
-    source (dirname (status filename))/../functions/_pure_set_color.fish # enable colors
+    _pure_unmock _pure_set_color # enable colors
     set --local last_command $SUCCESS
     set --universal pure_color_prompt_on_success green
 
@@ -22,7 +23,7 @@ before_all
 ) = (set_color green)'>'
 
 @test "_pure_prompt_symbol: colorizes prompt in red when last command failed" (
-    source (dirname (status filename))/../functions/_pure_set_color.fish # enable colors
+    _pure_unmock _pure_set_color # enable colors
     set --local last_command $FAILURE
     set --universal pure_color_prompt_on_error red
 
@@ -30,7 +31,7 @@ before_all
 ) = (set_color red)'>'
 
 @test "_pure_prompt_symbol: add a magenta prompt when pure_separate_prompt_on_error is enable and last command failed" (
-    source (dirname (status filename))/../functions/_pure_set_color.fish # enable colors
+    _pure_unmock _pure_set_color # enable colors
     set --local last_command $FAILURE
     set --universal pure_color_prompt_on_error red
     set --universal pure_color_prompt_on_success magenta

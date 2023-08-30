@@ -102,3 +102,11 @@ function _has_called \
         return $FAILURE
     end
 end
+
+function _pure_unmock \
+    --description "Restore a pure function by reloading its source" \
+    --argument-names \
+    function_name
+
+    source (status dirname)/../../functions/$function_name.fish
+end

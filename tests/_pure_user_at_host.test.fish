@@ -1,4 +1,5 @@
 source (dirname (status filename))/fixtures/constants.fish
+source (dirname (status filename))/mocks/mocks.fish
 source (dirname (status filename))/../functions/_pure_user_at_host.fish
 @echo (_print_filename (status filename))
 
@@ -21,7 +22,7 @@ before_all
 ) $status -eq $SUCCESS
 
 @test "_pure_user_at_host: colorize for normal user" (
-    source (dirname (status filename))/../functions/_pure_set_color.fish # enable colors
+    _pure_unmock _pure_set_color # enable colors
     set --universal pure_color_username_normal green
     set --universal pure_color_at_sign grey
     set --universal pure_color_hostname blue
@@ -30,7 +31,7 @@ before_all
 ) $status -eq $SUCCESS
 
 @test "_pure_user_at_host: colorize for root user" (
-    source (dirname (status filename))/../functions/_pure_set_color.fish # enable colors
+    _pure_unmock _pure_set_color # enable colors
     function id; echo 'root'; end # mock
     set --universal pure_color_username_root red
     set --universal pure_color_at_sign grey
