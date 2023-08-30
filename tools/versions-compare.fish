@@ -1,4 +1,4 @@
-source (dirname (status filename))/../tests/fixtures/constants.fish
+source (status dirname)/../tests/fixtures/constants.fish
 
 
 function fish_version_below \

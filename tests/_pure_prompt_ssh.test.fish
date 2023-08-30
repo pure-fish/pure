@@ -1,6 +1,6 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/../functions/_pure_prompt_ssh.fish
-source (dirname (status filename))/../functions/_pure_user_at_host.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/../functions/_pure_prompt_ssh.fish
+source (status dirname)/../functions/_pure_user_at_host.fish
 @echo (_print_filename (status filename))
 
 

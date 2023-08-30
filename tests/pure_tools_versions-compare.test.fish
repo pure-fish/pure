@@ -1,5 +1,5 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/../tools/versions-compare.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/../tools/versions-compare.fish
 @echo (_print_filename (status filename))
 
 

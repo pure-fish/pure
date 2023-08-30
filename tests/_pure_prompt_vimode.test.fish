@@ -1,6 +1,6 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/../functions/_pure_prompt_vimode.fish
-source (dirname (status filename))/../tools/versions-compare.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/../functions/_pure_prompt_vimode.fish
+source (status dirname)/../tools/versions-compare.fish
 
 @echo (_print_filename (status filename))
 

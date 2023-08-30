@@ -1,5 +1,5 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/../functions/_pure_format_time.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/../functions/_pure_format_time.fish
 @echo (_print_filename (status filename))
 
 
