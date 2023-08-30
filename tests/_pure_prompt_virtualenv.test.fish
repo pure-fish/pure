@@ -30,6 +30,7 @@ before_each
 before_each
 @test "_pure_prompt_virtualenv: displays virtualenv directory prompt" (
     set --universal pure_enable_virtualenv true
+    set --universal pure_symbol_virtualenv_prefix $EMPTY
     set VIRTUAL_ENV /home/test/fake/project/
 
     _pure_prompt_virtualenv
@@ -48,6 +49,7 @@ before_each
 before_each
 @test "_pure_prompt_virtualenv: hides Conda virtualenv prompt when not activated" (
     set --universal pure_enable_virtualenv true
+    set --universal pure_symbol_virtualenv_prefix $EMPTY
     set --erase CONDA_DEFAULT_ENV
 
     _pure_prompt_virtualenv
@@ -56,6 +58,7 @@ before_each
 before_each
 @test "_pure_prompt_virtualenv: displays Conda virtualenv directory prompt" (
     set --universal pure_enable_virtualenv true
+    set --universal pure_symbol_virtualenv_prefix $EMPTY
     set CONDA_DEFAULT_ENV /home/test/fake/project/
 
     _pure_prompt_virtualenv
