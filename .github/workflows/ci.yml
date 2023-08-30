@@ -29,10 +29,7 @@ jobs:
     strategy:
       matrix:
         version: [
-            { fish: 3.0.2, alpine: 3.11 },
-            { fish: 3.1.2, alpine: 3.13 },
-            { fish: 3.2.2, alpine: 3.14 },
-            { fish: 3.3.1, alpine: 3.15 },
+            { fish: 3.3.1, alpine: 3.15 }, # for Ubuntu 22.04 LTS
             { fish: 3.4.1, alpine: 3.16 },
             { fish: 3.5.1, alpine: 3.17 },
             { fish: 3.6.1, alpine: 3.18 },
