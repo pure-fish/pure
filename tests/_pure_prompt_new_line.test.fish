@@ -1,8 +1,8 @@
-source (dirname (status filename))/fixtures/constants.fish
-source (dirname (status filename))/mocks/mocks.fish
-source (dirname (status filename))/../functions/_pure_is_single_line_prompt.fish
-source (dirname (status filename))/../functions/_pure_prompt_beginning.fish
-source (dirname (status filename))/../functions/_pure_prompt_new_line.fish
+source (status dirname)/fixtures/constants.fish
+source (status dirname)/mocks/mocks.fish
+source (status dirname)/../functions/_pure_is_single_line_prompt.fish
+source (status dirname)/../functions/_pure_prompt_beginning.fish
+source (status dirname)/../functions/_pure_prompt_new_line.fish
 @echo (_print_filename (status filename))
 
 
@@ -13,7 +13,7 @@ end
 before_all
 
 function before_each
-    source (dirname (status filename))/../functions/_pure_prompt_beginning.fish # restore function
+    source (status dirname)/../functions/_pure_prompt_beginning.fish # restore function
     _cleanup_spy_calls
 end
 
