@@ -1,12 +1,12 @@
 source (status dirname)/fixtures/constants.fish
-source (status dirname)/mocks/mocks.fish
+source (status dirname)/mocks/spectra.fish
 source (status dirname)/../functions/_pure_k8s_namespace.fish
 @echo (_print_filename (status filename))
 
 
 function before_each
     functions --erase head
-    _cleanup_spy_calls
+    _clean_all_spy_calls
 end
 
 

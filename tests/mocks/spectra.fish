@@ -1,5 +1,7 @@
+# See: https://en.wikipedia.org/wiki/Phasmatodea
+
 function _mock \
-    --description "Invoke a mock function located in tests/mocks/" \
+    --description "Mock a function using the mock in `tests/mocks/`" \
     --argument-names \
     function_name # name of the method to mock
 
@@ -10,7 +12,7 @@ function _mock \
     end
 end
 
-function backup \
+function _backup_before_mocking \
     --description "Backup a function by copying to prefixed function" \
     --argument-names \
     function_name
@@ -29,7 +31,7 @@ function _mock_exit_status \
     status_code # response to return
 
     echo $status_code >/tmp/$function_name.mock_status_code
-    backup $function_name
+    _backup_before_mocking $function_name
 
     # redefine function to return mock status_code
     function $function_name \
@@ -49,7 +51,7 @@ function _mock_response \
     response # response to return
 
     echo "$response" >/tmp/$function_name.mock_response
-    backup $function_name
+    _backup_before_mocking $function_name
 
     # redefine function to return mock response
     function $function_name \
@@ -62,9 +64,8 @@ function _mock_response \
     set --global --append __mocks_backup __backup_$function_name
 end
 
-
 function _clean_mock \
-    --description "Clean a mock function" \
+    --description "Clean a mock function (warning: erase the function)" \
     --argument-names \
     function_name
 
@@ -88,19 +89,18 @@ function _clean_all_mocks \
 end
 
 function _spy \
-    --description "Create a spy around method" \
+    --description "Create a spy method so you can check it's been called with `_has_called`" \
     --argument-names \
     function_name # name of the method to spy
 
-    backup $function_name
+    _backup_before_mocking $function_name
 
     function $function_name
         echo (status current-function) >/tmp/(status current-function).mock_calls
     end # spy
 end
 
-
-function _cleanup_spy_calls
+function _clean_all_spy_calls
     for mock_calls in /tmp/*.mock_calls
         if test -r $mock_calls
             rm -f $mock_calls
@@ -109,7 +109,7 @@ function _cleanup_spy_calls
 end
 
 function _has_called \
-    --description "check spy method XYZ write to the /tmp/$function_name.mock_calls file when called" \
+    --description "check spy method has been called, i.e has written to the /tmp/$function_name.mock_calls" \
     --argument-names \
     function_name \
     function_args # arguments to passed to the spy

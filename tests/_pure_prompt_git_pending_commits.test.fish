@@ -1,5 +1,5 @@
 source (status dirname)/fixtures/constants.fish
-source (status dirname)/mocks/mocks.fish
+source (status dirname)/mocks/spectra.fish
 source (status dirname)/../functions/_pure_prompt_git_pending_commits.fish
 @echo (_print_filename (status filename))
 

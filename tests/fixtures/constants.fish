@@ -1,4 +1,4 @@
-source (status dirname)/../mocks/mocks.fish
+source (status dirname)/../mocks/spectra.fish
 
 set --global SUCCESS 0
 set --global FAILURE 1

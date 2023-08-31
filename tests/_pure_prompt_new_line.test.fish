@@ -1,5 +1,5 @@
 source (status dirname)/fixtures/constants.fish
-source (status dirname)/mocks/mocks.fish
+source (status dirname)/mocks/spectra.fish
 source (status dirname)/../functions/_pure_is_single_line_prompt.fish
 source (status dirname)/../functions/_pure_prompt_beginning.fish
 source (status dirname)/../functions/_pure_prompt_new_line.fish
@@ -14,7 +14,7 @@ before_all
 
 function before_each
     source (status dirname)/../functions/_pure_prompt_beginning.fish # restore function
-    _cleanup_spy_calls
+    _clean_all_spy_calls
 end
 
 
