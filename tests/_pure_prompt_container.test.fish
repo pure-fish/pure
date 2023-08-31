@@ -1,5 +1,5 @@
 source (status dirname)/fixtures/constants.fish
-source (status dirname)/mocks/mocks.fish
+source (status dirname)/mocks/spectra.fish
 source (status dirname)/../functions/_pure_is_inside_container.fish
 source (status dirname)/../functions/_pure_user_at_host.fish
 source (status dirname)/../functions/_pure_prompt_container.fish

@@ -1,5 +1,5 @@
 source (status dirname)/fixtures/constants.fish
-source (status dirname)/mocks/mocks.fish
+source (status dirname)/mocks/spectra.fish
 source (status dirname)/../functions/_pure_detect_container_by_pid_method.fish
 @echo (_print_filename (status filename))
 
@@ -17,7 +17,7 @@ end
 function before_each
     set --global proc_sched /tmp/1/sched
     functions --erase head
-    _cleanup_spy_calls
+    _clean_all_spy_calls
 end
 
 function _create_proc_sched_file --argument-names proc_sched
