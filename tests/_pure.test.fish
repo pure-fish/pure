@@ -327,6 +327,12 @@ before_all
     echo $pure_symbol_k8s_prefix
 ) = "☸"
 
+@test "configure: pure_color_k8s_prefix" (
+    set --erase pure_color_k8s_prefix
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_color_k8s_prefix
+) = pure_color_dark
+
 @test "configure: pure_color_k8s_context" (
     set --erase pure_color_k8s_context
     source (status dirname)/../conf.d/pure.fish

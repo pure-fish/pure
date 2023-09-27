@@ -1,4 +1,4 @@
-set --global pure_version 4.8.0 # For bug report and tag-after-merge workflow
+set --global pure_version 4.8.1 # For bug report and tag-after-merge workflow
 
 # Base colors
 _pure_set_default pure_color_primary blue
@@ -97,5 +97,6 @@ _pure_set_default pure_symbol_ssh_prefix "" # suggestion: 'ssh:/' or '🔗🔐�
 # Display Kubernetes/k8s context and namespace
 _pure_set_default pure_enable_k8s false
 _pure_set_default pure_symbol_k8s_prefix "☸" # ☸️
+_pure_set_default pure_color_k8s_prefix pure_color_dark
 _pure_set_default pure_color_k8s_context pure_color_success
 _pure_set_default pure_color_k8s_namespace pure_color_primary
