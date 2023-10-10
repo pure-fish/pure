@@ -67,6 +67,7 @@ Fully **customizable** (colors, symbols and features):
 - Detect when running in a container ;
 - Shorten _current folder_ component in prompt and window title 🏴;
 - Truncate _current folder_ component in prompt and window title 🏴;
+- Display [_npmrc_](https://github.com/deoxxa/npmrc) profile name when activated 🏴 ;
 
 🏴: Enabled or disabled via a [feature flag](#-features-flags).
 
@@ -95,6 +96,7 @@ set --universal pure_color_system_time pure_color_mute
 | **`pure_symbol_ssh_prefix`**           |         | Prefix when being connected to SSH session (default: [undefined][to-set])    |
 | **`pure_symbol_title_bar_separator`**  | `-`     | Separator in terminal's windows title.                                       |
 | **`pure_symbol_virtualenv_prefix`**    |         | Prefix when a Python virtual env is activated (default: [undefined][to-set]) |
+| **`pure_symbol_npmrc_prefix`**         |         | Prefix when a npmrc is activated (default: [undefined][to-set])              |
 
 > :information_source: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#safer-symbols)?
 
@@ -107,6 +109,7 @@ set --universal pure_color_system_time pure_color_mute
 | **`pure_enable_container_detection`**                    | `true`  | `false`: Do not check if run in container (e.g. `docker`, `podman`, `LXC`/`LXD`, etc.).<br/>:warning: Detection is a bit [tricky across OSes][container-detection]. |
 | **`pure_enable_git`**                                    | `true`  | Show info about Git repository.                                                                                                                                     |
 | **`pure_enable_k8s`**                                    | `false` | `true`: shows `kubernetes` context and namespace.                                                                                                                   |
+| **`pure_enable_npmrc`**                                  | `false` | `true`: shows [npmrc](https://github.com/deoxxa/npmrc) profile                                                                                                      |
 | **`pure_enable_single_line_prompt`**                     | `false` | `true`: Compact prompt as a single line                                                                                                                             |
 | **`pure_enable_virtualenv`**                             | `true`  | Show virtual env name (based on `VIRTUAL_ENV` or `CONDA_DEFAULT_ENV`).                                                                                              |
 | **`pure_reverse_prompt_symbol_in_vimode`**               | `true`  | `true`: `❮` indicate a non-insert mode.<br/>`false`: indicate vi mode with `[I]`, `[N]`, `[V]`.                                                                     |
@@ -118,8 +121,8 @@ set --universal pure_color_system_time pure_color_mute
 | **`pure_show_subsecond_command_duration`**               | `false` | Show subsecond (ex. 1.5s) in command duration.                                                                                                                      |
 | **`pure_show_system_time`**                              | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                                                                                                 |
 | **`pure_threshold_command_duration`**                    | `5`     | Show command duration when above this value (seconds).                                                                                                              |
-| **`pure_truncate_prompt_current_directory_keeps`**       | `0`    | Truncate working directory path in prompt, but keeps the last to `n` components (`0` full path in current directory)                                               |
-| **`pure_truncate_window_title_current_directory_keeps`** | `0`    | Truncate working directory path in window title, but keeps the last to `n` components (`0` full path in window title)                                         |
+| **`pure_truncate_prompt_current_directory_keeps`**       | `0`     | Truncate working directory path in prompt, but keeps the last to `n` components (`0` full path in current directory)                                                |
+| **`pure_truncate_window_title_current_directory_keeps`** | `0`     | Truncate working directory path in window title, but keeps the last to `n` components (`0` full path in window title)                                               |
 
 ### 🎨 Colours
 

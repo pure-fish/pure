@@ -102,3 +102,8 @@ _pure_set_default pure_symbol_k8s_prefix "☸" # ☸️
 _pure_set_default pure_color_k8s_prefix pure_color_info
 _pure_set_default pure_color_k8s_context pure_color_success
 _pure_set_default pure_color_k8s_namespace pure_color_primary
+
+# Show npmrc profile (https://github.com/deoxxa/npmrc)
+_pure_set_default pure_enable_npmrc false
+_pure_set_default pure_symbol_npmrc_prefix "" # 
+_pure_set_default pure_color_npmrc pure_color_danger
