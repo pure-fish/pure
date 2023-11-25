@@ -89,7 +89,6 @@ set --universal pure_color_system_time pure_color_mute
 | **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).                                  |
 | **`pure_symbol_k8s_prefix`**           | `☸`     | Prefix when being connected to Kubernetes/K8s                                |
 | **`pure_symbol_prefix_root_prompt`**   | `#`     | Prefix prompt when logged in as `root`.                                      |
-| **`pure_symbol_prefix_root_prompt`**   | `#`     | Prefix when being root user                                                  |
 | **`pure_symbol_prompt`**               | `❯`     | Prompt symbol.                                                               |
 | **`pure_symbol_reverse_prompt`**       | `❮`     | VI non-insert mode symbol.                                                   |
 | **`pure_symbol_ssh_prefix`**           |         | Prefix when being connected to SSH session (default: [undefined][to-set])    |
