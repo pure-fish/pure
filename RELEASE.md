@@ -13,11 +13,13 @@ We run the test workflow on:
   * `**.fish` files with the exception `conf.d/pure.fish`, as we have dedicated mechanism to manage versions bump ;
   * and workflow (`*.yml`) files
 
-## Bumping version
+## Versioning
 
-**required:** You MUST **follow semantic versioning** based on [conventional commits][coco].
+**required:** Commits must **[follow conventional commits convention][coco]**.
 
-Is triggered only on `master` and:
+Versioning is done automatically based on commit messages and triggered only on `master` branch.
+
+Details:
 
 1. We compute the [project's next version][next-version] using a GitHub Action ;
 2. Then update `$pure_version` value in `./conf.d/pure.fish` ;
@@ -29,3 +31,4 @@ The `add-version-tag.yml` pipeline is triggered only for `master` when `./conf.d
 
 [next-version]: https://github.com/thenativeweb/get-next-version
 [push]: https://github.com/ad-m/github-push-action
+[coco]: https://www.conventionalcommits.org/en/v1.0.0/
