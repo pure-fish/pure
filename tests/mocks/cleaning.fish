@@ -9,9 +9,9 @@ end
 function _clean_all_mocks \
     --description "Clean all mock function"
 
-    for mock in $__mocks
-        if functions --query $mock
-            functions --erase $mock
+    for function_name in $__mocks
+        if functions --query $function_name
+            functions --erase $function_name
         end
 
         if functions --query __backup_$function_name # restore original function
