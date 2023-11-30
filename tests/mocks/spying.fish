@@ -6,7 +6,7 @@ function _spy \
     _backup_before_mocking $function_name
 
     function $function_name
-        echo (status current-function) >/tmp/(status current-function).mock_calls
+        echo -- (status current-function) $argv >/tmp/(status current-function).mock_calls
     end # spy
 end
 
