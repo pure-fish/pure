@@ -10,10 +10,6 @@ function _pure_prompt_k8s
             set --local symbol (_pure_set_color $pure_color_k8s_prefix)$pure_symbol_k8s_prefix
             set --local namespace (_pure_set_color $pure_color_k8s_namespace)(_pure_k8s_namespace)
 
-            if test -n "$namespace"
-                set --local namespace (_pure_set_color $pure_color_k8s_namespace)default
-            end
-
             echo "$symbol $context/$namespace"
         end
     end
