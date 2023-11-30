@@ -22,6 +22,7 @@ build-pure-on:
 		--target ${STAGE} \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
 		--tag=pure-${STAGE}-${FISH_VERSION} \
+        --load \
 		./
 
 .PHONY: dev-pure-on
@@ -65,6 +66,7 @@ build-pure-on-nix:
 		--file ./docker/${STAGE}.Dockerfile \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
 		--tag=pure-${STAGE}-${FISH_VERSION} \
+        --load \
 		./
 
 dev-pure-on-nix: STAGE?=nix
