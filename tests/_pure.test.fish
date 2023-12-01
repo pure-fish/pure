@@ -331,7 +331,7 @@ before_all
     set --erase pure_color_k8s_prefix
     source (status dirname)/../conf.d/pure.fish
     echo $pure_color_k8s_prefix
-) = pure_color_dark
+) = pure_color_info
 
 @test "configure: pure_color_k8s_context" (
     set --erase pure_color_k8s_context
