@@ -10,5 +10,14 @@ function _pure_parse_directory \
             set folder (fish_prompt_pwd_dir_length=1 prompt_pwd)
         end
     end
+
+    if test $pure_truncate_prompt_current_directory_keeps -ge 1
+        set folder (
+            string split '/' $folder \
+                | tail -n $pure_truncate_prompt_current_directory_keeps \
+                | string join '/'
+        )
+    end
+
     echo $folder
 end

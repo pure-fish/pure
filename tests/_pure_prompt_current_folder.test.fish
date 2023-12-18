@@ -8,6 +8,7 @@ function before_all
     _purge_configs
     _disable_colors
     set --universal pure_shorten_prompt_current_directory_length 0
+    set --universal pure_truncate_prompt_current_directory_keeps 0
 end
 
 function after_all
