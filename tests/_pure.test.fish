@@ -344,3 +344,15 @@ before_all
     source (status dirname)/../conf.d/pure.fish
     echo $pure_color_k8s_namespace
 ) = pure_color_primary
+
+@test "configure: pure_truncate_prompt_current_directory_keeps" (
+    set --erase pure_truncate_prompt_current_directory_keeps
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_truncate_prompt_current_directory_keeps
+) = -1
+
+@test "configure: pure_truncate_window_title_current_directory_keeps" (
+    set --erase pure_truncate_window_title_current_directory_keeps
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_truncate_window_title_current_directory_keeps
+) = -1

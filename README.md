@@ -65,7 +65,8 @@ Fully **customizable** (colors, symbols and features):
   - Async update when [configured with fish-async-prompt](https://github.com/pure-fish/pure/wiki/Async-git-Prompt) ;
 - Update terminal title with _current folder_ and _command_ ;
 - Detect when running in a container ;
-- Shorten _current folder_ component 🏴;
+- Shorten _current folder_ component in prompt and window title 🏴;
+- Truncate _current folder_ component in prompt and window title 🏴;
 
 🏴: Enabled or disabled via a [feature flag](#-features-flags).
 
@@ -117,6 +118,8 @@ set --universal pure_color_system_time pure_color_mute
 | **`pure_show_subsecond_command_duration`**               | `false` | Show subsecond (ex. 1.5s) in command duration.                                                                                                                      |
 | **`pure_show_system_time`**                              | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`).                                                                                                 |
 | **`pure_threshold_command_duration`**                    | `5`     | Show command duration when above this value (seconds).                                                                                                              |
+| **`pure_truncate_prompt_current_directory_keeps`**       | `0`    | Truncate working directory path in prompt, but keeps the last to `n` components (`0` full path in current directory)                                               |
+| **`pure_truncate_window_title_current_directory_keeps`** | `0`    | Truncate working directory path in window title, but keeps the last to `n` components (`0` full path in window title)                                         |
 
 ### 🎨 Colours
 
