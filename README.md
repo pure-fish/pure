@@ -95,7 +95,7 @@ set --universal pure_color_system_time pure_color_mute
 | **`pure_symbol_reverse_prompt`**       | `❮`     | VI non-insert mode symbol.                                                   |
 | **`pure_symbol_ssh_prefix`**           |         | Prefix when being connected to SSH session (default: [undefined][to-set])    |
 | **`pure_symbol_title_bar_separator`**  | `-`     | Separator in terminal's windows title.                                       |
-| **`pure_symbol_nixdevshell_prefix`**   |         | Prefix when a `nix develop` shell is activated (default: [undefined][to-set]) |
+| **`pure_symbol_nixdevshell_prefix`**   | `❄️`     | Prefix when a `nix develop` shell is activated (default: [undefined][to-set]) |
 | **`pure_symbol_virtualenv_prefix`**    |         | Prefix when a Python virtual env is activated (default: [undefined][to-set]) |
 
 > :information_source: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#safer-symbols)?
