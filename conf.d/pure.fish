@@ -50,7 +50,7 @@ _pure_set_default pure_color_system_time pure_color_mute
 
 # Nix build environment
 _pure_set_default pure_enable_nixdevshell false
-_pure_set_default pure_symbol_nixdevshell_prefix ""
+_pure_set_default pure_symbol_nixdevshell_prefix "❄️" # otherwise nerdfonts: '󱄅' or ''
 _pure_set_default pure_color_nixdevshell pure_color_mute
 
 #  env for Python
