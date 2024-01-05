@@ -5,8 +5,9 @@ function _pure_prompt_nixdevshell \
         and test "$pure_enable_nixdevshell" = true;
         and test -n "$IN_NIX_SHELL"
 
-        set --local nixdevshell_color (_pure_set_color $pure_color_nixdevshell)
+        set --local prefix (_pure_set_color $pure_color_nixdevshell_prefix)$pure_symbol_nixdevshell_prefix
+        set --local _status (_pure_set_color $pure_color_nixdevshell_status)$IN_NIX_SHELL
 
-        echo "$pure_symbol_nixdevshell_prefix$nixdevshell_color$IN_NIX_SHELL"
+        echo "$prefix$_status"
     end
 end
