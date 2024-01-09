@@ -151,9 +151,9 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 
 ## :clap: Thanks
 
-- [@andreiborisov](https://github.com/andreiborisov) for the [docker images][docker-images] ;
-- [@jorgebucaran](https://github.com/jorgebucaran/) for [fishtape](https://github.com/jorgebucaran/fishtape) ;
-- [@rafaelrinaldi](https://github.com/pure-fish/pure) for starting the project ;
+- [@andreiborisov](https://github.com/andreiborisov) for the [docker images][docker-images]
+- [@jorgebucaran](https://github.com/jorgebucaran/) for [fishtape](https://github.com/jorgebucaran/fishtape)
+- [@rafaelrinaldi](https://github.com/rafaelrinaldi) for starting the project and publishing the initial releases
 
 ## :classical_building: License
 
