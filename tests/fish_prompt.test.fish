@@ -61,13 +61,13 @@ before_all
 
 @test "fish_prompt: use 2-lines prompt by default" (
     set --universal pure_enable_single_line_prompt false
-    fish_prompt | wc -l
+    fish_prompt | wc -l | tr -d ' '
 ) = 2
 
 @test "fish_prompt: use 1-line compact-prompt" (
     set --universal pure_enable_single_line_prompt true
 
-    fish_prompt | wc -l
+    fish_prompt | wc -l | tr -d ' '
 ) = 1
 
 after_all

@@ -56,19 +56,19 @@ jobs:
       - run: docker --version
       - run: make test-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
 
-  # test-macos:
-  #   name: Test on fish on MacOS
-  #   runs-on: macos-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Install Fish
-  #       run: brew install fish
-  #     - name: Install Fisher > Fishtape > Pure
-  #       run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
-  #       shell: fish {0}
-  #     - name: Test Pure
-  #       run: fishtape tests/*.test.fish
-  #       shell: fish {0}
+  test-macos:
+    name: Test on fish on MacOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Fish
+        run: brew install fish
+      - name: Install Fisher > Fishtape > Pure
+        run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
+        shell: fish {0}
+      - name: Test Pure
+        run: fishtape tests/*.test.fish
+        shell: fish {0}
 
   bump-version: # Bump when on master
     needs: [test-container]

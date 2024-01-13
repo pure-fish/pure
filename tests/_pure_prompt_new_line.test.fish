@@ -22,21 +22,21 @@ end
     set --universal pure_enable_single_line_prompt false
     set _pure_fresh_session false
 
-    _pure_prompt_new_line | wc -l
+    _pure_prompt_new_line | wc -l | tr -d ' '
 ) -eq $IS_PRESENT
 
 @test "_pure_prompt_new_line: print prompt without newline for new session" (
     set --universal pure_enable_single_line_prompt false
     set _pure_fresh_session true
 
-    _pure_prompt_new_line | wc -l
+    _pure_prompt_new_line | wc -l | tr -d ' '
 ) = $NONE
 
 @test "_pure_prompt_new_line: print prompt without newline when single line prompt is enabled" (
     set _pure_fresh_session false
     set --universal pure_enable_single_line_prompt true
 
-    _pure_prompt_new_line | wc -l
+    _pure_prompt_new_line | wc -l | tr -d ' '
 ) = $NONE
 
 before_each

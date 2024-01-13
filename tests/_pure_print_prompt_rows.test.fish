@@ -19,14 +19,14 @@ before_each
 @test "_pure_print_prompt_rows: end with newline by default" (
     set --universal pure_enable_single_line_prompt false
 
-    _pure_print_prompt_rows | wc -l
+    _pure_print_prompt_rows | wc -l | tr -d ' '
 ) = $IS_PRESENT
 
 before_each
 @test "_pure_print_prompt_rows: end WITHOUT newline when compact-prompt is enable" (
     set --universal pure_enable_single_line_prompt true
 
-    _pure_print_prompt_rows | wc -l
+    _pure_print_prompt_rows | wc -l | tr -d ' '
 ) = $NONE
 
 
