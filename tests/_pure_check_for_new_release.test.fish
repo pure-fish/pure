@@ -20,6 +20,7 @@ before_each
 before_each
 @test "_pure_check_for_new_release: nothing when same as latest" (
     set --universal pure_check_for_new_release true
+    set --erase pure_version
     set --universal pure_version 0.0.1
     function curl; echo '"tag_name": "v0.0.1",'; end # mock
 
@@ -29,6 +30,7 @@ before_each
 before_each
 @test "_pure_check_for_new_release: show fisher command to install when enable" (
     set --universal pure_check_for_new_release true
+    set --erase pure_version
     set --universal pure_version 0.0.1
     function curl; echo '"tag_name": "v9.9.9",'; end # mock
 

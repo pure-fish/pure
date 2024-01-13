@@ -20,5 +20,5 @@ function pure_get_latest_release_version \
     curl \
         --silent \
         "https://api.github.com/repos/$user_repo/releases/latest" \
-    | string match --regex  '"tag_name": "\K.*?(?=")'
+        | string match --regex '"tag_name": "\K.*?(?=")'
 end
