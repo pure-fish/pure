@@ -22,7 +22,7 @@ build-pure-on:
 		--target ${STAGE} \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
 		--tag=pure-${STAGE}-${FISH_VERSION} \
-        --load \
+		--load \
 		./
 
 .PHONY: dev-pure-on
@@ -66,7 +66,7 @@ build-pure-on-nix:
 		--file ./docker/${STAGE}.Dockerfile \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
 		--tag=pure-${STAGE}-${FISH_VERSION} \
-        --load \
+		--load \
 		./
 
 dev-pure-on-nix: STAGE?=nix
@@ -87,3 +87,24 @@ dev-pure-on-nix:
 test-pure-on-nix: CMD?=fishtape tests/*.test.fish
 test-pure-on-nix:
 	$(MAKE) dev-pure-on-nix CMD="${CMD}" TTY=
+
+
+build-pure-doc:
+	docker build \
+		--file ./docker/doc.Dockerfile \
+		--tag=pure-doc \
+		--load \
+		./
+
+serve-pure-doc:
+	docker run \
+		--name mkdocs \
+		--tty \
+		--interactive \
+		--rm \
+		--publish 8000:8000 \
+		--env "DEV_ADDR=0.0.0.0:8000" \
+		--env "LIVE_RELOAD_SUPPORT=true" \
+		--env ADD_MODULES="mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin" \
+		--volume=$$(pwd):/mkdocs \
+		polinux/mkdocs
