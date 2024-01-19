@@ -105,6 +105,6 @@ serve-pure-doc:
 		--publish 8000:8000 \
 		--env "DEV_ADDR=0.0.0.0:8000" \
 		--env "LIVE_RELOAD_SUPPORT=true" \
-		--env ADD_MODULES="mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin" \
+		--env ADD_MODULES="pymdown-extensions mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin" \
 		--volume=$$(pwd):/mkdocs \
 		polinux/mkdocs

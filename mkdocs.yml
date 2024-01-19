@@ -15,15 +15,15 @@ theme:
     - navigation.tracking
     - navigation.expand
     - navigation.indexes
-  logo: spinak_iac.png
-  favicon: spinak_iac.png
+  # logo: pure.png
+  # favicon: pure.png
   icon:
     repo: fontawesome/brands/gitlab
     admonition:
       note: octicons/tag-16
       abstract: octicons/checklist-16
       info: octicons/info-16
-      tip: octicons/squirrel-16
+      tip: octicons/light-bulb-16
       success: octicons/check-16
       question: octicons/question-16
       warning: octicons/alert-16
@@ -51,15 +51,15 @@ theme:
 
 markdown_extensions:
   - admonition
-  #   - attr_list
-  #   - md_in_html
-  #   - pymdownx.details
-  #   - pymdownx.superfences
-  #   - pymdownx.tabbed:
-  #       alternate_style: true
-  #   - pymdownx.highlight
-  #   - pymdownx.inlinehilite
-  #   - pymdownx.snippets
+  # - attr_list
+  # - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -68,6 +68,6 @@ markdown_extensions:
 
 
 plugins:
-  # - search
+  - search
   - awesome-pages
   - include-markdown
