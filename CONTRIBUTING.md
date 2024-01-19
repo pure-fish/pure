@@ -1,18 +1,23 @@
-# Contribution Guide
+## :+1: Contribute
 
-## Code of Conduct
+!!! info
 
-* Be kind to others ;
-* Critic code not people.
+    We use [`docker`](https://docs.docker.com/install/) to isolate from our working environment.
 
-## Release
+Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by the container:
 
-Note, we follow [semver](https://semver.org/), release is manage in the pipeline, see [RELEASE.md](./RELEASE.md)
+    make build-pure-on FISH_VERSION=3.3.1
+    make dev-pure-on FISH_VERSION=3.3.1 CMD="fishtape tests/*.test.fish"
 
-## Code Conventions for `pure`
+## Code Conventions
 
-* Use the idiomatic [`test` instead of `[`](httpsc://fishshell.com/docs/current/commands.html#test) brackets (as recommended by the documentation).
-* Use **long form options**, _e.g._ `set --local`, as they are more explicit over cryptic 1-letter form.
+### Be Fishy
+
+Use the idiomatic [`test` instead of `[`](httpsc://fishshell.com/docs/current/commands.html#test) brackets (as recommended by the documentation).
+
+### Be Explicit
+
+Use **long form options**, _e.g._ `set --local`, as they are more explicit over cryptic 1-letter form.
 
 ### Naming Public Item
 
@@ -112,3 +117,5 @@ $pure_enable_git_async = false
 ```fish
 $pure_threshold_command_duration
 ```
+
+[fish-releases]: https://github.com/fish-shell/fish-shell/releases
