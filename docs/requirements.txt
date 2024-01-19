@@ -1,0 +1,4 @@
+pymdown-extensions
+mkdocs-material
+mkdocs-awesome-pages-plugin
+mkdocs-include-markdown-plugin

@@ -1,17 +1,9 @@
-FROM python:3
+FROM squidfunk/mkdocs-material:9
 
-# Create app directory
-WORKDIR /usr/src/app
-
+COPY ./docs/requirements.txt /docs/
 RUN pip install \
-    mkdocs \
-    mkdocs-pdf-export-plugin \
-    mkdocs-material
+    --no-cache-dir \
+    --requirement ./requirements.txt
 
-COPY . .
-
-# RUN mkdocs build
-
-EXPOSE 8000
-# CMD ["python", "-m", "http.server", "8000", "-d", "./site"]
-CMD ["mkdocs" "serve" "--clean"]
+ENTRYPOINT ["mkdocs"]
+CMD ["serve", "--dev-addr=0.0.0.0:8000"]
