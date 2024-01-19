@@ -1,4 +1,4 @@
-## :+1: Contribute
+## :+1: Work inside a Docker
 
 !!! info
 
