@@ -89,13 +89,6 @@ test-pure-on-nix:
 	$(MAKE) dev-pure-on-nix CMD="${CMD}" TTY=
 
 
-build-pure-doc:
-	docker build \
-		--file ./docker/doc.Dockerfile \
-		--tag=pure-doc \
-		--load \
-		./
-
 serve-pure-doc:
 	docker run \
 		--name mkdocs \
@@ -103,8 +96,12 @@ serve-pure-doc:
 		--interactive \
 		--rm \
 		--publish 8000:8000 \
-		--env "DEV_ADDR=0.0.0.0:8000" \
-		--env "LIVE_RELOAD_SUPPORT=true" \
-		--env ADD_MODULES="pymdown-extensions mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin" \
-		--volume=$$(pwd):/mkdocs \
-		polinux/mkdocs
+		--volume=$$(pwd):/docs \
+        pure-doc
+
+build-pure-doc:
+	docker build \
+		--file ./docker/doc.Dockerfile \
+		--tag=pure-doc \
+		--load \
+        ./
