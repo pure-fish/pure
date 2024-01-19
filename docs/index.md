@@ -2,9 +2,6 @@
 
 <img src="https://user-images.githubusercontent.com/1212392/262604075-db5d0ad2-a7ed-4a62-a1cc-ec677cf76351.png" width="61.8%"/><br>
 
-<https://img.shields.io/badge/fish-v3-007EC7.svg?style=flat-square>
-[![ci-status]][ci-link] ![fish-3] [![release-version]][release-link] [![sponsors]][sponsor-link] <!-- 0 width spaces on this line -->
-
 </div>
 
 # pure

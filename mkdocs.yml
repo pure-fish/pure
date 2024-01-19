@@ -4,21 +4,34 @@ site_author: "Édouard Lopez"
 docs_dir: docs/
 repo_name: "pure-fish/pure"
 repo_url: "https://github.com/pure-fish/pure"
+
 nav:
   - Home: index.md
 theme:
-  # name: "material"
   name: "material"
   include_sidebar: true
   features:
-    - navigation.tabs
-    - navigation.tracking
+    - content.action.edit
+    - content.code.copy
     - navigation.expand
+    - navigation.footer
     - navigation.indexes
-  # logo: pure.png
-  # favicon: pure.png
+    - navigation.instant
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.path
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+
+  logo: ./assets/favicon.png
+  favicon: ./assets/favicon.png
+
   icon:
-    repo: fontawesome/brands/gitlab
+    repo: fontawesome/brands/github
     admonition:
       note: octicons/tag-16
       abstract: octicons/checklist-16
@@ -32,27 +45,30 @@ theme:
       bug: octicons/bug-16
       example: octicons/beaker-16
       quote: octicons/quote-16
+
   palette:
-    - scheme: default
-      primary: teal
-      accent: teal
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/brightness-7
         name: Switch to dark mode
-    - scheme: slate
-      primary: teal
-      accent: teal
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: purple
       toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-2
         name: Switch to light mode
+
   font:
-    text: Open Sans
+    text: Roboto
     code: Roboto Mono
 
 markdown_extensions:
   - admonition
-  # - attr_list
-  # - md_in_html
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tabbed:
@@ -63,11 +79,25 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-        #   - toc:
-        #       permalink: true
+  - toc:
+      permalink: true
+      toc_depth: 3
 
+extra:
+  social:
+    - icon: fontawesome/brands/mastodon
+      link: https://piaille.fr/@edouard_lopez
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/edouard_lopez
+    - icon: fontawesome/brands/github
+      link: https://github.com/pure-fish/pure/
 
 plugins:
   - search
   - awesome-pages
   - include-markdown
+  - git-committers:
+      repository: pure-fish/pure
+      branch: master
+      # enabled: !ENV [CI, false]
+  - git-authors
