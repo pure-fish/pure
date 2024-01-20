@@ -38,5 +38,27 @@ RUN echo 'Symlink dev files' \
     && ln -nfs "$(pwd)"/conf.d/*.fish ../conf.d/ \
     && ln -nfs "$(pwd)"/functions/*.fish ../functions/
 
+FROM with-pure-installed as with-terminal-screenshot-installed
+USER root
+RUN apk add \
+    --no-cache \
+    chromium \
+    nss \
+    freetype \
+    harfbuzz \
+    ca-certificates \
+    ttf-freefont \
+    nodejs \
+    npm
+
+# Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
+RUN npm install \
+    --global \
+    terminal-screenshot \
+    puppeteer
+USER nemo
+
 ENTRYPOINT ["fish", "-c"]
 CMD ["fishtape tests/*.test.fish"]
