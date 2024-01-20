@@ -89,6 +89,13 @@ test-pure-on-nix:
 	$(MAKE) dev-pure-on-nix CMD="${CMD}" TTY=
 
 
+build-pure-doc:
+	docker build \
+		--file ./docker/doc.Dockerfile \
+		--tag=pure-doc \
+		--load \
+		./
+
 serve-pure-doc:
 	docker run \
 		--name mkdocs \
@@ -97,11 +104,15 @@ serve-pure-doc:
 		--rm \
 		--publish 8000:8000 \
 		--volume=$$(pwd):/docs \
-        pure-doc
+		pure-doc
 
-build-pure-doc:
-	docker build \
-		--file ./docker/doc.Dockerfile \
-		--tag=pure-doc \
-		--load \
-        ./
+
+.PHONY: build-pure-screenshot
+build-pure-screenshot:
+	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-terminal-screenshot-installed
+
+
+.PHONY: run-pure-screenshot
+run-pure-screenshot: CMD?=fishtape tests/*.test.fish
+run-pure-screenshot:
+	$(MAKE) dev-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-terminal-screenshot-installed CMD="${CMD}"
