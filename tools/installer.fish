@@ -34,7 +34,7 @@ function pure_fetch_source
     set --local package "https://github.com/pure-fish/pure/archive/master.tar.gz"
     mkdir -p $PURE_INSTALL_DIR
 
-    command curl --silent --show-error --location "$package" | command tar -xzf- -C $PURE_INSTALL_DIR --strip-components=1; or begin;
+    command curl --silent --show-error --location "$package" | command tar -xzf- -C $PURE_INSTALL_DIR --strip-components=1; or begin
         printf "%sError: fetching Pure sources failed%s" "$color_error" "$color_normal"
         return 1
     end
@@ -46,7 +46,8 @@ function pure_backup_existing_theme
     set --local backup_prompt $old_prompt.ignore
 
     if test -f "$old_prompt"
-        mv "$old_prompt" "$backup_prompt"; pure_exit_symbol $status
+        mv "$old_prompt" "$backup_prompt"
+        pure_exit_symbol $status
         printf "\tPrevious config saved to: %s%s%s." "$color_white" "$backup_prompt" "$color_normal"
     end
 end
@@ -55,9 +56,9 @@ function pure_enable_autoloading
     printf "\tEnabling autoloading for pure's functions on shell init"
     touch "$FISH_CONFIG_DIR/config.fish"
     if not grep -q "pure.fish" $FISH_CONFIG_DIR/config.fish
-        echo "# THEME PURE #" >> $FISH_CONFIG_DIR/config.fish
-        echo "set fish_function_path $PURE_INSTALL_DIR/functions/" '$fish_function_path' >> $FISH_CONFIG_DIR/config.fish
-        echo "source $PURE_INSTALL_DIR/conf.d/pure.fish" >> $FISH_CONFIG_DIR/config.fish
+        echo "# THEME PURE #" >>$FISH_CONFIG_DIR/config.fish
+        echo "set fish_function_path $PURE_INSTALL_DIR/functions/" '$fish_function_path' >>$FISH_CONFIG_DIR/config.fish
+        echo "source $PURE_INSTALL_DIR/conf.d/pure.fish" >>$FISH_CONFIG_DIR/config.fish
     end
 end
 
@@ -97,7 +98,7 @@ function pure_error
 end
 
 function pure_exit_symbol
-    if test $argv[1] -eq 0
+    if test "$argv[1]" -eq 0
         pure_success
     else
         pure_error
@@ -108,11 +109,18 @@ function install_pure
     printf "Installing Pure theme\n"
     pure_set_fish_config_path $argv
     pure_set_pure_install_path $argv
-    pure_scaffold_fish_directories; pure_exit_symbol $status
-    pure_fetch_source; pure_exit_symbol $status
-    pure_backup_existing_theme; pure_exit_symbol $status
-    pure_enable_autoloading; pure_exit_symbol $status
-    pure_symlinks_assets; pure_exit_symbol $status
-    pure_enable_theme; pure_exit_symbol $status
-    pure_clean_after_install; pure_exit_symbol $status
+    pure_scaffold_fish_directories
+    pure_exit_symbol $status
+    pure_fetch_source
+    pure_exit_symbol $status
+    pure_backup_existing_theme
+    pure_exit_symbol $status
+    pure_enable_autoloading
+    pure_exit_symbol $status
+    pure_symlinks_assets
+    pure_exit_symbol $status
+    pure_enable_theme
+    pure_exit_symbol $status
+    pure_clean_after_install
+    pure_exit_symbol $status
 end
