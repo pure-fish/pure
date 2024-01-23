@@ -4,11 +4,11 @@ function kubectl \
     topcommand \
     subcommand
 
-    if test $topcommand = config
+    if test "$topcommand" = config
         if test $subcommand = current-context
             echo my-context
         end
-        if test $subcommand = view
+        if test "$subcommand" = view
             echo my-namespace
         end
     else

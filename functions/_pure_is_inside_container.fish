@@ -11,7 +11,7 @@ function _pure_is_inside_container \
 
         set --local os_name (uname -s)
         # echo $os_name
-        if test $os_name = Linux
+        if test "$os_name" = Linux
             if _pure_detect_container_by_cgroup_method $cgroup_namespace
                 return $success
             end
