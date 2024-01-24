@@ -53,16 +53,25 @@ end
     echo $called
 ) = once
 
-cleanup_spy
-@test "_pure_is_inside_container: false for Github Action" (
-    set --universal pure_enable_container_detection true
+if test (uname -s) != Darwin
+    cleanup_spy
+    @test "_pure_is_inside_container: true for Github Action on Ubuntu" (
+        set --universal pure_enable_container_detection true
 
-    _pure_is_inside_container
-) $status -eq (if test (uname) = Darwin
-    echo $FAILURE
-else
-    echo $SUCCESS
-end)
+        _pure_is_inside_container
+    ) $status -eq $SUCCESS
+    end
+end
+
+if test (uname -s) = Darwin
+    cleanup_spy
+    @test "_pure_is_inside_container: false for Github Action on MacOS" (
+        set --universal pure_enable_container_detection true
+
+	    _pure_is_inside_container
+    ) $status -eq $FAILURE
+    end
+end
 
 @test "_pure_is_inside_container: detect with $container variable" (
     set --universal pure_enable_container_detection true
