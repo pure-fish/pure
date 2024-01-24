@@ -60,7 +60,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Fish
-        run: brew install fish@3.3.1
+        run: brew install fish
       - name: Install Fisher > Fishtape > Pure
         run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
         shell: fish {0}
