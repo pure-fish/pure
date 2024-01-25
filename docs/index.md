@@ -21,7 +21,7 @@
 {% include 'components/features-overview.md' %}
 {% include 'components/features-list.md' %}
 
-## 🎨 Colours
+## Colours
 
 {% include 'components/colours.md' %}
 
