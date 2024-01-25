@@ -36,15 +36,3 @@ end
 function _print_filename --argument-names filename
     echo (set_color cyan)$filename(set_color normal)
 end
-
-function screenshot \
-    --description "Take screenshot" \
-    --argument-names \
-    name
-
-    fish_prompt \
-        | terminal-screenshot \
-        --output ./docs/assets/screenshots/$name.png \
-        --background-color white \
-        --margin 5
-end
