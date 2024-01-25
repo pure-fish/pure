@@ -17,7 +17,6 @@ usage:
 build-pure-on: STAGE?=only-fish
 build-pure-on:
 	docker build \
-		--quiet \
 		--file ./docker/Dockerfile \
 		--target ${STAGE} \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
