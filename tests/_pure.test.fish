@@ -356,3 +356,23 @@ before_all
     source (status dirname)/../conf.d/pure.fish
     echo $pure_truncate_window_title_current_directory_keeps
 ) = -1
+@test "configure: pure_enable_nixdevshell" (
+    set --erase pure_enable_nixdevshell
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_enable_nixdevshell
+) = false
+@test "configure: pure_symbol_nixdevshell_prefix" (
+    set --erase pure_symbol_nixdevshell_prefix
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_symbol_nixdevshell_prefix
+) = "❄️" # otherwise nerdfonts: '󱄅' or ''
+@test "configure: pure_color_nixdevshell_prefix" (
+    set --erase pure_color_nixdevshell_prefix
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_color_nixdevshell_prefix
+) = pure_color_info
+@test "configure: pure_color_nixdevshell_status" (
+    set --erase pure_color_nixdevshell_status
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_color_nixdevshell_status
+) = pure_color_mute
