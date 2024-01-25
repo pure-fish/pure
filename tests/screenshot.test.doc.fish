@@ -19,7 +19,7 @@ function screenshot \
         | terminal-screenshot \
         --output ./docs/assets/screenshots/$name.png \
         --margin 5 \
-        --font-family "Noto Sans "
+        --font-family "Noto Sans Mono, Noto Sans Symbols, Noto Sans Emoji"
     # --background-color white # some text are invisible with white background
 end
 
