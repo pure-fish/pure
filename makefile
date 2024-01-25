@@ -1,7 +1,7 @@
 #!/usr/bin/make -sf
 
 # force use of Bash
-SHELL := /bin/bash
+SHELL := /usr/bin/env bash
 INTERACTIVE=true
 
 
