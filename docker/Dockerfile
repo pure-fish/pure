@@ -49,7 +49,11 @@ RUN apk add \
     ca-certificates \
     ttf-freefont \
     nodejs \
-    npm
+    npm \
+    font-noto \
+    font-noto-symbols \
+    font-noto-emoji
+
 
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
