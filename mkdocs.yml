@@ -99,8 +99,4 @@ plugins:
   - search
   - awesome-pages
   - include-markdown
-  - git-committers:
-      repository: pure-fish/pure
-      branch: master
-      # enabled: !ENV [CI, false]
   - git-authors
