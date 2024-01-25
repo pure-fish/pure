@@ -52,7 +52,7 @@ _pure_set_default pure_color_system_time pure_color_mute
 _pure_set_default pure_enable_nixdevshell false
 _pure_set_default pure_symbol_nixdevshell_prefix "❄️" # otherwise nerdfonts: '󱄅' or ''
 _pure_set_default pure_color_nixdevshell_prefix pure_color_info
-_pure_set_default pure_color_nixdevshell_status pure_color_mute
+_pure_set_default pure_color_nixdevshell_symbol pure_color_mute
 
 #  env for Python
 _pure_set_default pure_enable_virtualenv true

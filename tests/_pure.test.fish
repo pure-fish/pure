@@ -371,8 +371,8 @@ before_all
     source (status dirname)/../conf.d/pure.fish
     echo $pure_color_nixdevshell_prefix
 ) = pure_color_info
-@test "configure: pure_color_nixdevshell_status" (
-    set --erase pure_color_nixdevshell_status
+@test "configure: pure_color_nixdevshell_symbol" (
+    set --erase pure_color_nixdevshell_symbol
     source (status dirname)/../conf.d/pure.fish
-    echo $pure_color_nixdevshell_status
+    echo $pure_color_nixdevshell_symbol
 ) = pure_color_mute
