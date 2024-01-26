@@ -1,9 +1,12 @@
 source (status dirname)/fixtures/constants.fish
+source (status dirname)/mocks/spectra.fish
+
 @echo (_print_filename (status filename))
 
 function before_each
     _purge_configs
-    source ../conf.d/pure.fish
+    source (status dirname)/../conf.d/pure.fish
+    _clean_all_mocks
 end
 
 function screenshot \
@@ -12,7 +15,7 @@ function screenshot \
     name \
     action
 
-    set --query action; or set action fish_prompt
+    set --query action[1]; or set action fish_prompt
 
 
     $action \
@@ -23,45 +26,41 @@ function screenshot \
     # --background-color white # some text are invisible with white background
 end
 
-function boolean_test \
-    --description "Take screenshot" \
-    --argument-names \
-    name \
-    setup_context \
-    value \
-    action
-
-    echo $value
-    echo $action
-    echo $setup_context
-    before_each
-    @test "screenshot `$name $value`" (
-        $setup_context
-        set --universal $name $value
-        screenshot "$name=$value" $action
-    ) $status -eq $SUCCESS
-end
-
-
 if set --query CI
-    function setup
-        set --universal pure_check_for_new_release true
-        set --universal pure_version 0.0.1
-        function curl
-            echo '"tag_name": "v0.0.1",'
-        end # mock
-    end
-    # boolean_test pure_check_for_new_release setup false _pure_check_for_new_release
     before_each
-    @test "screenshot `pure_check_for_new_release true`" (
+    @test "screenshot: pure_check_for_new_release=true,with-update" (
         set --universal pure_check_for_new_release true
-        set --universal pure_version 0.0.1
-        function curl
-            echo '"tag_name": "v0.0.1",'
-        end # mock
+        set --global pure_version 0.0.1
+        _mock_response curl '"tag_name": "v9.9.9",'
 
-        screenshot "pure_check_for_new_release=true" _pure_check_for_new_release
+        screenshot "pure_check_for_new_release=true,with-update" _pure_check_for_new_release
 
+    ) $status -eq $SUCCESS
+
+    before_each
+    @test "screenshot: pure_check_for_new_release=true,no-update" (
+        set --universal pure_check_for_new_release true
+        set --global pure_version 0.0.1
+        _mock_response curl '"tag_name": "v0.0.1",'
+
+        screenshot "pure_check_for_new_release=true,no-update" _pure_check_for_new_release
+    ) $status -eq $SUCCESS
+
+
+    before_each
+    @test "screenshot: pure_enable_container_detection=true,inside" (
+        set --universal pure_enable_container_detection true
+        set --universal pure_symbol_container_prefix "🐋"
+
+        screenshot "pure_enable_container_detection=true,inside"
+    ) $status -eq $SUCCESS
+
+    before_each
+    @test "screenshot: pure_enable_container_detection=true,outside" (
+        set --universal pure_enable_container_detection true
+        _mock_exit_status _pure_is_inside_container $FAILURE
+
+        screenshot "pure_enable_container_detection=true,outside"
     ) $status -eq $SUCCESS
 
 
