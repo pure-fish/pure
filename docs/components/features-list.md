@@ -14,6 +14,14 @@
     set --universal pure_check_for_new_release false
     ```
 
+=== "Enabled (with update)"
+
+    ![screenshot pure_check_for_new_release=true,with-update](../assets/screenshots/pure_check_for_new_release=true,with-update.png)
+
+=== "Enabled (no update)"
+
+    ![screenshot pure_check_for_new_release=true,no-update](../assets/screenshots/pure_check_for_new_release=true,no-update.png)
+
 ### Container Detection (Docker)
 
 | Option                                | Default | Description                                                                                                                                                                    |
@@ -21,7 +29,15 @@
 | **`pure_enable_container_detection`** | `true`  | `false`: Do not check _pure_ runs inside a container (e.g. `docker`, `podman`, `LXC`/`LXD`, etc.).<br/>:warning: Detection is a bit [tricky across OSes][container-detection]. |
 | **`pure_symbol_container_prefix`**    |         | Prefix when being inside a container ([to customize][to-set])                                                                                                                  |
 
-[container-detection]: https://stackoverflow.com/q/23513045/802365
+[container-detection]: <https://stackoverflow.com/q/23513045/802365>
+
+=== "Enabled (inside a container)"
+
+    ![screenshot pure_enable_container_detection=true,inside](../assets/screenshots/pure_enable_container_detection=true,inside.png) 
+
+=== "Enabled (outside a container)"
+
+    ![screenshot pure_enable_container_detection=true,outside](../assets/screenshots/pure_enable_container_detection=true,outside.png)
 
 ### Current Working Directory
 
