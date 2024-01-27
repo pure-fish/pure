@@ -1,3 +1,4 @@
+<!-- markdownlint-disable-next-line MD041 -->
 > Pretty, minimal and fast Fish 🐟 prompt, ported from [`zsh`](https://github.com/sindresorhus/pure).
 
 <div align=center>

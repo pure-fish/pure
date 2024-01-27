@@ -1,0 +1,11 @@
+---
+default: true
+extends: null
+MD007: false
+MD013: false
+MD033:
+  allowed_elements:
+    - br
+    - img
+    - div
+    - a

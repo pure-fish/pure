@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD041 -->
 !!! success
 
     Pure requires Fish **`≥3.x`**

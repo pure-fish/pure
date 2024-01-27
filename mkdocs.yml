@@ -1,4 +1,5 @@
-site_name: Pure.fish
+---
+site_name: "Pure.fish Documentation"
 site_description: " Pretty, minimal and fast Fish 🐟 prompt"
 site_author: "Édouard Lopez"
 docs_dir: docs/

@@ -75,7 +75,3 @@ jobs:
     if: contains(github.ref, 'master')
     uses: ./.github/workflows/bump-version.yml
     secrets: inherit
-
-  publish-doc:
-    uses: ./.github/workflows/doc.yml
-    secrets: inherit

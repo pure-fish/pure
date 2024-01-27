@@ -1,9 +1,18 @@
-
+<!-- markdownlint-disable MD041 -->
 ### Check For New Release
 
 | Option                           | Default | Description                                               |
 | :------------------------------- | :------ | :-------------------------------------------------------- |
 | **`pure_check_for_new_release`** | `false` | `true`: check repo for new release (on every shell start) |
+
+!!! success "🐌 Faster Prompt"
+
+    Checking new release send a HTTP request that slow down your prompt rendering 
+    as it wait for remote server response. Set it to `false` speed up rendering:
+
+    ```fish
+    set --universal pure_check_for_new_release false
+    ```
 
 ### Container Detection (Docker)
 
@@ -11,6 +20,8 @@
 | :------------------------------------ | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`pure_enable_container_detection`** | `true`  | `false`: Do not check _pure_ runs inside a container (e.g. `docker`, `podman`, `LXC`/`LXD`, etc.).<br/>:warning: Detection is a bit [tricky across OSes][container-detection]. |
 | **`pure_symbol_container_prefix`**    |         | Prefix when being inside a container ([to customize][to-set])                                                                                                                  |
+
+[container-detection]: https://stackoverflow.com/q/23513045/802365
 
 ### Current Working Directory
 
@@ -77,6 +88,8 @@
 | :---------------------------------- | :------ | :------------------------------------------------------------------ |
 | **`pure_separate_prompt_on_error`** | `false` | Show last command [exit code as a second prompt symbol][exit-code]. |
 
+[exit-code]: <https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character> "See pure-zsh wiki"
+
 ### Single Line Prompt
 
 | Option                               | Default | Description                             |
@@ -118,3 +131,5 @@
 | :----------------------------------- | :------ | :---------------------------------------------------- |
 | **`pure_show_prefix_root_prompt`**   | `false` | `true`: shows prompt prefix when logged in as `root`. |
 | **`pure_symbol_prefix_root_prompt`** | `#`     | Prefix prompt when logged in as `root`.               |
+
+[to-set]: https://pure-fish.github.io/pure/#configuration

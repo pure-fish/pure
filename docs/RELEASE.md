@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD041 -->
 ## Releasing
 
 Release process is automated in the pipeline with the following steps.

@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD041 -->
 !!! tip
 
     See [`set_color`][fish-set-color] documentation for full possibilities.

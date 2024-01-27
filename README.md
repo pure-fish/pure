@@ -1,12 +1,13 @@
+<!-- markdownlint-disable MD041 -->
 <div align="center">
 
-<img src="https://user-images.githubusercontent.com/1212392/262604075-db5d0ad2-a7ed-4a62-a1cc-ec677cf76351.png" width="61.8%"/><br>
+<img src="https://user-images.githubusercontent.com/1212392/262604075-db5d0ad2-a7ed-4a62-a1cc-ec677cf76351.png" width="61.8%" alt="Pure.fish logo"/><br>
 
 [![ci-status]][ci-link] ![fish-3] [![release-version]][release-link] [![sponsors]][sponsor-link] <!-- 0 width spaces on this line -->
 
 </div>
 
-# pure  `❯❮❯`
+# _Pure_  `❯❮❯`
 
 > Pretty, minimal and fast Fish 🐟 prompt, ported from [`zsh`](https://github.com/sindresorhus/pure).
 
@@ -31,34 +32,36 @@ fisher install pure-fish/pure
 
 Fully **customizable** (colors, symbols and features):
 
-- Excellent prompt character `❯` :
-  - Change `❯` to red when previous command has failed ;
-  - Start prompt with _current working directory_ 🏴 ;
-  - Compact-mode (single-line prompt) 🏴 ;
-- Display _current folder_  tail ;
-- check for new release on start 🏴 ;
-- Display _username_ and _hostname_ when in an `SSH` session ;
-- Display command _duration_ when longer than `5` seconds ;
-- Display `nix develop` shell indicator when activated 🏴 ;
-- Display `Python` _virtualenv_ when activated 🏴 ;
-- Display `VI` mode and custom symbol for non-insert mode 🏴 ;
-- Display `kubernetes` context and namespace
-- Display container indicator (e.g. `docker`, `podman`, `LXC`/`LXD`) 🏴
-- Show system time 🏴 ;
-- Show number of running jobs 🏴 ;
-- Prefix when `root` 🏴 ;
-- Display `git` branch name 🏴 ;
-  - Display `*` when `git` repository is _dirty_ ;
-  - Display `≡` when `git` repository is _stashed_ ;
-  - Display `⇡` when branch is _ahead_ (commits to push) ;
-  - Display `⇣` when branch is _behind_ (commits to pull) ;
-  - Async update when [configured with fish-async-prompt](https://github.com/pure-fish/pure/wiki/Async-git-Prompt) ;
-- Update terminal title with _current folder_ and _command_ ;
-- Detect when running in a container ;
-- Shorten _current folder_ component in prompt and window title 🏴;
-- Truncate _current folder_ component in prompt and window title 🏴;
+* [Excellent prompt character `❯` 🛠][prompt-symbol]:
 
-🏴: Enabled or disabled via a [feature flag][features].
+    * [Change `❯` to red when previous command has failed 🛠][separate-error-symbol] ;
+    * [Start prompt with _current working directory_ 🏴][current-working-directory] ;
+    * [Compact-mode (single-line prompt) 🏴][single-line-prompt] ;
+  
+* [Check for new release on start 🏴🐌][check-for-new-release] ;
+* [Display _username_ and _hostname_ when in an `SSH` session 🛠][ssh-session] ;
+* [Display command _duration_ when longer than `5` seconds 🛠][time-duration] ;
+* [Display `Python` _virtualenv_ when activated 🏴🛠][python-virtualenv] ;
+* [Display `VI` mode and custom symbol for non-insert mode 🏴🛠][vi-mode] ;
+* [Display `kubernetes` context and namespace 🏴🛠][kubernetes] ;
+* [Detect when running in a container (e.g. `docker`, `podman`, `LXC`/`LXD`) 🏴🛠][container-detection-docker]
+* [Indicate if a `nix develop` shell is activated 🏴🛠][nix-os].
+* [Show system time 🏴][time-duration] ;
+* [Show number of running jobs 🏴][jobs] ;
+* [Prefix when `root` 🏴🛠][working-as-root] ;
+* [Display `git` branch name 🏴🛠][git] ;
+  
+    * Display `*` when `git` repository is _dirty_ ;
+    * Display `≡` when `git` repository is _stashed_ ;
+    * Display `⇡` when branch is _ahead_ (commits to push) ;
+    * Display `⇣` when branch is _behind_ (commits to pull) ;
+    * [Async update when configured with fish-async-prompt][async] ;
+
+* [Update terminal title with _current folder_ and _command_ 🛠][title] ;
+* [Shorten or truncate _current folder_ component 🏴🛠][current-working-directory] ;
+* and more…
+
+🏴 means it's controlled by a feature flag, 🛠 mean it's configurable.
 
 ## Configuration
 
@@ -76,10 +79,10 @@ Checkout our [Contribution Guide][contribution] to get familiar with our convent
 
 ## :man_technologist: People
 
-- [Édouard Lopez](https://github.com/edouard-lopez) product lead ;
-- [@andreiborisov](https://github.com/andreiborisov) for the [docker images][docker-images] ;
-- [@jorgebucaran](https://github.com/jorgebucaran/) for [fishtape](https://github.com/jorgebucaran/fishtape) ;
-- [@rafaelrinaldi](https://github.com/rafaelrinaldi) for starting the project and publishing the initial releases
+* [Édouard Lopez](https://github.com/edouard-lopez) product lead ;
+* [@andreiborisov](https://github.com/andreiborisov) for the [docker images][docker-images] ;
+* [@jorgebucaran](https://github.com/jorgebucaran/) for [fishtape](https://github.com/jorgebucaran/fishtape) ;
+* [@rafaelrinaldi](https://github.com/rafaelrinaldi) for starting the project and publishing the initial releases
 
 ## [MIT][MIT]  License
 
@@ -99,3 +102,21 @@ Checkout our [Contribution Guide][contribution] to get familiar with our convent
 [release-link]: https://github.com/pure-fish/pure/releases "GitHub tag (latest SemVer)"
 [sponsors]: https://img.shields.io/github/sponsors/edouard-lopez?label=💰&style=flat-square "GitHub Sponsors"
 [sponsor-link]: https://github.com/sponsors/edouard-lopez/ "Become a sponsor"
+
+[async]: https://github.com/pure-fish/pure/wiki/Async-git-Prompt
+[check-for-new-release]: https://pure-fish.github.io/pure/#check-for-new-release
+[container-detection-docker]: https://pure-fish.github.io/pure/#container-detection-docker
+[current-working-directory]: https://pure-fish.github.io/pure/#current-working-directory
+[git]: https://pure-fish.github.io/pure/#git
+[jobs]: https://pure-fish.github.io/pure/#jobs
+[kubernetes]: https://pure-fish.github.io/pure/#kubernetes
+[nix-os]: https://pure-fish.github.io/pure/#nix-os
+[prompt-symbol]: https://pure-fish.github.io/pure/#prompt-symbol
+[python-virtualenv]: https://pure-fish.github.io/pure/#python-virtualenv
+[separate-error-symbol]: https://pure-fish.github.io/pure/#separate-error-symbol
+[single-line-prompt]: https://pure-fish.github.io/pure/#single-line-prompt
+[ssh-session]: https://pure-fish.github.io/pure/#ssh-session
+[time-duration]: https://pure-fish.github.io/pure/#time-duration
+[title]: https://pure-fish.github.io/pure/#title
+[vi-mode]: https://pure-fish.github.io/pure/#vi-mode
+[working-as-root]: https://pure-fish.github.io/pure/#working-as-root
