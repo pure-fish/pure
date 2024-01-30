@@ -42,6 +42,7 @@ Fully **customizable** (colors, symbols and features):
 * [Display _username_ and _hostname_ when in an `SSH` session 🛠][ssh-session] ;
 * [Display command _duration_ when longer than `5` seconds 🛠][time-duration] ;
 * [Display `Python` _virtualenv_ when activated 🏴🛠][python-virtualenv] ;
+* [Display `AWS` profile when set 🏴🛠][aws-profile] ;
 * [Display `VI` mode and custom symbol for non-insert mode 🏴🛠][vi-mode] ;
 * [Display `kubernetes` context and namespace 🏴🛠][kubernetes] ;
 * [Detect when running in a container (e.g. `docker`, `podman`, `LXC`/`LXD`) 🏴🛠][container-detection-docker]
@@ -124,6 +125,7 @@ Checkout our [Contribution Guide][contribution] to get familiar with our convent
 [nix-os]: https://pure-fish.github.io/pure/#nix-os
 [prompt-symbol]: https://pure-fish.github.io/pure/#prompt-symbol
 [python-virtualenv]: https://pure-fish.github.io/pure/#python-virtualenv
+[aws-profile]: https://pure-fish.github.io/pure/#aws-profile
 [separate-error-symbol]: https://pure-fish.github.io/pure/#separate-error-symbol
 [single-line-prompt]: https://pure-fish.github.io/pure/#single-line-prompt
 [ssh-session]: https://pure-fish.github.io/pure/#ssh-session

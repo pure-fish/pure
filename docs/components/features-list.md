@@ -82,6 +82,13 @@
 | **`pure_enable_virtualenv`**        | `true`  | Show virtual env name (based on `VIRTUAL_ENV` or `CONDA_DEFAULT_ENV`).       |
 | **`pure_symbol_virtualenv_prefix`** |         | Prefix when a Python virtual env is activated (default: [undefined][to-set]) |
 
+### AWS Profile
+
+| Option                              | Default | Description                                                                  |
+| :---------------------------------- | :------ | :--------------------------------------------------------------------------- |
+| **`pure_enable_aws_profile`**        | `true`  | Show AWS profile name (based on `AWS_VAULT` or `AWS_PROFILE`).       |
+| **`pure_symbol_aws_profile_prefix`** |         | Prefix when a AWS profile is activated (default: [undefined][to-set]) |
+
 ### Separate Error Symbol
 
 | Option                              | Default | Description                                                         |

@@ -237,6 +237,24 @@ before_all
     echo $pure_color_virtualenv
 ) = pure_color_mute
 
+@test "configure: pure_enable_aws_profile" (
+    set --erase pure_enable_aws_profile
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_enable_aws_profile
+) = true
+
+@test "configure: pure_symbol_aws_profile_prefix" (
+    set --erase pure_symbol_aws_profile_prefix
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_symbol_aws_profile_prefix
+) = $EMPTY
+
+@test "configure: pure_color_aws_profile" (
+    set --erase pure_color_aws_profile
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_color_aws_profile
+) = pure_color_warning
+
 @test "configure: pure_begin_prompt_with_current_directory" (
     set --erase pure_begin_prompt_with_current_directory
     source (status dirname)/../conf.d/pure.fish

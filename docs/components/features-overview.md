@@ -13,7 +13,7 @@ Fully **customizable** (colors, symbols and features):
 * [Display _username_ and _hostname_ when in an `SSH` session 🛠][ssh-session] ;
 * [Display command _duration_ when longer than `5` seconds 🛠][time-duration] ;
 * [Display `Python` _virtualenv_ when activated 🏴🛠][python-virtualenv] ;
-* [Display `AWS`  profile when set 🏴🛠][aws-profile] ;
+* [Display `AWS` profile when set 🏴🛠][aws-profile] ;
 * [Display `VI` mode and custom symbol for non-insert mode 🏴🛠][vi-mode] ;
 * [Display `kubernetes` context and namespace 🏴🛠][kubernetes] ;
 * [Detect when running in a container (e.g. `docker`, `podman`, `LXC`/`LXD`) 🏴🛠][container-detection-docker]
@@ -22,7 +22,7 @@ Fully **customizable** (colors, symbols and features):
 * [Show number of running jobs 🏴][jobs] ;
 * [Prefix when `root` 🏴🛠][working-as-root] ;
 * [Display `git` branch name 🏴🛠][git] ;
-  
+
     * Display `*` when `git` repository is _dirty_ ;
     * Display `≡` when `git` repository is _stashed_ ;
     * Display `⇡` when branch is _ahead_ (commits to push) ;
