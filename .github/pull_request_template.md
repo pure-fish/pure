@@ -11,7 +11,7 @@ set --universal pure_enable_foo_feature true
 
 ## First contribution?
 
-Check the [:+1: Contribute][contribute] section and the [contributing guide][contributing].
+Check the [:+1: contributing guide][contributing] for code and naming conventions.
 
 ## Specs
 
@@ -33,21 +33,24 @@ _pure_set_default pure_symbol_foo_feature "🤯"
 
 ## Acceptance Checks
 
-* [ ] documentation is up-to-date:
-  * [ ] [features list][features] ;
-  * [ ] [Prompt Symbol][symbol] ;
-  * [ ] [🔌 Features' Flags][feature-flag] ;
-* [ ] feature flag is present in `conf.d/pure.fish` ;
-* [ ] symbol is present in `conf.d/pure.fish` ;
-* [ ] tests are passing (I can help you :hugs: ):
-  * [ ] config are tested (cf. [tests/_pure.test.fish][config-test]) ;
-  * [ ] feature is covered ;
-* [ ] customization is available ;
-* [ ] feature is implemented.
+* [ ] Documentation is up-to-date:
+  * [ ] Add entry in _feature list_ of [README.md][README] ;
+  * [ ] Add entry in _features' overview_ in [docs/][features-overview]  ;
+  * [ ] Add section in [feature list][features-list] to document
+    * [ ] Features' flag ;
+    * [ ] Prompt symbol ;
+* [ ] Default are defined in [`conf.d/pure.fish`][default] for:
+  * [ ] Feature flag ;
+  * [ ] Symbol ;
+* [ ] Tests are passing (I can help you :hugs: ):
+  * [ ] Config are tested (cf. [tests/_pure.test.fish][config-test]) ;
+  * [ ] Feature is tested in `tests/feature_name.test.fish` ;
+* [ ] Customization is available ;
+* [ ] Feature is implemented.
 
-[config-test]: tests/_pure.test.fish
-[contribute]: /pure-fish/pure/#1-contribute
-[contributing]: CONTRIBUTING.md
-[feature-flag]: /pure-fish/pure/#-features-flags
-[symbol]: /pure-fish/pure/#prompt-symbol
-[features]: /pure-fish/pure/#features
+[default]: /pure-fish/pure/blob/master/conf.d/pure.fish
+[config-test]: /pure-fish/pure/blob/master/tests/_pure.test.fish
+[contributing]: /pure-fish/pure/blob/master/CONTRIBUTING.md
+[features-overview]: /pure-fish/pure/blob/master/docs/components/features-overview.md
+[README]: /pure-fish/pure/blob/master/README.md
+[features-list]: /pure-fish/pure/blob/master/docs/components/features-list.md
