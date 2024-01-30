@@ -56,6 +56,6 @@ jobs:
 
   bump-version: # Bump when on master
     needs: [test-container]
-    if: contains(github.ref, 'master')
+    if: contains(github.ref, 'master') && github.repository == 'pure-fish/pure'
     uses: ./.github/workflows/bump-version.yml
     secrets: inherit
