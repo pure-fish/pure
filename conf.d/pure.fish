@@ -60,6 +60,8 @@ _pure_set_default pure_symbol_virtualenv_prefix "" # 🐍
 _pure_set_default pure_color_virtualenv pure_color_mute
 
 # AWS profile name
+_pure_set_default pure_enable_aws_profile true
+_pure_set_default pure_symbol_aws_profile_prefix "" # ☁️
 _pure_set_default pure_color_aws_profile pure_color_warning
 
 # Print current working directory at the beginning of prompt
