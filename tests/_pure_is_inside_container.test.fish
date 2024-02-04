@@ -60,7 +60,6 @@ if test (uname -s) != Darwin
 
         _pure_is_inside_container
     ) $status -eq $SUCCESS
-    end
 end
 
 if test (uname -s) = Darwin
@@ -68,9 +67,8 @@ if test (uname -s) = Darwin
     @test "_pure_is_inside_container: false for Github Action on MacOS" (
         set --universal pure_enable_container_detection true
 
-	    _pure_is_inside_container
+        _pure_is_inside_container
     ) $status -eq $FAILURE
-    end
 end
 
 @test "_pure_is_inside_container: detect with $container variable" (
