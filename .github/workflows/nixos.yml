@@ -1,0 +1,19 @@
+name: Test on NixOS
+
+on:
+  workflow_call:
+
+jobs:
+  test-nixos:
+    name: Test `pure` with Fish ${{ matrix.version.fish }} on NixOS container
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [
+            { fish: 3.7.0, alpine: 'edge' }, # https://search.nixos.org/packages?show=fish&type=packages&query=fish
+          ]
+    steps:
+      - uses: actions/checkout@v2
+      - run: make build-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
+      - run: docker --version
+      - run: make test-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
