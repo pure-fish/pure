@@ -4,6 +4,7 @@ source (status dirname)/../functions/_pure_prompt.fish
 source (status dirname)/../functions/_pure_prompt_jobs.fish
 source (status dirname)/../functions/_pure_prompt_nixdevshell.fish
 source (status dirname)/../functions/_pure_prompt_virtualenv.fish
+source (status dirname)/../functions/_pure_prompt_aws_profile.fish
 source (status dirname)/../functions/_pure_prompt_vimode.fish
 source (status dirname)/../functions/_pure_prompt_symbol.fish
 source (status dirname)/../functions/_pure_get_prompt_symbol.fish
