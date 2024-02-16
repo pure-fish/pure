@@ -10,6 +10,13 @@ function _spy \
     end # spy
 end
 
+# Usage:
+#   _clean_all_spy_calls
+#   @test "example using _spy method" (
+#       _spy foo
+#       … # do something that calls foo
+#       _has_called foo "--some --option"
+#   )
 function _has_called \
     --description "check spy method has been called, i.e has written to the /tmp/$function_name.mock_calls" \
     --argument-names \
@@ -24,3 +31,5 @@ function _has_called \
         return $FAILURE
     end
 end
+
+alias _spy_response _mock_response
