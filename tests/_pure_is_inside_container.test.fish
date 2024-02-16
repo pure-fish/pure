@@ -1,8 +1,9 @@
 source (status dirname)/fixtures/constants.fish
+source (status dirname)/mocks/spectra.fish
 source (status dirname)/../functions/_pure_is_inside_container.fish
 source (status dirname)/../functions/_pure_detect_container_by_pid_method.fish
 source (status dirname)/../functions/_pure_detect_container_by_cgroup_method.fish
-@echo (_print_filename (status filename))
+# @echo (_print_filename (status filename))
 
 
 # echo "SYSTEM CONTAINER: $container"
@@ -22,7 +23,8 @@ function cleanup_detection_methods
     set --global container ""
 end
 
-function cleanup_spy
+function before_each
+    _clean_all_spy_calls
     functions --erase uname
 end
 
@@ -37,24 +39,24 @@ end
 
 @test "pure_enable_container_detection: feature is disabled" (
     set --universal pure_enable_container_detection false
-    set --universal called "never"
-    function uname; set called once; echo "fake-os" ; end # spy
+    _mock_response uname "fake-os"
 
     _pure_is_inside_container
-    echo $called
-) = never
+
+    _has_called uname # should NOT be called
+) $status -eq $FAILURE
 
 @test "pure_enable_container_detection: feature is enabled" (
     set --universal pure_enable_container_detection true
-    set --universal called "never"
-    function uname; set called once; echo "fake-os" ; end # spy
+    _mock_response uname "fake-os"
 
     _pure_is_inside_container
-    echo $called
-) = once
 
-if test (uname -s) != Darwin
-    cleanup_spy
+    _has_called uname # should be called
+) $status -eq $SUCCESS
+
+before_each
+if test (command uname -s) != Darwin # non-macOS
     @test "_pure_is_inside_container: true for Github Action on Ubuntu" (
         set --universal pure_enable_container_detection true
 
@@ -62,8 +64,8 @@ if test (uname -s) != Darwin
     ) $status -eq $SUCCESS
 end
 
-if test (uname -s) = Darwin
-    cleanup_spy
+before_each
+if test (command uname -s) = Darwin # macos
     @test "_pure_is_inside_container: false for Github Action on MacOS" (
         set --universal pure_enable_container_detection true
 
@@ -71,6 +73,7 @@ if test (uname -s) = Darwin
     ) $status -eq $FAILURE
 end
 
+before_each
 @test "_pure_is_inside_container: detect with $container variable" (
     set --universal pure_enable_container_detection true
     set --global container "fake"
@@ -78,6 +81,7 @@ end
     _pure_is_inside_container
 ) $status -eq $SUCCESS
 
+before_each
 @test "_pure_is_inside_container: returns false as default behavior" (
     set --universal pure_enable_container_detection false
 
@@ -85,7 +89,8 @@ end
 ) $status -eq $FAILURE
 
 cleanup_detection_methods
-if test (uname -s) = Linux
+before_each
+if test (command uname -s) = Linux
     @test "_pure_is_inside_container: detect with pid method" (
         set --universal pure_enable_container_detection true
         function _pure_detect_container_by_cgroup_method; false; end # spy
@@ -96,7 +101,8 @@ if test (uname -s) = Linux
 end
 
 cleanup_detection_methods
-if test (uname -s) = Linux
+before_each
+if test (command uname -s) = Linux
     @test "_pure_is_inside_container: detect with cgroup method" (
         set --universal pure_enable_container_detection true
         function _pure_detect_container_by_cgroup_method; echo "called: "(status current-function); end # spy
