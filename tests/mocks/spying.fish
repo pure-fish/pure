@@ -14,7 +14,7 @@ function _has_called \
     --description "check spy method has been called, i.e has written to the /tmp/$function_name.mock_calls" \
     --argument-names \
     function_name \
-    function_args # arguments to passed to the spy
+    function_args # arguments to passed to the spy (optional, if not provided will check for any call to the spy)
 
     set --query function_args[1]; or set function_args $function_name # ue
     if test -r /tmp/$function_name.mock_calls
