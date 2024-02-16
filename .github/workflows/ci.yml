@@ -23,35 +23,39 @@ on:
       - ".github/**/*.yml"
 
 jobs:
-  # test-container:
-  #   name: Test on fish ${{ matrix.version.fish }} on Docker
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       version: [
-  #           # { fish: 3.3.1, alpine: 3.15 }, # for Ubuntu 22.04 LTS
-  #           # { fish: 3.6.3, alpine: 3.19 },
-  #           # { fish: 3.7.0, alpine: 'edge' },
-  #           # { fish: 3.6.2, alpine: 'edge' },
-  #         ]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: make build-pure-on FISH_VERSION=${{ matrix.version.fish }}
-  #     - run: docker --version
-  #     - run: make test-pure-on FISH_VERSION=${{ matrix.version.fish }}
+  test-container:
+    name: Test on fish ${{ matrix.version.fish }} on Docker
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [
+            { fish: 3.3.1, alpine: 3.15 }, # for Ubuntu 22.04 LTS
+            { fish: 3.6.3, alpine: 3.19 },
+            { fish: 3.7.0, alpine: 'edge' },
+            # { fish: 9.9.9, alpine: 'edge' },
+          ]
+    steps:
+      - run: docker --version
 
-  # test-nixos:
-  #   uses: ./.github/workflows/nixos.yml
-  #   secrets: inherit
+      - uses: actions/checkout@v4
+
+      - name: Build Pure Image on Alpine ${{ matrix.version.alpine }}
+        run: make build-pure-on FISH_VERSION=${{ matrix.version.fish }}
+
+      - name: Run Tests
+        run: make test-pure-on FISH_VERSION=${{ matrix.version.fish }}
+
+  test-nixos:
+    uses: ./.github/workflows/nixos.yml
+    secrets: inherit
 
   test-macos:
     if: true
     uses: ./.github/workflows/macos.yml
     secrets: inherit
 
-
-  # bump-version: # Bump when on master
-  #   needs: [test-container]
-  #   if: contains(github.ref, 'master')
-  #   uses: ./.github/workflows/bump-version.yml
-  #   secrets: inherit
+  bump-version: # Bump when on master
+    needs: [test-container]
+    if: contains(github.ref, 'master')
+    uses: ./.github/workflows/bump-version.yml
+    secrets: inherit

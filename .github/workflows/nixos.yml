@@ -10,10 +10,14 @@ jobs:
     strategy:
       matrix:
         version: [
-            { fish: 3.7.0, alpine: 'edge' }, # https://search.nixos.org/packages?show=fish&type=packages&query=fish
+            { fish: 3.7.0 }, # https://search.nixos.org/packages?show=fish&type=packages&query=fish
           ]
     steps:
-      - uses: actions/checkout@v2
-      - run: make build-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
-      - run: docker --version
-      - run: make test-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build Pure Image on NixOS
+        run: make build-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
+
+      - name: Run Tests
+        run: make test-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
