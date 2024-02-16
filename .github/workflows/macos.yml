@@ -8,14 +8,16 @@ jobs:
     name: Test on fish on MacOS
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: show os
-        run: uname -s
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Install Fish
         run: brew install fish
+
       - name: Install Fisher > Fishtape > Pure
         run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
         shell: fish {0}
-      - name: Test Pure
+
+      - name: Run Tests
         run: fishtape tests/*.test.fish
         shell: fish {0}
