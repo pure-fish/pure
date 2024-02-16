@@ -17,15 +17,10 @@ function before_all
 end
 before_all
 
-function cleanup_detection_methods
-    functions --erase _pure_detect_container_by_pid_method
-    functions --erase _pure_detect_container_by_cgroup_method
-    set --global container ""
-end
-
 function before_each
+    set --global container ""
+    _clean_all_mocks
     _clean_all_spy_calls
-    functions --erase uname
 end
 
 function after_all
@@ -37,18 +32,20 @@ function after_all
     set --erase called
 end
 
+before_each
 @test "pure_enable_container_detection: feature is disabled" (
     set --universal pure_enable_container_detection false
-    _mock_response uname "fake-os"
+    _spy_response uname "fake-os"
 
     _pure_is_inside_container
 
     _has_called uname # should NOT be called
 ) $status -eq $FAILURE
 
+before_each
 @test "pure_enable_container_detection: feature is enabled" (
     set --universal pure_enable_container_detection true
-    _mock_response uname "fake-os"
+    _spy_response uname "fake-os"
 
     _pure_is_inside_container
 
@@ -88,27 +85,28 @@ before_each
     _pure_is_inside_container
 ) $status -eq $FAILURE
 
-cleanup_detection_methods
 before_each
 if test (command uname -s) = Linux
     @test "_pure_is_inside_container: detect with pid method" (
         set --universal pure_enable_container_detection true
-        function _pure_detect_container_by_cgroup_method; false; end # spy
-        function _pure_detect_container_by_pid_method; echo "called: "(status current-function); end # spy
+        _mock_exit_status _pure_detect_container_by_cgroup_method $FAILURE
+        _spy _pure_detect_container_by_pid_method
 
         _pure_is_inside_container
-    ) = "called: _pure_detect_container_by_pid_method"
+
+        _has_called _pure_detect_container_by_pid_method
+    ) $status -eq $SUCCESS
 end
 
-cleanup_detection_methods
 before_each
 if test (command uname -s) = Linux
     @test "_pure_is_inside_container: detect with cgroup method" (
         set --universal pure_enable_container_detection true
-        function _pure_detect_container_by_cgroup_method; echo "called: "(status current-function); end # spy
+        _spy _pure_detect_container_by_cgroup_method
 
         _pure_is_inside_container
-    ) = "called: _pure_detect_container_by_cgroup_method"
+        _has_called _pure_detect_container_by_cgroup_method
+    ) $status -eq $SUCCESS
 end
 
 
