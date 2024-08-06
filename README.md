@@ -25,7 +25,7 @@
 **:warning: requirements**: fish `≥3.x`, [fisher](https://github.com/jorgebucaran/fisher):
 
 ```shell
-fisher install pure-fish/pure
+fisher install aayushgakhar/pure
 ```
 
 ## Features
