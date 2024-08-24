@@ -9,6 +9,6 @@ function _pure_detect_container_by_pid_method \
             | string match \
             --quiet \
             --invert \
-            --regex 'init|systemd'
+            --regex 'init|systemd|shepherd'
     end
 end
