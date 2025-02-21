@@ -67,6 +67,16 @@ end
 
 if test (uname -s) = Linux
     before_each
+    @test "_pure_detect_container_by_pid_method: false when detecting shepherd in /proc/1/sched" (
+        _create_proc_sched_file $proc_sched
+        echo "shepherd (1, #threads: 1)" >$proc_sched
+
+        _pure_detect_container_by_pid_method $proc_sched
+    ) $status -eq $FAILURE
+end
+
+if test (uname -s) = Linux
+    before_each
     @test "_pure_detect_container_by_pid_method: true when 1st process is neither systemd nor init in /proc/1/sched" (
         _create_proc_sched_file $proc_sched
         echo "fish (1, #threads: 1)" >$proc_sched
