@@ -1,6 +1,6 @@
 # About
 
-### :rocket: Pure `v3.x`
+### :rocket: Versions Support Strategy
 
 {% include 'components/versioning-support-strategy.md' %}
 
