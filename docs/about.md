@@ -1,5 +1,9 @@
 # About
 
+### :rocket: Pure `v3.x`
+
+{% include 'components/versioning-support-strategy.md' %}
+
 ## :classical_building: License
 
 [MIT][MIT]
