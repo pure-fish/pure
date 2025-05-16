@@ -21,6 +21,7 @@ on:
     paths:
       - "**.fish"
       - ".github/**/*.yml"
+  workflow_dispatch:
 
 jobs:
   test-container:
