@@ -6,6 +6,7 @@ on:
       CI_TOKEN_TO_TRIGGER_PUSH_WORKFLOW:
         description: "A token passed from the caller workflow so git push can trigger workflow"
         required: true
+  workflow_dispatch:
 
 jobs:
   bump-version:
