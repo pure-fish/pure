@@ -28,7 +28,7 @@ build-pure-on:
 .PHONY: dev-pure-on
 dev-pure-on: CMD?=fish
 dev-pure-on: STAGE?=with-pure-source
-dev-pure-on:
+dev-pure-on: build-with-pure-source
 	chmod o=rwx tests/fixtures/ # for migration-to-4.0.0.test.fish only
 	docker run \
 		--name dev-pure-on-${FISH_VERSION} \
