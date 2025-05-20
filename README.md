@@ -3,7 +3,7 @@
 
 <img src="https://user-images.githubusercontent.com/1212392/262604075-db5d0ad2-a7ed-4a62-a1cc-ec677cf76351.png" width="61.8%" alt="Pure.fish logo"/><br>
 
-[![ci-status]][ci-link] ![fish-3] [![release-version]][release-link] [![sponsors]][sponsor-link] <!-- 0 width spaces on this line -->
+[![ci-status]][ci-link] ![fish-4] ![fish-3] [![release-version]][release-link] [![sponsors]][sponsor-link] <!-- 0 width spaces on this line -->
 
 </div>
 
@@ -97,7 +97,6 @@ Checkout our [Contribution Guide][contribution] to get familiar with our convent
 * :window: [nickcox/pure-pwsh](https://github.com/nickcox/pure-pwsh/) PowerShell implementation.
 * :shell: [krashikiworks/pure-prompt-bash](https://github.com/krashikiworks/pure-prompt-bash) Bash implementation.
 
-
 [doc]: https://pure-fish.github.io/pure/
 [configure]: https://pure-fish.github.io/pure/#configuration
 [features]: https://pure-fish.github.io/pure/#overview
@@ -107,6 +106,7 @@ Checkout our [Contribution Guide][contribution] to get familiar with our convent
 [ci-status]: https://img.shields.io/github/actions/workflow/status/pure-fish/pure/.github/workflows/ci.yml?style=flat-square
 
 [fish-3]: <https://img.shields.io/badge/fish-v3-007EC7.svg?style=flat-square> "Support Fish 3"
+[fish-4]: <https://img.shields.io/badge/fish-v4-7dc600.svg?style=flat-square> "Support Fish 4"
 [docker-images]: https://github.com/andreiborisov/docker-fish/
 [MIT]: LICENSE.md
 
