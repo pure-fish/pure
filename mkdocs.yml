@@ -7,8 +7,6 @@ repo_name: "pure-fish/pure"
 repo_url: "https://github.com/pure-fish/pure"
 site_url: "https://pure-fish.github.io/pure/"
 
-nav:
-  - Home: index.md
 theme:
   name: "material"
   include_sidebar: true
@@ -103,7 +101,7 @@ extra_css:
 
 plugins:
   - search
-  - awesome-pages
+  - awesome-nav
   - include-markdown
   - git-authors
   - macros
