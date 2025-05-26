@@ -18,6 +18,9 @@ jobs:
           fetch-depth: 0
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           token: ${{ secrets.CI_TOKEN_TO_TRIGGER_PUSH_WORKFLOW }}
+          # When you see:
+          #   Error: fatal: could not read Username for 'https://github.com': terminal prompts disabled
+          # visit https://github.com/settings/personal-access-tokens/new
 
       - name: Get next version
         id: next_version
