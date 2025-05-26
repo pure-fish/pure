@@ -40,23 +40,23 @@ Fully **customizable** (colors, symbols and features):
 
 [async]: https://github.com/pure-fish/pure/wiki/Async-git-Prompt
 <!-- markdownlint-disable MD051 -->
-[check-for-new-release]: #check-for-new-release
-[container-detection-docker]: #container-detection-docker
-[current-working-directory]: #current-working-directory
-[git]: #git
-[jobs]: #jobs
-[kubernetes]: #kubernetes
-[list-exit-statuses]: #list-exit-statuses
-[nix-os]: #nix-os
-[prompt-symbol]: #prompt-symbol
-[python-virtualenv]: #python-virtualenv
-[aws-profile]: #aws-profile
-[separate-error-symbol]: #separate-error-symbol
-[single-line-prompt]: #single-line-prompt
-[ssh-session]: #ssh-session
-[time-duration]: #time-duration
+[check-for-new-release]: /api/#check-for-new-release
+[container-detection-docker]: /api/#container-detection-docker
+[current-working-directory]: /api/#current-working-directory
+[git]: /api/#git
+[jobs]: /api/#jobs
+[kubernetes]: /api/#kubernetes
+[list-exit-statuses]: /api/#list-exit-statuses
+[nix-os]: /api/#nix-os
+[prompt-symbol]: /api/#prompt-symbol
+[python-virtualenv]: /api/#python-virtualenv
+[aws-profile]: /api/#aws-profile
+[separate-error-symbol]: /api/#separate-error-symbol
+[single-line-prompt]: /api/#single-line-prompt
+[ssh-session]: /api/#ssh-session
+[time-duration]: /api/#time-duration
 [transient-prompt]: #transient-prompt
-[title]: #title
-[vi-mode]: #vi-mode
-[working-as-root]: #working-as-root
+[title]: /api/#title
+[vi-mode]: /api/#vi-mode
+[working-as-root]: /api/#working-as-root
 <!-- markdownlint-enable MD051 -->
