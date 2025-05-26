@@ -105,3 +105,5 @@ plugins:
   - include-markdown
   - git-authors
   - macros
+  - mkdocs_github_changelog
+
