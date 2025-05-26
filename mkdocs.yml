@@ -99,3 +99,5 @@ plugins:
   - awesome-nav
   - include-markdown
   - git-authors
+  - mkdocs_github_changelog
+
