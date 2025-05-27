@@ -35,4 +35,4 @@ RUN nix build \
 
 WORKDIR /tmp/.pure
 ENTRYPOINT ["fish", "-c"]
-# CMD [ "fishtape","./tests/*.test.fish" ]
+# CMD [ "fishtape","./tests/*.test.fish" ] # Nix package build launch the tests at the end of the install process
