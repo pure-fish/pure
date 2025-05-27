@@ -1,0 +1,63 @@
+# filepath: pure/pure/.github/workflows/_social-network.yml
+name: Post Release Notes
+
+on:
+  workflow_call:
+    inputs:
+      release_body:
+        description: 'The body of the release notes'
+        required: true
+        type: string
+      release_tag:
+        description: 'The tag of the release (e.g., v1.0.0)'
+        required: true
+        type: string
+    secrets:
+      PERSONAL_BLUESKY_TOKEN:
+        required: true
+      PERSONAL_MASTODON_TOKEN_PIAILLE:
+        required: true
+  workflow_dispatch:
+    inputs:
+      release_body:
+        description: 'The body of the release notes (for manual run)'
+        required: true
+        type: string
+      release_tag:
+        description: 'The tag of the release (e.g., v1.0.0) (for manual run)'
+        required: true
+        type: string
+
+jobs:
+  post-release-notes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare Post Content
+        id: message_content
+        run: |
+          MESSAGE="🚀 New release ${{ inputs.release_tag }} is out!\n\n${{ inputs.release_body }}\n\n#fish #shell #release"
+          echo "message=$MESSAGE" >> $GITHUB_OUTPUT
+
+      - name: Send post to Bluesky
+        env:
+          BLUESKY_USERNAME: "edouard-lopez.bsky.social"
+          BLUESKY_TOKEN: ${{ secrets.BLUESKY_TOKEN }}
+        id: post2bluesky
+        uses: cbrgm/bluesky-github-action@v1 # https://github.com/marketplace/actions/bluesky-send-post
+        with:
+          handle: ${BLUESKY_USERNAME} # Your handle (example: username.bsky.social)
+          password: ${{ secrets.BLUESKY_TOKEN }} # Your Bluesky app token
+          text: "${{ steps.message_content.outputs.message }}"
+          lang: "en"
+
+
+      - name: Post to Mastodon (Piaille.fr)
+        id: post2paille
+        uses: cbrgm/mastodon-github-action@v2 # https://github.com/marketplace/actions/post-to-mastodon
+        env:
+          MASTODON_URL: "https://piaille.fr" # Mastodon instance URL, e.g., https://example.social.
+        with:
+          access-token: ${{ secrets.PERSONAL_MASTODON_TOKEN_PIAILLE }} # Mastodon access token for authentication.
+          url: "${MASTODON_URL}"
+          message: "${{ steps.message_content.outputs.message }}" #
+          language: "en"
