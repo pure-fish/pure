@@ -32,32 +32,31 @@ jobs:
   post-release-notes:
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare Post Content
-        id: message_content
-        run: |
-          MESSAGE="🚀 New release ${{ inputs.release_tag }} is out!\n\n${{ inputs.release_body }}\n\n#fish #shell #release"
-          echo "message=$MESSAGE" >> $GITHUB_OUTPUT
-
       - name: Send post to Bluesky
-        env:
-          BLUESKY_USERNAME: "edouard-lopez.bsky.social"
-          BLUESKY_TOKEN: ${{ secrets.BLUESKY_TOKEN }}
         id: post2bluesky
         uses: cbrgm/bluesky-github-action@v1 # https://github.com/marketplace/actions/bluesky-send-post
         with:
-          handle: ${BLUESKY_USERNAME} # Your handle (example: username.bsky.social)
-          password: ${{ secrets.BLUESKY_TOKEN }} # Your Bluesky app token
-          text: "${{ steps.message_content.outputs.message }}"
+          handle: "edouard-lopez.bsky.social" # Your handle (example: username.bsky.social)
+          password: ${{ secrets.PERSONAL_BLUESKY_TOKEN }} # Your Bluesky app token
+          text: |
+            🐟 New Pure ${{ inputs.release_tag }} is out!
+            ${{ inputs.release_body }}
+            Details: https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag }}
+            #fish #shell #release
           lang: "en"
-
 
       - name: Post to Mastodon (Piaille.fr)
         id: post2paille
         uses: cbrgm/mastodon-github-action@v2 # https://github.com/marketplace/actions/post-to-mastodon
         env:
           MASTODON_URL: "https://piaille.fr" # Mastodon instance URL, e.g., https://example.social.
+          MASTODON_TOKEN: ${{ secrets.PERSONAL_MASTODON_TOKEN_PIAILLE }} # Mastodon access token for authentication.
         with:
-          access-token: ${{ secrets.PERSONAL_MASTODON_TOKEN_PIAILLE }} # Mastodon access token for authentication.
-          url: "${MASTODON_URL}"
-          message: "${{ steps.message_content.outputs.message }}" #
+          access-token: ${{ env.MASTODON_TOKEN }} # Mastodon access token for authentication.
+          url: ${{ env.MASTODON_URL }}
+          message: |
+            🐟 New release Pure ${{ inputs.release_tag }} is out!
+            ${{ inputs.release_body }}
+            Details: https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag }}
+            #fish #shell #release
           language: "en"
