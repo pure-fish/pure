@@ -39,7 +39,7 @@ jobs:
         id: post2bluesky
         uses: cbrgm/bluesky-github-action@v1 # https://github.com/marketplace/actions/bluesky-send-post
         with:
-          handle: "edouard-lopez.bsky.social" # Your handle (example: username.bsky.social)
+          handle: "edouard-lopez.com" # Your handle (example: username.bsky.social)
           password: ${{ secrets.PERSONAL_BLUESKY_TOKEN }} # Your Bluesky app token
           text: |
             🐟 New Pure ${{ inputs.release_tag }} is out!
