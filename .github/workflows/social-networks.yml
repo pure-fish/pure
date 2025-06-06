@@ -2,6 +2,9 @@
 name: Post Release Notes
 
 on:
+# trigger this workflow when a new release is created
+  release:
+    types: [published]
   workflow_call:
     inputs:
       release_body:
