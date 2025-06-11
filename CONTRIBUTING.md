@@ -119,3 +119,7 @@ $pure_threshold_command_duration
 ```
 
 [fish-releases]: https://github.com/fish-shell/fish-shell/releases
+
+### Posting on social media
+
+There is a manual workflow to post on social media.
