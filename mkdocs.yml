@@ -92,6 +92,8 @@ extra:
       link: https://twitter.com/edouard_lopez
     - icon: fontawesome/brands/github
       link: https://github.com/pure-fish/pure/
+  pure:
+    fish_version: "4.0.2"
 
 extra_css:
   - stylesheets/extra.css
@@ -101,3 +103,4 @@ plugins:
   - awesome-pages
   - include-markdown
   - git-authors
+  - macros

@@ -6,8 +6,8 @@
 
 Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by the container:
 
-    make build-pure-on FISH_VERSION=3.3.1
-    make dev-pure-on FISH_VERSION=3.3.1 CMD="fishtape tests/*.test.fish"
+    make build-pure-on FISH_VERSION={{ pure.fish_version }}
+    make dev-pure-on FISH_VERSION={{ pure.fish_version }} CMD="fishtape tests/*.test.fish"
 
 ## Code Conventions
 
