@@ -22,5 +22,3 @@
 
 [MIT]: ../LICENSE.md
 [docker-images]: https://github.com/andreiborisov/docker-fish/
-
-{{ macros_info() }}
