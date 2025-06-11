@@ -9,6 +9,14 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
     make build-pure-on FISH_VERSION={{ pure.fish_version }}
     make dev-pure-on FISH_VERSION={{ pure.fish_version }} CMD="fishtape tests/*.test.fish"
 
+!!! tip "Working with NixOS"
+
+    We have targets for `NixOS` called `nix-build-pure-on` and `nix-dev-pure-on`:
+
+    ```sh
+    ❯ make build-pure-on-nix dev-pure-on-nix FISH_VERSION={{ pure.fish_version }}
+    ```
+
 ## Code Conventions
 
 ### Be Fishy
