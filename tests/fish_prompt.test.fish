@@ -41,7 +41,7 @@ before_all
     set --universal pure_enable_single_line_prompt true
 
     fish_prompt | string collect --no-trim-newlines
-) = '/path/ git duration ❯]'\n
+) = '/path/ git duration ❯]'
 
 
 @test "fish_prompt: change with exit status" (
@@ -61,13 +61,13 @@ before_all
 
 @test "fish_prompt: use 2-lines prompt by default" (
     set --universal pure_enable_single_line_prompt false
-    fish_prompt | wc -l | tr -d ' '
-) = 2
+    fish_prompt | wc -l 
+) = 1 # see https://github.com/pure-fish/pure/pull/380
 
 @test "fish_prompt: use 1-line compact-prompt" (
     set --universal pure_enable_single_line_prompt true
 
-    fish_prompt | wc -l | tr -d ' '
-) = 1
+    fish_prompt | wc -l 
+) = 0 # see https://github.com/pure-fish/pure/pull/380
 
 after_all
