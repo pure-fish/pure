@@ -14,12 +14,18 @@ function _pure_prompt_git_pending_commits
             set --local git_unpushed_commits_color \
                 (_pure_set_color $pure_color_git_unpushed_commits)
             set git_unpushed_commits "$git_unpushed_commits_color$pure_symbol_git_unpushed_commits"
+            if test "$pure_show_numbered_git_unpushed_commits" = true
+                set git_unpushed_commits "$git_unpushed_commits$commit_to_push"
+            end
         end
 
         if test "$commit_to_pull" -gt 0  # upstream is ahead of local repo
             set --local git_unpulled_commits_color \
                 (_pure_set_color $pure_color_git_unpulled_commits)
             set git_unpulled_commits "$git_unpulled_commits_color$pure_symbol_git_unpulled_commits"
+            if test "$pure_show_numbered_git_unpulled_commits" = true
+                set git_unpulled_commits "$git_unpulled_commits$commit_to_pull"
+            end
         end
     end
 
