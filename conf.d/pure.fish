@@ -33,6 +33,10 @@ _pure_set_default pure_color_git_unpushed_commits pure_color_info
 _pure_set_default pure_color_git_branch pure_color_mute
 _pure_set_default pure_color_git_dirty pure_color_mute
 _pure_set_default pure_color_git_stash pure_color_info
+_pure_set_default pure_show_numbered_git_unpulled_commits false
+_pure_set_default pure_show_numbered_git_unpushed_commits false
+_pure_set_default pure_show_numbered_git_dirty false
+_pure_set_default pure_show_numbered_git_stash false
 
 # Remote info (user@hostname) for SSH and containers (Docker/LXC)
 _pure_set_default pure_color_hostname pure_color_mute
