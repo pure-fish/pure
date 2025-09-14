@@ -1,15 +1,19 @@
 function _pure_prompt_git_stash
     set --local git_stash_symbol
     set --local git_stash_color
+    set --local git_stash_number
 
-    set --local has_stashed_files (
-        command git rev-list --walk-reflogs --count refs/stash >/dev/null 2>&1
-        and echo "true"
+    set --local git_stash_count (
+        command git rev-list --walk-reflogs --count refs/stash 2> /dev/null
+        or echo "0"
     )
-    if test -n "$has_stashed_files" # untracked or un-commited files
+    if test "$git_stash_count" -gt 0 # has git stash
         set git_stash_symbol " $pure_symbol_git_stash"
         set git_stash_color (_pure_set_color $pure_color_git_stash)
+        if test "$pure_show_numbered_git_stash" = true
+            set git_stash_number "$git_stash_count"
+        end
     end
 
-    echo "$git_stash_color$git_stash_symbol"
+    echo "$git_stash_color$git_stash_symbol$git_stash_number"
 end
