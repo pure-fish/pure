@@ -53,6 +53,23 @@ end
     _pure_prompt_git_pending_commits
 ) = '^'
 
+@test "_pure_prompt_git_pending_commits: when enabled, show NUMBERED arrow UP when branch is AHEAD of upstream (need git push)" (
+    before_each
+
+    git push --set-upstream --quiet origin master > /dev/null
+    touch missing-on-upstream-1.txt
+    git add missing-on-upstream-1.txt
+    git commit --quiet --message='first commit: missing on upstream'
+    touch missing-on-upstream-2.txt
+    git add missing-on-upstream-2.txt
+    git commit --quiet --message='second commit: missing on upstream'
+
+    set --universal pure_show_numbered_git_unpushed_commits true
+    set --universal pure_symbol_git_unpushed_commits '^'
+
+    _pure_prompt_git_pending_commits
+) = '^2'
+
 @test "_pure_prompt_git_pending_commits: show arrow DOWN when branch is BEHIND upstream (need git pull)" (
     before_each
 
@@ -67,6 +84,25 @@ end
 
     _pure_prompt_git_pending_commits
 ) = v
+
+@test "_pure_prompt_git_pending_commits: when enabled, show NUMBERED arrow DOWN when branch is BEHIND upstream (need git pull)" (
+    before_each
+
+    touch another-file.txt
+    git add another-file.txt
+    git commit --quiet --message='another one'
+    touch another-file-2.txt
+    git add another-file-2.txt
+    git commit --quiet --message='another two'
+    git push --set-upstream --quiet origin master > /dev/null
+
+    git reset --hard --quiet HEAD~2
+
+    set --universal pure_show_numbered_git_unpulled_commits true
+    set --universal pure_symbol_git_unpulled_commits 'v'
+
+    _pure_prompt_git_pending_commits
+) = 'v2'
 
 @test "_pure_prompt_git_pending_commits: empty repo don't throw error" (
     before_each
