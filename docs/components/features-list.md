@@ -7,7 +7,7 @@
 
 !!! success "🐌 Faster Prompt"
 
-    Checking new release send a HTTP request that slow down your prompt rendering 
+    Checking new release send a HTTP request that slow down your prompt rendering
     as it wait for remote server response. Set it to `false` speed up rendering:
 
     ```fish
@@ -33,13 +33,16 @@
 
 ### Git
 
-| Option                                 | Default | Description                                          |
-| :------------------------------------- | :------ | :--------------------------------------------------- |
-| **`pure_enable_git`**                  | `true`  | Show info about Git repository.                      |
-| **`pure_symbol_git_dirty`**            | `*`     | Repository is Dirty (uncommitted/untracked changes). |
-| **`pure_symbol_git_stash`**            | `≡`     | Repository git stash status.                         |
-| **`pure_symbol_git_unpulled_commits`** | `⇣`     | Branch is behind upstream (commits to pull).         |
-| **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).          |
+| Option                                        | Default | Description                                              |
+| :-------------------------------------------- | :------ | :------------------------------------------------------- |
+| **`pure_enable_git`**                         | `true`  | Show info about Git repository.                          |
+| **`pure_symbol_git_dirty`**                   | `*`     | Repository is Dirty (uncommitted/untracked changes).     |
+| **`pure_symbol_git_stash`**                   | `≡`     | Repository git stash status.                             |
+| **`pure_symbol_git_unpulled_commits`**        | `⇣`     | Branch is behind upstream (commits to pull).             |
+| **`pure_symbol_git_unpushed_commits`**        | `⇡`     | Branch is ahead upstream (commits to push).              |
+| **`pure_show_numbered_git_stash`**            | `false` | Show number of git stash                                 |
+| **`pure_show_numbered_git_unpulled_commits`** | `false` | Show number of commits behind upstream (commits to pull) |
+| **`pure_show_numbered_git_unpushed_commits`** | `false` | Show number of commits ahead upstream (commits to push)  |
 
 > :information_source: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#safer-symbols)?
 
