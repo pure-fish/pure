@@ -37,7 +37,7 @@ dev-pure-on: build-with-pure-source
 		--tty \
 		--volume=$$(pwd):/home/nemo/.config/fish/pure/ \
 		--workdir /home/nemo/.config/fish/pure/ \
-		pure-${STAGE}-${FISH_VERSION} "${CMD}"
+		pure-${STAGE}-${FISH_VERSION} "fish --version && ${CMD}"
 	chmod o=r-x tests/fixtures/ # for migration-to-4.0.0.test.fish only
 
 .PHONY: test-pure-on
@@ -48,7 +48,7 @@ test-pure-on: build-with-pure-source
 		--name test-pure-on-${FISH_VERSION} \
 		--rm \
 		--tty \
-		pure-${STAGE}-${FISH_VERSION} "${CMD}"
+		pure-${STAGE}-${FISH_VERSION} "fish --version && ${CMD}"
 
 .PHONY: build-with-pure-source
 build-with-pure-source:
@@ -81,7 +81,7 @@ dev-pure-on-nix:
 		${TTY} \
 		--volume=$$(pwd):/tmp/.pure/ \
 		--workdir /tmp/.pure/ \
-		pure-${STAGE}-${FISH_VERSION} "${CMD}"
+		pure-${STAGE}-${FISH_VERSION} "fish --version && ${CMD}"
 	chmod o=r-x ./tests/fixtures/ # for migration-to-4.0.0.test.fish only
 
 test-pure-on-nix: CMD?=fishtape tests/*.test.fish

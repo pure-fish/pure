@@ -20,5 +20,5 @@ jobs:
         shell: fish {0}
 
       - name: Run Tests
-        run: fishtape tests/*.test.fish
+        run: fish --version && fishtape tests/*.test.fish
         shell: fish {0}
