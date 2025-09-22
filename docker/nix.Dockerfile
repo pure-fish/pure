@@ -10,7 +10,22 @@ COPY ./ /tmp/.pure
 WORKDIR /tmp/.pure
 
 # Tests are run as part of the `fishPlugins.fish` build process
-RUN nix build --print-build-logs --impure --expr "$(cat ./docker/fish-with-pure.nix)"
+RUN nix build --print-build-logs --impure --expr "$(cat ./docker/fish-with-pure.nix)" && \
+    cp -r result /nix-result
 
 # We still provide a shell for more manual testing
-ENTRYPOINT ["./result/bin/fish"]
+# Use a script to handle both interactive shell and command execution
+COPY <<'EOF' /entrypoint.sh
+#!/bin/sh
+# Make sure fish can find itself in PATH for fishtape
+export PATH=/nix-result/bin:$PATH
+if [ $# -eq 0 ]; then
+    # No arguments, start interactive shell
+    exec /nix-result/bin/fish
+else
+    # Arguments provided, execute as command
+    exec /nix-result/bin/fish -c "$*"
+fi
+EOF
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

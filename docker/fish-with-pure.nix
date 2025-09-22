@@ -14,6 +14,7 @@ let
     # so we need to manually run stuff around what we see in the original plugin attr value.
     checkPhase = ''
       export HOME=$(mktemp -d)  # fish wants a writable home
+      export PATH=${curl}/bin:$PATH
       fish "${writeScript "pure-test" checkScript}"
     '';
   }));
@@ -21,5 +22,6 @@ in
 # Leveraging https://nixos.org/manual/nixpkgs/stable/#sec-fish-wrapper,
 # we build a `fish` containing our local `pure` plugin.
 (wrapFish {
-  pluginPkgs = [ localPure ];
+  pluginPkgs = [ localPure fishPlugins.fishtape_3 ];
+  runtimeInputs = [ curl diffutils ];
 })
