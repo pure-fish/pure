@@ -23,5 +23,5 @@ in
 # we build a `fish` containing our local `pure` plugin.
 (wrapFish {
   pluginPkgs = [ localPure fishPlugins.fishtape_3 ];
-  runtimeInputs = [ curl diffutils ];
+  runtimeInputs = [ curl diffutils gnused ];
 })
