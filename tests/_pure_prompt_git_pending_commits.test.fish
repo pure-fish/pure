@@ -64,7 +64,7 @@ end
     git add missing-on-upstream-2.txt
     git commit --quiet --message='second commit: missing on upstream'
 
-    set --universal pure_show_numbered_git_unpushed_commits true
+    set --universal pure_show_numbered_git_indicator true
     set --universal pure_symbol_git_unpushed_commits '^'
 
     _pure_prompt_git_pending_commits
@@ -98,7 +98,7 @@ end
 
     git reset --hard --quiet HEAD~2
 
-    set --universal pure_show_numbered_git_unpulled_commits true
+    set --universal pure_show_numbered_git_indicator true
     set --universal pure_symbol_git_unpulled_commits 'v'
 
     _pure_prompt_git_pending_commits

@@ -51,7 +51,7 @@ end
 @test "_pure_prompt_git_stash: numbered stash indicator" (
     before_each
     set --universal pure_symbol_git_stash '≡'
-    set --universal pure_show_numbered_git_stash true
+    set --universal pure_show_numbered_git_indicator true
     touch init.file stash1.file stash2.file
     git add init.file
     git commit --quiet --message 'mandatory initial commit'

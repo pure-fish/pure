@@ -1,4 +1,5 @@
 <!-- markdownlint-disable MD041 -->
+
 ### Check For New Release
 
 | Option                           | Default | Description                                               |
@@ -33,16 +34,14 @@
 
 ### Git
 
-| Option                                        | Default | Description                                              |
-| :-------------------------------------------- | :------ | :------------------------------------------------------- |
-| **`pure_enable_git`**                         | `true`  | Show info about Git repository.                          |
-| **`pure_symbol_git_dirty`**                   | `*`     | Repository is Dirty (uncommitted/untracked changes).     |
-| **`pure_symbol_git_stash`**                   | `≡`     | Repository git stash status.                             |
-| **`pure_symbol_git_unpulled_commits`**        | `⇣`     | Branch is behind upstream (commits to pull).             |
-| **`pure_symbol_git_unpushed_commits`**        | `⇡`     | Branch is ahead upstream (commits to push).              |
-| **`pure_show_numbered_git_stash`**            | `false` | Show number of git stash                                 |
-| **`pure_show_numbered_git_unpulled_commits`** | `false` | Show number of commits behind upstream (commits to pull) |
-| **`pure_show_numbered_git_unpushed_commits`** | `false` | Show number of commits ahead upstream (commits to push)  |
+| Option                                 | Default | Description                                          |
+| :------------------------------------- | :------ | :--------------------------------------------------- |
+| **`pure_enable_git`**                  | `true`  | Show info about Git repository.                      |
+| **`pure_symbol_git_dirty`**            | `*`     | Repository is Dirty (uncommitted/untracked changes). |
+| **`pure_symbol_git_stash`**            | `≡`     | Repository git stash status.                         |
+| **`pure_symbol_git_unpulled_commits`** | `⇣`     | Branch is behind upstream (commits to pull).         |
+| **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).          |
+| **`pure_show_numbered_git_indicator`** | `false` | Show number of git stash and commits behind/ahead    |
 
 > :information_source: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#safer-symbols)?
 
@@ -66,7 +65,7 @@
 | Option                               | Default           | Description                                                                          |
 | :----------------------------------- | :---------------- | :----------------------------------------------------------------------------------- |
 | **`pure_enable_nixdevshell`**        | `false`           | Indicate if a [`nix develop` shell][nix-dev] is activated (based on `IN_NIX_SHELL`). |
-| **`pure_symbol_nixdevshell_prefix`** | `❄️`               | otherwise [nerdfonts](https://www.nerdfonts.com/): '󱄅' or ''                        |
+| **`pure_symbol_nixdevshell_prefix`** | `❄️`              | otherwise [nerdfonts](https://www.nerdfonts.com/): '󱄅' or ''                        |
 | **`pure_color_nixdevshell_prefix`**  | `pure_color_info` | prefix color                                                                         |
 | **`pure_color_nixdevshell_symbol`**  | `pure_color_mute` | symbol color                                                                         |
 
@@ -87,9 +86,9 @@
 
 ### AWS Profile
 
-| Option                              | Default | Description                                                                  |
-| :---------------------------------- | :------ | :--------------------------------------------------------------------------- |
-| **`pure_enable_aws_profile`**        | `true`  | Show AWS profile name (based on `AWS_VAULT` or `AWS_PROFILE`).       |
+| Option                               | Default | Description                                                           |
+| :----------------------------------- | :------ | :-------------------------------------------------------------------- |
+| **`pure_enable_aws_profile`**        | `true`  | Show AWS profile name (based on `AWS_VAULT` or `AWS_PROFILE`).        |
 | **`pure_symbol_aws_profile_prefix`** |         | Prefix when a AWS profile is activated (default: [undefined][to-set]) |
 
 ### Separate Error Symbol
@@ -98,7 +97,7 @@
 | :---------------------------------- | :------ | :------------------------------------------------------------------ |
 | **`pure_separate_prompt_on_error`** | `false` | Show last command [exit code as a second prompt symbol][exit-code]. |
 
-[exit-code]: <https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character> "See pure-zsh wiki"
+[exit-code]: https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character "See pure-zsh wiki"
 
 ### Single Line Prompt
 
