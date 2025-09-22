@@ -10,7 +10,9 @@ for fpath in $fish_function_path;
 end
 
 
-function _pure_uninstall --on-event pure_uninstall
+function _pure_uninstall --on-event pure_uninstall \
+    --description 'Fisher handler to uninstall pure prompt'
+    
     rm -f $__fish_config_dir/conf.d/pure.fish
 
     # backup fish_prompt and fish_title to default
