@@ -63,22 +63,10 @@ before_all
     echo $pure_symbol_git_stash
 ) = "≡"
 
-@test "configure: pure_show_numbered_git_unpulled_commits" (
-    set --erase pure_show_numbered_git_unpulled_commits
+@test "configure: pure_show_numbered_git_indicator" (
+    set --erase pure_show_numbered_git_indicator
     source (status dirname)/../conf.d/pure.fish
-    echo $pure_show_numbered_git_unpulled_commits
-) = false
-
-@test "configure: pure_show_numbered_git_unpushed_commits" (
-    set --erase pure_show_numbered_git_unpushed_commits
-    source (status dirname)/../conf.d/pure.fish
-    echo $pure_show_numbered_git_unpushed_commits
-) = false
-
-@test "configure: pure_show_numbered_git_stash" (
-    set --erase pure_show_numbered_git_stash
-    source (status dirname)/../conf.d/pure.fish
-    echo $pure_show_numbered_git_stash
+    echo $pure_show_numbered_git_indicator
 ) = false
 
 @test "configure: pure_symbol_title_bar_separator" (
