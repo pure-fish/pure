@@ -79,6 +79,7 @@ before_each
     count $__fish_config_dir/{functions,conf.d}/_pure_*
 ) = $NONE
 
+if not test -d /etc/nix # skip on NixOS
 before_each
 @test "init/_pure_uninstall: remove pure-related functions" (
     # source (status dirname)/../functions/_pure_set_default.fish
@@ -89,5 +90,6 @@ before_each
 
     functions --names --all | string match --all --entire '_pure' | count
 ) = $NONE
+end
 
 after_all
