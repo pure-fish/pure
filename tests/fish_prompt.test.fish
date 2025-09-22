@@ -61,13 +61,13 @@ before_all
 
 @test "fish_prompt: use 2-lines prompt by default" (
     set --universal pure_enable_single_line_prompt false
-    fish_prompt | wc -l 
-) = 1 # see https://github.com/pure-fish/pure/pull/380
+    fish_prompt | wc -l | string trim --left # macos prepends spaces
+) = 1 # see https://github.com/pure-fish/pure/pull/381
 
 @test "fish_prompt: use 1-line compact-prompt" (
     set --universal pure_enable_single_line_prompt true
 
-    fish_prompt | wc -l 
-) = 0 # see https://github.com/pure-fish/pure/pull/380
+    fish_prompt | wc -l | string trim --left # macos prepends spaces
+) = 0 # see https://github.com/pure-fish/pure/pull/381
 
 after_all
