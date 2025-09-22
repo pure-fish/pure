@@ -1,9 +1,10 @@
-FROM docker.io/nixos/nix:2.26.4
+FROM docker.io/nixos/nix:2.31.2
 
 ARG FISH_VERSION
 ENV NIX_CONFIG "experimental-features = nix-command flakes"
 
 # To speedup the later `ENTRYPOINT`, we add the `fish` package to the store
+RUN nix-channel --update
 RUN nix build github:nixos/nixpkgs\#fish
 
 COPY ./ /tmp/.pure
