@@ -19,6 +19,11 @@ COPY <<'EOF' /entrypoint.sh
 #!/bin/sh
 # Make sure fish can find itself in PATH for fishtape
 export PATH=/nix-result/bin:$PATH
+
+# Clean up any mock files left from the Nix build process
+# These were created by nixbld1 user and can't be overwritten by root
+rm -f /tmp/*.mock_response /tmp/*.mock_calls /tmp/*.mock_status_code 2>/dev/null || true
+
 if [ $# -eq 0 ]; then
     # No arguments, start interactive shell
     exec /nix-result/bin/fish
