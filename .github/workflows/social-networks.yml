@@ -9,11 +9,11 @@ on:
     inputs:
       release_body:
         description: 'The body of the release notes'
-        required: true
+        required: false
         type: string
       release_tag:
         description: 'The tag of the release (e.g., v1.0.0)'
-        required: true
+        required: false
         type: string
     secrets:
       PERSONAL_BLUESKY_TOKEN:
@@ -23,13 +23,15 @@ on:
   workflow_dispatch:
     inputs:
       release_body:
-        description: 'The body of the release notes (for manual run)'
-        required: true
+        description: 'The body of the release notes (leave empty to use latest release)'
+        required: false
         type: string
+        default: ''
       release_tag:
-        description: 'The tag of the release (e.g., v1.0.0) (for manual run)'
-        required: true
+        description: 'The tag of the release (leave empty to use latest release tag)'
+        required: false
         type: string
+        default: ''
 
 jobs:
   post-release-notes:
@@ -42,9 +44,9 @@ jobs:
           handle: "edouard-lopez.com" # Your handle (example: username.bsky.social)
           password: ${{ secrets.PERSONAL_BLUESKY_TOKEN }} # Your Bluesky app token
           text: |
-            🐟 New Pure ${{ inputs.release_tag }} is out!
-            ${{ inputs.release_body }}
-            Details: https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag }}
+            🐟 New Pure ${{ inputs.release_tag || github.event.release.tag_name }} is out!
+            ${{ inputs.release_body || github.event.release.body }}
+            Details: https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
             #fish #shell #release
           lang: "en"
 
@@ -58,8 +60,8 @@ jobs:
           access-token: ${{ env.MASTODON_TOKEN }} # Mastodon access token for authentication.
           url: ${{ env.MASTODON_URL }}
           message: |
-            🐟 New release Pure ${{ inputs.release_tag }} is out!
-            ${{ inputs.release_body }}
-            Details: https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag }}
+            🐟 New release Pure ${{ inputs.release_tag || github.event.release.tag_name }} is out!
+            ${{ inputs.release_body || github.event.release.body }}
+            Details: https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
             #fish #shell #release
           language: "en"
