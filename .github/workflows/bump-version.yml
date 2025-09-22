@@ -32,7 +32,7 @@ jobs:
         if: steps.next_version.outputs.hasNextVersion == 'true'
         run: |
           perl -i -p -e \
-            "s/(pure_version)\s(\d+(\.)?){3}/\1 ${{ steps.next_version.outputs.version }}/" \
+            "s/(pure_version)\s(\d+(\.)?){3}([^\s]+)?/\1 ${{ steps.next_version.outputs.version }}/" \
             ./conf.d/pure.fish
 
       - name: Set git user metadata
