@@ -15,7 +15,7 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      - uses: butlerlogic/action-autotag@1.1.4
+      - uses: butlerlogic/action-autotag@1.1.2 # 1.1.4 is buggy https://github.com/ButlerLogic/action-autotag/issues/49
         with:
           root: "./conf.d/pure.fish"
           regex_pattern: "pure_version\\s(?<version>(\\d+(\\.)?){3})"
