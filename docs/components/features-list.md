@@ -65,7 +65,7 @@
 | Option                               | Default           | Description                                                                          |
 | :----------------------------------- | :---------------- | :----------------------------------------------------------------------------------- |
 | **`pure_enable_nixdevshell`**        | `false`           | Indicate if a [`nix develop` shell][nix-dev] is activated (based on `IN_NIX_SHELL`). |
-| **`pure_symbol_nixdevshell_prefix`** | `❄️`              | otherwise [nerdfonts](https://www.nerdfonts.com/): '󱄅' or ''                        |
+| **`pure_symbol_nixdevshell_prefix`** | `❄️`               | otherwise [nerdfonts](https://www.nerdfonts.com/): '󱄅' or ''                        |
 | **`pure_color_nixdevshell_prefix`**  | `pure_color_info` | prefix color                                                                         |
 | **`pure_color_nixdevshell_symbol`**  | `pure_color_mute` | symbol color                                                                         |
 

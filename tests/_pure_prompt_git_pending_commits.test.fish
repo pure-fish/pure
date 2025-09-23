@@ -53,8 +53,7 @@ end
     _pure_prompt_git_pending_commits
 ) = '^'
 
-@test "_pure_prompt_git_pending_commits: when enabled, show NUMBERED arrow UP when branch is AHEAD of upstream (need git push)" (
-    before_each
+@test "_pure_prompt_git_pending_commits: when enabled, show number of commits we need to PUSH to upstream next to arrow UP symbol" (    before_each
 
     git push --set-upstream --quiet origin master > /dev/null
     touch missing-on-upstream-1.txt
@@ -85,7 +84,7 @@ end
     _pure_prompt_git_pending_commits
 ) = v
 
-@test "_pure_prompt_git_pending_commits: when enabled, show NUMBERED arrow DOWN when branch is BEHIND upstream (need git pull)" (
+@test "_pure_prompt_git_pending_commits: show number of commits we need to PULL from upstream next to arrow DOWN symbol" (
     before_each
 
     touch another-file.txt

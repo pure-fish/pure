@@ -54,11 +54,9 @@ Fully **customizable** (colors, symbols and features):
   
     * Display `*` when `git` repository is _dirty_ ;
     * Display `≡` when `git` repository is _stashed_ ;
-        * Can be configured to display the number of stashes, e.g. `≡3`
     * Display `⇡` when branch is _ahead_ (commits to push) ;
-        * Can be configured to display the number of commits, e.g. `⇡5`
     * Display `⇣` when branch is _behind_ (commits to pull) ;
-        * Can be configured to display the number of stashes, e.g. `⇣5`
+    * Display the number of stashes, ahead and behind commits (e.g. `≡3 ⇡5 ⇣2`) ;
     * [Async update when configured with fish-async-prompt][async] ;
 
 * [Update terminal title with _current folder_ and _command_ 🛠][title] ;
