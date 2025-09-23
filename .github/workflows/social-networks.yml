@@ -37,6 +37,20 @@ jobs:
   post-release-notes:
     runs-on: ubuntu-latest
     steps:
+      - name: Prepare release body
+        id: prepare_body
+        run: |
+          RELEASE_BODY="${{ inputs.release_body || github.event.release.body }}"
+          # Truncate to 300 characters (approximating graphemes)
+          if [ ${#RELEASE_BODY} -gt 300 ]; then
+            TRUNCATED_BODY="${RELEASE_BODY:0:297}…"
+          else
+            TRUNCATED_BODY="$RELEASE_BODY"
+          fi
+          echo "truncated_body<<EOF" >> $GITHUB_OUTPUT
+          echo "$TRUNCATED_BODY" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
       - name: Send post to Bluesky
         id: post2bluesky
         uses: cbrgm/bluesky-github-action@v1 # https://github.com/marketplace/actions/bluesky-send-post
@@ -45,7 +59,7 @@ jobs:
           password: ${{ secrets.PERSONAL_BLUESKY_TOKEN }} # Your Bluesky app token
           text: |
             🐟 New Pure ${{ inputs.release_tag || github.event.release.tag_name }} is out!
-            ${{ inputs.release_body || github.event.release.body }}
+            ${{ steps.prepare_body.outputs.truncated_body }}
             Details: https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
             #fish #shell #release
           lang: "en"
@@ -61,7 +75,7 @@ jobs:
           url: ${{ env.MASTODON_URL }}
           message: |
             🐟 New release Pure ${{ inputs.release_tag || github.event.release.tag_name }} is out!
-            ${{ inputs.release_body || github.event.release.body }}
+            ${{ steps.prepare_body.outputs.truncated_body }}
             Details: https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
             #fish #shell #release
           language: "en"
