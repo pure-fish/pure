@@ -1,5 +1,5 @@
-source (status dirname)/fixtures/constants.fish
-source (status dirname)/mocks/spectra.fish
+source (status dirname)/../tests/fixtures/constants.fish
+source (status dirname)/../tests/mocks/spectra.fish
 
 @echo (_print_filename (status filename))
 
@@ -20,10 +20,11 @@ function screenshot \
 
     $action \
         | terminal-screenshot \
-        --output ./docs/assets/screenshots/$name.png \
-        --margin 5 \
-        --font-family "Noto Sans Mono, Noto Sans Symbols, Noto Sans Emoji"
-    # --background-color white # some text are invisible with white background
+         --color-scheme (status dirname)/colorscheme/ayu-light.json \
+         --margin "5px" \
+         --background-color '#fafafa' \
+         --output (status dirname)/../docs/assets/screenshots/$name.png \
+         --font-family "Noto Sans Mono, Noto Sans Symbols, Noto Sans Emoji"
 end
 
 if set --query CI

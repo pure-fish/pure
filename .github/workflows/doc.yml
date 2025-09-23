@@ -4,13 +4,13 @@ on:
     branches:
       - master
     paths:
-      - tests/screenshot.test.doc.fish
+      - tools/screenshot.fish
 
   pull_request:
     types:
       - synchronize # when commits are pushed to a PR
     paths:
-      - tests/screenshot.test.doc.fish
+      - tools/screenshot.fish
   workflow_call:
     inputs:
       fish_version:
