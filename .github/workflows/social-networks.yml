@@ -60,9 +60,10 @@ jobs:
           handle: "edouard-lopez.com" # Your handle (example: username.bsky.social)
           password: ${{ secrets.PERSONAL_BLUESKY_TOKEN }} # Your Bluesky app token
           text: |
-            🐟 New Pure ${{ inputs.release_tag || github.event.release.tag_name }} is out!
+            🐟 New Pure ${{ inputs.release_tag || github.event.release.tag_name }}!
+            See https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
+            
             ${{ steps.prepare_body.outputs.truncated_body }}
-            Details: https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
             #fish #shell #release
           lang: "en"
 
@@ -76,8 +77,9 @@ jobs:
           access-token: ${{ env.MASTODON_TOKEN }} # Mastodon access token for authentication.
           url: ${{ env.MASTODON_URL }}
           message: |
-            🐟 New release Pure ${{ inputs.release_tag || github.event.release.tag_name }} is out!
+            🐟 New Pure ${{ inputs.release_tag || github.event.release.tag_name }}!
+            See https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
+            
             ${{ steps.prepare_body.outputs.truncated_body }}
-            Details: https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
             #fish #shell #release
           language: "en"
