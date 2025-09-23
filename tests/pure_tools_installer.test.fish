@@ -23,7 +23,7 @@ function before_each
     _purge_configs
     _disable_colors
 
-    if test "$USER" = nemo # avoid destroying other user's configuration
+    if is_tests_runner # avoid destroying other user's configuration
         rm -f $HOME/.config/fish/config.fish
         touch $HOME/.config/fish/config.fish
         remove_pure_files
@@ -124,7 +124,7 @@ before_each
     [ "$_pure_fresh_session" = true ]
 ) $status -eq $SUCCESS
 
-if test "$USER" = nemo # avoid destroying other user's configuration
+if is_tests_runner # avoid destroying other user's configuration
     before_each
     @test "installer: link configuration and functions to fish config directory" (
         set install_directory (mktemp --directory)
@@ -143,7 +143,7 @@ if test "$USER" = nemo # avoid destroying other user's configuration
     ) $status -eq $SUCCESS
 end
 
-if test "$USER" = nemo # avoid destroying other user's configuration
+if is_tests_runner # avoid destroying other user's configuration
     before_each
     @test "installation methods: manually (with local installer)" (
         source (status dirname)/../tools/installer.fish
@@ -157,7 +157,7 @@ if test "$USER" = nemo # avoid destroying other user's configuration
     ) $status -eq $SUCCESS
 end
 
-if test "$USER" = nemo # avoid destroying other user's configuration
+if is_tests_runner # avoid destroying other user's configuration
     before_each
     @test "installation methods: manually (with published installer)" (
         curl --silent --location git.io/pure-fish --output /tmp/installer.fish
@@ -169,7 +169,7 @@ if test "$USER" = nemo # avoid destroying other user's configuration
     ) $status -eq $SUCCESS
 end
 
-if test "$USER" = nemo # avoid destroying other user's configuration
+if is_tests_runner # avoid destroying other user's configuration
     before_each
     @test "installation methods: with fisher 4.x" (
         fish -c 'fisher install pure-fish/pure' >/dev/null 2>&1
@@ -179,7 +179,7 @@ if test "$USER" = nemo # avoid destroying other user's configuration
     ) $status -eq $SUCCESS
 end
 
-if test "$USER" = nemo # avoid destroying other user's configuration
+if is_tests_runner # avoid destroying other user's configuration
     # don't move in different file otherwise there is a race conditions
     before_each
     @test "_pure_uninstall: handler file is source correctly" (
@@ -190,7 +190,7 @@ if test "$USER" = nemo # avoid destroying other user's configuration
     ) $status = $FAILURE
 end
 
-if test "$USER" = nemo # avoid destroying other user's configuration
+if is_tests_runner # avoid destroying other user's configuration
     # don't move in different file otherwise there is a race conditions
     before_each
     @test "_pure_uninstall: uninstall handler is executed and remove config" (

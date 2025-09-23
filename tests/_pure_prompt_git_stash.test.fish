@@ -48,7 +48,8 @@ end
     _pure_prompt_git_stash
 ) = ' ≡'
 
-@test "_pure_prompt_git_stash: show number of stash entries next to indicator" (    before_each
+@test "_pure_prompt_git_stash: show number of stash entries next to indicator" (
+    before_each
     set --universal pure_symbol_git_stash '≡'
     set --universal pure_show_numbered_git_indicator true
     touch init.file stash1.file stash2.file
