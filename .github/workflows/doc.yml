@@ -26,10 +26,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Prepare screenshot image
-        run: make build-pure-screenshot FISH_VERSION=3.6.1
+        run: make build-pure-screenshot FISH_VERSION=4.0.2
 
       - name: Take screenshot
-        run: make run-pure-screenshot FISH_VERSION=3.6.1 CMD='CI=true fishtape tests/screenshot.test.fish'
+        run: make run-pure-screenshot FISH_VERSION=4.0.2 CMD='CI=true fishtape tests/screenshot.test.fish'
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
