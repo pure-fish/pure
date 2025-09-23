@@ -39,11 +39,13 @@ jobs:
     steps:
       - name: Prepare release body
         id: prepare_body
+        env:
+          RELEASE_BODY: ${{ inputs.release_body || github.event.release.body }}
         run: |
-          RELEASE_BODY="${{ inputs.release_body || github.event.release.body }}"
-          # Truncate to 300 characters (approximating graphemes)
-          if [ ${#RELEASE_BODY} -gt 300 ]; then
-            TRUNCATED_BODY="${RELEASE_BODY:0:297}…"
+          # Use environment variable to safely handle multiline content
+          # Truncate to 200 characters (approximating graphemes)
+          if [ ${#RELEASE_BODY} -gt 200 ]; then
+            TRUNCATED_BODY="${RELEASE_BODY:0:180}…"
           else
             TRUNCATED_BODY="$RELEASE_BODY"
           fi
