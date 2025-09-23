@@ -4,17 +4,19 @@ on:
     branches:
       - master
     paths:
-      - docs/**/*
+      - tools/screenshot.fish
 
   pull_request:
-    # types:
-    #   - opened
-    #   - reopened
-    #   - synchronize
-    #   - ready_for_review
+    types:
+      - synchronize # when commits are pushed to a PR
     paths:
-      - docs/
+      - tools/screenshot.fish
   workflow_call:
+    inputs:
+      fish_version:
+        description: 'The fish version used for the screenshot (e.g., 4.0.2)'
+        required: true
+        type: string
   workflow_dispatch:
 
 jobs:
@@ -24,6 +26,12 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
+      - name: Prepare screenshot image
+        run: make build-pure-screenshot FISH_VERSION=${{ inputs.fish_version || '4.0.2' }}
+
+      - name: Take screenshot
+        run: make run-pure-screenshot FISH_VERSION=${{ inputs.fish_version || '4.0.2' }}
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master

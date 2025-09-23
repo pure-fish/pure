@@ -17,7 +17,6 @@ usage:
 build-pure-on: STAGE?=only-fish
 build-pure-on:
 	docker build \
-		--quiet \
 		--file ./docker/Dockerfile \
 		--target ${STAGE} \
 		--build-arg FISH_VERSION=${FISH_VERSION} \
@@ -109,10 +108,11 @@ serve-pure-doc:
 
 .PHONY: build-pure-screenshot
 build-pure-screenshot:
-	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-terminal-screenshot-installed
+	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-installed
 
 
 .PHONY: run-pure-screenshot
-run-pure-screenshot: CMD?=fishtape tests/*.test.fish
+run-pure-screenshot: CMD?=fishtape tools/screenshot.fish
 run-pure-screenshot:
-	$(MAKE) dev-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-terminal-screenshot-installed CMD="${CMD}"
+	rm --recursive --force ./docs/assets/screenshots/*.png
+	$(MAKE) dev-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-installed CMD="CI=true ${CMD}"
