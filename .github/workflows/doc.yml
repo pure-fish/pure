@@ -4,17 +4,19 @@ on:
     branches:
       - master
     paths:
-      - docs/**/*
+      - tests/screenshot.test.doc.fish
 
   pull_request:
-    # types:
-    #   - opened
-    #   - reopened
-    #   - synchronize
-    #   - ready_for_review
+    types:
+      - synchronize # when commits are pushed to a PR
     paths:
-      - docs/
+      - tests/screenshot.test.doc.fish
   workflow_call:
+    inputs:
+      fish_version:
+        description: 'The fish version used for the screenshot (e.g., 4.0.2)'
+        required: true
+        type: string
   workflow_dispatch:
 
 jobs:
@@ -26,10 +28,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Prepare screenshot image
-        run: make build-pure-screenshot FISH_VERSION=4.0.2
+        run: make build-pure-screenshot FISH_VERSION=${{ inputs.fish_version || '4.0.2' }}
 
       - name: Take screenshot
-        run: make run-pure-screenshot FISH_VERSION=4.0.2 CMD='CI=true fishtape tests/screenshot.test.fish'
+        run: make run-pure-screenshot FISH_VERSION=${{ inputs.fish_version || '4.0.2' }}
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
