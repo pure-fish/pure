@@ -3,7 +3,7 @@ function _pure_prompt \
     --argument-names exit_code
 
     set --local jobs (_pure_prompt_jobs)
-    set --local nixdevshell (_pure_prompt_nixdevshell) # Nix build environment indicator
+    set --local nixdevshell (_pure_prompt_nixdevshell) # Nix shell indicator
     set --local virtualenv (_pure_prompt_virtualenv) # Python virtualenv name
     set --local aws_profile (_pure_prompt_aws_profile) # AWS profile name
     set --local vimode_indicator (_pure_prompt_vimode) # vi-mode indicator
