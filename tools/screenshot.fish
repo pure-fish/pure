@@ -3,6 +3,11 @@ source (status dirname)/../tests/mocks/spectra.fish
 
 @echo (_print_filename (status filename))
 
+# Ensure the output directory exists with proper permissions
+set output_dir (status dirname)/../docs/assets/screenshots
+echo (id)
+ls -lah $output_dir
+
 function before_each
     _purge_configs
     source (status dirname)/../conf.d/pure.fish

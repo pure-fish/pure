@@ -35,6 +35,10 @@ dev-pure-on: build-with-pure-source
 		--rm \
 		--interactive \
 		$(TTY_FLAG) \
+        --user $$(id -u):$$(id -g) \
+        --env HOME=/home/nemo \
+        --env XDG_CONFIG_HOME=/home/nemo/.config \
+        --env XDG_DATA_HOME=/home/nemo/.local/share \
 		--volume=$$(pwd):/home/nemo/.config/fish/pure/ \
 		--workdir /home/nemo/.config/fish/pure/ \
 		pure-${STAGE}-${FISH_VERSION} "fish --version && ${CMD}"
