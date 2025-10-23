@@ -11,11 +11,11 @@ end
 
 
 before_each
-@test "_pure_k8s_namespace: return context" (
+@test "_pure_k8s_namespace: return 'my-namespace'" (
     _mock kubectl
 
     _pure_k8s_namespace
-) = my-namespace
+) = 'my-namespace'
 
 before_each
 @test "_pure_k8s_namespace: call `kubectl config view…`" (
@@ -27,8 +27,8 @@ before_each
 ) $status -eq $SUCCESS
 
 before_each
-@test "_pure_k8s_namespace: return default when no namespace is set" (
+@test "_pure_k8s_namespace: return 'default' when no namespace is set" (
     _mock_response kubectl ""
 
     _pure_k8s_namespace
-) = default
+) = 'default'
