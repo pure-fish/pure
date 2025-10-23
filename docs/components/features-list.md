@@ -17,11 +17,11 @@
 
 === "Enabled (with update)"
 
-    ![screenshot pure_check_for_new_release=true,with-update](../assets/screenshots/pure_check_for_new_release=true,with-update.png)
+    ![screenshot pure_check_for_new_release=true,with-update](/assets/screenshots/pure_check_for_new_release=true,with-update.png)
 
 === "Enabled (no update)"
 
-    ![screenshot pure_check_for_new_release=true,no-update](../assets/screenshots/pure_check_for_new_release=true,no-update.png)
+    ![screenshot pure_check_for_new_release=true,no-update](/assets/screenshots/pure_check_for_new_release=true,no-update.png)
 
 ### Container Detection (Docker)
 
