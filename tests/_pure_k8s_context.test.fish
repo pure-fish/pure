@@ -10,11 +10,11 @@ function before_each
 end
 
 before_each
-@test "_pure_k8s_context: return context" (
+@test "_pure_k8s_context: return 'my-context'" (
     _mock kubectl
 
     _pure_k8s_context
-) = my-context
+) = 'my-context'
 
 before_each
 @test "_pure_k8s_context: call `kubectl config current-context`" (

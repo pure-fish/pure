@@ -30,6 +30,19 @@ function _purge_configs \
     end
 end
 
+function _disable_all_configs \
+    --description "Disable all existing pure configurations. Useful in tests to focus on a single feature at a time."
+
+    if is_tests_runner # avoid destroying other user's configuration
+        for variable in (set --names | string match --regex --entire '^pure_(check|enable|reverse|separate|show)_.+')
+            set --erase --local $variable
+            set --erase --global $variable
+            set --erase --universal $variable
+            set --universal $variable false
+        end
+    end
+end
+
 function _disable_colors \
     --description "Set all color to empty value, to avoid unwanted side-effect"
 
