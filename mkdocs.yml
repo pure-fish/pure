@@ -30,6 +30,9 @@ theme:
 
   logo: ./assets/favicon.png
   favicon: ./assets/favicon.png
+  # copy all images in the assets directory to the site
+  static_templates:
+    - assets/screenshots/
 
   icon:
     repo: fontawesome/brands/github
