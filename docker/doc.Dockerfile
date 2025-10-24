@@ -6,4 +6,4 @@ RUN pip install \
     --requirement ./requirements.txt
 
 ENTRYPOINT ["mkdocs"]
-CMD ["serve", "--dev-addr=0.0.0.0:8000"]
+CMD ["serve", "--dev-addr=0.0.0.0:8000", "--livereload"]
