@@ -14,7 +14,7 @@ usage:
 	@printf "\tmake dev-pure-on   FISH_VERSION=3.3.1\t# dev in container\n"
 
 .PHONY: build-pure-on
-build-pure-on: STAGE?=only-fish
+build-pure-on: STAGE?=with-pure-installed
 build-pure-on:
 	docker build \
 		--file ./docker/Dockerfile \
@@ -26,9 +26,9 @@ build-pure-on:
 
 .PHONY: dev-pure-on
 dev-pure-on: CMD?=fish
-dev-pure-on: STAGE?=with-pure-source
+dev-pure-on: STAGE?=with-pure-installed
 dev-pure-on: TTY_FLAG?=$(shell [ -z "$$CI" ] && echo "--tty" || echo "")
-dev-pure-on: build-with-pure-source
+dev-pure-on: build-with-pure-installed
 	chmod o=rwx tests/fixtures/ # for migration-to-4.0.0.test.fish only
 	docker run \
 		--name dev-pure-on-${FISH_VERSION} \
@@ -46,17 +46,17 @@ dev-pure-on: build-with-pure-source
 
 .PHONY: test-pure-on
 test-pure-on: CMD?=fishtape tests/*.test.fish
-test-pure-on: STAGE?=with-pure-source
-test-pure-on: build-with-pure-source
+test-pure-on: STAGE?=with-pure-installed
+test-pure-on: build-with-pure-installed
 	docker run \
 		--name test-pure-on-${FISH_VERSION} \
 		--rm \
 		--tty \
 		pure-${STAGE}-${FISH_VERSION} "fish --version && ${CMD}"
 
-.PHONY: build-with-pure-source
-build-with-pure-source:
-	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-source
+.PHONY: build-with-pure-installed
+build-with-pure-installed:
+	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-installed
 
 .PHONY: dev-with-pure-installed
 dev-with-pure-installed:
@@ -113,11 +113,11 @@ serve-pure-doc:
 
 .PHONY: build-pure-screenshot
 build-pure-screenshot:
-	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-installed
+	$(MAKE) build-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-terminal-screenshot-installed
 
 
 .PHONY: run-pure-screenshot
 run-pure-screenshot: CMD?=fishtape tools/screenshot.fish
 run-pure-screenshot:
 	rm --recursive --force ./docs/assets/screenshots/*.png
-	$(MAKE) dev-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-pure-installed CMD="CI=true ${CMD}"
+	$(MAKE) dev-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-terminal-screenshot-installed CMD="CI=true ${CMD}"

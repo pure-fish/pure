@@ -2,7 +2,6 @@ source (status dirname)/fixtures/constants.fish
 source (status dirname)/../tools/installer.fish
 @echo (_print_filename (status filename))
 
-
 function remove_pure_files
     for file in $HOME/.config/fish/functions/_pure*.fish
         rm -rf "$file"
@@ -31,7 +30,6 @@ function before_each
         echo '' >$HOME/.config/fish/config.fish
     end
 end
-
 
 before_each
 @test "installer: pass argument to set $FISH_CONFIG_DIR" (
@@ -73,12 +71,12 @@ before_each
 before_each
 @test "installer: pure_fetch_source extract source correctly" (
     function curl; echo $argv; end # mock
+
     pure_fetch_source >/dev/null
     functions --erase curl  # so others tests are not polluted
 
-    test -e README.md
+    test -e conf.d/pure.fish
 ) $status -eq $SUCCESS
-
 
 before_each
 @test "installer: backup existing theme prompt" (
@@ -97,7 +95,6 @@ before_each
     pure_enable_autoloading >/dev/null
     grep -q 'fish_function_path' $FISH_CONFIG_DIR/config.fish
 ) $status -eq $SUCCESS
-
 
 before_each
 @test "installer: activate prompt" (
