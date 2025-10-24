@@ -22,7 +22,7 @@ function screenshot \
     set --query action[1]; or set action fish_prompt
 
 
-    $action \
+    eval $action \
         | terminal-screenshot \
          --color-scheme (status dirname)/colorscheme/ayu-light.json \
          --margin "5px" \
@@ -143,6 +143,20 @@ if set --query CI
         screenshot "pure_enable_nixdevshell=true"
     ) $status -eq $SUCCESS
 
+    before_each
+    @test "screenshot: pure_symbol_prompt=success" (
+        set --local action 'true; fish_prompt'
+
+        screenshot "pure_symbol_prompt=success" $action
+    ) $status -eq $SUCCESS
+
+    before_each
+    @test "screenshot: pure_symbol_prompt=error" (
+        set --local action 'false; fish_prompt'
+
+        screenshot "pure_symbol_prompt=error" $action
+    ) $status -eq $SUCCESS
+
     # Python virtualenv
     before_each
     @test "screenshot: pure_enable_virtualenv=false" (
@@ -185,7 +199,8 @@ if set --query CI
         set --universal pure_separate_prompt_on_error false
         set --global _pure_fresh_session false
 
-        screenshot "pure_separate_prompt_on_error=false"
+        set --local action 'false; fish_prompt' # Simulate last command failure
+        screenshot "pure_separate_prompt_on_error=false" $action
     ) $status -eq $SUCCESS
 
     before_each
@@ -193,7 +208,8 @@ if set --query CI
         set --universal pure_separate_prompt_on_error true
         set --global _pure_fresh_session false
 
-        screenshot "pure_separate_prompt_on_error=true"
+        set --local action 'false; fish_prompt' # Simulate last command failure
+        screenshot "pure_separate_prompt_on_error=true" $action
     ) $status -eq $SUCCESS
 
     # Single line prompt
