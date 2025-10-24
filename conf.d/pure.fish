@@ -70,7 +70,7 @@ _pure_set_default pure_color_aws_profile pure_color_warning
 # false:            user@hostname (ssh-only), current directory, git, command duration
 _pure_set_default pure_begin_prompt_with_current_directory true
 
-# Show exit code of last command as a separate prompt character (cf. https://github.com/sindresorhus/pure/wiki#show-exit-code-of-last-command-as-a-separate-prompt-character)
+# Show exit code of last command as a separate prompt character (cf. https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#show-exit-code-of-last-command-as-a-separate-prompt-character)
 # false - single prompt character, default
 # true - separate prompt character
 _pure_set_default pure_separate_prompt_on_error false
