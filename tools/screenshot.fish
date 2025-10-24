@@ -21,12 +21,17 @@ function screenshot \
 
     set --query action[1]; or set action fish_prompt
 
-
+    set light_theme_options \
+        --color-scheme (status dirname)/colorscheme/ayu-light.json \
+        --background-color '#fafafa' \
+    set dark_theme_options \
+        --color-scheme (status dirname)/colorscheme/ayu-dark.json \
+        --background-color '#0f111a' \
+    
     eval $action \
         | terminal-screenshot \
-         --color-scheme (status dirname)/colorscheme/ayu-light.json \
+         $dark_theme_options \
          --margin "5px" \
-         --background-color '#fafafa' \
          --output (status dirname)/../docs/assets/screenshots/$name.png \
          --font-family "Noto Sans Mono, Noto Sans Symbols, Noto Sans Emoji"
 end
