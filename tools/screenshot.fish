@@ -21,19 +21,21 @@ function screenshot \
 
     set --query action[1]; or set action fish_prompt
 
-    set light_theme_options \
-        --color-scheme (status dirname)/colorscheme/ayu-light.json \
-        --background-color '#fafafa' \
-    set dark_theme_options \
-        --color-scheme (status dirname)/colorscheme/ayu-dark.json \
-        --background-color '#0f111a' \
-    
-    eval $action \
-        | terminal-screenshot \
-         $dark_theme_options \
-         --margin "5px" \
-         --output (status dirname)/../docs/assets/screenshots/$name.png \
-         --font-family "Noto Sans Mono, Noto Sans Symbols, Noto Sans Emoji"
+    set light_colorscheme_options --color-scheme (status dirname)/colorscheme/ayu-light.json --background-color '#fafafa'
+    set dark_colorscheme_options --color-scheme (status dirname)/colorscheme/ayu-dark.json --background-color '#0f111a'
+    set mirage_colorscheme_options --color-scheme (status dirname)/colorscheme/ayu-mirage.json --background-color '#1f2430'
+
+    for theme in light mirage
+        printf "$theme" >&2
+        set colorscheme {$theme}_colorscheme_options
+        eval $action \
+            | terminal-screenshot \
+            --margin 5px \
+            --output (status dirname)/../docs/assets/screenshots/$theme-$name.png \
+            --font-family "Noto Sans Mono, Noto Sans Symbols, Noto Sans Emoji" \
+            $$colorscheme && printf "📸 " >&2 || printf "❌ " >&2
+    end
+
 end
 
 if set --query CI
@@ -55,7 +57,6 @@ if set --query CI
 
         screenshot "pure_check_for_new_release=true,no-update" _pure_check_for_new_release
     ) $status -eq $SUCCESS
-
 
     before_each
     @test "screenshot: pure_enable_container_detection=true,inside" (

@@ -1,29 +1,36 @@
 {
-  "foreground": "#6e7580",
-  "background": "#fafafa",
-  "cursor": "#f29718",
+  "name": "Ayu Light",
+  "type": "light",
+  "author": {
+    "Scheme author (Tinted Theming)": "https://github.com/tinted-theming",
+    "Ayu Theme": "https://github.com/ayu-theme",
+    "Template author": "https://github.com/tinted-theming/tinted-termite"
+  },
+  "foreground": "#5c6166",
+  "background": "#f8f9fa",
+  "cursor": "#5c6166",
 
-  "black": "#fafafa",
-  "brightBlack": "#b3b2b1",
+  "black": "#edeff1",
+  "brightBlack": "#d2d4d8",
 
-  "red": "#f51818",
-  "brightRed": "#f51818",
+  "red": "#f07171",
+  "brightRed": "#ff7383",
 
-  "green": "#86b300",
+  "green": "#6cbf49",
   "brightGreen": "#86b300",
 
-  "yellow": "#f29718",
-  "brightYellow": "#f29718",
+  "yellow": "#f2ae49",
+  "brightYellow": "#ffaa33",
 
   "blue": "#399ee6",
-  "brightBlue": "#399ee6",
+  "brightBlue": "#478acc",
 
   "magenta": "#a37acc",
-  "brightMagenta": "#a37acc",
+  "brightMagenta": "#b595d6",
 
-  "cyan": "#55b4d4",
+  "cyan": "#4cbf99",
   "brightCyan": "#55b4d4",
 
-  "white": "#b3b2b1",
-  "brightWhite": "#ffffff"
+  "white": "#4e5257",
+  "brightWhite": "#404447"
 }

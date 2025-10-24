@@ -1,0 +1,36 @@
+{
+  "name": "Ayu Mirage",
+  "type": "dark",
+  "author": {
+    "Scheme author (Tinted Theming)": "https://github.com/tinted-theming",
+    "Ayu Theme": "https://github.com/ayu-theme",
+    "Template author": "https://github.com/tinted-theming/tinted-termite"
+  },
+  "foreground": "#cccac2",
+  "background": "#1f2430",
+  "cursor": "#cccac2",
+
+  "black": "#242936",
+  "brightBlack": "#4a5059",
+
+  "red": "#f28779",
+  "brightRed": "#ff6666",
+
+  "green": "#d5ff80",
+  "brightGreen": "#87d963",
+
+  "yellow": "#ffd173",
+  "brightYellow": "#ffcc66",
+
+  "blue": "#73d0ff",
+  "brightBlue": "#80b0ff",
+
+  "magenta": "#d4bfff",
+  "brightMagenta": "#b692ff",
+
+  "cyan": "#95e6cb",
+  "brightCyan": "#5ccfe6",
+
+  "white": "#d9d7ce",
+  "brightWhite": "#f3f4f5"
+}
