@@ -1,4 +1,7 @@
 source (status dirname)/../tests/fixtures/constants.fish
+for file in (status dirname)/../functions/*.fish
+    source $file # we need to load all functions to properly render the prompt
+end
 source (status dirname)/../tests/mocks/spectra.fish
 
 @echo (_print_filename (status filename))
