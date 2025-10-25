@@ -69,7 +69,7 @@ if is_tests_runner # avoid destroying other user's configuration
     @test "_pure_prompt_first_line: displays 'nemo@hostname' when inside container" (
     function _pure_prompt_container; echo $USER'@hostname'; end
 
-    string match --quiet --entire --regex "nemo@[\w]+" (_pure_prompt_first_line)
+    string match --quiet --entire --regex "$USER@[\w]+" (_pure_prompt_first_line)
 ) $status -eq $SUCCESS
 end
 

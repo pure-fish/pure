@@ -42,7 +42,6 @@ function _disable_all_configs \
                 set --erase --global $variable
                 set --erase --universal $variable
                 set --universal $variable false
-                echo $variable $$variable
             end
         end
     end
