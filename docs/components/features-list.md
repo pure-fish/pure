@@ -17,13 +17,13 @@
 
 === "Enabled (with update)"
 
-    ![screenshot pure_check_for_new_release=true,with-update](../assets/screenshots/light-pure_check_for_new_release=true,with-update.png#only-light)
-    ![screenshot pure_check_for_new_release=true,with-update](../assets/screenshots/mirage-pure_check_for_new_release=true,with-update.png#only-dark)
+    ![screenshot pure_check_for_new_release=true,with-update](/pure/assets/screenshots/light-pure_check_for_new_release%3Dtrue%2Cwith-update.png#only-light)
+    ![screenshot pure_check_for_new_release=true,with-update](/pure/assets/screenshots/mirage-pure_check_for_new_release%3Dtrue%2Cwith-update.png#only-dark)
 
 === "Enabled (no update)"
 
-    ![screenshot pure_check_for_new_release=true,no-update](../assets/screenshots/light-pure_check_for_new_release=true,no-update.png#only-light)
-    ![screenshot pure_check_for_new_release=true,no-update](../assets/screenshots/mirage-pure_check_for_new_release=true,no-update.png#only-dark)
+    ![screenshot pure_check_for_new_release=true,no-update](/pure/assets/screenshots/light-pure_check_for_new_release%3Dtrue%2Cno-update.png#only-light)
+    ![screenshot pure_check_for_new_release=true,no-update](/pure/assets/screenshots/mirage-pure_check_for_new_release%3Dtrue%2Cno-update.png#only-dark)
 
 ### Container Detection (Docker)
 
@@ -36,13 +36,13 @@
 
 === "Enabled (inside a container)"
 
-    ![screenshot pure_enable_container_detection=true,inside](../assets/screenshots/light-pure_enable_container_detection=true,inside.png#only-light)
-    ![screenshot pure_enable_container_detection=true,inside](../assets/screenshots/mirage-pure_enable_container_detection=true,inside.png#only-dark)
+    ![screenshot pure_enable_container_detection=true,inside](/pure/assets/screenshots/light-pure_enable_container_detection%3Dtrue%2Cinside.png#only-light)
+    ![screenshot pure_enable_container_detection=true,inside](/pure/assets/screenshots/mirage-pure_enable_container_detection%3Dtrue%2Cinside.png#only-dark)
 
 === "Enabled (outside a container)"
 
-    ![screenshot pure_enable_container_detection=true,outside](../assets/screenshots/light-pure_enable_container_detection=true,outside.png#only-light)
-    ![screenshot pure_enable_container_detection=true,outside](../assets/screenshots/mirage-pure_enable_container_detection=true,outside.png#only-dark)
+    ![screenshot pure_enable_container_detection=true,outside](/pure/assets/screenshots/light-pure_enable_container_detection%3Dtrue%2Coutside.png#only-light)
+    ![screenshot pure_enable_container_detection=true,outside](/pure/assets/screenshots/mirage-pure_enable_container_detection%3Dtrue%2Coutside.png#only-dark)
 
 ### Current Working Directory
 
@@ -54,13 +54,13 @@
 
 === "Enabled (pwd first)"
 
-    ![screenshot pure_begin_prompt_with_current_directory=true](../assets/screenshots/light-pure_begin_prompt_with_current_directory=true.png#only-light)
-    ![screenshot pure_begin_prompt_with_current_directory=true](../assets/screenshots/mirage-pure_begin_prompt_with_current_directory=true.png#only-dark)
+    ![screenshot pure_begin_prompt_with_current_directory=true](/pure/assets/screenshots/light-pure_begin_prompt_with_current_directory%3Dtrue.png#only-light)
+    ![screenshot pure_begin_prompt_with_current_directory=true](/pure/assets/screenshots/mirage-pure_begin_prompt_with_current_directory%3Dtrue.png#only-dark)
 
 === "Disabled (SSH first)"
 
-    ![screenshot pure_begin_prompt_with_current_directory=false](../assets/screenshots/light-pure_begin_prompt_with_current_directory=false.png#only-light)
-    ![screenshot pure_begin_prompt_with_current_directory=false](../assets/screenshots/mirage-pure_begin_prompt_with_current_directory=false.png#only-dark)
+    ![screenshot pure_begin_prompt_with_current_directory=false](/pure/assets/screenshots/light-pure_begin_prompt_with_current_directory%3Dfalse.png#only-light)
+    ![screenshot pure_begin_prompt_with_current_directory=false](/pure/assets/screenshots/mirage-pure_begin_prompt_with_current_directory%3Dfalse.png#only-dark)
 
 ### Git
 
@@ -77,13 +77,13 @@
 
 === "Enabled (with `git`)"
 
-    ![screenshot pure_enable_git=true](../assets/screenshots/light-pure_enable_git=true.png#only-light)
-    ![screenshot pure_enable_git=true](../assets/screenshots/mirage-pure_enable_git=true.png#only-dark)
+    ![screenshot pure_enable_git=true](/pure/assets/screenshots/light-pure_enable_git%3Dtrue.png#only-light)
+    ![screenshot pure_enable_git=true](/pure/assets/screenshots/mirage-pure_enable_git%3Dtrue.png#only-dark)
 
 === "Disabled (without `git` info)"
 
-    ![screenshot pure_enable_git=false](../assets/screenshots/light-pure_enable_git=false.png#only-light)
-    ![screenshot pure_enable_git=false](../assets/screenshots/mirage-pure_enable_git=false.png#only-dark)
+    ![screenshot pure_enable_git=false](/pure/assets/screenshots/light-pure_enable_git%3Dfalse.png#only-light)
+    ![screenshot pure_enable_git=false](/pure/assets/screenshots/mirage-pure_enable_git%3Dfalse.png#only-dark)
 
 ### Jobs
 
@@ -93,13 +93,13 @@
 
 === "Enabled (with running jobs)"
 
-    ![screenshot pure_show_jobs=true](../assets/screenshots/light-pure_show_jobs=true.png#only-light)
-    ![screenshot pure_show_jobs=true](../assets/screenshots/mirage-pure_show_jobs=true.png#only-dark)
+    ![screenshot pure_show_jobs=true](/pure/assets/screenshots/light-pure_show_jobs%3Dtrue.png#only-light)
+    ![screenshot pure_show_jobs=true](/pure/assets/screenshots/mirage-pure_show_jobs%3Dtrue.png#only-dark)
 
 === "Disabled (without jobs info)"
 
-    ![screenshot pure_show_jobs=false](../assets/screenshots/light-pure_show_jobs=false.png#only-light)
-    ![screenshot pure_show_jobs=false](../assets/screenshots/mirage-pure_show_jobs=false.png#only-dark)
+    ![screenshot pure_show_jobs=false](/pure/assets/screenshots/light-pure_show_jobs%3Dfalse.png#only-light)
+    ![screenshot pure_show_jobs=false](/pure/assets/screenshots/mirage-pure_show_jobs%3Dfalse.png#only-dark)
 
 ### Kubernetes
 
@@ -110,13 +110,13 @@
 
 === "Enabled (with `k8s` context and namespace)"
 
-    ![screenshot pure_enable_k8s=true](../assets/screenshots/light-pure_enable_k8s=true.png#only-light)
-    ![screenshot pure_enable_k8s=true](../assets/screenshots/mirage-pure_enable_k8s=true.png#only-dark)
+    ![screenshot pure_enable_k8s=true](/pure/assets/screenshots/light-pure_enable_k8s%3Dtrue.png#only-light)
+    ![screenshot pure_enable_k8s=true](/pure/assets/screenshots/mirage-pure_enable_k8s%3Dtrue.png#only-dark)
 
 === "Disabled (without `k8s` info)"
 
-    ![screenshot pure_enable_k8s=false](../assets/screenshots/light-pure_enable_k8s=false.png#only-light)
-    ![screenshot pure_enable_k8s=false](../assets/screenshots/mirage-pure_enable_k8s=false.png#only-dark)
+    ![screenshot pure_enable_k8s=false](/pure/assets/screenshots/light-pure_enable_k8s%3Dfalse.png#only-light)
+    ![screenshot pure_enable_k8s=false](/pure/assets/screenshots/mirage-pure_enable_k8s%3Dfalse.png#only-dark)
 
 ### NixOS
 
@@ -133,13 +133,13 @@
 
 === "Enabled (inside nix develop shell)"
 
-    ![screenshot pure_enable_nixdevshell=true](../assets/screenshots/light-pure_enable_nixdevshell=true.png#only-light)
-    ![screenshot pure_enable_nixdevshell=true](../assets/screenshots/mirage-pure_enable_nixdevshell=true.png#only-dark)
+    ![screenshot pure_enable_nixdevshell=true](/pure/assets/screenshots/light-pure_enable_nixdevshell%3Dtrue.png#only-light)
+    ![screenshot pure_enable_nixdevshell=true](/pure/assets/screenshots/mirage-pure_enable_nixdevshell%3Dtrue.png#only-dark)
 
 === "Disabled (without nix info)"
 
-    ![screenshot pure_enable_nixdevshell=false](../assets/screenshots/light-pure_enable_nixdevshell=false.png#only-light)
-    ![screenshot pure_enable_nixdevshell=false](../assets/screenshots/mirage-pure_enable_nixdevshell=false.png#only-dark)
+    ![screenshot pure_enable_nixdevshell=false](/pure/assets/screenshots/light-pure_enable_nixdevshell%3Dfalse.png#only-light)
+    ![screenshot pure_enable_nixdevshell=false](/pure/assets/screenshots/mirage-pure_enable_nixdevshell%3Dfalse.png#only-dark)
 
 ### Prompt Symbol
 
@@ -154,11 +154,11 @@
  <!-- test pure_symbol_prompt after a successful command and a failed one -->
 === "On Successful command"
 
-    ![screenshot pure_symbol_prompt=success**](../assets/screenshots/**pure_symbol_prompt=success.png)
+    ![screenshot pure_symbol_prompt=success**](/pure/assets/screenshots/%2A%2Apure_symbol_prompt%3Dsuccess.png)
 
 === "On Failed command"
 
-    ![screenshot pure_symbol_prompt=error](../assets/screenshots/pure_symbol_prompt=error.png)
+    ![screenshot pure_symbol_prompt=error](/pure/assets/screenshots/pure_symbol_prompt%3Derror.png)
 
 ### Python Virtualenv
 
@@ -169,13 +169,13 @@
 
 === "Enabled (with virtualenv)"
 
-    ![screenshot pure_enable_virtualenv=true](../assets/screenshots/light-pure_enable_virtualenv=true.png#only-light)
-    ![screenshot pure_enable_virtualenv=true](../assets/screenshots/mirage-pure_enable_virtualenv=true.png#only-dark)
+    ![screenshot pure_enable_virtualenv=true](/pure/assets/screenshots/light-pure_enable_virtualenv%3Dtrue.png#only-light)
+    ![screenshot pure_enable_virtualenv=true](/pure/assets/screenshots/mirage-pure_enable_virtualenv%3Dtrue.png#only-dark)
 
 === "Disabled (without virtualenv)"
 
-    ![screenshot pure_enable_virtualenv=false](../assets/screenshots/light-pure_enable_virtualenv=false.png#only-light)
-    ![screenshot pure_enable_virtualenv=false](../assets/screenshots/mirage-pure_enable_virtualenv=false.png#only-dark)
+    ![screenshot pure_enable_virtualenv=false](/pure/assets/screenshots/light-pure_enable_virtualenv%3Dfalse.png#only-light)
+    ![screenshot pure_enable_virtualenv=false](/pure/assets/screenshots/mirage-pure_enable_virtualenv%3Dfalse.png#only-dark)
 
 ### AWS Profile
 
@@ -186,13 +186,13 @@
 
 === "Enabled (with AWS profile)"
 
-    ![screenshot pure_enable_aws_profile=true](../assets/screenshots/light-pure_enable_aws_profile=true.png#only-light)
-    ![screenshot pure_enable_aws_profile=true](../assets/screenshots/mirage-pure_enable_aws_profile=true.png#only-dark)
+    ![screenshot pure_enable_aws_profile=true](/pure/assets/screenshots/light-pure_enable_aws_profile%3Dtrue.png#only-light)
+    ![screenshot pure_enable_aws_profile=true](/pure/assets/screenshots/mirage-pure_enable_aws_profile%3Dtrue.png#only-dark)
 
 === "Disabled (without AWS profile)"
 
-    ![screenshot pure_enable_aws_profile=false](../assets/screenshots/light-pure_enable_aws_profile=false.png#only-light)
-    ![screenshot pure_enable_aws_profile=false](../assets/screenshots/mirage-pure_enable_aws_profile=false.png#only-dark)
+    ![screenshot pure_enable_aws_profile=false](/pure/assets/screenshots/light-pure_enable_aws_profile%3Dfalse.png#only-light)
+    ![screenshot pure_enable_aws_profile=false](/pure/assets/screenshots/mirage-pure_enable_aws_profile%3Dfalse.png#only-dark)
 
 ### Separate Error Symbol
 
@@ -204,13 +204,13 @@
 
 === "Enabled (separate error symbol)"
 
-    ![screenshot pure_separate_prompt_on_error=true](../assets/screenshots/light-pure_separate_prompt_on_error=true.png#only-light)
-    ![screenshot pure_separate_prompt_on_error=true](../assets/screenshots/mirage-pure_separate_prompt_on_error=true.png#only-dark)
+    ![screenshot pure_separate_prompt_on_error=true](/pure/assets/screenshots/light-pure_separate_prompt_on_error%3Dtrue.png#only-light)
+    ![screenshot pure_separate_prompt_on_error=true](/pure/assets/screenshots/mirage-pure_separate_prompt_on_error%3Dtrue.png#only-dark)
 
 === "Disabled"
 
-    ![screenshot pure_separate_prompt_on_error=false](../assets/screenshots/light-pure_separate_prompt_on_error=false.png#only-light)
-    ![screenshot pure_separate_prompt_on_error=false](../assets/screenshots/mirage-pure_separate_prompt_on_error=false.png#only-dark)
+    ![screenshot pure_separate_prompt_on_error=false](/pure/assets/screenshots/light-pure_separate_prompt_on_error%3Dfalse.png#only-light)
+    ![screenshot pure_separate_prompt_on_error=false](/pure/assets/screenshots/mirage-pure_separate_prompt_on_error%3Dfalse.png#only-dark)
 
 ### Single Line Prompt
 
@@ -220,13 +220,13 @@
 
 === "Enabled (prompt on a single line)"
 
-    ![screenshot pure_enable_single_line_prompt=true](../assets/screenshots/light-pure_enable_single_line_prompt=true.png#only-light)
-    ![screenshot pure_enable_single_line_prompt=true](../assets/screenshots/mirage-pure_enable_single_line_prompt=true.png#only-dark)
+    ![screenshot pure_enable_single_line_prompt=true](/pure/assets/screenshots/light-pure_enable_single_line_prompt%3Dtrue.png#only-light)
+    ![screenshot pure_enable_single_line_prompt=true](/pure/assets/screenshots/mirage-pure_enable_single_line_prompt%3Dtrue.png#only-dark)
 
 === "Disabled (prompt on two lines)"
 
-    ![screenshot pure_enable_single_line_prompt=false](../assets/screenshots/light-pure_enable_single_line_prompt=false.png#only-light)
-    ![screenshot pure_enable_single_line_prompt=false](../assets/screenshots/mirage-pure_enable_single_line_prompt=false.png#only-dark)
+    ![screenshot pure_enable_single_line_prompt=false](/pure/assets/screenshots/light-pure_enable_single_line_prompt%3Dfalse.png#only-light)
+    ![screenshot pure_enable_single_line_prompt=false](/pure/assets/screenshots/mirage-pure_enable_single_line_prompt%3Dfalse.png#only-dark)
 
 ### SSH Session
 
@@ -236,13 +236,13 @@
 
 === "Connected (show SSH username and host)"
 
-    ![screenshot ssh=connected](../assets/screenshots/light-ssh=connected.png#only-light)
-    ![screenshot ssh=connected](../assets/screenshots/mirage-ssh=connected.png#only-dark)
+    ![screenshot ssh=connected](/pure/assets/screenshots/light-ssh%3Dconnected.png#only-light)
+    ![screenshot ssh=connected](/pure/assets/screenshots/mirage-ssh%3Dconnected.png#only-dark)
 
 === "Disconnected"
 
-    ![screenshot ssh=disconnected](../assets/screenshots/light-ssh=disconnected.png#only-light)
-    ![screenshot ssh=disconnected](../assets/screenshots/mirage-ssh=disconnected.png#only-dark)
+    ![screenshot ssh=disconnected](/pure/assets/screenshots/light-ssh%3Ddisconnected.png#only-light)
+    ![screenshot ssh=disconnected](/pure/assets/screenshots/mirage-ssh%3Ddisconnected.png#only-dark)
 
 ### Time
 
@@ -252,13 +252,13 @@
 
 === "Show system time (enabled)"
 
-    ![screenshot pure_show_system_time=true](../assets/screenshots/light-pure_show_system_time=true.png#only-light)
-    ![screenshot pure_show_system_time=true](../assets/screenshots/mirage-pure_show_system_time=true.png#only-dark)
+    ![screenshot pure_show_system_time=true](/pure/assets/screenshots/light-pure_show_system_time%3Dtrue.png#only-light)
+    ![screenshot pure_show_system_time=true](/pure/assets/screenshots/mirage-pure_show_system_time%3Dtrue.png#only-dark)
 
 === "Show system time (disabled)"
 
-    ![screenshot pure_show_system_time=false](../assets/screenshots/light-pure_show_system_time=false.png#only-light)
-    ![screenshot pure_show_system_time=false](../assets/screenshots/mirage-pure_show_system_time=false.png#only-dark)
+    ![screenshot pure_show_system_time=false](/pure/assets/screenshots/light-pure_show_system_time%3Dfalse.png#only-light)
+    ![screenshot pure_show_system_time=false](/pure/assets/screenshots/mirage-pure_show_system_time%3Dfalse.png#only-dark)
 
 ### Command Duration
 
@@ -269,13 +269,13 @@
 
 === "Subsecond duration (disabled)"
 
-    ![screenshot pure_show_subsecond_command_duration=false](../assets/screenshots/light-pure_show_subsecond_command_duration=false.png#only-light)
-    ![screenshot pure_show_subsecond_command_duration=false](../assets/screenshots/mirage-pure_show_subsecond_command_duration=false.png#only-dark)
+    ![screenshot pure_show_subsecond_command_duration=false](/pure/assets/screenshots/light-pure_show_subsecond_command_duration%3Dfalse.png#only-light)
+    ![screenshot pure_show_subsecond_command_duration=false](/pure/assets/screenshots/mirage-pure_show_subsecond_command_duration%3Dfalse.png#only-dark)
 
 === "Subsecond duration (enabled)"
 
-    ![screenshot pure_show_subsecond_command_duration=true](../assets/screenshots/light-pure_show_subsecond_command_duration=true.png#only-light)
-    ![screenshot pure_show_subsecond_command_duration=true](../assets/screenshots/mirage-pure_show_subsecond_command_duration=true.png#only-dark)
+    ![screenshot pure_show_subsecond_command_duration=true](/pure/assets/screenshots/light-pure_show_subsecond_command_duration%3Dtrue.png#only-light)
+    ![screenshot pure_show_subsecond_command_duration=true](/pure/assets/screenshots/mirage-pure_show_subsecond_command_duration%3Dtrue.png#only-dark)
 
 ### Title
 
@@ -294,13 +294,13 @@
 
 === "Reverse symbol (enabled)"
 
-    ![screenshot pure_reverse_prompt_symbol_in_vimode=true](../assets/screenshots/light-pure_reverse_prompt_symbol_in_vimode=true.png#only-light)
-    ![screenshot pure_reverse_prompt_symbol_in_vimode=true](../assets/screenshots/mirage-pure_reverse_prompt_symbol_in_vimode=true.png#only-dark)
+    ![screenshot pure_reverse_prompt_symbol_in_vimode=true](/pure/assets/screenshots/light-pure_reverse_prompt_symbol_in_vimode%3Dtrue.png#only-light)
+    ![screenshot pure_reverse_prompt_symbol_in_vimode=true](/pure/assets/screenshots/mirage-pure_reverse_prompt_symbol_in_vimode%3Dtrue.png#only-dark)
 
 === "Mode indicator (disabled)"
 
-    ![screenshot pure_reverse_prompt_symbol_in_vimode=false](../assets/screenshots/light-pure_reverse_prompt_symbol_in_vimode=false.png#only-light)
-    ![screenshot pure_reverse_prompt_symbol_in_vimode=false](../assets/screenshots/mirage-pure_reverse_prompt_symbol_in_vimode=false.png#only-dark)
+    ![screenshot pure_reverse_prompt_symbol_in_vimode=false](/pure/assets/screenshots/light-pure_reverse_prompt_symbol_in_vimode%3Dfalse.png#only-light)
+    ![screenshot pure_reverse_prompt_symbol_in_vimode=false](/pure/assets/screenshots/mirage-pure_reverse_prompt_symbol_in_vimode%3Dfalse.png#only-dark)
 
 ### Working as Root
 
@@ -311,12 +311,12 @@
 
 === "Enabled (prefix prompt symbol)"
 
-    ![screenshot pure_show_prefix_root_prompt=true](../assets/screenshots/light-pure_show_prefix_root_prompt=true.png#only-light)
-    ![screenshot pure_show_prefix_root_prompt=true](../assets/screenshots/mirage-pure_show_prefix_root_prompt=true.png#only-dark)
+    ![screenshot pure_show_prefix_root_prompt=true](/pure/assets/screenshots/light-pure_show_prefix_root_prompt%3Dtrue.png#only-light)
+    ![screenshot pure_show_prefix_root_prompt=true](/pure/assets/screenshots/mirage-pure_show_prefix_root_prompt%3Dtrue.png#only-dark)
 
 === "Disabled"
 
-    ![screenshot pure_show_prefix_root_prompt=false](../assets/screenshots/light-pure_show_prefix_root_prompt=false.png#only-light)
-    ![screenshot pure_show_prefix_root_prompt=false](../assets/screenshots/mirage-pure_show_prefix_root_prompt=false.png#only-dark)
+    ![screenshot pure_show_prefix_root_prompt=false](/pure/assets/screenshots/light-pure_show_prefix_root_prompt%3Dfalse.png#only-light)
+    ![screenshot pure_show_prefix_root_prompt=false](/pure/assets/screenshots/mirage-pure_show_prefix_root_prompt%3Dfalse.png#only-dark)
 
 [to-set]: https://pure-fish.github.io/pure/#configuration
