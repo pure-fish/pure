@@ -154,11 +154,13 @@
  <!-- test pure_symbol_prompt after a successful command and a failed one -->
 === "On Successful command"
 
-    ![screenshot pure_symbol_prompt=success**](/pure/assets/screenshots/%2A%2Apure_symbol_prompt%3Dsuccess.png)
+    ![screenshot pure_symbol_prompt=success](/pure/assets/screenshots/light-pure_symbol_prompt%3Dsuccess.png#only-light)
+    ![screenshot pure_symbol_prompt=success](/pure/assets/screenshots/mirage-pure_symbol_prompt%3Dsuccess.png#only-dark)
 
 === "On Failed command"
 
-    ![screenshot pure_symbol_prompt=error](/pure/assets/screenshots/pure_symbol_prompt%3Derror.png)
+    ![screenshot pure_symbol_prompt=error](/pure/assets/screenshots/light-pure_symbol_prompt%3Derror.png#only-light)
+    ![screenshot pure_symbol_prompt=error](/pure/assets/screenshots/mirage-pure_symbol_prompt%3Derror.png#only-dark)
 
 ### Python Virtualenv
 
