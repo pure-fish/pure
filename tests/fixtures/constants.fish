@@ -13,9 +13,11 @@ set --global PURE_VERSION_NUMBER_REGEX '(\d+.\d+.\d+)$'
 function is_tests_runner \
     --description "Detect Linux test container run with `nemo` user, other OSes we use the test directory /tmp/.pure/"
 
-    test "$USER" = "nemo" \
+    test "$CI" = "true" \
+        -o "$USER" = nemo \
         -o "$PWD" = "/tmp/.pure/" \
-        -o "$PWD" = "/tmp/pure"
+        -o "$PWD" = /tmp/pure \
+        -o "$PWD" = "/home/nemo/.config/fish/pure"
 end
 
 function _purge_configs \
@@ -35,10 +37,13 @@ function _disable_all_configs \
 
     if is_tests_runner # avoid destroying other user's configuration
         for variable in (set --names | string match --regex --entire '^pure_(check|enable|reverse|separate|show)_.+')
-            set --erase --local $variable
-            set --erase --global $variable
-            set --erase --universal $variable
-            set --universal $variable false
+            if set --query $variable
+                set --erase --local $variable
+                set --erase --global $variable
+                set --erase --universal $variable
+                set --universal $variable false
+                echo $variable $$variable
+            end
         end
     end
 end
