@@ -5,6 +5,7 @@ site_author: "Édouard Lopez"
 docs_dir: docs/
 repo_name: "pure-fish/pure"
 repo_url: "https://github.com/pure-fish/pure"
+site_url: "https://pure-fish.github.io/pure/"
 
 nav:
   - Home: index.md
