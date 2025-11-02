@@ -28,18 +28,24 @@ function screenshot \
     set dark_colorscheme_options --color-scheme (status dirname)/colorscheme/ayu-dark.json --background-color '#0f111a'
     set mirage_colorscheme_options --color-scheme (status dirname)/colorscheme/ayu-mirage.json --background-color '#1f2430'
 
+    set --local overall_status 0 # false when at least screenshot fails
+
     for theme in light mirage
-        printf "$theme" >&2
+        echo -n "$theme" >&2
         set colorscheme {$theme}_colorscheme_options
         eval $action \
             | terminal-screenshot \
-            --margin 5px \
-            --output (status dirname)/../docs/assets/screenshots/$theme-$name.png \
-            --font-family "Noto Sans Mono, Noto Sans Symbols, Noto Sans Emoji" \
-            $$colorscheme && printf "📸 " >&2 || printf "❌ " >&2
+                --margin 5px \
+                --output (status dirname)/../docs/assets/screenshots/$theme-$name.png \
+                --font-family "Noto Sans Mono, Noto Sans Symbols, Noto Sans Emoji" \
+                $$colorscheme;
+                and echo -n "📸 " >&2;
+                or begin; echo -n "❌ " >&2; set overall_status $status; end
     end
 
+    return $overall_status
 end
+
 
 if set --query CI
     before_each

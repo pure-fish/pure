@@ -28,6 +28,7 @@ build-pure-on:
 dev-pure-on: CMD?=fish
 dev-pure-on: STAGE?=with-pure-installed
 dev-pure-on: TTY_FLAG?=$(shell [ -z "$$CI" ] && echo "--tty" || echo "")
+dev-pure-on: USER_FLAG?=$(shell [ -z "$$CI" ] && echo "--user $$(id -u):$$(id -g)" || echo "")
 dev-pure-on: build-with-pure-installed
 	chmod o=rwx tests/fixtures/ # for migration-to-4.0.0.test.fish only
 	docker run \
@@ -35,7 +36,7 @@ dev-pure-on: build-with-pure-installed
 		--rm \
 		--interactive \
 		$(TTY_FLAG) \
-        --user $$(id -u):$$(id -g) \
+        $(USER_FLAG) \
         --env HOME=/home/nemo \
         --env XDG_CONFIG_HOME=/home/nemo/.config \
         --env XDG_DATA_HOME=/home/nemo/.local/share \
@@ -119,5 +120,7 @@ build-pure-screenshot:
 .PHONY: run-pure-screenshot
 run-pure-screenshot: CMD?=fishtape tools/screenshot.fish
 run-pure-screenshot:
+	mkdir --parents ./docs/assets/screenshots
+	chmod a+rwx ./docs/assets/screenshots # because Github user `runner` is not `nemo` we have permissions issue
 	rm --recursive --force ./docs/assets/screenshots/*.png
 	$(MAKE) dev-pure-on FISH_VERSION=${FISH_VERSION} STAGE=with-terminal-screenshot-installed CMD="CI=true ${CMD}"

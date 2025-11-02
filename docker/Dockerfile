@@ -32,13 +32,9 @@ USER nemo
 FROM only-fish AS with-pure-installed 
 USER root
 RUN chmod -R 777 /home/nemo
-USER nemo
 WORKDIR /home/nemo/.config/fish/pure/
-COPY --chown=nemo:nemo ./functions/ /home/nemo/.config/fish/pure/functions/
-COPY --chown=nemo:nemo ./conf.d/ /home/nemo/.config/fish/pure/conf.d/
-COPY --chown=nemo:nemo ./tests/ /home/nemo/.config/fish/pure/tests/
-COPY --chown=nemo:nemo ./tools/ /home/nemo/.config/fish/pure/tools/
-COPY --chown=nemo:nemo ./docs/ /home/nemo/.config/fish/pure/docs/
+COPY --chown=nemo:nemo ./ /home/nemo/.config/fish/pure/
+USER nemo
 
 # Use prebuilt purefish/terminal-screenshot image to provide screenshot capabilities
 # Override version using: --build-arg SCREENSHOT_IMAGE=purefish/terminal-screenshot:fish-4.0.2
@@ -47,6 +43,7 @@ FROM ${SCREENSHOT_IMAGE} AS with-terminal-screenshot-installed
 USER nemo
 WORKDIR /home/nemo/.config/fish/pure/
 COPY --from=with-pure-installed /home/nemo/.config/fish/pure/ /home/nemo/.config/fish/pure/
+RUN git config --global --add safe.directory /home/nemo/.config/fish/pure
 
 ENTRYPOINT ["fish", "-c"]
 CMD ["fishtape tests/*.test.fish"]
