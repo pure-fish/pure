@@ -1,6 +1,8 @@
 # Specify fish version to use during build
 # docker build -t <image> --build-arg FISH_VERSION=<version>
 ARG FISH_VERSION
+ARG SCREENSHOT_IMAGE=purefish/terminal-screenshot:fish-${FISH_VERSION}
+
 FROM purefish/docker-fish:${FISH_VERSION} AS only-fish
 
 # Redeclare ARG so its value is available after FROM (cf. https://github.com/moby/moby/issues/34129#issuecomment-417609075)
@@ -27,7 +29,7 @@ RUN echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel \
 USER nemo
 
 # create an image with pure's source code for testing (lightweight)
-FROM only-fish AS with-pure-installed
+FROM only-fish AS with-pure-installed 
 USER root
 RUN chmod -R 777 /home/nemo
 USER nemo
@@ -38,55 +40,13 @@ COPY --chown=nemo:nemo ./tests/ /home/nemo/.config/fish/pure/tests/
 COPY --chown=nemo:nemo ./tools/ /home/nemo/.config/fish/pure/tools/
 COPY --chown=nemo:nemo ./docs/ /home/nemo/.config/fish/pure/docs/
 
-# create an image with chromium for screenshots (heavy)
-FROM with-pure-installed AS with-chromium-installed
-USER root
-# hadolint ignore=DL3018
-RUN apk add \
-    --no-cache \
-    chromium \
-    nss \
-    freetype \
-    harfbuzz \
-    ca-certificates \
-    ttf-freefont \
-    nodejs \
-    npm \
-    font-noto \
-    font-noto-symbols \
-    font-noto-emoji
+# Use prebuilt purefish/terminal-screenshot image to provide screenshot capabilities
+# Override version using: --build-arg SCREENSHOT_IMAGE=purefish/terminal-screenshot:fish-4.0.2
+# hadolint ignore=DL3006
+FROM ${SCREENSHOT_IMAGE} AS with-terminal-screenshot-installed
 USER nemo
-
-FROM with-chromium-installed AS with-puppeteer-installed
-# Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
-# Install yarn and puppeteer
-USER root
-RUN npm install --global \
-    yarn@1.22.22 \
-    puppeteer@21.10.0
-USER nemo
-
-FROM with-puppeteer-installed AS with-terminal-screenshot-source
-
-# hadolint ignore=DL3003
-RUN git clone --depth 1 https://github.com/edouard-lopez/terminal-screenshot.git --branch feat/add-color-scheme-support \
-    && cd terminal-screenshot \
-    && yarn install \
-    && yarn cache clean \
-    && yarn build
-
-# create an image with pure installed as prompt (for screenshots)
-FROM with-terminal-screenshot-source AS with-terminal-screenshot-installed
-# Install globally with yarn
-USER root
-RUN mkdir -p /usr/local/lib/terminal-screenshot \
-    && cp -r terminal-screenshot/out /usr/local/lib/terminal-screenshot/ \
-    && cp -r terminal-screenshot/node_modules /usr/local/lib/terminal-screenshot/ \
-    && ln -s /usr/local/lib/terminal-screenshot/out/src/cli.js /usr/local/bin/terminal-screenshot \
-    && chmod +x /usr/local/bin/terminal-screenshot
-USER nemo
+WORKDIR /home/nemo/.config/fish/pure/
+COPY --from=with-pure-installed /home/nemo/.config/fish/pure/ /home/nemo/.config/fish/pure/
 
 ENTRYPOINT ["fish", "-c"]
 CMD ["fishtape tests/*.test.fish"]
