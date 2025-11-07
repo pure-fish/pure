@@ -5,12 +5,14 @@ on:
       - master
     paths:
       - tools/screenshot.fish
+      - docs/**/*
 
   pull_request:
     types:
       - synchronize # when commits are pushed to a PR
     paths:
       - tools/screenshot.fish
+      - docs/**/*
   workflow_call:
     inputs:
       fish_version:
