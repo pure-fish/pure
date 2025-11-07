@@ -18,7 +18,7 @@ function _pure_uninstall --on-event pure_uninstall \
     # Remove fish_greeting if it's a symlink to Pure's (no longer provided)
     set --local greeting_file $__fish_config_dir/functions/fish_greeting.fish
     if test -L "$greeting_file"
-        set --local target (readlink "$greeting_file")
+        set --local target (readlink "$greeting_file" 2>/dev/null)
         # Check if symlink points to pure-fish/pure installation or theme-pure directory
         if string match --quiet --regex "(pure-fish/pure|/theme-pure/|/pure/functions/fish_greeting)" "$target"
             rm -f "$greeting_file"

@@ -90,9 +90,8 @@ before_each
 
     _pure_uninstall
 
-    set --local result (not test -e $__fish_config_dir/functions/fish_greeting.fish; echo $status)
     rm -rf $temp_dir
-    test $result -eq $SUCCESS
+    not test -e $__fish_config_dir/functions/fish_greeting.fish
 ) $status -eq $SUCCESS
 
 before_each
@@ -105,10 +104,10 @@ before_each
 
     _pure_uninstall
 
-    set --local result (test -e $__fish_config_dir/functions/fish_greeting.fish; echo $status)
+    set --local exists (test -e $__fish_config_dir/functions/fish_greeting.fish; echo $status)
     rm -rf $temp_dir
     rm -f $__fish_config_dir/functions/fish_greeting.fish
-    test $result -eq $SUCCESS
+    test $exists -eq $SUCCESS
 ) $status -eq $SUCCESS
 
 before_each
