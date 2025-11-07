@@ -83,13 +83,15 @@ before_each
 @test "init/_pure_uninstall: remove fish_greeting symlink if it points to pure" (
     source (status dirname)/../conf.d/_pure_init.fish
     # Create a dummy pure greeting file and symlink to it
-    mkdir -p /tmp/pure_test
-    touch /tmp/pure_test/fish_greeting.fish
-    ln -sf /tmp/pure_test/fish_greeting.fish $__fish_config_dir/functions/fish_greeting.fish
+    set --local temp_dir (mktemp -d)
+    touch $temp_dir/fish_greeting.fish
+    ln -sf $temp_dir/fish_greeting.fish $__fish_config_dir/functions/fish_greeting.fish
 
     _pure_uninstall
 
-    not test -e $__fish_config_dir/functions/fish_greeting.fish
+    set --local result (not test -e $__fish_config_dir/functions/fish_greeting.fish; echo $status)
+    rm -rf $temp_dir
+    test $result -eq $SUCCESS
 ) $status -eq $SUCCESS
 
 before_each
