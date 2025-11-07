@@ -20,7 +20,7 @@ function _pure_uninstall --on-event pure_uninstall \
     if test -L "$greeting_file"
         set --local target (readlink "$greeting_file" 2>/dev/null)
         # Check if symlink points to pure-fish/pure installation or theme-pure directory
-        if string match --quiet --regex "(pure-fish/pure|/theme-pure/|/pure/)" "$target"
+        if test -n "$target"; and string match --quiet --regex "(pure-fish/pure|/theme-pure/|/pure/)" "$target"
             rm -f "$greeting_file"
         end
     end
