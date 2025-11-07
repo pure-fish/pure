@@ -104,10 +104,15 @@ before_each
 
     _pure_uninstall
 
-    set --local exists (test -e $__fish_config_dir/functions/fish_greeting.fish; echo $status)
+    # Verify file still exists before cleanup
+    test -e $__fish_config_dir/functions/fish_greeting.fish
+    set --local exists_status $status
+    
+    # Cleanup
     rm -rf $temp_dir
     rm -f $__fish_config_dir/functions/fish_greeting.fish
-    test $exists -eq $SUCCESS
+    
+    test $exists_status -eq $SUCCESS
 ) $status -eq $SUCCESS
 
 before_each
