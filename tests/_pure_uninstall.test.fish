@@ -79,6 +79,30 @@ before_each
     count $__fish_config_dir/{functions,conf.d}/_pure_*
 ) = $NONE
 
+before_each
+@test "init/_pure_uninstall: remove fish_greeting symlink if it points to pure" (
+    source (status dirname)/../conf.d/_pure_init.fish
+    # Create a dummy pure greeting file and symlink to it
+    mkdir -p /tmp/pure_test
+    touch /tmp/pure_test/fish_greeting.fish
+    ln -sf /tmp/pure_test/fish_greeting.fish $__fish_config_dir/functions/fish_greeting.fish
+
+    _pure_uninstall
+
+    not test -e $__fish_config_dir/functions/fish_greeting.fish
+) $status -eq $SUCCESS
+
+before_each
+@test "init/_pure_uninstall: preserve user's fish_greeting if not a pure symlink" (
+    source (status dirname)/../conf.d/_pure_init.fish
+    # Create user's own fish_greeting file (not a symlink)
+    echo "function fish_greeting; end" > $__fish_config_dir/functions/fish_greeting.fish
+
+    _pure_uninstall
+
+    test -e $__fish_config_dir/functions/fish_greeting.fish
+) $status -eq $SUCCESS
+
 if not test -d /etc/nix # skip on NixOS
 before_each
 @test "init/_pure_uninstall: remove pure-related functions" (
