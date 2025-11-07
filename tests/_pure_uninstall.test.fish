@@ -79,6 +79,53 @@ before_each
     count $__fish_config_dir/{functions,conf.d}/_pure_*
 ) = $NONE
 
+before_each
+@test "init/_pure_uninstall: remove fish_greeting symlink if it points to pure" (
+    source (status dirname)/../conf.d/_pure_init.fish
+    # Create a dummy pure greeting file in a path that matches the pattern
+    set --local temp_dir (mktemp -d)
+    mkdir -p $temp_dir/pure/functions
+    touch $temp_dir/pure/functions/fish_greeting.fish
+    ln -sf $temp_dir/pure/functions/fish_greeting.fish $__fish_config_dir/functions/fish_greeting.fish
+
+    _pure_uninstall
+
+    rm -rf $temp_dir
+    not test -e $__fish_config_dir/functions/fish_greeting.fish
+) $status -eq $SUCCESS
+
+before_each
+@test "init/_pure_uninstall: preserve user's fish_greeting if not pointing to pure" (
+    source (status dirname)/../conf.d/_pure_init.fish
+    # Create a symlink to a non-pure path
+    set --local temp_dir (mktemp -d)
+    touch $temp_dir/fish_greeting.fish
+    ln -sf $temp_dir/fish_greeting.fish $__fish_config_dir/functions/fish_greeting.fish
+
+    _pure_uninstall
+
+    # Verify file still exists before cleanup
+    test -e $__fish_config_dir/functions/fish_greeting.fish
+    set --local exists_status $status
+    
+    # Cleanup
+    rm -rf $temp_dir
+    rm -f $__fish_config_dir/functions/fish_greeting.fish
+    
+    test $exists_status -eq $SUCCESS
+) $status -eq $SUCCESS
+
+before_each
+@test "init/_pure_uninstall: preserve user's fish_greeting if not a pure symlink" (
+    source (status dirname)/../conf.d/_pure_init.fish
+    # Create user's own fish_greeting file (not a symlink)
+    echo "function fish_greeting; end" > $__fish_config_dir/functions/fish_greeting.fish
+
+    _pure_uninstall
+
+    test -e $__fish_config_dir/functions/fish_greeting.fish
+) $status -eq $SUCCESS
+
 if not test -d /etc/nix # skip on NixOS
 before_each
 @test "init/_pure_uninstall: remove pure-related functions" (

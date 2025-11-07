@@ -6,6 +6,22 @@
 | :------------------------------- | :------ | :-------------------------------------------------------- |
 | **`pure_check_for_new_release`** | `false` | `true`: check repo for new release (on every shell start) |
 
+!!! info "Setting up release checking"
+
+    To enable release checking, you need to:
+    
+    1. Enable the feature:
+        ```fish
+        set --universal pure_check_for_new_release true
+        ```
+    
+    2. Add the check to your `fish_greeting` function in `~/.config/fish/functions/fish_greeting.fish`:
+        ```fish
+        function fish_greeting
+            _pure_check_for_new_release
+        end
+        ```
+
 !!! success "🐌 Faster Prompt"
 
     Checking new release send a HTTP request that slow down your prompt rendering
