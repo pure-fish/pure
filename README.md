@@ -86,7 +86,7 @@ Checkout our [Contribution Guide][contribution] to get familiar with our convent
 * [@jorgebucaran](https://github.com/jorgebucaran/) for [fishtape](https://github.com/jorgebucaran/fishtape) ;
 * [@rafaelrinaldi](https://github.com/rafaelrinaldi) for starting the project and publishing the initial releases
 
-## [MIT][MIT]  License
+## [MIT][MIT] License
 
 ## Ports
 
