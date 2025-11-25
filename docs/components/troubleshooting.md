@@ -2,22 +2,36 @@
 
 !!! info
 
-    Pure does not override your `fish_greeting` function, allowing you to use your own custom greeting.
+    Since version `≥4.13.x`, `pure` does not override your `fish_greeting` function anymore, allowing you to use your own custom greeting.
 
-To **suppress the default Fish greeting**, create a `fish_greeting` function in `~/.config/fish/functions/fish_greeting.fish`:
+To configure your Fish's greeting, edit `$__fish_config_dir/functions/fish_greeting.fish` function or the related variable:
 
-```fish
-function fish_greeting
-    # Optionally add Pure's release checker:
-    # _pure_check_for_new_release
-end
-```
+===  "Check for new release"
 
-Or set the greeting to an empty string:
+    Add the following to call _pure_check_for_new_release_ on each new shell (i.e., when a new terminal session or `tmux` tab starts):
 
-```fish
-set -U fish_greeting
-```
+    ```fish
+    function fish_greeting
+        _pure_check_for_new_release
+    end
+    ```
+=== "Void `fish_greeting` function"
+
+    Voiding the _fish_greeting.fish_ function will stop printing any greeting:
+
+    ```fish
+    function fish_greeting
+        # remove content to disable greeting
+    end
+    ```
+
+=== "Empty `fish_greeting` variable"
+
+    Or set the greeting to an empty string to stop printing any greeting:
+
+    ```fish
+    set --universal fish_greeting
+    ```
 
 ### Slowness: try Async `git` Prompt
 
