@@ -19,6 +19,7 @@ Fully **customizable** (colors, symbols and features):
 * [Detect when running in a container (e.g. `docker`, `podman`, `LXC`/`LXD`) 🏴🛠][container-detection-docker]
 * [Indicate if a `nix develop` shell is activated 🏴🛠][nix-os].
 * [Show system time 🏴][time-duration] ;
+* [Transient prompt mode simplify previous prompts 🏴][transient-prompt] ;
 * [Show number of running jobs 🏴][jobs] ;
 * [Prefix when `root` 🏴🛠][working-as-root] ;
 * [Display `git` branch name 🏴🛠][git] ;
@@ -52,6 +53,7 @@ Fully **customizable** (colors, symbols and features):
 [single-line-prompt]: #single-line-prompt
 [ssh-session]: #ssh-session
 [time-duration]: #time-duration
+[transient-prompt]: #transient-prompt
 [title]: #title
 [vi-mode]: #vi-mode
 [working-as-root]: #working-as-root
