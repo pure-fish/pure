@@ -1,4 +1,5 @@
 source (status dirname)/../tools/versions-compare.fish
+@echo (_print_filename (status filename))
 
 if fish_version_at_least 4.1.0
     source (status dirname)/fixtures/constants.fish
@@ -8,43 +9,34 @@ if fish_version_at_least 4.1.0
     source (status dirname)/../functions/_pure_get_prompt_symbol.fish
     source (status dirname)/../functions/_pure_print_prompt.fish
     source (status dirname)/../functions/_pure_string_width.fish
-    @echo (_print_filename (status filename))
 
-    function before_all
+    function before_each
         _purge_configs
         _disable_colors
 
-        set --universal pure_symbol_prompt '>' # using default ❯ breaks following tests
+        _pure_unmock _pure_set_color # enable colors
+        set --universal pure_symbol_prompt '>' # using default ❯ break following tests
     end
-    before_all
 
+    function after_all
+        _clean_all_mocks
+    end
+
+    before_each
     @test "_pure_prompt_transient: shows prompt symbol when last command succeed" (
-    _pure_unmock _pure_set_color # enable colors
-    set --local last_command $SUCCESS
-    set --universal pure_color_prompt_on_success green
+        set --universal pure_enable_single_line_prompt false
+        set --universal pure_color_prompt_on_success magenta
 
-    _pure_prompt_transient $last_command
-) = (set_color green)'>'
+        _pure_prompt_transient $SUCCESS
+    ) = (set_color $pure_color_prompt_on_success)'>'
 
+    before_each
     @test "_pure_prompt_transient: shows prompt symbol in red when last command failed" (
-    _pure_unmock _pure_set_color # enable colors
-    set --local last_command $FAILURE
-    set --universal pure_color_prompt_on_error red
+        set --universal pure_enable_single_line_prompt false
+        set --universal pure_color_prompt_on_error red
 
-    _pure_prompt_transient $last_command
-) = (set_color red)'>'
+        _pure_prompt_transient $FAILURE
+    ) = (set_color $pure_color_prompt_on_error)'>'
 
-    @test "_pure_prompt_transient: uses default success color when exit_code is 0" (
-    _pure_unmock _pure_set_color # enable colors
-    set --universal pure_color_prompt_on_success magenta
-
-    _pure_prompt_transient 0
-) = (set_color magenta)'>'
-
-    @test "_pure_prompt_transient: uses error color when exit_code is non-zero" (
-    _pure_unmock _pure_set_color # enable colors
-    set --universal pure_color_prompt_on_error yellow
-
-    _pure_prompt_transient 1
-) = (set_color yellow)'>'
+    after_all
 end
