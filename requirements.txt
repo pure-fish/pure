@@ -1,0 +1,7 @@
+pymdown-extensions
+mkdocs-material
+mkdocs-awesome-pages-plugin
+mkdocs-include-markdown-plugin
+mkdocs-git-committers-plugin-2
+mkdocs-git-authors-plugin
+mkdocs-macros-plugin
