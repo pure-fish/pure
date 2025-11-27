@@ -48,6 +48,7 @@ Fully **customizable** (colors, symbols and features):
 * [Detect when running in a container (e.g. `docker`, `podman`, `LXC`/`LXD`) 🏴🛠][container-detection-docker]
 * [Indicate if a `nix develop` shell is activated 🏴🛠][nix-os].
 * [Show system time 🏴][time-duration] ;
+* [Transient prompt mode simplify previous prompts 🏴][transient-prompt] ;
 * [Show number of running jobs 🏴][jobs] ;
 * [Prefix when `root` 🏴🛠][working-as-root] ;
 * [Display `git` branch name 🏴🛠][git] ;
@@ -131,6 +132,7 @@ Checkout our [Contribution Guide][contribution] to get familiar with our convent
 [single-line-prompt]: https://pure-fish.github.io/pure/#single-line-prompt
 [ssh-session]: https://pure-fish.github.io/pure/#ssh-session
 [time-duration]: https://pure-fish.github.io/pure/#time-duration
+[transient-prompt]: https://pure-fish.github.io/pure/#transient-prompt
 [title]: https://pure-fish.github.io/pure/#title
 [vi-mode]: https://pure-fish.github.io/pure/#vi-mode
 [working-as-root]: https://pure-fish.github.io/pure/#working-as-root
