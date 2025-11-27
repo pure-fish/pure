@@ -30,7 +30,7 @@ dev-pure-on: STAGE?=with-pure-installed
 dev-pure-on: TTY_FLAG?=$(shell [ -z "$$CI" ] && echo "--tty" || echo "")
 dev-pure-on: USER_FLAG?=$(shell [ -z "$$CI" ] && echo "--user $$(id -u):$$(id -g)" || echo "")
 dev-pure-on: build-with-pure-installed
-	chmod o=rwx tests/fixtures/ # for migration-to-4.0.0.test.fish only
+	chmod o=rwx tests/fixtures/ # for tests constants
 	docker run \
 		--name dev-pure-on-${FISH_VERSION} \
 		--rm \
@@ -43,7 +43,7 @@ dev-pure-on: build-with-pure-installed
 		--volume=$$(pwd):/home/nemo/.config/fish/pure/ \
 		--workdir /home/nemo/.config/fish/pure/ \
 		pure-${STAGE}-${FISH_VERSION} "fish --version && ${CMD}"
-	chmod o=r-x tests/fixtures/ # for migration-to-4.0.0.test.fish only
+	chmod o=r-x tests/fixtures/ # for tests constants
 
 .PHONY: test-pure-on
 test-pure-on: CMD?=fishtape tests/*.test.fish
@@ -78,7 +78,7 @@ dev-pure-on-nix: STAGE?=nix
 dev-pure-on-nix: CMD?=fish
 dev-pure-on-nix: TTY?=--tty
 dev-pure-on-nix:
-	chmod o=rwx ./tests/fixtures/ # for migration-to-4.0.0.test.fish only
+	chmod o=rwx ./tests/fixtures/ # for tests constants
 	docker run \
 		--name dev-pure-on-${FISH_VERSION} \
 		--rm \
@@ -87,7 +87,7 @@ dev-pure-on-nix:
 		--volume=$$(pwd):/tmp/.pure/ \
 		--workdir /tmp/.pure/ \
 		pure-${STAGE}-${FISH_VERSION} "fish --version && ${CMD}"
-	chmod o=r-x ./tests/fixtures/ # for migration-to-4.0.0.test.fish only
+	chmod o=r-x ./tests/fixtures/ # for tests constants
 
 test-pure-on-nix: CMD?=fishtape tests/*.test.fish
 test-pure-on-nix:
