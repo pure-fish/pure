@@ -1,7 +1,6 @@
 source (status dirname)/fixtures/constants.fish
 @echo (_print_filename (status filename))
 
-
 function before_all
     # _purge_configs # we need the context to uninstall
     _disable_colors
@@ -31,16 +30,21 @@ before_each
 @test "init/_pure_uninstall: backup current 'fish_prompt'" (
     source (status dirname)/../conf.d/_pure_init.fish
 
-    _pure_uninstall
+    _pure_uninstall 
 ) -e $__fish_config_dir/functions/fish_prompt.pure-backup.fish
 
 before_each
 @test "init/_pure_uninstall: restore default 'fish_prompt'" (
     source (status dirname)/../conf.d/_pure_init.fish
 
-    _pure_uninstall
+    _pure_uninstall 
 
-    diff -q {$__fish_data_dir,$__fish_config_dir}/functions/fish_title.fish
+    if status list-files functions/fish_prompt.fish > /dev/null # standalone binary Fish ≥4.1.2
+        status get-file functions/fish_prompt.fish > /tmp/fish_prompt.fish
+        diff -q /tmp/fish_prompt.fish $__fish_config_dir/functions/fish_prompt.fish
+    else
+        diff -q {$__fish_data_dir,$__fish_config_dir}/functions/fish_prompt.fish
+    end
 ) $status -eq $SUCCESS
 
 before_each
@@ -56,7 +60,13 @@ before_each
 
     _pure_uninstall
 
-    diff -q {$__fish_data_dir,$__fish_config_dir}/functions/fish_title.fish
+    if status list-files functions/fish_title.fish > /dev/null # standalone binary Fish ≥4.1.2
+        status get-file functions/fish_title.fish > /tmp/fish_title.fish
+        diff -q /tmp/fish_title.fish $__fish_config_dir/functions/fish_title.fish
+    else
+        diff -q {$__fish_data_dir,$__fish_config_dir}/functions/fish_title.fish
+    end
+
 ) $status -eq $SUCCESS
 
 before_each
@@ -112,8 +122,8 @@ before_each
 ) $status -eq $SUCCESS
 
 if not test -d /etc/nix # skip on NixOS
-before_each
-@test "init/_pure_uninstall: remove pure-related functions" (
+    before_each
+    @test "init/_pure_uninstall: remove pure-related functions" (
     # source (status dirname)/../functions/_pure_set_default.fish
     source (status dirname)/../conf.d/_pure_init.fish
     function _pure_foo; end

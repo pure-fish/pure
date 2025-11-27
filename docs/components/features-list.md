@@ -291,6 +291,41 @@
 | **`pure_shorten_window_title_current_directory_length`** | `0`     | Shorten every window title path component but the last to X characters (0 do not shorten)                             |
 | **`pure_truncate_window_title_current_directory_keeps`** | `0`     | Truncate working directory path in window title, but keeps the last to `n` components (`0` full path in window title) |
 
+### Transient Prompt
+
+> Simplify previous prompts in scrollback history (Fish 4.1.0+)
+
+| Option                       | Default | Description                                                              |
+| :--------------------------- | :------ | :----------------------------------------------------------------------- |
+| **`fish_transient_prompt`**  | -       | Fish built-in variable. Set to `1` to enable [transient prompt](https://fishshell.com/docs/4.1/prompt.html#transient-prompt).           |
+
+Shows a simplified prompt (just the prompt symbol) for previous commands, keeping your scrollback clean while maintaining full context on the current prompt.
+When enabled, Fish re-runs the prompt with `--final-rendering` before executing a command.
+
+!!! tip "Recommended: Enable Single Line Prompt"
+
+    Transient prompt works best with single line prompt enabled:
+
+    ```fish
+    set --universal fish_transient_prompt 1
+    set --universal pure_enable_single_line_prompt true
+    ```
+
+=== "Enabled (simplified previous prompts, single line)"
+
+    ![screenshot fish_transient_prompt=1,pure_enable_single_line_prompt=true](/pure/assets/screenshots/light-fish_transient_prompt%3D1%2Cpure_enable_single_line_prompt%3Dtrue.png#only-light)
+    ![screenshot fish_transient_prompt=1,pure_enable_single_line_prompt=true](/pure/assets/screenshots/mirage-fish_transient_prompt%3D1%2Cpure_enable_single_line_prompt%3Dtrue.png#only-dark)
+
+=== "Enabled (simplified previous prompts, multi-line)"
+
+    ![screenshot fish_transient_prompt=1,pure_enable_single_line_prompt=false](/pure/assets/screenshots/light-fish_transient_prompt%3D1%2Cpure_enable_single_line_prompt%3Dfalse.png#only-light)
+    ![screenshot fish_transient_prompt=1,pure_enable_single_line_prompt=false](/pure/assets/screenshots/mirage-fish_transient_prompt%3D1%2Cpure_enable_single_line_prompt%3Dfalse.png#only-dark)
+
+=== "Disabled (full prompts in scrollback)"
+
+    ![screenshot fish_transient_prompt=0,pure_enable_single_line_prompt=true](/pure/assets/screenshots/light-fish_transient_prompt%3D0%2Cpure_enable_single_line_prompt%3Dtrue.png#only-light)
+    ![screenshot fish_transient_prompt=0,pure_enable_single_line_prompt=true](/pure/assets/screenshots/mirage-fish_transient_prompt%3D0%2Cpure_enable_single_line_prompt%3Dtrue.png#only-dark)
+
 ### VI Mode
 
 | Option                                     | Default | Description                                                                                     |
