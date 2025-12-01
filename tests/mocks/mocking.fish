@@ -54,7 +54,7 @@ function _mock_response \
     # redefine function to return mock response
     function $function_name \
         --description "Mocking $function_name response" \
-        --argument-names mock_reponse
+        --argument-names mock_response
         echo (status current-function) >/tmp/(status current-function).mock_calls
         command cat /tmp/(status current-function).mock_response
     end

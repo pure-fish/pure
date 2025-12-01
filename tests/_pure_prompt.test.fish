@@ -31,6 +31,7 @@ before_each
 @test "_pure_prompt: print prompt after succeeding command" (
     set --universal pure_enable_single_line_prompt false
     set --universal pure_color_prompt_on_success magenta
+    _mock_response id 'nemo'
 
     _pure_prompt $SUCCESS
 ) = (set_color $pure_color_prompt_on_success)'>'
@@ -39,6 +40,7 @@ before_each
 @test "_pure_prompt: print prompt after failing command" (
     set --universal pure_enable_single_line_prompt false
     set --universal pure_color_prompt_on_error red
+    _mock_response id 'nemo'
 
     _pure_prompt $FAILURE
 ) = (set_color $pure_color_prompt_on_error)'>'
@@ -50,6 +52,7 @@ before_each
     set --universal pure_symbol_prefix_root_prompt '#'
     set --universal pure_color_prompt_on_success magenta
     set --universal pure_color_prefix_root_prompt red
+
     _mock_response id 'root'
 
     _pure_prompt $SUCCESS
