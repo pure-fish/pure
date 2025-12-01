@@ -4,6 +4,7 @@ function _spy \
     function_name # name of the method to spy
 
     _backup_before_mocking $function_name
+    set --global --append __mocks $function_name # register for cleanup by _clean_all_mocks
 
     function $function_name
         echo -- (status current-function) $argv >/tmp/(status current-function).mock_calls
