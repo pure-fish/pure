@@ -13,7 +13,7 @@ set --global PURE_VERSION_NUMBER_REGEX '(\d+.\d+.\d+)$'
 function is_tests_runner \
     --description "Detect Linux test container run with `nemo` user, other OSes we use the test directory /tmp/.pure/"
 
-    test "$CI" = "true" \
+    test "$CI" = true \
         -o "$USER" = nemo \
         -o "$PWD" = "/tmp/.pure/" \
         -o "$PWD" = /tmp/pure \
@@ -30,6 +30,7 @@ function _purge_configs \
             set --erase --universal $variable
         end
     end
+    set --erase --universal fish_transient_prompt
 end
 
 function _disable_all_configs \

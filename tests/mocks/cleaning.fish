@@ -24,11 +24,13 @@ end
 
 function _clean_all_spy_calls \
     --description "Clean all spy calls created by `_spy`"
-    for mock_calls in /tmp/*.mock_calls
-        if test -r $mock_calls
-            rm -f $mock_calls
+    for mock_call in /tmp/*.mock_calls
+        if test -r $mock_call
+            rm -f $mock_call
         end
     end
+    # Note: Function restoration is handled by _clean_all_mocks via __backup_*
+    # The _spy function uses _backup_before_mocking which creates __backup_* functions
 end
 
 function _pure_unmock \
