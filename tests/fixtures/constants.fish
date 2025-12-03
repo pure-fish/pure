@@ -62,3 +62,17 @@ end
 function _print_filename --argument-names filename
     echo (set_color cyan)$filename(set_color normal)
 end
+
+function strip_ansi \
+    --description "Remove ANSI color codes from input string"
+
+    # Works with both: echo "text" | strip_ansi
+    #              and: strip_ansi "text"
+    if test (count $argv) -gt 0
+        string replace --regex --all '\e\[[^m]*m|\e\(B' '' $argv
+    else
+        while read --local line
+            string replace --regex --all '\e\[[^m]*m|\e\(B' '' $line
+        end
+    end
+end

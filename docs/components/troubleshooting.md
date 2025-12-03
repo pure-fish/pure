@@ -6,7 +6,7 @@
 
 To configure your Fish's greeting, edit `$__fish_config_dir/functions/fish_greeting.fish` function or the related variable:
 
-===  "Check for new release"
+=== "Check for new release"
 
     Add the following to call _pure_check_for_new_release_ on each new shell (i.e., when a new terminal session or `tmux` tab starts):
 
@@ -15,6 +15,7 @@ To configure your Fish's greeting, edit `$__fish_config_dir/functions/fish_greet
         _pure_check_for_new_release
     end
     ```
+
 === "Void `fish_greeting` function"
 
     Voiding the _fish_greeting.fish_ function will stop printing any greeting:
@@ -32,6 +33,20 @@ To configure your Fish's greeting, edit `$__fish_config_dir/functions/fish_greet
     ```fish
     set --universal fish_greeting
     ```
+
+### Install and Update
+
+We do our best to clean up after ourselfves and provides information on the version installed or updated.
+
+=== "Fresh Install"
+
+    ![screenshot _pure_install](/pure/assets/screenshots/light-_pure_install.png#only-light)
+    ![screenshot _pure_install](/pure/assets/screenshots/mirage-_pure_install.png#only-dark)
+
+=== "Update"
+
+    ![screenshot _pure_install](/pure/assets/screenshots/light-_pure_update.png#only-light)
+    ![screenshot _pure_install](/pure/assets/screenshots/mirage-_pure_update.png#only-dark)
 
 ### Slowness: try Async `git` Prompt
 
