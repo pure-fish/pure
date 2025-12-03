@@ -6,6 +6,9 @@
 
 * use `make` to build and test the project locally on different environments ;
 * use `make` to test and build the documentation
+* when executing tests, use the following commands to run in a isolated environment:
+
+    make test-pure-on FISH_VERSION=(fish --version | string match --regex '(?:\\d+.?){3}') CMD="fishtape <files-to-test>"
 
 ## Code style
 
@@ -15,3 +18,4 @@
 * use commit conventions to generate changelogs and releases
 * write tests for new features and bug fixes
 * use [clean code principles](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29#file-clean_code-md)
+* follow [Pure code style guide](./CONTRIBUTING.md)
