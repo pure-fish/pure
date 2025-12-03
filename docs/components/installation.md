@@ -5,6 +5,8 @@
 
 === "[Fisher](https://github.com/jorgebucaran/fisher)"
 
+    Install latest version
+
     ```shell
     fisher install pure-fish/pure
     ```
@@ -20,3 +22,11 @@
         ```
         source /tmp/pure_installer.fish; and install_pure
         ```
+
+=== "Install a PR"
+
+    Wanna preview a pull-request before it gets merged? Just append `@` symbol, followed by a tag, branch, or commit.
+
+    ```shell
+    fisher install pure-fish/pure@v4.13.0
+    ```

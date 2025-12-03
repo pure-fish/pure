@@ -124,7 +124,6 @@ before_each
 if not test -d /etc/nix # skip on NixOS
     before_each
     @test "init/_pure_uninstall: remove pure-related functions" (
-    # source (status dirname)/../functions/_pure_set_default.fish
     source (status dirname)/../conf.d/_pure_init.fish
     function _pure_foo; end
 

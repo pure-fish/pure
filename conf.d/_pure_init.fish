@@ -6,8 +6,37 @@ set --global _pure_fresh_session true
 
 # Register `_pure_prompt_new_line` as an event handler for `fish_prompt`
 for fpath in $fish_function_path
-
     test -e $fpath/_pure_prompt_new_line.fish && source $fpath/_pure_prompt_new_line.fish
+end
+
+function _pure \
+    --description 'Display branding for pure prompt'
+
+    printf "%s %s" \
+        (set_color $pure_color_warning)$pure_symbol_prompt$pure_symbol_reverse_prompt$pure_symbol_prompt \
+        (set_color $pure_color_primary)"pure"(set_color normal)
+end
+
+function _pure_install --on-event pure_install \
+    --description 'Fisher handler to install pure prompt'
+    
+    source $__fish_config_dir/conf.d/pure.fish
+    
+    printf "Now using: %s %s\n" \
+        (_pure) \
+        (set_color --bold $pure_color_success)$pure_version(set_color normal)
+end
+
+function _pure_update --on-event pure_update \
+    --description 'Fisher handler to update pure prompt'
+    
+    set --local previous_version $pure_version
+    source $__fish_config_dir/conf.d/pure.fish
+
+    printf "Updating: %s %s → %s\n" \
+        (_pure) \
+        (set_color $pure_color_info)$previous_version(set_color normal) \
+        (set_color --bold $pure_color_success)$pure_version(set_color normal)
 end
 
 function _pure_uninstall --on-event pure_uninstall \
