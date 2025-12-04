@@ -3,7 +3,12 @@ name: Test on NixOS
 on:
   workflow_call:
   workflow_dispatch:
-
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: false
 jobs:
   test-nixos:
     name: Test `pure` with Fish ${{ matrix.version.fish }} on NixOS container
@@ -17,6 +22,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Debug with tmate (SSH Access)
+        uses: mxschmitt/action-tmate@v3
+        if: failure() || ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+        with:
+          detached: true
+                  
       - name: Build Pure Image on NixOS
         run: make build-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
 
