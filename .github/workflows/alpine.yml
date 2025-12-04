@@ -1,0 +1,29 @@
+name: Test on Docker
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  test-container:
+    name: Test `pure` with Fish ${{ matrix.version.fish }} on Docker
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [
+            { fish: 3.3.1, alpine: 3.15 }, # for Ubuntu 22.04 LTS
+            { fish: 3.7.1, alpine: 3.21 },
+            { fish: 4.0.2, alpine: 3.22 },
+            { fish: 4.2.1, alpine: "edge" },
+            # { fish: 9.9.9, alpine: 'edge' },
+          ]
+    steps:
+      - run: docker --version
+
+      - uses: actions/checkout@v4
+
+      - name: Build Pure Image on Alpine ${{ matrix.version.alpine }}
+        run: make build-pure-on FISH_VERSION=${{ matrix.version.fish }}
+
+      - name: Run Tests
+        run: make test-pure-on FISH_VERSION=${{ matrix.version.fish }}
