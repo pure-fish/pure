@@ -12,6 +12,11 @@ function before_each
     mkdir -p $__fish_config_dir/conf.d
 end
 
+function after_all
+    # uncomment pure_version line in conf.d/pure.fish for macos job
+    mv $__fish_config_dir/conf.d/pure.fish{.bak,}
+end
+
 before_each
 @test "init/_pure_install: handler is available" (
     source (status dirname)/../conf.d/_pure_init.fish
@@ -21,6 +26,7 @@ before_each
 before_each
 @test "init/_pure_install: prints installed version" (
     touch $__fish_config_dir/conf.d/pure.fish
+    sed -i.bak 's/^\(.*pure_version.*\)$/# \1/' $__fish_config_dir/conf.d/pure.fish # for macos job
     set --global pure_symbol_prompt "❯"
     set --global pure_symbol_reverse_prompt "❮"
     set --global pure_version 1.2.3 # current version
@@ -30,3 +36,5 @@ before_each
     
     _pure_install | strip_ansi
 ) = "Now using: ❯❮❯ pure 1.2.3"
+
+after_all

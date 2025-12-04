@@ -28,7 +28,13 @@ jobs:
         run: brew install fish
 
       - name: Install Fisher > Fishtape > Pure
-        run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
+        run: |
+          curl -sL https://git.io/fisher \
+          | source \
+          && fisher install \
+            jorgebucaran/fisher \
+            jorgebucaran/fishtape \
+            ./ # pure workspace
         shell: fish {0}
         
       - name: Run Tests
