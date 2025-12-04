@@ -28,12 +28,16 @@ jobs:
 
       - uses: actions/checkout@v4
 
+      - name: Debug
+        run: echo  ${{ vars.TMATE_TIMEOUT && fromJSON(vars.TMATE_TIMEOUT) || 5 }}
+
       - name: Debug with tmate (SSH Access)
         uses: mxschmitt/action-tmate@v3
-        if: failure() || ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+        if: failure() || inputs.debug_enabled == true
         with:
           detached: true
         timeout-minutes: ${{ vars.TMATE_TIMEOUT && fromJSON(vars.TMATE_TIMEOUT) || 5 }}
+        continue-on-error: true
 
       - name: Build Pure Image on Alpine ${{ matrix.version.alpine }}
         run: make build-pure-on FISH_VERSION=${{ matrix.version.fish }}
