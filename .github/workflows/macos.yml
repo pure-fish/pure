@@ -3,22 +3,34 @@ name: Test on MacOS
 on:
   workflow_call:
   workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: false
 
 jobs:
   test-macos:
     name: Test on fish on MacOS
-    runs-on: macos-latest
+    runs-on: [macos-latest]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Debug with tmate (SSH Access)
+        uses: mxschmitt/action-tmate@v3
+        if: failure() || ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+        with:
+          detached: true
+          
       - name: Install Fish
         run: brew install fish
 
       - name: Install Fisher > Fishtape > Pure
         run: curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher jorgebucaran/fishtape ./
         shell: fish {0}
-
+        
       - name: Run Tests
         run: fish --version && fishtape tests/*.test.fish
         shell: fish {0}
