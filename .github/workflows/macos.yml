@@ -6,7 +6,7 @@ on:
     inputs:
       debug_enabled:
         type: boolean
-        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        description: "Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)"
         required: false
         default: false
 
@@ -23,7 +23,8 @@ jobs:
         if: failure() || ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
         with:
           detached: true
-          
+        timeout-minutes: ${{ vars.TMATE_TIMEOUT && fromJSON(vars.TMATE_TIMEOUT) || 5 }}
+
       - name: Install Fish
         run: brew install fish
 
@@ -36,7 +37,7 @@ jobs:
             jorgebucaran/fishtape \
             ./ # pure workspace
         shell: fish {0}
-        
+
       - name: Run Tests
         run: fish --version && fishtape tests/*.test.fish
         shell: fish {0}

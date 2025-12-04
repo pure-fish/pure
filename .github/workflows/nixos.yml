@@ -6,9 +6,10 @@ on:
     inputs:
       debug_enabled:
         type: boolean
-        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        description: "Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)"
         required: false
         default: false
+
 jobs:
   test-nixos:
     name: Test `pure` with Fish ${{ matrix.version.fish }} on NixOS container
@@ -16,7 +17,7 @@ jobs:
     strategy:
       matrix:
         version: [
-            { fish: 'latest' }, # https://search.nixos.org/packages?show=fish&type=packages&query=fish
+            { fish: "latest" }, # https://search.nixos.org/packages?show=fish&type=packages&query=fish
           ]
     steps:
       - name: Checkout repo
@@ -27,7 +28,8 @@ jobs:
         if: failure() || ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
         with:
           detached: true
-                  
+        timeout-minutes: ${{ vars.TMATE_TIMEOUT && fromJSON(vars.TMATE_TIMEOUT) || 5 }}
+
       - name: Build Pure Image on NixOS
         run: make build-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
 
