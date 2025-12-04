@@ -20,10 +20,11 @@ jobs:
 
       - name: Debug with tmate (SSH Access)
         uses: mxschmitt/action-tmate@v3
-        if: failure() || ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+        if: failure() || inputs.debug_enabled == true
         with:
           detached: true
         timeout-minutes: ${{ vars.TMATE_TIMEOUT && fromJSON(vars.TMATE_TIMEOUT) || 5 }}
+        continue-on-error: true
 
       - name: Install Fish
         run: brew install fish
