@@ -51,7 +51,7 @@ end
 
 if set --query CI
     before_each
-    false && @test "screenshot: pure_check_for_new_release=true,with-update" (
+    @test "screenshot: pure_check_for_new_release=true,with-update" (
         set --universal pure_check_for_new_release true
         set --global pure_version 0.0.1
         _mock_response curl '"tag_name": "v9.9.9",'
@@ -61,7 +61,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_check_for_new_release=true,no-update" (
+    @test "screenshot: pure_check_for_new_release=true,no-update" (
         set --universal pure_check_for_new_release true
         set --global pure_version 0.0.1
         _mock_response curl '"tag_name": "v0.0.1",'
@@ -90,7 +90,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_enable_container_detection=true,inside" (
+    @test "screenshot: pure_enable_container_detection=true,inside" (
         set --universal pure_enable_container_detection true
         set --universal pure_symbol_container_prefix "🐋$SPACE"
 
@@ -98,7 +98,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_enable_container_detection=true,outside" (
+    @test "screenshot: pure_enable_container_detection=true,outside" (
         set --universal pure_enable_container_detection true
         _mock_exit_status _pure_is_inside_container $FAILURE
 
@@ -107,14 +107,14 @@ if set --query CI
 
     # Git enable/disable
     before_each
-    false && @test "screenshot: pure_enable_git=false" (
+    @test "screenshot: pure_enable_git=false" (
         set --universal pure_enable_git false
 
         screenshot "pure_enable_git=false"
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_enable_git=true" (
+    @test "screenshot: pure_enable_git=true" (
         set --universal pure_enable_git true
         # Mock git functions to show git info
         function _pure_prompt_git_dirty; echo '*'; end
@@ -125,7 +125,7 @@ if set --query CI
 
     # Jobs indicator
     before_each
-    false && @test "screenshot: pure_show_jobs=false" (
+    @test "screenshot: pure_show_jobs=false" (
         set --universal pure_show_jobs false
         sleep 0.5s &  # Create background job
 
@@ -133,7 +133,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_show_jobs=true" (
+    @test "screenshot: pure_show_jobs=true" (
         set --universal pure_show_jobs true
         sleep 0.5s &  # Create background job
 
@@ -142,7 +142,7 @@ if set --query CI
 
     # Kubernetes context
     before_each
-    false && @test "screenshot: pure_enable_k8s=false" (
+    @test "screenshot: pure_enable_k8s=false" (
         set --universal pure_enable_k8s false
         _mock kubectl
         _mock_response _pure_k8s_context "my-context"
@@ -152,7 +152,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_enable_k8s=true" (
+    @test "screenshot: pure_enable_k8s=true" (
         set --universal pure_enable_k8s true
         set --universal pure_symbol_k8s_prefix "☸$SPACE"
         _mock kubectl
@@ -164,7 +164,7 @@ if set --query CI
 
     # Nix dev shell
     before_each
-    false && @test "screenshot: pure_enable_nixdevshell=false" (
+    @test "screenshot: pure_enable_nixdevshell=false" (
         set --universal pure_enable_nixdevshell false
         set --global IN_NIX_SHELL pure
 
@@ -172,7 +172,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_enable_nixdevshell=true" (
+    @test "screenshot: pure_enable_nixdevshell=true" (
         set --universal pure_enable_nixdevshell true
         set --universal pure_symbol_nixdevshell_prefix "❄️$SPACE"
         set --global IN_NIX_SHELL pure
@@ -181,14 +181,14 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_symbol_prompt=success" (
+    @test "screenshot: pure_symbol_prompt=success" (
         set --local action 'true; fish_prompt'
 
         screenshot "pure_symbol_prompt=success" $action
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_symbol_prompt=error" (
+    @test "screenshot: pure_symbol_prompt=error" (
         set --local action 'false; fish_prompt'
 
         screenshot "pure_symbol_prompt=error" $action
@@ -196,7 +196,7 @@ if set --query CI
 
     # Python virtualenv
     before_each
-    false && @test "screenshot: pure_enable_virtualenv=false" (
+    @test "screenshot: pure_enable_virtualenv=false" (
         set --universal pure_enable_virtualenv false
         set --global VIRTUAL_ENV /home/user/projects/my-project/venv
 
@@ -204,7 +204,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_enable_virtualenv=true" (
+    @test "screenshot: pure_enable_virtualenv=true" (
         set --universal pure_enable_virtualenv true
         set --universal pure_symbol_virtualenv_prefix "🐍$SPACE"
         set --global VIRTUAL_ENV /home/user/projects/my-project/venv
@@ -214,7 +214,7 @@ if set --query CI
 
     # AWS profile
     before_each
-    false && @test "screenshot: pure_enable_aws_profile=false" (
+    @test "screenshot: pure_enable_aws_profile=false" (
         set --universal pure_enable_aws_profile false
         set --global AWS_PROFILE production
 
@@ -222,7 +222,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_enable_aws_profile=true" (
+    @test "screenshot: pure_enable_aws_profile=true" (
         set --universal pure_enable_aws_profile true
         set --universal pure_symbol_aws_profile_prefix "☁️$SPACE"
         set --global AWS_PROFILE production
@@ -232,7 +232,7 @@ if set --query CI
 
     # Separate prompt on error
     before_each
-    false && @test "screenshot: pure_separate_prompt_on_error=false" (
+    @test "screenshot: pure_separate_prompt_on_error=false" (
         set --universal pure_separate_prompt_on_error false
         set --global _pure_fresh_session false
 
@@ -241,7 +241,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_separate_prompt_on_error=true" (
+    @test "screenshot: pure_separate_prompt_on_error=true" (
         set --universal pure_separate_prompt_on_error true
         set --global _pure_fresh_session false
 
@@ -251,7 +251,7 @@ if set --query CI
 
     # Single line prompt
     before_each
-    false && @test "screenshot: pure_enable_single_line_prompt=false" (
+    @test "screenshot: pure_enable_single_line_prompt=false" (
         set --universal pure_enable_single_line_prompt false
         set --universal pure_enable_git true
         function _pure_prompt_git_dirty; echo '*'; end
@@ -261,7 +261,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_enable_single_line_prompt=true" (
+    @test "screenshot: pure_enable_single_line_prompt=true" (
         set --universal pure_enable_single_line_prompt true
         set --universal pure_enable_git true
         function _pure_prompt_git_dirty; echo '*'; end
@@ -272,14 +272,14 @@ if set --query CI
 
     # System time
     before_each
-    false && @test "screenshot: pure_show_system_time=false" (
+    @test "screenshot: pure_show_system_time=false" (
         set --universal pure_show_system_time false
 
         screenshot "pure_show_system_time=false"
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_show_system_time=true" (
+    @test "screenshot: pure_show_system_time=true" (
         set --universal pure_show_system_time true
 
         screenshot "pure_show_system_time=true"
@@ -287,7 +287,7 @@ if set --query CI
 
     # Subsecond command duration
     before_each
-    false && @test "screenshot: pure_show_subsecond_command_duration=false" (
+    @test "screenshot: pure_show_subsecond_command_duration=false" (
         set --universal pure_show_subsecond_command_duration false
         set --universal pure_threshold_command_duration 0
         set --global CMD_DURATION 6053  # 6.053 seconds in milliseconds
@@ -296,7 +296,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_show_subsecond_command_duration=true" (
+    @test "screenshot: pure_show_subsecond_command_duration=true" (
         set --universal pure_show_subsecond_command_duration true
         set --universal pure_threshold_command_duration 0
         set --global CMD_DURATION 6053  # 6.053 seconds in milliseconds
@@ -306,7 +306,7 @@ if set --query CI
 
     # VI mode symbol reversal
     before_each
-    false && @test "screenshot: pure_reverse_prompt_symbol_in_vimode=false" (
+    @test "screenshot: pure_reverse_prompt_symbol_in_vimode=false" (
         set --universal pure_reverse_prompt_symbol_in_vimode false
         set fish_key_bindings fish_vi_key_bindings
 
@@ -316,7 +316,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_reverse_prompt_symbol_in_vimode=true" (
+    @test "screenshot: pure_reverse_prompt_symbol_in_vimode=true" (
         set --universal pure_reverse_prompt_symbol_in_vimode true
         set fish_key_bindings fish_default_key_bindings
 
@@ -325,7 +325,7 @@ if set --query CI
 
     # Root prompt prefix
     before_each
-    false && @test "screenshot: pure_show_prefix_root_prompt=false" (
+    @test "screenshot: pure_show_prefix_root_prompt=false" (
         set --universal pure_show_prefix_root_prompt false
         function id; echo root; end  # mock root user
 
@@ -333,7 +333,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_show_prefix_root_prompt=true" (
+    @test "screenshot: pure_show_prefix_root_prompt=true" (
         set --universal pure_show_prefix_root_prompt true
         set --universal pure_symbol_prefix_root_prompt "#"
         function id; echo root; end  # mock root user
@@ -343,7 +343,7 @@ if set --query CI
 
     # Begin prompt with current directory
     before_each
-    false && @test "screenshot: pure_begin_prompt_with_current_directory=false" (
+    @test "screenshot: pure_begin_prompt_with_current_directory=false" (
         set --universal pure_begin_prompt_with_current_directory false
         set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22  # Enable SSH to show the difference
         function id; echo testuser; end  # mock user
@@ -352,7 +352,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: pure_begin_prompt_with_current_directory=true" (
+    @test "screenshot: pure_begin_prompt_with_current_directory=true" (
         set --universal pure_begin_prompt_with_current_directory true
         set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22  # Enable SSH to show the difference
         function id; echo testuser; end  # mock user
@@ -362,7 +362,7 @@ if set --query CI
 
     # SSH connection
     before_each
-    false && @test "screenshot: ssh=disconnected" (
+    @test "screenshot: ssh=disconnected" (
         set --erase SSH_CONNECTION
         set --universal pure_symbol_ssh_prefix ""
 
@@ -370,7 +370,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: ssh=connected" (
+    @test "screenshot: ssh=connected" (
         set SSH_CONNECTION 127.0.0.1 56422 127.0.0.1 22
         set --universal pure_symbol_ssh_prefix "🔗$SPACE"
         function id; echo testuser; end  # mock user
@@ -380,7 +380,7 @@ if set --query CI
 
     # Transient prompt
     before_each
-    false && @test "screenshot: fish_transient_prompt=0,pure_enable_single_line_prompt=true" (
+    @test "screenshot: fish_transient_prompt=0,pure_enable_single_line_prompt=true" (
         set --universal fish_transient_prompt 0
         set --universal pure_enable_single_line_prompt true
 
@@ -394,7 +394,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: fish_transient_prompt=1,pure_enable_single_line_prompt=true" (
+    @test "screenshot: fish_transient_prompt=1,pure_enable_single_line_prompt=true" (
         set --universal fish_transient_prompt 1
         set --universal pure_enable_single_line_prompt true
 
@@ -408,7 +408,7 @@ if set --query CI
     ) $status -eq $SUCCESS
 
     before_each
-    false && @test "screenshot: fish_transient_prompt=1,pure_enable_single_line_prompt=false" (
+    @test "screenshot: fish_transient_prompt=1,pure_enable_single_line_prompt=false" (
         set --universal fish_transient_prompt 1
         set --universal pure_enable_single_line_prompt false
         set --universal _pure_fresh_session false
