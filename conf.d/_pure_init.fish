@@ -18,7 +18,7 @@ function _pure \
 end
 
 function _pure_install --on-event pure_install \
-    --description 'Fisher handler to install pure prompt'
+    --description 'Fisher handler when pure prompt is installed'
     
     source $__fish_config_dir/conf.d/pure.fish
     
@@ -27,8 +27,11 @@ function _pure_install --on-event pure_install \
         (set_color --bold $pure_color_success)$pure_version(set_color normal)
 end
 
-function _pure_update --on-event pure_update \
-    --description 'Fisher handler to update pure prompt'
+# Fisher emit an event for all files under conf.d/. 
+# We listen to the event when the new conf.d/_pure_init.fish is sourced,
+# to read old `pure_version` before sourcing conf.d/pure.fish happens.
+function _pure_update --on-event _pure_init_update \
+    --description 'Fisher handler pure prompt is updated'
     
     set --local previous_version $pure_version
     source $__fish_config_dir/conf.d/pure.fish
@@ -40,7 +43,7 @@ function _pure_update --on-event pure_update \
 end
 
 function _pure_uninstall --on-event pure_uninstall \
-    --description 'Fisher handler to uninstall pure prompt'
+    --description 'Fisher handler pure prompt is uninstalled'
 
     rm -f $__fish_config_dir/conf.d/pure.fish
 
