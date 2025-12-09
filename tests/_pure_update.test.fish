@@ -32,3 +32,13 @@ before_each
 
     _pure_update | strip_ansi
 ) = "Updating: ❯❮❯ pure 1.0.0 → 2.0.0"
+
+before_each
+@test "init/_pure_update: `_pure_update` run when `_pure_init_update` event is emitted" (
+    set --global pure_version 1.0.0 # current version
+    source (status dirname)/../conf.d/_pure_init.fish
+    echo "set --global pure_version 2.0.0 # new version" > $__fish_config_dir/conf.d/pure.fish
+
+    emit _pure_init_update # due to this event, test output will display: Updating: ❯❮❯ pure 1.0.0 → 2.0.0
+    echo $pure_version
+) = '2.0.0'
