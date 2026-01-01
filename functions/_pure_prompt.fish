@@ -1,11 +1,12 @@
 function _pure_prompt \
-    --description 'Print prompt symbol' \
-    --argument-names exit_code
+    --description 'Print prompt symbol'
+    # --argument-names exit_codes # AFAIK there is no good way to handle an argument like this if it's an arbitrary-length array
 
     set --local aws_profile (_pure_prompt_aws_profile) # AWS profile name
+    set --local exit_status (_pure_prompt_exit_status $argv) # List of exit statuses if non-zero
     set --local jobs (_pure_prompt_jobs)
     set --local nixdevshell (_pure_prompt_nixdevshell) # Nix build environment indicator
-    set --local pure_symbol (_pure_prompt_symbol $exit_code)
+    set --local pure_symbol (_pure_prompt_symbol $argv[-1]) # Use last exit code only
     set --local root_prefix (_pure_prefix_root_prompt)
     set --local space
     set --local system_time (_pure_prompt_system_time)
@@ -26,6 +27,7 @@ function _pure_prompt \
         $virtualenv \
         $aws_profile \
         $vimode_indicator \
+        $exit_status \
         $pure_symbol \
     )
 end

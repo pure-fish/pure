@@ -249,6 +249,32 @@ if set --query CI
         screenshot "pure_separate_prompt_on_error=true" $action
     ) $status -eq $SUCCESS
 
+    # List exit statuses
+    before_each
+    @test "screenshot: pure_show_exit_status=true" (
+        set --universal pure_show_exit_status true
+        set --global pure_fresh_session true
+        set --local action 'function rv; return $argv[1]; end; rv 139; fish_prompt' # Simulate SIGSEGV failure
+        screenshot "pure_show_exit_status=true" $action
+    ) $status -eq $SUCCESS
+
+    before_each
+    @test "screenshot: pure_show_exit_status=true,pure_convert_exit_status_to_signal=true" (
+        set --universal pure_show_exit_status true
+        set --universal pure_convert_exit_status_to_signal true
+        set --global pure_fresh_session true
+        set --local action 'function rv; return $argv[1]; end; rv 139; fish_prompt' # Simulate SIGSEGV failure
+        screenshot "pure_show_exit_status=true,pure_convert_exit_status_to_signal=true" $action
+    ) $status -eq $SUCCESS
+
+    before_each
+    @test "screenshot: pure_show_exit_status=false" (
+        set --universal pure_show_exit_status false
+        set --global pure_fresh_session true
+        set --local action 'false; fish_prompt' # Simulate any failure; no status means specific value doesn't make a difference
+        screenshot "pure_show_exit_status=false" $action
+    ) $status -eq $SUCCESS
+
     # Single line prompt
     before_each
     @test "screenshot: pure_enable_single_line_prompt=false" (
@@ -311,7 +337,7 @@ if set --query CI
         set fish_key_bindings fish_vi_key_bindings
 
         screenshot "pure_reverse_prompt_symbol_in_vimode=false"
-        
+
         set fish_key_bindings fish_default_key_bindings
     ) $status -eq $SUCCESS
 

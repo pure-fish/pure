@@ -273,6 +273,30 @@ before_all
     echo $pure_separate_prompt_on_error
 ) = false
 
+@test "configure: pure_show_exit_status" (
+    set --erase pure_show_exit_status
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_show_exit_status
+) = false
+
+@test "configure: pure_convert_exit_status_to_signal" (
+    set --erase pure_convert_exit_status_to_signal
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_convert_exit_status_to_signal
+) = false
+
+@test "configure: pure_symbol_exit_status_separator" (
+    set --erase pure_symbol_exit_status_separator
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_symbol_exit_status_separator
+) = "|"
+
+@test "configure: pure_color_exit_status" (
+    set --erase pure_color_exit_status
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_color_exit_status
+) = pure_color_danger
+
 @test "configure: pure_threshold_command_duration" (
     set --erase pure_threshold_command_duration
     source (status dirname)/../conf.d/pure.fish
