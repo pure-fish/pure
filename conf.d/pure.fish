@@ -75,6 +75,11 @@ _pure_set_default pure_begin_prompt_with_current_directory true
 # true - separate prompt character
 _pure_set_default pure_separate_prompt_on_error false
 
+# Prefix the prompt with a list of exit statuses ($pipestatus) if at least one is non-zero
+_pure_set_default pure_show_exit_status false
+_pure_set_default pure_symbol_exit_status_separator "|"
+_pure_set_default pure_color_exit_status pure_color_danger
+
 # Max execution time of a process before its run time is shown when it exits
 _pure_set_default pure_threshold_command_duration 5
 _pure_set_default pure_show_subsecond_command_duration false
