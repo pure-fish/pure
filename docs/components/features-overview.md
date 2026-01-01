@@ -8,6 +8,7 @@ Fully **customizable** (colors, symbols and features):
     * [Change `❯` to red when previous command has failed 🛠][separate-error-symbol] ;
     * [Start prompt with _current working directory_ 🏴][current-working-directory] ;
     * [Compact-mode (single-line prompt) 🏴][single-line-prompt] ;
+    * [List exit statuses if the last command failed 🏴][list-exit-statuses] ;
   
 * [Check for new release on start 🏴🐌][check-for-new-release] ;
 * [Display _username_ and _hostname_ when in an `SSH` session 🛠][ssh-session] ;
@@ -45,6 +46,7 @@ Fully **customizable** (colors, symbols and features):
 [git]: #git
 [jobs]: #jobs
 [kubernetes]: #kubernetes
+[list-exit-statuses]: #list-exit-statuses
 [nix-os]: #nix-os
 [prompt-symbol]: #prompt-symbol
 [python-virtualenv]: #python-virtualenv

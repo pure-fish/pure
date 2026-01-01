@@ -218,6 +218,29 @@
     ![screenshot pure_separate_prompt_on_error=false](/pure/assets/screenshots/light-pure_separate_prompt_on_error%3Dfalse.png#only-light)
     ![screenshot pure_separate_prompt_on_error=false](/pure/assets/screenshots/mirage-pure_separate_prompt_on_error%3Dfalse.png#only-dark)
 
+### List Exit Statuses
+
+| Option                                   | Default | Description                                                  |
+| :--------------------------------------- | :------ | :----------------------------------------------------------- |
+| **`pure_show_exit_status`**              | `false` | `true`: Show list of status codes if the last command failed |
+| **`pure_convert_exit_status_to_signal`** | `false` | `true`: Convert statuses 129 and up to their signal names    |
+| **`pure_symbol_exit_status_separator`**  | `|`     | Separator between statuses in a pipeline                     |
+
+=== "Enabled (list exit statuses)"
+
+    ![screenshot pure_show_exit_status=true](/pure/assets/screenshots/light-pure_show_exit_status%3Dtrue.png#only-light)
+    ![screenshot pure_show_exit_status=true](/pure/assets/screenshots/mirage-pure_show_exit_status%3Dtrue.png#only-dark)
+
+=== "Enabled (convert statuses to signals)"
+
+    ![screenshot pure_show_exit_status=true,pure_convert_exit_status_to_signal=true](/pure/assets/screenshots/light-pure_show_exit_status%3Dtrue%2Cpure_convert_exit_status_to_signal%3Dtrue.png#only-light)
+    ![screenshot pure_show_exit_status=true,pure_convert_exit_status_to_signal=true](/pure/assets/screenshots/mirage-pure_show_exit_status%3Dtrue%2Cpure_convert_exit_status_to_signal%3Dtrue.png#only-dark)
+
+=== "Disabled"
+
+    ![screenshot pure_show_exit_status=false](/pure/assets/screenshots/light-pure_show_exit_status%3Dfalse.png#only-light)
+    ![screenshot pure_show_exit_status=false](/pure/assets/screenshots/mirage-pure_show_exit_status%3Dfalse.png#only-dark)
+
 ### Single Line Prompt
 
 | Option                               | Default | Description                             |

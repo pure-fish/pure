@@ -37,6 +37,7 @@ Fully **customizable** (colors, symbols and features):
     * [Change `❯` to red when previous command has failed 🛠][separate-error-symbol] ;
     * [Start prompt with _current working directory_ 🏴][current-working-directory] ;
     * [Compact-mode (single-line prompt) 🏴][single-line-prompt] ;
+    * [List exit statuses if the last command failed 🏴][list-exit-statuses] ;
   
 * [Check for new release on start 🏴🐌][check-for-new-release] ;
 * [Display _username_ and _hostname_ when in an `SSH` session 🛠][ssh-session] ;
@@ -124,6 +125,7 @@ Checkout our [Contribution Guide][contribution] to get familiar with our convent
 [git]: https://pure-fish.github.io/pure/#git
 [jobs]: https://pure-fish.github.io/pure/#jobs
 [kubernetes]: https://pure-fish.github.io/pure/#kubernetes
+[list-exit-statuses]: https://pure-fish.github.io/pure/#list-exit-statuses
 [nix-os]: https://pure-fish.github.io/pure/#nix-os
 [prompt-symbol]: https://pure-fish.github.io/pure/#prompt-symbol
 [python-virtualenv]: https://pure-fish.github.io/pure/#python-virtualenv
