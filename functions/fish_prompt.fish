@@ -5,7 +5,9 @@ function fish_prompt
     # Handle transient prompt (Fish 4.1.0+)
     # When --final-rendering is passed, show simplified prompt for scrollback
     if contains -- --final-rendering $argv
-        echo -e -n (_pure_prompt_transient $exit_codes[-1])
+        set --local last_status $exit_codes[-1]
+
+        echo -e -n (_pure_prompt_transient $last_status)
         echo -e -n (_pure_prompt_ending)
         return
     end
