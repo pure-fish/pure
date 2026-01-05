@@ -88,4 +88,16 @@ before_each
     set --universal pure_symbol_exit_status_separator '|'
     set --universal pure_convert_exit_status_to_signal true
     _pure_prompt_exit_status $statuses
-) = (set_color red)"SIGHUP|SIGINT|SIGQUIT|SIGILL|SIGTRAP|SIGABRT|SIGBUS|SIGFPE|SIGKILL|SIGUSR1|SIGSEGV|SIGUSR2|SIGPIPE|SIGALRM|SIGTERM"
+) = (set_color red)(
+    # NOTE: this is required for the test to pass when not running on Linux,
+    # since different kernels can have different signal meanings
+    set expected ""
+    for code in (seq 129 143)
+        if test -z "$expected"
+            set expected (fish_status_to_signal $code)
+        else
+            set expected (string join "|" "$expected" (fish_status_to_signal $code))
+        end
+    end
+    echo $expected
+)
