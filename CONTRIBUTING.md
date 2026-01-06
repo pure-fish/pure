@@ -25,7 +25,20 @@ Use the idiomatic [`test` instead of `[`](httpsc://fishshell.com/docs/current/co
 
 ### Be Explicit
 
-Use **long form options**, _e.g._ `set --local`, as they are more explicit over cryptic 1-letter form.
+* Use **long form options**, _e.g._ `set --local`, as they are more explicit over cryptic 1-letter form.
+
+    ```diff
+    -set -l threshold 0 # in seconds
+    +set --local threshold 0 # in seconds
+    ```
+
+* Use **proxy variable to explicit** your intention, e.g. use `last_exit_code` instead of `$argv[-1]`.
+
+    ```diff
+    -set --local pure_symbol (_pure_prompt_symbol $argv[-1]) # Use last exit code only
+    +set --local last_exit_code $argv[-1]
+    +set --local pure_symbol (_pure_prompt_symbol $last_exit_code)
+    ```
 
 ### Naming Public Item
 
@@ -72,6 +85,23 @@ $pure_color_light
 $pure_color_dark
 $pure_color_muted    # gray
 ```
+
+### Feature Design
+
+Each feature should have:
+
+* [ ] Documentation
+  * [ ] entry in the [README's table of contents][readme] ;
+  * [ ] entry in the [doc feature overview][feature-overview] ;
+  * [ ] a section detailing configuration and behavior in [doc feature list][feature-list] ;
+  * [ ] [screenshot generation][screenshot] for the different states of the feature.
+* [ ] Configurable variables to control behavior and rendering:
+    * [ ] a flag variable to enable/disable it, _e.g._ `$pure_enable_<feature>` ;
+    * [ ] a prefix symbol variable to allow customization, _e.g._ `$pure_symbol_<feature>` ;
+    * [ ] a color variable to allow customization, _e.g._ `$pure_color_<feature>` ;
+* [ ] Clean and tested implementation:
+  * [ ] a function file to encapsulate its logic, _e.g._ `functions/_pure_<feature>.fish` ;
+  * [ ] a test file to encapsulate its tests, _e.g._ `tests/_pure_<feature>.test.fish` ;
 
 ### Feature's Variables
 
@@ -126,8 +156,12 @@ $pure_enable_git_async = false
 $pure_threshold_command_duration
 ```
 
-[fish-releases]: https://github.com/fish-shell/fish-shell/releases
-
 ### Posting on social media
 
 There is a manual workflow to post on social media.
+
+[fish-releases]: https://github.com/fish-shell/fish-shell/releases
+[readme]: https://github.com/pure-fish/pure/blob/master/README.md
+[feature-overview]: https://github.com/pure-fish/pure/blob/master/docs/components/features-overview.md
+[feature-list]: https://github.com/pure-fish/pure/blob/master/docs/components/features-list.md
+[screenshot]: https://github.com/pure-fish/pure/blob/master/tools/screenshot.fish

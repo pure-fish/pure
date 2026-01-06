@@ -42,7 +42,7 @@ _pure_set_default pure_symbol_foo_feature "🤯"
 * [ ] Default are defined in [`conf.d/pure.fish`][default] for:
   * [ ] Feature flag ;
   * [ ] Symbol ;
-* [ ] Tests are passing (I can help you :hugs: ):
+* [ ] Tests are passing (we can help you :hugs: ):
   * [ ] Config are tested (cf. [tests/_pure.test.fish][config-test]) ;
   * [ ] Feature is tested in `tests/feature_name.test.fish` ;
 * [ ] Customization is available ;
