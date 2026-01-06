@@ -24,7 +24,7 @@ function _pure_prompt_exit_status \
                 set status_text (string join "$pure_symbol_exit_status_separator" $argv)
             end
 
-            echo "$status_color$status_text"
+            echo "$status_color$pure_symbol_exit_status_prefix$status_text"
         end
     end
 end
