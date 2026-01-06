@@ -224,6 +224,7 @@
 | :--------------------------------------- | :------ | :----------------------------------------------------------- |
 | **`pure_show_exit_status`**              | `false` | `true`: Show list of status codes if the last command failed |
 | **`pure_convert_exit_status_to_signal`** | `false` | `true`: Convert statuses 129 and up to their signal names    |
+| **`pure_symbol_exit_status_prefix`**     | `|`     | Prefix when the last command failed                          |
 | **`pure_symbol_exit_status_separator`**  | `|`     | Separator between statuses in a pipeline                     |
 
 === "Enabled (list exit statuses)"

@@ -285,6 +285,12 @@ before_all
     echo $pure_convert_exit_status_to_signal
 ) = false
 
+@test "configure: pure_symbol_exit_status_prefix" (
+    set --erase pure_symbol_exit_status_prefix
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_symbol_exit_status_prefix
+) = "|"
+
 @test "configure: pure_symbol_exit_status_separator" (
     set --erase pure_symbol_exit_status_separator
     source (status dirname)/../conf.d/pure.fish
