@@ -77,6 +77,11 @@ function _pure_uninstall --on-event pure_uninstall \
             | source
     end
 
+    # delete _pure* files
+    for file in $_pure_root/{functions,conf.d}/_pure_*
+        rm -f $file
+    end
+
     # erase _pure* variables
     set --names \
         | string replace --filter --regex '(^_?pure)' 'set --erase $1' \
@@ -85,8 +90,4 @@ function _pure_uninstall --on-event pure_uninstall \
     functions --names --all \
         | string replace --filter --regex '(^_?pure)' 'functions --erase $1' \
         | source
-    # delete _pure* files
-    for file in $_pure_root/{functions,conf.d}/_pure_*
-        rm -f $file
-    end
 end
