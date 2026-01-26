@@ -33,7 +33,7 @@ function pure_tools_githooks_update_version_file
     set --local temp_file (mktemp)
     set --local modified 0
 
-    while read -la line
+    while read --line line
         set --local new_line (_pure_tools_githooks_get_new_version_line "$line" "$branch_name")
         echo $new_line >> $temp_file
     end < "$file_path"
