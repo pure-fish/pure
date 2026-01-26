@@ -25,7 +25,8 @@ if test "$is_branch_checkout" -eq 1 -a "$prev_head" = "$new_head"
         # Skip master branch
         if test -n "$branch_name" -a "$branch_name" != "master"
             echo "Auto-updating pure_version for new branch $branch_name..."
-            pure_tools_githooks_update_version_file "$config_file" "$branch_name"
+            pure_tools_githooks_update_version_file "$config_file" "$branch_name" \
+            && git add "$config_file"
         end
     end
 end
