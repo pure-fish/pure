@@ -1,4 +1,4 @@
-set --global pure_version 4.15.0 # For bug report and tag-after-merge workflow
+set --global pure_version 4.15.0-chore-update-version-on-branch # For bug report and tag-after-merge workflow
 
 # Base colors
 _pure_set_default pure_color_primary blue
@@ -55,7 +55,7 @@ _pure_set_default pure_symbol_nixdevshell_prefix "❄️" # otherwise nerdfonts:
 _pure_set_default pure_color_nixdevshell_prefix pure_color_info
 _pure_set_default pure_color_nixdevshell_symbol pure_color_mute
 
-#  env for Python
+# env for Python
 _pure_set_default pure_enable_virtualenv true
 _pure_set_default pure_symbol_virtualenv_prefix "" # 🐍
 _pure_set_default pure_color_virtualenv pure_color_mute

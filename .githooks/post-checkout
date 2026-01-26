@@ -1,0 +1,23 @@
+#!/usr/bin/env fish
+
+# Description:
+#   Triggered on new branch checkout to append branch name to pure_version
+
+# Arg 3 is '1' if it's a branch checkout, '0' if it's a file checkout
+set --local is_branch_checkout $argv[3]
+
+if test "$is_branch_checkout" -eq 1
+    set --local root_dir (git rev-parse --show-toplevel)
+    set --local config_file "$root_dir/conf.d/pure.fish"
+    set --local tool_script "$root_dir/tools/githooks.fish"
+
+    if test -f "$tool_script"
+        source "$tool_script"
+        set --local branch_name (git branch --show-current)
+        
+        if test -n "$branch_name"
+            echo "Auto-updating pure_version for branch $branch_name..."
+            pure_tools_githooks_update_version_file "$config_file" "$branch_name"
+        end
+    end
+end
