@@ -12,6 +12,7 @@ usage:
 	@printf "\tmake build-pure-on FISH_VERSION=3.3.1\t# build container\n"
 	@printf "\tmake test-pure-on  FISH_VERSION=3.3.1\t# run tests\n"
 	@printf "\tmake dev-pure-on   FISH_VERSION=3.3.1\t# dev in container\n"
+	@printf "\tmake update-changelog\t\t\t# update changelog from GitHub releases\n"
 
 .PHONY: build-pure-on
 build-pure-on: STAGE?=with-pure-installed
@@ -111,6 +112,9 @@ serve-pure-doc:
 		--volume=$$(pwd):/docs \
 		pure-doc
 
+.PHONY: update-changelog
+update-changelog:
+	fish tools/update_changelog.fish
 
 .PHONY: build-pure-screenshot
 build-pure-screenshot:
