@@ -1,12 +1,19 @@
 #!/usr/bin/env fish
 
 # Description:
-#   Triggered on new branch checkout to append branch name to pure_version
+#   Triggered on new branch creation to append branch name to pure_version
 
-# Arg 3 is '1' if it's a branch checkout, '0' if it's a file checkout
+# Args:
+#   $1: ref of previous HEAD
+#   $2: ref of new HEAD
+#   $3: '1' if branch checkout, '0' if file checkout
+set --local prev_head $argv[1]
+set --local new_head $argv[2]
 set --local is_branch_checkout $argv[3]
 
-if test "$is_branch_checkout" -eq 1
+# Only trigger on new branch creation:
+# When creating a branch with 'git checkout -b', HEAD stays at the same commit
+if test "$is_branch_checkout" -eq 1 -a "$prev_head" = "$new_head"
     set --local root_dir (git rev-parse --show-toplevel)
     set --local config_file "$root_dir/conf.d/pure.fish"
     set --local tool_script "$root_dir/tools/githooks.fish"
@@ -16,7 +23,7 @@ if test "$is_branch_checkout" -eq 1
         set --local branch_name (git branch --show-current)
         
         if test -n "$branch_name"
-            echo "Auto-updating pure_version for branch $branch_name..."
+            echo "Auto-updating pure_version for new branch $branch_name..."
             pure_tools_githooks_update_version_file "$config_file" "$branch_name"
         end
     end
