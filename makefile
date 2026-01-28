@@ -114,7 +114,7 @@ serve-pure-doc:
 
 .PHONY: update-changelog
 update-changelog:
-	fish tools/update_changelog.fish
+	bash tools/update_changelog.bash
 
 .PHONY: build-pure-screenshot
 build-pure-screenshot:
