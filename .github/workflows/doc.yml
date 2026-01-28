@@ -43,6 +43,9 @@ jobs:
         if: steps.screenshot-changed.outputs.any_changed == 'true' || github.event_name == 'workflow_dispatch'
         run: make run-pure-screenshot FISH_VERSION=${{ inputs.fish_version || '4.0.2' }}
 
+      - name: Update changelog using releases notes
+        run: make update-changelog
+
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:

@@ -1,6 +1,6 @@
 nav:
     - Home: index.md
-    - Documentation: api.md
+    - Documentation: doc.md
     - Contributing: contributing
     - About: about
     - Changelog: changelog.md
