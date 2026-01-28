@@ -8,11 +8,11 @@ function update_changelog --description "Generate changelog from GitHub releases
     
     # Create changelog header with frontmatter
     printf "---\n" > $changelog_file
-    printf "toc_depth: 1\n" >> $changelog_file
+    printf "toc_depth: 2\n" >> $changelog_file
     printf "---\n\n" >> $changelog_file
     printf "# Changelog\n\n" >> $changelog_file
     printf "!!! note\n\n" >> $changelog_file
-    printf "\tAll notable changes to this project are documented below.\n\n" >> $changelog_file
+    printf "\tAll notable changes to this project are documented below.\n" >> $changelog_file
     printf "\tThis changelog is automatically generated from [GitHub Releases](%s).\n\n" \
         "https://github.com/$repo/releases" >> $changelog_file
     
@@ -27,7 +27,7 @@ function update_changelog --description "Generate changelog from GitHub releases
     # Parse and format each release
     echo $releases_json > /tmp/releases.json
     echo "$releases_json" | jq -r '.[] | 
-        "## [\(.name)](\(.html_url))\n\(.published_at[:10])\n\n\(.body)\n\n---\n"' \
+        "## [\(.name)](\(.html_url))\n\n<small>\(.published_at[:10])</small>\n\n\(.body)\n\n---\n"' \
         >> $changelog_file
     
     echo "✓ Changelog updated successfully at $changelog_file"

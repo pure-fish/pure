@@ -9,6 +9,7 @@ site_url: "https://pure-fish.github.io/pure/"
 
 theme:
   name: "material"
+  custom_dir: docs/overrides
   include_sidebar: true
   features:
     - content.action.edit
@@ -84,6 +85,11 @@ markdown_extensions:
   - toc:
       permalink: true
       toc_depth: 3
+  - mdx_gh_links
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      repo_url_shorthand: true
+  
 
 extra:
   social:
@@ -106,4 +112,3 @@ plugins:
   - git-authors
   - macros
   - mkdocs_github_changelog
-
