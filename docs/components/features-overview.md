@@ -40,23 +40,23 @@ Fully **customizable** (colors, symbols and features):
 
 [async]: https://github.com/pure-fish/pure/wiki/Async-git-Prompt
 <!-- markdownlint-disable MD051 -->
-[check-for-new-release]: /doc/#check-for-new-release
-[container-detection-docker]: /doc/#container-detection-docker
-[current-working-directory]: /doc/#current-working-directory
-[git]: /doc/#git
-[jobs]: /doc/#jobs
-[kubernetes]: /doc/#kubernetes
-[list-exit-statuses]: /doc/#list-exit-statuses
-[nix-os]: /doc/#nix-os
-[prompt-symbol]: /doc/#prompt-symbol
-[python-virtualenv]: /doc/#python-virtualenv
-[aws-profile]: /doc/#aws-profile
-[separate-error-symbol]: /doc/#separate-error-symbol
-[single-line-prompt]: /doc/#single-line-prompt
-[ssh-session]: /doc/#ssh-session
-[time-duration]: /doc/#time-duration
+[check-for-new-release]: ./doc/#check-for-new-release
+[container-detection-docker]: ./doc/#container-detection-docker
+[current-working-directory]: ./doc/#current-working-directory
+[git]: ./doc/#git
+[jobs]: ./doc/#jobs
+[kubernetes]: ./doc/#kubernetes
+[list-exit-statuses]: ./doc/#list-exit-statuses
+[nix-os]: ./doc/#nix-os
+[prompt-symbol]: ./doc/#prompt-symbol
+[python-virtualenv]: ./doc/#python-virtualenv
+[aws-profile]: ./doc/#aws-profile
+[separate-error-symbol]: ./doc/#separate-error-symbol
+[single-line-prompt]: ./doc/#single-line-prompt
+[ssh-session]: ./doc/#ssh-session
+[time-duration]: ./doc/#time-duration
 [transient-prompt]: #transient-prompt
-[title]: /doc/#title
-[vi-mode]: /doc/#vi-mode
-[working-as-root]: /doc/#working-as-root
+[title]: ./doc/#title
+[vi-mode]: ./doc/#vi-mode
+[working-as-root]: ./doc/#working-as-root
 <!-- markdownlint-enable MD051 -->

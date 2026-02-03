@@ -1,7 +1,9 @@
+## :paintbrush: Configuration
 
-## Features
+{% include 'components/configuration.md' %}
 
-{% include 'components/features-overview.md' %}
+## :control_knobs: Features
+
 {% include 'components/features-list.md' %}
 
 ## Colours
