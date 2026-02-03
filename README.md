@@ -22,7 +22,7 @@
 
 ## :rocket: Install
 
-**:warning: requirements**: fish `≥3.x`, [fisher](https://github.com/jorgebucaran/fisher):
+**:warning: requirements**: install [Fish shell](https://fishshell.com/) `≥3.x`, then install [Fisher](https://github.com/jorgebucaran/fisher) plugin manager:
 
 ```shell
 fisher install pure-fish/pure

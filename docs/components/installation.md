@@ -1,11 +1,11 @@
 <!-- markdownlint-disable MD041 -->
-!!! success
+!!! success "Requirements"
 
-    Pure requires Fish **`≥3.x`**
+    Pure is written in `fish` language, this requires **[Fish shell](https://fishshell.com/) `≥3.x`**.
 
-=== "[Fisher](https://github.com/jorgebucaran/fisher)"
+=== "using [Fisher](https://github.com/jorgebucaran/fisher)"
 
-    Install latest version
+    Install [Fisher](https://github.com/jorgebucaran/fisher) plugin manager, then you can install `pure` latest version with:
 
     ```shell
     fisher install pure-fish/pure
@@ -23,7 +23,7 @@
         source /tmp/pure_installer.fish; and install_pure
         ```
 
-=== "Install a PR"
+=== "Test a Pull Request"
 
     Wanna preview a pull-request before it gets merged? Just append `@` symbol, followed by a tag, branch, or commit.
 
