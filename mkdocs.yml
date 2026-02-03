@@ -4,7 +4,7 @@ site_description: " Pretty, minimal and fast Fish 🐟 prompt"
 site_author: "Édouard Lopez"
 docs_dir: docs/
 repo_name: "pure-fish/pure"
-repo_url: "https://github.com/pure-fish/pure"
+repo_url: "https://github.com/pure-fish/pure/"
 site_url: "https://pure-fish.github.io/pure/"
 
 theme:
@@ -93,12 +93,14 @@ markdown_extensions:
 
 extra:
   social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/pure-fish/pure
     - icon: fontawesome/brands/mastodon
       link: https://piaille.fr/@edouard_lopez
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/edouard-lopez.com
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/edouard_lopez
-    - icon: fontawesome/brands/github
-      link: https://github.com/pure-fish/pure/
   pure:
     fish_version: "4.0.2"
 
