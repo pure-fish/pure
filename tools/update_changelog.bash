@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env bash
 
 # "Generate changelog from GitHub releases"
 function update_changelog() {
