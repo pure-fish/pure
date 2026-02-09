@@ -7,6 +7,7 @@ function before_each
     _purge_configs
     _disable_colors
     set --erase --global VIRTUAL_ENV
+    set --erase --global VIRTUAL_ENV_PROMPT
     set --erase --global CONDA_DEFAULT_ENV
 end
 
@@ -37,6 +38,16 @@ before_each
 ) = project
 
 before_each
+@test "_pure_prompt_virtualenv: displays VIRTUAL_ENV_PROMPT value when set" (
+    set --universal pure_enable_virtualenv true
+    set --universal pure_symbol_virtualenv_prefix $EMPTY
+    set VIRTUAL_ENV /home/test/fake/project/
+    set VIRTUAL_ENV_PROMPT "(custom-virtualenv) "
+
+    _pure_prompt_virtualenv
+) = "(custom-virtualenv) "
+
+before_each
 @test "_pure_prompt_virtualenv: displays virtualenv symbol prefix" (
     set --universal pure_enable_virtualenv true
     set --universal pure_symbol_virtualenv_prefix "🐍"
@@ -44,6 +55,15 @@ before_each
 
     _pure_prompt_virtualenv
 ) = "🐍project"
+
+before_each
+@test "_pure_prompt_virtualenv: displays symbol prefix with VIRTUAL_ENV_PROMPT" (
+    set --universal pure_enable_virtualenv true
+    set --universal pure_symbol_virtualenv_prefix "🐍"
+    set VIRTUAL_ENV_PROMPT custom-virtualenv
+
+    _pure_prompt_virtualenv
+) = "🐍custom-virtualenv"
 
 
 before_each
