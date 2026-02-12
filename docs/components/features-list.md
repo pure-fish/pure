@@ -170,7 +170,7 @@
 
 | Option                              | Default | Description                                                                  |
 | :---------------------------------- | :------ | :--------------------------------------------------------------------------- |
-| **`pure_enable_virtualenv`**        | `true`  | Show virtual env name (based on `VIRTUAL_ENV`, `VIRTUAL_ENV_PROMPT` or `CONDA_DEFAULT_ENV`). |
+| **`pure_enable_virtualenv`**        | `true`  | Show virtual env name (based on `VIRTUAL_ENV_PROMPT`, `VIRTUAL_ENV` or `CONDA_DEFAULT_ENV`). |
 | **`pure_symbol_virtualenv_prefix`** |         | Prefix when a Python virtual env is activated (default: [undefined][to-set]) |
 
 === "Enabled (with virtualenv)"
