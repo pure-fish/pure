@@ -49,10 +49,6 @@ function _pure_uninstall --on-event pure_uninstall \
 
     rm -f $_pure_root/conf.d/pure.fish
 
-    # backup fish_prompt and fish_title to default
-    cp $_pure_root/functions/fish_prompt{,.pure-backup}.fish
-    cp $_pure_root/functions/fish_title{,.pure-backup}.fish
-
     # erase existing fish_prompt and fish_title to default
     functions --erase fish_prompt
     functions --erase fish_title
@@ -63,17 +59,17 @@ function _pure_uninstall --on-event pure_uninstall \
     # https://github.com/fish-shell/fish-shell/issues/11429#issuecomment-2834407208
     if status list-files functions/fish_prompt.fish >/dev/null # standalone binary Fish ≥4.1.2
         status get-file functions/fish_prompt.fish \
-            | tee $_pure_root/functions/fish_prompt.fish \
+            | tee $__fish_config_dir/functions/fish_prompt.fish \
             | source
         status get-file functions/fish_title.fish \
-            | tee $_pure_root/functions/fish_title.fish \
+            | tee $__fish_config_dir/functions/fish_title.fish \
             | source
     else # traditional installation
         cat $__fish_data_dir/functions/fish_prompt.fish \
-            | tee $_pure_root/functions/fish_prompt.fish \
+            | tee $__fish_config_dir/functions/fish_prompt.fish \
             | source
         cat $__fish_data_dir/functions/fish_title.fish \
-            | tee $_pure_root/functions/fish_title.fish \
+            | tee $__fish_config_dir/functions/fish_title.fish \
             | source
     end
 
