@@ -20,13 +20,13 @@ function after_all
 end
 
 before_each
-@test "init/_pure_install: handler is available" (
+@test "init/_pure_install: handler is available with custom install location" (
     source $pure_install_dir/conf.d/_pure_init.fish
     functions --query _pure_install
 ) $status -eq $SUCCESS
 
 before_each
-@test "init/_pure_install: prints installed version without error" (
+@test "init/_pure_install: prints installed version without error with custom install location" (
     touch $pure_install_dir/conf.d/pure.fish
     sed -i.bak 's/^\(.*pure_version.*\)$/# \1/' $pure_install_dir/conf.d/pure.fish # for macos job
     set --global pure_symbol_prompt "❯"
