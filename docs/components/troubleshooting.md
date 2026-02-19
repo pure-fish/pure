@@ -36,7 +36,7 @@ To configure your Fish's greeting, edit `$__fish_config_dir/functions/fish_greet
 
 ### Install and Update
 
-We do our best to clean up after ourselfves and provides information on the version installed or updated.
+We do our best to clean up after ourselves and provide information on the version installed or updated.
 
 === "Fresh Install"
 

@@ -49,7 +49,7 @@ Fully **customizable** (colors, symbols and features):
 * [Detect when running in a container (e.g. `docker`, `podman`, `LXC`/`LXD`) 🏴🛠][container-detection-docker]
 * [Indicate if a `nix develop` shell is activated 🏴🛠][nix-os].
 * [Show system time 🏴][time-duration] ;
-* [Transient prompt mode simplify previous prompts 🏴][transient-prompt] ;
+* [Transient prompt mode simplifies previous prompts 🏴][transient-prompt] ;
 * [Show number of running jobs 🏴][jobs] ;
 * [Prefix when `root` 🏴🛠][working-as-root] ;
 * [Display `git` branch name 🏴🛠][git] ;
@@ -65,7 +65,7 @@ Fully **customizable** (colors, symbols and features):
 * [Shorten or truncate _current folder_ component 🏴🛠][current-working-directory] ;
 * and more…
 
-🏴 means it's controlled by a feature flag, 🛠 mean it's configurable.
+🏴 means it's controlled by a feature flag, 🛠 means it's configurable.
 
 ## Configuration
 

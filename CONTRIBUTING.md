@@ -21,7 +21,7 @@ Specify the [`FISH_VERSION`][fish-releases] you want, and the `CMD` executed by 
 
 ### Be Fishy
 
-Use the idiomatic [`test` instead of `[`](httpsc://fishshell.com/docs/current/commands.html#test) brackets (as recommended by the documentation).
+Use the idiomatic [`test` instead of `[`](https://fishshell.com/docs/current/commands.html#test) brackets (as recommended by the documentation).
 
 ### Be Explicit
 
@@ -60,7 +60,7 @@ Use the idiomatic [`test` instead of `[`](httpsc://fishshell.com/docs/current/co
 
 ### Local and Tools
 
-> No need to use namespace when your variable variable is declare locally (`set --local`) or your file/test file is related to tooling (_installer.fish_, testing package managers install).
+> No need to use namespace when your variable is declared locally (`set --local`) or your file/test file is related to tooling (_installer.fish_, testing package managers install).
 
 * Filename: `my_tool.fish`
 * Test file: `my_tool.test.fish`
@@ -133,7 +133,7 @@ $pure_color_git_unpulled_commits
 > Name should follow `$pure_<verb>_<feature>` pattern, where:
 >
   > * `verb` describe the action triggered by the feature (_i.e._ `separate`, `begin`, `show`, etc.) ;
-  > * `feature` descibre the _what_ of the feature (_i.e._ `prompt_on_error`, `with_current_directory`, `git_status`, etc.).
+  > * `feature` describe the _what_ of the feature (_i.e._ `prompt_on_error`, `with_current_directory`, `git_status`, etc.).
 > Value should be **a boolean**.
   
 #### Example

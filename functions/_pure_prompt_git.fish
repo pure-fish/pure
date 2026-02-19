@@ -1,5 +1,5 @@
 function _pure_prompt_git \
-    --description 'Print git repository informations: branch name, dirty, upstream ahead/behind'
+    --description 'Print git repository information: branch name, dirty, upstream ahead/behind'
 
     set ABORT_FEATURE 2
 

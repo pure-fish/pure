@@ -45,7 +45,7 @@ toc_depth: 3
 ### What's Changed
 * feat/show version on install update by @edouard-lopez in https://github.com/pure-fish/pure/pull/390
 
-We do our best to clean up after ourselves and provides information on the version installed or updated.
+We do our best to clean up after ourselves and provide information on the version installed or updated.
 
 #### Plugin Fresh Install
 
