@@ -12,8 +12,8 @@
 
 !!! success "🐌 Faster Prompt"
 
-    Checking new release send a HTTP request that slow down your prompt rendering
-    as it wait for remote server response. Set it to `false` speed up rendering:
+    Checking new release sends an HTTP request that slows down your prompt rendering
+    as it waits for remote server response. Set it to `false` to speed up rendering:
 
     ```fish
     set --universal pure_check_for_new_release false

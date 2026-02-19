@@ -43,7 +43,7 @@ _pure_set_default pure_symbol_foo_feature "🤯"
   * [ ] Feature flag ;
   * [ ] Symbol ;
 * [ ] Tests are passing (we can help you :hugs: ):
-  * [ ] Config are tested (cf. [tests/_pure.test.fish][config-test]) ;
+  * [ ] Configs are tested (cf. [tests/_pure.test.fish][config-test]) ;
   * [ ] Feature is tested in `tests/feature_name.test.fish` ;
 * [ ] Customization is available ;
 * [ ] Feature is implemented.
