@@ -29,18 +29,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Check if screenshot.fish changed
-        id: screenshot-changed
-        uses: tj-actions/changed-files@v45
-        with:
-          files: tools/screenshot.fish
-
       - name: Prepare screenshot image
-        if: steps.screenshot-changed.outputs.any_changed == 'true' || github.event_name == 'workflow_dispatch'
         run: make build-pure-screenshot FISH_VERSION=${{ inputs.fish_version || '4.0.2' }}
 
       - name: Take screenshot
-        if: steps.screenshot-changed.outputs.any_changed == 'true' || github.event_name == 'workflow_dispatch'
         run: make run-pure-screenshot FISH_VERSION=${{ inputs.fish_version || '4.0.2' }}
 
       - name: Update changelog using releases notes
