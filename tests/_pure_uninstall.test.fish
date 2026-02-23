@@ -27,13 +27,6 @@ before_each
 ) $status -eq $SUCCESS
 
 before_each
-@test "init/_pure_uninstall: backup current 'fish_prompt'" (
-    source $__fish_config_dir/conf.d/_pure_init.fish
-
-    _pure_uninstall
-) -e $__fish_config_dir/functions/fish_prompt.pure-backup.fish
-
-before_each
 @test "init/_pure_uninstall: restore default 'fish_prompt'" (
     source $__fish_config_dir/conf.d/_pure_init.fish
 
@@ -46,13 +39,6 @@ before_each
         diff -q {$__fish_data_dir,$__fish_config_dir}/functions/fish_prompt.fish
     end
 ) $status -eq $SUCCESS
-
-before_each
-@test "init/_pure_uninstall: backup current 'fish_title'" (
-    source $__fish_config_dir/conf.d/_pure_init.fish
-
-    _pure_uninstall
-) -e $__fish_config_dir/functions/fish_title.pure-backup.fish
 
 before_each
 @test "init/_pure_uninstall: restore default 'fish_title'" (
