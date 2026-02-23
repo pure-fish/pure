@@ -48,6 +48,11 @@ We do our best to clean up after ourselves and provide information on the versio
     ![screenshot _pure_install](/pure/assets/screenshots/light-_pure_update.png#only-light)
     ![screenshot _pure_install](/pure/assets/screenshots/mirage-_pure_update.png#only-dark)
 
+### Custom install locations
+
+We support installing pure into a folder other than `__fish_config_dir`. Updates and uninstallation will work normally
+even when not installed into `__fish_config_dir`.
+
 ### Slowness: try Async `git` Prompt
 
 !!! info
