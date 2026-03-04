@@ -53,6 +53,20 @@ We do our best to clean up after ourselves and provide information on the versio
 We support installing pure into a folder other than `__fish_config_dir`. Updates and uninstallation will work normally
 even when not installed into `__fish_config_dir`.
 
+### Slowness: try disabling `status.showUntrackedFiles`
+
+!!! info
+
+    In large repositories, checking for untracked files can significantly slow down the prompt.
+
+Git's `status.showUntrackedFiles` option controls whether untracked files are listed. Setting it to `false` in large repositories improves `git status` performance, and Pure respects this setting when checking for dirty state:
+
+```fish
+git config status.showUntrackedFiles false
+```
+
+This can reduce dirty-check times from several seconds to under a second in large repositories.
+
 ### Slowness: try Async `git` Prompt
 
 !!! info
