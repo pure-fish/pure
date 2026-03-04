@@ -77,6 +77,10 @@
 | **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).          |
 | **`pure_show_numbered_git_indicator`** | `false` | Show number of git stash and commits behind/ahead    |
 
+!!! tip "Large repositories"
+
+    If your prompt feels slow in a large Git repository, see the [Troubleshooting section on large repositories](#large-git-repositories).
+
 > :information_source: Need [safer `git` symbols](https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#safer-symbols)?
 
 === "Enabled (with `git`)"
