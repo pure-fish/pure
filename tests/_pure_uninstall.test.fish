@@ -11,6 +11,7 @@ function before_each
     functions --erase _pure_uninstall
     mkdir -p $__fish_config_dir/{conf.d,functions}/
 
+    cp (status dirname)/../conf.d/_pure_init.fish $__fish_config_dir/conf.d/
     cp (status dirname)/../conf.d/pure.fish $__fish_config_dir/conf.d/
     cp (status dirname)/../functions/* $__fish_config_dir/functions/
 end
@@ -21,23 +22,15 @@ end
 
 before_each
 @test "init/_pure_uninstall: handler is available" (
-    source (status dirname)/../functions/_pure_set_default.fish
-    source (status dirname)/../conf.d/_pure_init.fish
+    source $__fish_config_dir/conf.d/_pure_init.fish
     functions --query _pure_uninstall
 ) $status -eq $SUCCESS
 
 before_each
-@test "init/_pure_uninstall: backup current 'fish_prompt'" (
-    source (status dirname)/../conf.d/_pure_init.fish
-
-    _pure_uninstall 
-) -e $__fish_config_dir/functions/fish_prompt.pure-backup.fish
-
-before_each
 @test "init/_pure_uninstall: restore default 'fish_prompt'" (
-    source (status dirname)/../conf.d/_pure_init.fish
+    source $__fish_config_dir/conf.d/_pure_init.fish
 
-    _pure_uninstall 
+    _pure_uninstall
 
     if status list-files functions/fish_prompt.fish > /dev/null # standalone binary Fish ≥4.1.2
         status get-file functions/fish_prompt.fish > /tmp/fish_prompt.fish
@@ -48,15 +41,8 @@ before_each
 ) $status -eq $SUCCESS
 
 before_each
-@test "init/_pure_uninstall: backup current 'fish_title'" (
-    source (status dirname)/../conf.d/_pure_init.fish
-
-    _pure_uninstall
-) -e $__fish_config_dir/functions/fish_title.pure-backup.fish
-
-before_each
 @test "init/_pure_uninstall: restore default 'fish_title'" (
-    source (status dirname)/../conf.d/_pure_init.fish
+    source $__fish_config_dir/conf.d/_pure_init.fish
 
     _pure_uninstall
 
@@ -71,7 +57,7 @@ before_each
 
 before_each
 @test "init/_pure_uninstall: restore a working fish_prompt" (
-    source (status dirname)/../conf.d/_pure_init.fish
+    source $__fish_config_dir/conf.d/_pure_init.fish
 
     _pure_uninstall
 
@@ -80,7 +66,7 @@ before_each
 
 before_each
 @test "init/_pure_uninstall: remove pure-related files" (
-    source (status dirname)/../conf.d/_pure_init.fish
+    source $__fish_config_dir/conf.d/_pure_init.fish
     touch $__fish_config_dir/functions/_pure_foo
     touch $__fish_config_dir/conf.d/_pure_bar
 
@@ -91,7 +77,7 @@ before_each
 
 before_each
 @test "init/_pure_uninstall: preserve user's fish_greeting if not pointing to pure" (
-    source (status dirname)/../conf.d/_pure_init.fish
+    source $__fish_config_dir/conf.d/_pure_init.fish
     # Create a symlink to a non-pure path
     set --local temp_dir (mktemp -d)
     touch $temp_dir/fish_greeting.fish
@@ -102,17 +88,17 @@ before_each
     # Verify file still exists before cleanup
     test -e $__fish_config_dir/functions/fish_greeting.fish
     set --local exists_status $status
-    
+
     # Cleanup
     rm -rf $temp_dir
     rm -f $__fish_config_dir/functions/fish_greeting.fish
-    
+
     test $exists_status -eq $SUCCESS
 ) $status -eq $SUCCESS
 
 before_each
 @test "init/_pure_uninstall: preserve user's fish_greeting if not a pure symlink" (
-    source (status dirname)/../conf.d/_pure_init.fish
+    source $__fish_config_dir/conf.d/_pure_init.fish
     # Create user's own fish_greeting file (not a symlink)
     echo "function fish_greeting; end" > $__fish_config_dir/functions/fish_greeting.fish
 
@@ -124,7 +110,7 @@ before_each
 if not test -d /etc/nix # skip on NixOS
     before_each
     @test "init/_pure_uninstall: remove pure-related functions" (
-    source (status dirname)/../conf.d/_pure_init.fish
+    source $__fish_config_dir/conf.d/_pure_init.fish
     function _pure_foo; end
 
     _pure_uninstall

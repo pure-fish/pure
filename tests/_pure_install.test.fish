@@ -10,6 +10,7 @@ before_all
 function before_each
     functions --erase _pure_install
     mkdir -p $__fish_config_dir/conf.d
+    cp conf.d/_pure_init.fish $__fish_config_dir/conf.d/
 end
 
 function after_all
@@ -19,7 +20,7 @@ end
 
 before_each
 @test "init/_pure_install: handler is available" (
-    source (status dirname)/../conf.d/_pure_init.fish
+    source $__fish_config_dir/conf.d/_pure_init.fish
     functions --query _pure_install
 ) $status -eq $SUCCESS
 
@@ -31,9 +32,9 @@ before_each
     set --global pure_symbol_reverse_prompt "❮"
     set --global pure_version 1.2.3 # current version
     _mock_response set_color $EMPTY
-    
-    source (status dirname)/../conf.d/_pure_init.fish
-    
+
+    source $__fish_config_dir/conf.d/_pure_init.fish
+
     _pure_install | strip_ansi
 ) = "Now using: ❯❮❯ pure 1.2.3"
 
