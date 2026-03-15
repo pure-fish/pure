@@ -47,6 +47,7 @@ _pure_set_default pure_color_jobs pure_color_normal
 
 # Show system time
 _pure_set_default pure_show_system_time false
+_pure_set_default pure_12hr_system_time false
 _pure_set_default pure_color_system_time pure_color_mute
 
 # Nix build environment
