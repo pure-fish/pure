@@ -283,7 +283,7 @@
 | Option                                     | Default | Description                                                         |
 | :----------------------------------------- | :------ | :------------------------------------------------------------------ |
 | **`pure_show_system_time`**                | `false` | `true`: shows system time before the prompt symbol (as `%H:%M:%S`). |
-| **`pure_12hr_system_time`**                | `false` | `true`: shows system time in 12-hour time instead of 24-hour time.  |
+| **`pure_system_time_format`**              | `+%T`   | `true`: shows system time in 12-hour time instead of 24-hour time.  |
 
 === "Show system time (enabled)"
 
