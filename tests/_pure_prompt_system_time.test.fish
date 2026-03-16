@@ -27,9 +27,9 @@ before_all
     _pure_prompt_system_time
 ) = '10:01:29'
 
-@test "_pure_prompt_system_time: displays 12hr system time when pure_12hr_system_time enabled" (
+@test "_pure_prompt_system_time: displays 12hr system time when pure_system_time_format set to 12hr" (
     set --universal pure_show_system_time true
-    set --universal pure_12hr_system_time true
+    set --universal pure_system_time_format '+%I:%M:%S %p'
     function date
         test (uname) = Darwin;
         and command date -j -f "%H:%M:%S" '22:01:29' '+%I:%M:%S %p'; # MacOS
@@ -39,9 +39,9 @@ before_all
     _pure_prompt_system_time
 ) = '10:01:29 PM'
 
-@test "_pure_prompt_system_time: displays 24hr system time when pure_12hr_system_time disabled" (
+@test "_pure_prompt_system_time: displays 24hr system time when pure_system_time_format set to default" (
     set --universal pure_show_system_time true
-    set --universal pure_12hr_system_time false
+    set --universal pure_system_time_format '+%T'
     function date
         test (uname) = Darwin;
         and command date -j -f "%H:%M:%S" '10:01:29' '+%T'; # MacOS
