@@ -44,9 +44,9 @@ before_all
     set --universal pure_system_time_format '+%T'
     function date
         test (uname) = Darwin;
-        and command date -j -f "%H:%M:%S" '10:01:29' '+%T'; # MacOS
-        or command date -d '10:01:29' '+%T'; # Linux
+        and command date -j -f "%H:%M:%S" '22:01:29' '+%T'; # MacOS
+        or command date -d '22:01:29' '+%T'; # Linux
     end
 
     _pure_prompt_system_time
-) = '10:01:29'
+) = '22:01:29'
