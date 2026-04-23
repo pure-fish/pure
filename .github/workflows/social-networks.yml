@@ -23,12 +23,12 @@ on:
   workflow_dispatch:
     inputs:
       release_body:
-        description: 'The body of the release notes (leave empty to use latest release)'
+        description: 'The body of the release notes'
         required: false
         type: string
         default: ''
       release_tag:
-        description: 'The tag of the release (leave empty to use latest release tag)'
+        description: 'The tag of the release'
         required: false
         type: string
         default: ''
@@ -53,6 +53,21 @@ jobs:
           echo "$TRUNCATED_BODY" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
       
+      - name: Grab image from release body
+        id: grab_image
+        env:
+          RELEASE_BODY: ${{ inputs.release_body || github.event.release.body }}
+        run: |
+            # Extract src values
+            PATHS=$(echo "$RELEASE_BODY" | grep -oP '<img[^>]+src="\K[^"]+' | paste -sd',')
+            # Extract alt values
+            ALTS=$(echo "$RELEASE_BODY" | grep -oP '<img[^>]+alt="\K[^"]+' | paste -sd',')
+
+            echo "Extracted image paths: $PATHS"
+            echo "Extracted image alt texts: $ALTS"
+            echo "image-paths=$PATHS" >> "$GITHUB_OUTPUT"
+            echo "image-alt-texts=$ALTS" >> "$GITHUB_OUTPUT"
+
       - name: Send post to Bluesky
         id: post2bluesky
         uses: cbrgm/bluesky-github-action@v1 # https://github.com/marketplace/actions/bluesky-send-post
@@ -66,20 +81,24 @@ jobs:
             ${{ steps.prepare_body.outputs.truncated_body }}
             #fish #shell #release
           lang: "en"
+          image-paths: ${{ steps.grab_image.outputs.image-paths }} # Comma-separated list of image paths to include in the post
+          image-alt-texts: ${{ steps.grab_image.outputs.image-alt-texts }} # Comma-separated list of image alt texts
 
-      - name: Post to Mastodon (Piaille.fr)
-        id: post2paille
-        uses: cbrgm/mastodon-github-action@v2 # https://github.com/marketplace/actions/post-to-mastodon
-        env:
-          MASTODON_URL: "https://piaille.fr" # Mastodon instance URL, e.g., https://example.social.
-          MASTODON_TOKEN: ${{ secrets.PERSONAL_MASTODON_TOKEN_PIAILLE }} # Mastodon access token for authentication.
-        with:
-          access-token: ${{ env.MASTODON_TOKEN }} # Mastodon access token for authentication.
-          url: ${{ env.MASTODON_URL }}
-          message: |
-            🐟 New Pure ${{ inputs.release_tag || github.event.release.tag_name }}!
-            See https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
+      # - name: Post to Mastodon (Piaille.fr)
+      #   id: post2paille
+      #   uses: cbrgm/mastodon-github-action@v2 # https://github.com/marketplace/actions/post-to-mastodon
+      #   env:
+      #     MASTODON_URL: "https://piaille.fr" # Mastodon instance URL, e.g., https://example.social.
+      #     MASTODON_TOKEN: ${{ secrets.PERSONAL_MASTODON_TOKEN_PIAILLE }} # Mastodon access token for authentication.
+      #   with:
+      #     access-token: ${{ env.MASTODON_TOKEN }} # Mastodon access token for authentication.
+      #     url: ${{ env.MASTODON_URL }}
+      #     message: |
+      #       🐟 New Pure ${{ inputs.release_tag || github.event.release.tag_name }}!
+      #       See https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
             
-            ${{ steps.prepare_body.outputs.truncated_body }}
-            #fish #shell #release
-          language: "en"
+      #       ${{ steps.prepare_body.outputs.truncated_body }}
+      #       #fish #shell #release
+      #     language: "en"
+      #     image-paths: ${{ steps.grab_image.outputs.image-paths }} # Comma-separated list of image paths to include in the post
+      #     image-alt-texts: ${{ steps.grab_image.outputs.image-alt-texts }} # Comma-separated list of image alt texts
