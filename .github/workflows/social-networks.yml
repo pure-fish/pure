@@ -58,15 +58,23 @@ jobs:
         env:
           RELEASE_BODY: ${{ inputs.release_body || github.event.release.body }}
         run: |
-            # Extract src values
-            PATHS=$(echo "$RELEASE_BODY" | grep -oP '<img[^>]+src="\K[^"]+' | paste -sd',')
-            # Extract alt values
+            # Extract src URLs and alt values
+            URLS=$(echo "$RELEASE_BODY" | grep -oP '<img[^>]+src="\K[^"]+' | paste -sd',')
             ALTS=$(echo "$RELEASE_BODY" | grep -oP '<img[^>]+alt="\K[^"]+' | paste -sd',')
 
-            echo "Extracted image paths: $PATHS"
-            echo "Extracted image alt texts: $ALTS"
-            echo "image-paths=$PATHS" >> "$GITHUB_OUTPUT"
-            echo "image-alt-texts=$ALTS" >> "$GITHUB_OUTPUT"
+            # Download images into workspace using relative paths (Docker actions mount GITHUB_WORKSPACE, not /tmp)
+            mkdir -p ".release-images"
+            LOCAL_PATHS=""
+            IFS=',' read -ra URL_LIST <<< "$URLS"
+            for url in "${URL_LIST[@]}"; do
+              filename="${url##*/}.png" 
+              curl -sSL "$url" -o ".release-images/$filename"
+              LOCAL_PATHS="${LOCAL_PATHS:+$LOCAL_PATHS,}.release-images/$filename"
+              ls -lah ".release-images/$filename"
+            done
+
+            echo "image_paths=$LOCAL_PATHS" | tee -a "$GITHUB_OUTPUT"
+            echo "image_alt_texts=$ALTS" | tee -a "$GITHUB_OUTPUT"
 
       - name: Send post to Bluesky
         id: post2bluesky
@@ -81,24 +89,24 @@ jobs:
             ${{ steps.prepare_body.outputs.truncated_body }}
             #fish #shell #release
           lang: "en"
-          image-paths: ${{ steps.grab_image.outputs.image-paths }} # Comma-separated list of image paths to include in the post
-          image-alt-texts: ${{ steps.grab_image.outputs.image-alt-texts }} # Comma-separated list of image alt texts
+          image-paths: ${{ steps.grab_image.outputs.image_paths }} # Comma-separated list of image paths to include in the post
+          image-alt-texts: ${{ steps.grab_image.outputs.image_alt_texts }} # Comma-separated list of image alt texts
 
-      # - name: Post to Mastodon (Piaille.fr)
-      #   id: post2paille
-      #   uses: cbrgm/mastodon-github-action@v2 # https://github.com/marketplace/actions/post-to-mastodon
-      #   env:
-      #     MASTODON_URL: "https://piaille.fr" # Mastodon instance URL, e.g., https://example.social.
-      #     MASTODON_TOKEN: ${{ secrets.PERSONAL_MASTODON_TOKEN_PIAILLE }} # Mastodon access token for authentication.
-      #   with:
-      #     access-token: ${{ env.MASTODON_TOKEN }} # Mastodon access token for authentication.
-      #     url: ${{ env.MASTODON_URL }}
-      #     message: |
-      #       🐟 New Pure ${{ inputs.release_tag || github.event.release.tag_name }}!
-      #       See https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
+      - name: Post to Mastodon (Piaille.fr)
+        id: post2paille
+        uses: cbrgm/mastodon-github-action@v2 # https://github.com/marketplace/actions/post-to-mastodon
+        env:
+          MASTODON_URL: "https://piaille.fr" # Mastodon instance URL, e.g., https://example.social.
+          MASTODON_TOKEN: ${{ secrets.PERSONAL_MASTODON_TOKEN_PIAILLE }} # Mastodon access token for authentication.
+        with:
+          access-token: ${{ env.MASTODON_TOKEN }} # Mastodon access token for authentication.
+          url: ${{ env.MASTODON_URL }}
+          message: |
+            🐟 New Pure ${{ inputs.release_tag || github.event.release.tag_name }}!
+            See https://github.com/pure-fish/pure/releases/tag/${{ inputs.release_tag || github.event.release.tag_name }}
             
-      #       ${{ steps.prepare_body.outputs.truncated_body }}
-      #       #fish #shell #release
-      #     language: "en"
-      #     image-paths: ${{ steps.grab_image.outputs.image-paths }} # Comma-separated list of image paths to include in the post
-      #     image-alt-texts: ${{ steps.grab_image.outputs.image-alt-texts }} # Comma-separated list of image alt texts
+            ${{ steps.prepare_body.outputs.truncated_body }}
+            #fish #shell #release
+          language: "en"
+          image-paths: ${{ steps.grab_image.outputs.image_paths }} # Comma-separated list of image paths to include in the post
+          image-alt-texts: ${{ steps.grab_image.outputs.image_alt_texts }} # Comma-separated list of image alt texts
