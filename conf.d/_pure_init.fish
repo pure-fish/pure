@@ -38,10 +38,11 @@ function _pure_update --on-event _pure_init_update \
     set --local previous_version $pure_version
     source $_pure_root/conf.d/pure.fish
 
-    printf "Updating: %s %s → %s\n" \
+    printf "Updating: %s %s → %s\n\t%s\n" \
         (_pure) \
         (set_color $pure_color_info)$previous_version(set_color normal) \
-        (set_color --bold $pure_color_success)$pure_version(set_color normal)
+        (set_color --bold $pure_color_success)$pure_version(set_color normal) \
+        "  📖 release notes: "(set_color $pure_color_info)"https://github.com/pure-fish/pure/releases/tag/v$pure_version"(set_color normal)
 end
 
 function _pure_uninstall --on-event pure_uninstall \
