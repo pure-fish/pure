@@ -31,8 +31,23 @@ before_each
     # _pure_update reads the version from conf.d/pure.fish
     echo "set --global pure_version 2.0.0 # new version" > $__fish_config_dir/conf.d/pure.fish
 
-    _pure_update | strip_ansi
+    _pure_update | head -n 1 | strip_ansi
 ) = "Updating: ❯❮❯ pure 1.0.0 → 2.0.0"
+
+before_each
+@test "init/_pure_update: prints link to release notes" (
+    set --global pure_symbol_prompt "❯"
+    set --global pure_symbol_reverse_prompt "❮"
+    set --global pure_version 1.0.0 # current version
+    source $__fish_config_dir/conf.d/_pure_init.fish
+    _mock_response set_color $EMPTY
+
+    # _pure_update reads the version from conf.d/pure.fish
+    echo "set --global pure_version 2.0.0 # new version" > $__fish_config_dir/conf.d/pure.fish
+
+    _pure_update | head -n 2 | tail -n 1 | strip_ansi # get the second line of output, which contains the release notes link
+) = \t"  📖 release notes: https://github.com/pure-fish/pure/releases/tag/v2.0.0"
+
 
 before_each
 @test "init/_pure_update: `_pure_update` run when `_pure_init_update` event is emitted" (
