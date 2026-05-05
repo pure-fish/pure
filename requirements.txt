@@ -1,0 +1,9 @@
+pymdown-extensions
+mkdocs-material
+mkdocs-awesome-nav
+mkdocs-include-markdown-plugin
+mkdocs-git-committers-plugin-2
+mkdocs-git-authors-plugin
+mkdocs-macros-plugin
+mkdocs_github_changelog
+mdx-gh-links
