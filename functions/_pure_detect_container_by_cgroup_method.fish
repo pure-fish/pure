@@ -3,6 +3,8 @@ function _pure_detect_container_by_cgroup_method \
     --argument-names cgroup_namespace
     set --query cgroup_namespace[1]; or set cgroup_namespace /proc/1/cgroup
 
+    test -r $cgroup_namespace; or return 1
+
     string match \
         --quiet \
         --entire \
