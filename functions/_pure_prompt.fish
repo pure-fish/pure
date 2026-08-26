@@ -9,6 +9,7 @@ function _pure_prompt \
     set --local nixdevshell (_pure_prompt_nixdevshell) # Nix build environment indicator
     set --local pure_symbol (_pure_prompt_symbol $last_status)
     set --local root_prefix (_pure_prefix_root_prompt)
+    set --local private_prefix (_pure_prefix_private_prompt)
     set --local space
     set --local system_time (_pure_prompt_system_time)
     set --local vimode_indicator (_pure_prompt_vimode) # vi-mode indicator
@@ -23,6 +24,7 @@ function _pure_prompt \
         $space \
         $system_time \
         $root_prefix \
+        $private_prefix \
         $jobs \
         $nixdevshell \
         $virtualenv \

@@ -23,6 +23,7 @@ Fully **customizable** (colors, symbols and features):
 * [Transient prompt mode simplifies previous prompts 🏴][transient-prompt] ;
 * [Show number of running jobs 🏴][jobs] ;
 * [Prefix when `root` 🏴🛠][working-as-root] ;
+* [Prefix in private mode 🏴🛠][working-in-private-mode] ;
 * [Display `git` branch name 🏴🛠][git] ;
 
     * Display `*` when `git` repository is _dirty_ ;

@@ -345,6 +345,24 @@ before_all
     echo $pure_color_prefix_root_prompt
 ) = pure_color_danger
 
+@test "configure: pure_show_prefix_private_prompt" (
+    set --erase pure_show_prefix_private_prompt
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_show_prefix_private_prompt
+) = false
+
+@test "configure: pure_symbol_prefix_private_prompt" (
+    set --erase pure_symbol_prefix_private_prompt
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_symbol_prefix_private_prompt
+) = '%'
+
+@test "configure: pure_color_prefix_private_prompt" (
+    set --erase pure_color_prefix_private_prompt
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_color_prefix_private_prompt
+) = pure_color_danger
+
 @test "configure: pure_enable_single_line_prompt" (
     set --erase pure_enable_single_line_prompt
     source (status dirname)/../conf.d/pure.fish

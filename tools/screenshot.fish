@@ -367,6 +367,24 @@ if set --query CI
         screenshot "pure_show_prefix_root_prompt=true"
     ) $status -eq $SUCCESS
 
+    # Private prompt prefix
+    before_each
+    @test "screenshot: pure_show_prefix_private_prompt=false" (
+        set --universal pure_show_prefix_private_prompt false
+        set fish_private_mode 1 # mock private mode
+
+        screenshot "pure_show_prefix_private_prompt=false"
+    ) $status -eq $SUCCESS
+
+    before_each
+    @test "screenshot: pure_show_prefix_private_prompt=true" (
+        set --universal pure_show_prefix_private_prompt true
+        set --universal pure_symbol_prefix_private_prompt "%"
+        set fish_private_mode 1 # mock private mode
+
+        screenshot "pure_show_prefix_private_prompt=true"
+    ) $status -eq $SUCCESS
+
     # Begin prompt with current directory
     before_each
     @test "screenshot: pure_begin_prompt_with_current_directory=false" (

@@ -13,6 +13,7 @@ source (status dirname)/../functions/_pure_print_prompt.fish
 source (status dirname)/../functions/_pure_string_width.fish
 source (status dirname)/../functions/_pure_prompt_system_time.fish
 source (status dirname)/../functions/_pure_prefix_root_prompt.fish
+source (status dirname)/../functions/_pure_prefix_private_prompt.fish
 source (status dirname)/../functions/_pure_is_single_line_prompt.fish
 @echo (_print_filename (status filename))
 
@@ -26,6 +27,7 @@ end
 
 function after_all
     _clean_all_mocks
+    set --erase fish_private_mode
 end
 
 before_each
@@ -58,6 +60,19 @@ before_each
 
     _pure_prompt $SUCCESS
 ) = (set_color $pure_color_prefix_root_prompt)"# "(set_color $pure_color_prompt_on_success)">"
+
+before_each
+@test "_pure_prompt: print private prefix" (
+    set --universal pure_enable_single_line_prompt false
+    set --universal pure_show_prefix_private_prompt true
+    set --universal pure_symbol_prefix_private_prompt '%'
+    set --universal pure_color_prompt_on_success magenta
+    set --universal pure_color_prefix_private_prompt red
+
+    set fish_private_mode 1
+
+    _pure_prompt $SUCCESS
+) = (set_color $pure_color_prefix_private_prompt)"% "(set_color $pure_color_prompt_on_success)">"
 
 before_each
 @test "_pure_prompt: no space before symbol in 2-lines prompt" (

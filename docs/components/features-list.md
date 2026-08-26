@@ -389,4 +389,21 @@ When enabled, Fish re-runs the prompt with `--final-rendering` before executing 
     ![screenshot pure_show_prefix_root_prompt=false](/pure/assets/screenshots/light-pure_show_prefix_root_prompt%3Dfalse.png#only-light)
     ![screenshot pure_show_prefix_root_prompt=false](/pure/assets/screenshots/mirage-pure_show_prefix_root_prompt%3Dfalse.png#only-dark)
 
+### Working in private mode
+
+| Option                                  | Default | Description                                                                  |
+| :-------------------------------------- | :------ | :--------------------------------------------------------------------------- |
+| **`pure_show_prefix_private_prompt`**   | `false` | `true`: shows prompt prefix when running in Fish private mode (`--private`). |
+| **`pure_symbol_prefix_private_prompt`** | `%`     | Prefix prompt when in private mode.                                          |
+
+=== "Enabled (prefix prompt symbol)"
+
+    ![screenshot pure_show_prefix_private_prompt=true](/pure/assets/screenshots/light-pure_show_prefix_private_prompt%3Dtrue.png#only-light)
+    ![screenshot pure_show_prefix_private_prompt=true](/pure/assets/screenshots/mirage-pure_show_prefix_private_prompt%3Dtrue.png#only-dark)
+
+=== "Disabled"
+
+    ![screenshot pure_show_prefix_private_prompt=false](/pure/assets/screenshots/light-pure_show_prefix_private_prompt%3Dfalse.png#only-light)
+    ![screenshot pure_show_prefix_private_prompt=false](/pure/assets/screenshots/mirage-pure_show_prefix_private_prompt%3Dfalse.png#only-dark)
+
 [to-set]: https://pure-fish.github.io/pure/#configuration
