@@ -379,10 +379,26 @@ if set --query CI
     before_each
     @test "screenshot: pure_show_prefix_private_prompt=true" (
         set --universal pure_show_prefix_private_prompt true
-        set --universal pure_symbol_prefix_private_prompt "%"
+        set --universal pure_symbol_prefix_private_prompt "!"
         set fish_private_mode 1 # mock private mode
 
         screenshot "pure_show_prefix_private_prompt=true"
+    ) $status -eq $SUCCESS
+
+    before_each
+    @test "screenshot: pure_show_prefix_private_prompt=true,fish_transient_prompt=1" (
+        set --universal pure_show_prefix_private_prompt true
+        set --universal pure_symbol_prefix_private_prompt "!"
+        set --universal fish_transient_prompt 1
+        set --universal pure_enable_single_line_prompt true
+        set fish_private_mode 1 # mock private mode
+
+        set --local action (echo \
+            'fish_prompt --final-rendering; echo "private mode";'\
+            'fish_prompt --final-rendering; echo "";'\
+            'fish_prompt --final-rendering; echo "with transient prompt";' \
+            'fish_prompt;' | string collect )
+        screenshot "pure_show_prefix_private_prompt=true,fish_transient_prompt=1" $action
     ) $status -eq $SUCCESS
 
     # Begin prompt with current directory

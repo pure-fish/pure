@@ -7,7 +7,7 @@ function before_each
     set --erase fish_private_mode
     _purge_configs
     _disable_colors
-    set --universal pure_symbol_prefix_private_prompt '%'
+    set --universal pure_symbol_prefix_private_prompt '!'
 end
 
 before_each
@@ -31,7 +31,7 @@ before_each
     set fish_private_mode 1
 
     _pure_prefix_private_prompt
-) = "%"
+) = "!"
 
 before_each
 @test "_pure_prefix_private_prompt: colorize private prefix symbol" (
@@ -41,7 +41,7 @@ before_each
     set fish_private_mode 1
 
     _pure_prefix_private_prompt
-) = (set_color red)"%"
+) = (set_color red)"!"
 
 before_each
 @test "_pure_prefix_private_prompt: require flag" (

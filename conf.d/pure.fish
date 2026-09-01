@@ -108,7 +108,7 @@ _pure_set_default pure_color_prefix_root_prompt pure_color_danger
 
 # Prefix prompt when in fish private mode
 _pure_set_default pure_show_prefix_private_prompt false
-_pure_set_default pure_symbol_prefix_private_prompt "%"
+_pure_set_default pure_symbol_prefix_private_prompt "!"
 _pure_set_default pure_color_prefix_private_prompt pure_color_danger
 
 # Compact mode

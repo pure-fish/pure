@@ -355,7 +355,7 @@ before_all
     set --erase pure_symbol_prefix_private_prompt
     source (status dirname)/../conf.d/pure.fish
     echo $pure_symbol_prefix_private_prompt
-) = '%'
+) = '!'
 
 @test "configure: pure_color_prefix_private_prompt" (
     set --erase pure_color_prefix_private_prompt

@@ -23,6 +23,7 @@ function before_each
 
     _pure_unmock _pure_set_color # enable colors
     set --universal pure_symbol_prompt '>' # using default ❯ break following tests
+    set --erase fish_private_mode
 end
 
 function after_all
@@ -65,14 +66,32 @@ before_each
 @test "_pure_prompt: print private prefix" (
     set --universal pure_enable_single_line_prompt false
     set --universal pure_show_prefix_private_prompt true
-    set --universal pure_symbol_prefix_private_prompt '%'
+    set --universal pure_symbol_prefix_private_prompt '!'
     set --universal pure_color_prompt_on_success magenta
     set --universal pure_color_prefix_private_prompt red
 
+    _mock_response id 'nemo'
     set fish_private_mode 1
 
     _pure_prompt $SUCCESS
-) = (set_color $pure_color_prefix_private_prompt)"% "(set_color $pure_color_prompt_on_success)">"
+) = (set_color $pure_color_prefix_private_prompt)'! '(set_color $pure_color_prompt_on_success)'>'
+
+before_each
+@test "_pure_prompt: print private prefix as root" (
+    set --universal pure_enable_single_line_prompt false
+    set --universal pure_show_prefix_root_prompt true
+    set --universal pure_symbol_prefix_root_prompt '#'
+    set --universal pure_show_prefix_private_prompt true
+    set --universal pure_symbol_prefix_private_prompt '!'
+    set --universal pure_color_prompt_on_success magenta
+    set --universal pure_color_prefix_private_prompt red
+    set --universal pure_color_prefix_root_prompt red
+
+    _mock_response id 'root'
+    set fish_private_mode 1
+
+    _pure_prompt $SUCCESS
+) = (set_color $pure_color_prefix_root_prompt)'# '(set_color $pure_color_prefix_private_prompt)'! '(set_color $pure_color_prompt_on_success)'>'
 
 before_each
 @test "_pure_prompt: no space before symbol in 2-lines prompt" (

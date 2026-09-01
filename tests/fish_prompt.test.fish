@@ -3,6 +3,7 @@ source (status dirname)/../functions/fish_prompt.fish
 source (status dirname)/../functions/_pure_print_prompt_rows.fish
 source (status dirname)/../functions/_pure_is_single_line_prompt.fish
 
+source (status dirname)/../functions/_pure_prefix_private_prompt.fish
 source (status dirname)/../functions/_pure_prompt_transient.fish
 source (status dirname)/../functions/_pure_prompt_symbol.fish
 source (status dirname)/../functions/_pure_get_prompt_symbol.fish
