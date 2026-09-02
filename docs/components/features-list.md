@@ -406,6 +406,10 @@ When enabled, Fish re-runs the prompt with `--final-rendering` before executing 
     ![screenshot pure_show_prefix_private_prompt=true](/pure/assets/screenshots/light-pure_show_prefix_private_prompt%3Dtrue%2Cfish_transient_prompt%3D1.png#only-light)
     ![screenshot pure_show_prefix_private_prompt=true](/pure/assets/screenshots/mirage-pure_show_prefix_private_prompt%3Dtrue%2Cfish_transient_prompt%3D1.png#only-dark)
 
+=== "Enabled (root mode)"
+    ![screenshot pure_show_prefix_root_prompt=true,pure_show_prefix_private_prompt=true](/pure/assets/screenshots/light-pure_show_prefix_root_prompt%3Dtrue%2Cpure_show_prefix_private_prompt%3Dtrue.png#only-light)
+    ![screenshot pure_show_prefix_root_prompt=true,pure_show_prefix_private_prompt=true](/pure/assets/screenshots/mirage-pure_show_prefix_root_prompt%3Dtrue%2Cpure_show_prefix_private_prompt%3Dtrue.png#only-dark)
+
 === "Disabled"
 
     ![screenshot pure_show_prefix_private_prompt=false](/pure/assets/screenshots/light-pure_show_prefix_private_prompt%3Dfalse.png#only-light)

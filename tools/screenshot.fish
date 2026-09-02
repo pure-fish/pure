@@ -401,6 +401,16 @@ if set --query CI
         screenshot "pure_show_prefix_private_prompt=true,fish_transient_prompt=1" $action
     ) $status -eq $SUCCESS
 
+    before_each
+    @test "screenshot: pure_show_prefix_root_prompt=true,pure_show_prefix_private_prompt=true" (
+        set --universal pure_show_prefix_root_prompt true
+        set --universal pure_show_prefix_private_prompt true
+        set --universal pure_symbol_prefix_private_prompt "!"
+        function id; echo root; end  # mock root user
+
+        screenshot "pure_show_prefix_root_prompt=true,pure_show_prefix_private_prompt=true"
+    ) $status -eq $SUCCESS
+
     # Begin prompt with current directory
     before_each
     @test "screenshot: pure_begin_prompt_with_current_directory=false" (
