@@ -9,6 +9,155 @@ toc_depth: 3
 	All notable changes to this project are documented below.
 	This changelog is automatically generated from [GitHub Releases](https://github.com/pure-fish/pure/releases).
 
+## [v4.19.0: 🥷 prompt prefix when in Fish private mode](https://github.com/pure-fish/pure/releases/tag/v4.19.0)
+
+<small>2026-09-08</small>
+
+### :ninja: Add prompt prefix when in Fish **private mode**
+
+<img width="208" height="50" alt="light-pure_show_prefix_private_prompt=true" src="https://github.com/user-attachments/assets/c5636a09-4e98-4ce3-8311-25c8c1fcb0ac" />
+
+#### Working in private mode
+
+| Option                                  | Default | Description                                                                  |
+| :-------------------------------------- | :------ | :--------------------------------------------------------------------------- |
+| **`pure_show_prefix_private_prompt`**   | `false` | `true`: shows prompt prefix when running in Fish private mode (`--private`). |
+| **`pure_symbol_prefix_private_prompt`** | `!`     | Prefix prompt when in private mode.                                          |
+
+##### Preview
+
+<table>
+<tr>
+ <th>
+Context
+ <th>
+Screenshot
+<tr>
+ <td>
+Prefix prompt symbol
+ <td>
+<img width="208" height="50" alt="light-pure_show_prefix_private_prompt=true" src="https://github.com/user-attachments/assets/c5636a09-4e98-4ce3-8311-25c8c1fcb0ac" />
+<tr>
+ <td>
+Prefix prompt symbol<br>
+with transient prompt enabled
+ <td>
+<img width="253" height="90" alt="light-pure_show_prefix_private_prompt=true,fish_transient_prompt=1" src="https://github.com/user-attachments/assets/518ca93e-cf95-4c4d-9367-57cc0835da83" />
+<tr>
+ <td>
+Prefix prompt symbol<br>
+user root user
+ <td>
+<img width="208" height="50" alt="light-pure_show_prefix_root_prompt=true,pure_show_prefix_private_prompt=true" src="https://github.com/user-attachments/assets/274e8c0e-5a4d-410f-8d3e-38434488a808" />
+</table>
+by @devansh08 in https://github.com/pure-fish/pure/pull/423
+
+
+## What's Changed
+* update documentation for `pure_system_time_format` by @ThatOneCalculator in https://github.com/pure-fish/pure/pull/417
+
+## New Contributors
+* @devansh08 made their first contribution in https://github.com/pure-fish/pure/pull/423
+
+**Full Changelog**: https://github.com/pure-fish/pure/compare/v4.18.0...v4.19.0
+
+---
+
+## [v4.18.0: 📖 Add link to the release notes on update](https://github.com/pure-fish/pure/releases/tag/v4.18.0)
+
+<small>2026-04-23</small>
+
+### Add link to the release notes on update
+
+> <img width="579" height="38" alt="Selection_525" src="https://github.com/user-attachments/assets/79196f88-9386-468d-a04c-fbddef687d9f" />
+
+by @edouard-lopez in https://github.com/pure-fish/pure/pull/415
+
+
+**Full Changelog**: https://github.com/pure-fish/pure/compare/v4.17.0...v4.18.0
+
+---
+
+## [v4.17.0: 🔀 Faster git dirty check, 🕒 Support 12/24/custom time format](https://github.com/pure-fish/pure/releases/tag/v4.17.0)
+
+<small>2026-04-21</small>
+
+### :twisted_rightwards_arrows: Simplify git dirty check using git status
+
+In large repositories, checking for untracked files is very slow, so `status.showUntrackedFiles=false` is typically set to improve `git status` performance.
+
+`_pure_prompt_git_dirty` doesn't use `git status` however, but three separate `git` commands to check for staged changes, unstaged changes and untracked files. The command for untracked files is `git ls-files --others` which doesn't respect `status.showUntrackedFiles=false`.
+
+Instead we can check for non-empty output from `git status --porcelain`, which checks all three of these things in one command and respects `status.showUntrackedFiles=false`.
+
+This reduces `_pure_prompt_git_dirtry` runtime from 9.3s to 0.8s on our repository.
+
+by @jesses-canva in https://github.com/pure-fish/pure/pull/410
+
+### :clock3: Support 12/24/custom time format
+
+Introduce `pure_show_system_time_format` variable to control time formatting following `date` format (default to `+%T`). Users can override it using [date format](https://ss64.com/bash/date.html) (cf. for [Mac](https://ss64.com/mac/date.html)) with:
+
+    set --universal pure_show_system_time_format '+%I:%M:%S %p'
+
+by @ThatOneCalculator in https://github.com/pure-fish/pure/pull/412
+
+## New Contributors
+* @jesses-canva made their first contribution in https://github.com/pure-fish/pure/pull/410
+* @ThatOneCalculator made their first contribution in https://github.com/pure-fish/pure/pull/412
+
+**Full Changelog**: https://github.com/pure-fish/pure/compare/v4.16.0...v4.17.0
+
+---
+
+## [v4.16.0: 🔍 Custom install location support](https://github.com/pure-fish/pure/releases/tag/v4.16.0)
+
+<small>2026-03-02</small>
+
+###  🔍 Custom install location support
+
+Adds support for installing pure into a custom install location. As suggested in #394, a variable `$_pure_root` is added to `_pure_init.fish` to determine the install location, and all instances of `$__fish_config_path` is replaced by `$_pure_root`, so the `source` commands in `$_pure_init.fish` will work correctly regardless of where pure is installed into. This allows pure to work when installed into a custom fisher install location.
+
+by @benedictleejh in https://github.com/pure-fish/pure/pull/397
+
+### What's Changed
+* docs/fossdem review by @edouard-lopez in https://github.com/pure-fish/pure/pull/402
+* docs: fix typos and grammar across documentation by @simono in https://github.com/pure-fish/pure/pull/407
+* ci: skip docs deployment on pull requests by @simono in https://github.com/pure-fish/pure/pull/408
+* ci: always generate screenshots before deploying docs by @simono in https://github.com/pure-fish/pure/pull/409
+
+
+### New Contributors
+* @simono made their first contribution in https://github.com/pure-fish/pure/pull/407
+
+**Full Changelog**: https://github.com/pure-fish/pure/compare/v4.15.1...v4.16.0
+
+---
+
+## [v4.15.1: 🐍 support `VIRTUAL_ENV_PROMPT`](https://github.com/pure-fish/pure/releases/tag/v4.15.1)
+
+<small>2026-02-13</small>
+
+### 🐍 Support `VIRTUAL_ENV_PROMPT` 
+
+In addition to the already implemented `VIRTUAL_ENV` variable, many Python virtual env tools also set `VIRTUAL_ENV_PROMPT` (e.g. [virtualenv](https://virtualenv.pypa.io/en/stable/user_guide.html)). Unlike `VIRTUAL_ENV`, which is the absolute path to the virtual env directory (e.g. `/home/user/project/.venv`), `VIRTUAL_ENV_PROMPT` is just the name of the virtual env project.
+
+This pull request implements displaying `VIRTUAL_ENV_PROMPT` when it's set and defaulting to existing `VIRTUAL_ENV` or `CONDA_DEFAULT_ENV` base names otherwise.
+
+Thanks to @gouline works on #405
+
+### What's Changed
+* fix: support VIRTUAL_ENV_PROMPT alongside VIRTUAL_ENV by @gouline in https://github.com/pure-fish/pure/pull/405
+* docs/import release notes by @edouard-lopez in https://github.com/pure-fish/pure/pull/370
+* docs/fix documentation table of contents links broken 403 by @edouard-lopez in https://github.com/pure-fish/pure/pull/404
+
+## New Contributors
+* @gouline made their first contribution in https://github.com/pure-fish/pure/pull/405
+
+**Full Changelog**: https://github.com/pure-fish/pure/compare/v4.15.0...v4.15.1
+
+---
+
 ## [v4.15.0: Option to display exit pipe status](https://github.com/pure-fish/pure/releases/tag/v4.15.0)
 
 <small>2026-01-07</small>
@@ -45,7 +194,7 @@ toc_depth: 3
 ### What's Changed
 * feat/show version on install update by @edouard-lopez in https://github.com/pure-fish/pure/pull/390
 
-We do our best to clean up after ourselves and provide information on the version installed or updated.
+We do our best to clean up after ourselves and provides information on the version installed or updated.
 
 #### Plugin Fresh Install
 
@@ -840,156 +989,6 @@ So now, we simply skip `git`-related features when it is missing and carry on (c
 ### :arrow_down: Installation
 
     fisher install pure-fish/pure
-
----
-
-## [📦 v4.4.0: Add SSH and container symbol customization](https://github.com/pure-fish/pure/releases/tag/v4.4.0)
-
-<small>2022-12-14</small>
-
-> As for previous features, the customization is opt-in, and it's [up to the user to configure it](/pure-fish/pure/#paintbrush-configuration).
-
-## 🐋 Container detection and prefix
-
-The container detection is enabled by default, but you need to be [inside a container](https://github.com/pure-fish/pure/blob/5ec00469639a68c5cf164f3e2c55bda77d62725b/functions/_pure_is_inside_container.fish) to see its effect:
-
-![setting container prefix](https://user-images.githubusercontent.com/1212392/207707944-14b9b032-21c6-4136-8b1a-770df642327b.gif)
-
-### Default settings
-
-```fish
-pure_enable_container_detection true
-pure_symbol_container_prefix "" # suggestion: '🐋' or '📦'
-```
-
-### Usage
-
-The default symbol is an empty string, you will need to set what you want like:
-
-```console
-❯ set --universal pure_symbol_container_prefix '🐋'
-```
-
-## :computer: SSH detection and prefix
-
-The SSH detection is enabled by default, but you need to be [inside a container](https://github.com/pure-fish/pure/blob/5ec00469639a68c5cf164f3e2c55bda77d62725b/functions/_pure_prompt_jobs.fish) to see its effect:
-![preview-v4 4 0-ssh](https://user-images.githubusercontent.com/1212392/207710506-692e8a1e-d945-46df-af9f-4b1339b3024d.gif)
-
-
-### Default settings
-
-```fish
-_pure_set_default pure_symbol_ssh_prefix "" # suggestion: 'ssh:/' or '🔗🔐🔒🌐'
-```
-
-### Usage
-
-The default symbol is an empty string, you will need to set what you want like:
-
-```console
-❯ set --universal pure_symbol_ssh_prefix 'ssh:/'
-```
-
-### :arrow_down: Installation
-
-    fisher install pure-fish/pure
-
----
-
-## [v4.3.1: Fix SSH prompt](https://github.com/pure-fish/pure/releases/tag/v4.3.1)
-
-<small>2022-10-18</small>
-
-### :bug: Remove unwanted character
-
-* [x]  fix(prompt): remove unwanted characters in my prompt #305 
-
-### :arrow_down: Installation
-
-    fisher install pure-fish/pure
-
-### :clap: Thanks
-
-* @patricklewis for raising the #305
-
----
-
-## [v4.3.0: Add flag to disable container detection](https://github.com/pure-fish/pure/releases/tag/v4.3.0)
-
-<small>2022-10-18</small>
-
-### :bug: Remove unwanted character
-
-* [x]  fix/301 voidlinux container detection #302 
-
-### :black_flag: Add flag to disable container detection
-
-Let user disable container detection as detecting this is [not an exact science](https://stackoverflow.com/questions/57863638/).
-
-| Option                                         | Default | Description                                                                                     |
-| :--------------------------------------------- | :------ | :---------------------------------------------------------------------------------------------- |
-| **`pure_enable_container_detection`**           | `true` | `false`: Do not check if run in container (e.g. `docker`, `podman`, `LXC`/`LXD`, etc.).<br/>:warning: Detection is a bit [tricky across OSes][container-detection].                                                         |
-
-Enable feature
-
-    ❯ set --universal pure_enable_container_detection true
-
-
-### :arrow_down: Installation
-
-    fisher install pure-fish/pure
-
-### :clap: Thanks
-
-* @0-st for #301 
-
----
-
-## [v4.2.3: Skip Linux-only methods to detect container on MacOS ](https://github.com/pure-fish/pure/releases/tag/v4.2.3)
-
-<small>2022-10-08</small>
-
-## :bug: Fix: Linux-only methods to detect container on MacOS 
-
-Issue #295 was caused by functions that expected `/proc/` to exist on the system to be executed. However, those are Linux-only approach.
-So, [running them only for Linux][skip-code] declared OS (cf. `uname -s`) fixed the issue in #298 .
-
- ### :arrow_down: Installation
- The project has a new home, thanks to @rafaelrinaldi. It's now under pure-fish organization:
-
-    fisher install pure-fish/pure
-
-
-###  :clap: Thanks
-
-* @Defman21 @nertzy @externl for helping the resolution
-* @orf for making me aware of `fisher install pure-fish/pure@<BRANCH_NAME>`
-
-[skip-code]: https://github.com/pure-fish/pure/pull/298/files#diff-64090762fd2ecc9ed782569b4def0e5c41e62bd548dc0c944e3bf5e540865932R10-R18
-
-
----
-
-## [v4.2.2: Fix MacOS container detection #295](https://github.com/pure-fish/pure/releases/tag/v4.2.2)
-
-<small>2022-10-06</small>
-
-### Fix MacOS container detection
-
-Detecting if we run inside a container or a bare OS require hacks specific to OS. The `_pure_detect_container_by_pid_method` isn't compatible with MacOS, as it's based on `/proc/` contains.
-
-* [x] warning: An error occurred while redirecting file '/proc/1/cgroup' #295 
-
-### :arrow_down:  Installation
-
-The project has a new home, thanks to @rafaelrinaldi. It's now under pure-fish organization:
-
-    fisher install pure-fish/pure
-
-### :clap: Thanks
-
-* @Defman21 for spotting the issue
-
 
 ---
 
