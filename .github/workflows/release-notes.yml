@@ -1,0 +1,77 @@
+name: Generate and publish release notes
+
+on:
+  create:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to publish (for example, v4.19.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  create-release:
+    if: >-
+      ${{
+        github.event_name == 'workflow_dispatch' ||
+        (github.event_name == 'create' &&
+        github.event.ref_type == 'tag' &&
+        startsWith(github.event.ref, 'v'))
+      }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.tag || github.event.ref }}
+
+      - name: Select release tag and previous tag
+        id: tags
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+          CREATED_TAG: ${{ github.event.ref }}
+        run: |
+          set -euo pipefail
+
+          tag="${INPUT_TAG:-$CREATED_TAG}"
+          previous_tag="$(git tag --sort=-version:refname | awk -v tag="$tag" '$0 != tag { print; exit }')"
+
+          if [ -z "$previous_tag" ]; then
+            echo "No previous release tag was found for $tag" >&2
+            exit 1
+          fi
+
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "previous_tag=$previous_tag" >> "$GITHUB_OUTPUT"
+
+      - name: Generate release notes
+        id: notes
+        uses: github/copilot-release-notes@v1.0.3
+        with:
+          base-ref: ${{ steps.tags.outputs.previous_tag }}
+          head-ref: ${{ steps.tags.outputs.tag }}
+          instructions: .github/release-notes-instructions.md
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+
+      - name: Output release notes
+        run: |
+          echo "Release notes for ${{ steps.tags.outputs.tag }}:"
+          echo "${{ steps.notes.outputs.release-notes }}"
+
+      - name: Create GitHub Release
+        if: github.event_name == 'create'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_NOTES: ${{ steps.notes.outputs.release-notes }}
+          RELEASE_TAG: ${{ steps.tags.outputs.tag }}
+        run: |
+          set -euo pipefail
+          gh release create "$RELEASE_TAG" \
+            --title "$RELEASE_TAG" \
+            --notes "$RELEASE_NOTES"
