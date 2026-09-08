@@ -13,12 +13,6 @@ on:
     paths:
       - tools/screenshot.fish
       - docs/**/*
-  workflow_call:
-    inputs:
-      fish_version:
-        description: 'The fish version used for the screenshot (e.g., 4.0.2)'
-        required: true
-        type: string
   workflow_dispatch:
     inputs:
       fish_version:

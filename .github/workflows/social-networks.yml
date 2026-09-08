@@ -1,25 +1,12 @@
-# filepath: pure/pure/.github/workflows/_social-network.yml
-name: Post Release Notes
+# yamllint disable rule:braces
+# yamllint disable rule:indentation
+---
+name: Post message about release notes on social networks
 
 on:
 # trigger this workflow when a new release is created
   release:
     types: [published]
-  workflow_call:
-    inputs:
-      release_body:
-        description: 'The body of the release notes'
-        required: false
-        type: string
-      release_tag:
-        description: 'The tag of the release (e.g., v1.0.0)'
-        required: false
-        type: string
-    secrets:
-      PERSONAL_BLUESKY_TOKEN:
-        required: true
-      PERSONAL_MASTODON_TOKEN_PIAILLE:
-        required: true
   workflow_dispatch:
     inputs:
       release_body:
