@@ -367,6 +367,33 @@ if set --query CI
         screenshot "pure_show_prefix_root_prompt=true"
     ) $status -eq $SUCCESS
 
+    # Truncate current directory to git root
+    before_each
+    @test "screenshot: pure_truncate_prompt_current_directory_to_git_root=false" (
+        set --universal pure_truncate_prompt_current_directory_to_git_root false
+
+        mkdir -p $__fish_config_dir/pure/functions
+        git init --quiet $__fish_config_dir/pure
+        pushd $__fish_config_dir/pure/functions
+
+        screenshot "pure_truncate_prompt_current_directory_to_git_root=false"
+
+        popd
+    ) $status -eq $SUCCESS
+
+    before_each
+    @test "screenshot: pure_truncate_prompt_current_directory_to_git_root=true" (
+        set --universal pure_truncate_prompt_current_directory_to_git_root true
+
+        mkdir -p $__fish_config_dir/pure/functions
+        git init --quiet $__fish_config_dir/pure
+        pushd $__fish_config_dir/pure/functions
+
+        screenshot "pure_truncate_prompt_current_directory_to_git_root=true"
+
+        popd
+    ) $status -eq $SUCCESS
+
     # Private prompt prefix
     before_each
     @test "screenshot: pure_show_prefix_private_prompt=false" (
