@@ -28,6 +28,17 @@ before_each
 ) = '🛈 Checking for new release…'
 
 before_each
+@test "_pure_check_for_new_release: handle unavailable latest release gracefully" (
+    set --universal pure_check_for_new_release true
+    set --erase pure_version
+    set --universal pure_version 0.0.1
+    function curl; echo '{"message": "API rate limit exceeded"}'; end # mock
+
+    set output (_pure_check_for_new_release 2>&1)
+    echo $output
+) = '🛈 Checking for new release… ⚠ Unable to get latest Pure version.'
+
+before_each
 @test "_pure_check_for_new_release: show fisher command to install when enable" (
     set --universal pure_check_for_new_release true
     set --erase pure_version
