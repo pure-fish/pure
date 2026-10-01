@@ -5,7 +5,9 @@ function _pure_check_for_new_release \
         echo "🛈 Checking for new release…"
         set latest (pure_get_latest_release_version "pure-fish/pure")
 
-        if test "v"$pure_version != $latest
+        if test -z "$latest"
+            echo "⚠ Unable to get latest Pure version."
+        else if test "v"$pure_version != $latest
             set --local latest_version (_pure_set_color $pure_color_info)$latest(_pure_set_color $pure_color_normal)
             echo -e "🔔 New version available!\n"
             echo -e (_pure_set_color $pure_color_success)"fisher install pure-fish/pure@$latest_version\n"
