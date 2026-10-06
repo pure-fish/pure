@@ -64,9 +64,8 @@ jobs:
         run: |
           copilot \
             --allow-all-tools \
-            --yes \
             --prompt \
-          "Can you generate a release notes draft, using the instructions in @.github/release-notes-instructions.md, for the changes between $PREV_TAG and $LAST_TAG ?"\
+            "Can you generate a release notes draft, using the instructions in @.github/release-notes-instructions.md, for the changes between $PREV_TAG and $LAST_TAG ?" \
           > release-notes.md
 
           echo "release-notes<<EOF" >> $GITHUB_OUTPUT
