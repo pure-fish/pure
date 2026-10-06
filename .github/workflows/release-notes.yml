@@ -56,6 +56,7 @@ jobs:
           base-ref: ${{ steps.tags.outputs.previous_tag }}
           head-ref: ${{ steps.tags.outputs.tag }}
           instructions: .github/release-notes-instructions.md
+          pr-strategy: github-api
         env:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
 
@@ -67,11 +68,11 @@ jobs:
       - name: Create GitHub Release
         if: github.event_name == 'create'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
           RELEASE_NOTES: ${{ steps.notes.outputs.release-notes }}
           RELEASE_TAG: ${{ steps.tags.outputs.tag }}
         run: |
           set -euo pipefail
-          gh release create "$RELEASE_TAG" \
+          gh release create --draft "$RELEASE_TAG" \
             --title "$RELEASE_TAG" \
             --notes "$RELEASE_NOTES"

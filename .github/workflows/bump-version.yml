@@ -3,8 +3,8 @@ name: Bump version # only when test
 on:
   workflow_call:
     secrets:
-      CI_TOKEN_TO_TRIGGER_PUSH_WORKFLOW:
-        description: "A token passed from the caller workflow so git push can trigger workflow"
+      CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW:
+        description: "A token passed from the caller workflow so git push can trigger workflows"
         required: true
   workflow_dispatch:
 
@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          token: ${{ secrets.CI_TOKEN_TO_TRIGGER_PUSH_WORKFLOW }}
+          token: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
           # When you see:
           #   Error: fatal: could not read Username for 'https://github.com': terminal prompts disabled
           # visit https://github.com/settings/personal-access-tokens/new
@@ -50,8 +50,8 @@ jobs:
           git add --verbose ./conf.d/pure.fish \
           && git commit --allow-empty --message "chore: bump version ${{ steps.next_version.outputs.version }}"
 
-      - name: Push bump commit
+      - name: Push bump commit # this commit once pushed will trigger the add-version-tag workflow
         if: steps.next_version.outputs.hasNextVersion == 'true'
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.CI_TOKEN_TO_TRIGGER_PUSH_WORKFLOW }}
+          github_token: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}

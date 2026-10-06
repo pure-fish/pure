@@ -151,6 +151,8 @@ flowchart TD
   RELEASE -->|release| SOCIAL["`Post message on social networks<br/>(_social-networks.yml_)`"]
 ```
 
+Add the repository secret `CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW` as a fine-grained personal access token with **Contents: read and write** permission. The workflows use it to push the version commit, create the tag and publish the release so those actions can trigger the next workflows. The release-note generator also needs the separate `COPILOT_GITHUB_TOKEN` secret with **Copilot Requests: Read** permission.
+
 [next-version]: https://github.com/thenativeweb/get-next-version
 [push]: https://github.com/ad-m/github-push-action
 <!-- markdownlint-disable-next-line MD053 -->
