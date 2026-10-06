@@ -423,6 +423,12 @@ before_all
     echo $pure_truncate_prompt_current_directory_keeps
 ) = -1
 
+@test "configure: pure_truncate_prompt_current_directory_to_git_root" (
+    set --erase pure_truncate_prompt_current_directory_to_git_root
+    source (status dirname)/../conf.d/pure.fish
+    echo $pure_truncate_prompt_current_directory_to_git_root
+) = false
+
 @test "configure: pure_truncate_window_title_current_directory_keeps" (
     set --erase pure_truncate_window_title_current_directory_keeps
     source (status dirname)/../conf.d/pure.fish

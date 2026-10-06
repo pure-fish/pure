@@ -21,6 +21,7 @@ _pure_set_default pure_color_prompt_on_success pure_color_success
 _pure_set_default pure_color_current_directory pure_color_primary
 _pure_set_default pure_shorten_prompt_current_directory_length 0
 _pure_set_default pure_truncate_prompt_current_directory_keeps -1
+_pure_set_default pure_truncate_prompt_current_directory_to_git_root false
 
 # Git
 _pure_set_default pure_enable_git true
