@@ -66,14 +66,6 @@ jobs:
             --prompt \
             "Using the instructions in @.github/release-notes-instructions.md, and the changes between $PREV_TAG and $RELEASE_TAG, can you write a release note in release-notes.md"
 
-      - name: Upload release notes for review
-        uses: actions/upload-artifact@v4
-        with:
-          name: release-notes-${{ steps.tags.outputs.tag }}
-          path: release-notes.md
-          if-no-files-found: error
-          retention-days: 30
-
       - name: Display Release Notes
         run: |
           echo "--- Copilot Generated Notes ---"
