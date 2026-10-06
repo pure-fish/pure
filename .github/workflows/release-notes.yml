@@ -58,19 +58,19 @@ jobs:
         id: copilot-notes
         env:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
           PREV_TAG: ${{ steps.tags.outputs.previous_tag }}
           LAST_TAG: ${{ steps.tags.outputs.tag }}
         run: |
-          NOTES=$(\
-            copilot \
-              --allow-all-tools \
-              --prompt \
-            "Can you generate a release notes draft, using the instructions in @.github/release-notes-instructions.md, for the changes between $PREV_TAG and $LAST_TAG ?"\
-          )
+          copilot \
+            --allow-all-tools \
+            --yes \
+            --prompt \
+          "Can you generate a release notes draft, using the instructions in @.github/release-notes-instructions.md, for the changes between $PREV_TAG and $LAST_TAG ?"\
+          > release-notes.md
 
-          # Store output for subsequent steps
           echo "release-notes<<EOF" >> $GITHUB_OUTPUT
-          echo "$NOTES" >> $GITHUB_OUTPUT
+          cat release-notes.md >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Display Release Notes
