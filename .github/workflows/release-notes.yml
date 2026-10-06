@@ -49,30 +49,43 @@ jobs:
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
           echo "previous_tag=$previous_tag" >> "$GITHUB_OUTPUT"
 
-      - name: Generate release notes
-        id: notes
-        uses: github/copilot-release-notes@v1.0.3
-        with:
-          base-ref: ${{ steps.tags.outputs.previous_tag }}
-          head-ref: ${{ steps.tags.outputs.tag }}
-          instructions: .github/release-notes-instructions.md
-          pr-strategy: github-api
+      - name: Install GitHub Copilot CLI
+        run: |
+          curl -fsSL https://gh.io/copilot-install | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Use Copilot to generate release notes
+        id: copilot-notes
         env:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
-
-      - name: Output release notes
+          PREV_TAG: ${{ steps.tags.outputs.previous_tag }}
+          LAST_TAG: ${{ steps.tags.outputs.tag }}
         run: |
-          echo "Release notes for ${{ steps.tags.outputs.tag }}:"
-          echo "${{ steps.notes.outputs.release-notes }}"
+          NOTES=$(\
+            copilot \
+              --allow-all-tools \
+              --prompt \
+            "Can you generate a release notes draft, using the instructions in @.github/release-notes-instructions.md, for the changes between $PREV_TAG and $LAST_TAG ?"\
+          )
 
-      - name: Create GitHub Release
-        if: github.event_name == 'create'
-        env:
-          GH_TOKEN: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
-          RELEASE_NOTES: ${{ steps.notes.outputs.release-notes }}
-          RELEASE_TAG: ${{ steps.tags.outputs.tag }}
+          # Store output for subsequent steps
+          echo "release-notes<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Display Release Notes
         run: |
-          set -euo pipefail
-          gh release create --draft "$RELEASE_TAG" \
-            --title "$RELEASE_TAG" \
-            --notes "$RELEASE_NOTES"
+          echo "--- Copilot Generated Notes ---"
+          echo "${{ steps.copilot-notes.outputs.release-notes }}"
+
+      # - name: Generate release notes
+      #   id: notes
+      #   uses: github/copilot-release-notes@v1.0.3
+      #   with:
+      #     base-ref: ${{ steps.tags.outputs.previous_tag }}
+      #     head-ref: ${{ steps.tags.outputs.tag }}
+      #     instructions: .github/release-notes-instructions.md
+      #     pr-strategy: github-api
+      #   env:
+      #     COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+
