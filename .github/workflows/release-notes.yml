@@ -55,36 +55,40 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Use Copilot to generate release notes
-        id: copilot-notes
         env:
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
           PREV_TAG: ${{ steps.tags.outputs.previous_tag }}
-          LAST_TAG: ${{ steps.tags.outputs.tag }}
+          RELEASE_TAG: ${{ steps.tags.outputs.tag }}
         run: |
           copilot \
             --allow-all-tools \
+            --silent \
             --prompt \
-            "Can you generate a release notes draft, using the instructions in @.github/release-notes-instructions.md, for the changes between $PREV_TAG and $LAST_TAG ?" \
+            "Can you generate a release notes draft, using the instructions in @.github/release-notes-instructions.md, for the changes between $PREV_TAG and $RELEASE_TAG ?" \
           > release-notes.md
 
-          echo "release-notes<<EOF" >> $GITHUB_OUTPUT
-          cat release-notes.md >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+      - name: Upload release notes for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-notes-${{ steps.tags.outputs.tag }}
+          path: release-notes.md
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Display Release Notes
         run: |
           echo "--- Copilot Generated Notes ---"
-          echo "${{ steps.copilot-notes.outputs.release-notes }}"
+          cat release-notes.md
 
-      # - name: Generate release notes
-      #   id: notes
-      #   uses: github/copilot-release-notes@v1.0.3
-      #   with:
-      #     base-ref: ${{ steps.tags.outputs.previous_tag }}
-      #     head-ref: ${{ steps.tags.outputs.tag }}
-      #     instructions: .github/release-notes-instructions.md
-      #     pr-strategy: github-api
-      #   env:
-      #     COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
-
+      - name: Create GitHub Release
+        if: github.event_name == 'create'
+        env:
+          GH_TOKEN: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
+          RELEASE_TAG: ${{ steps.tags.outputs.tag }}
+        run: |
+          set -euo pipefail
+          gh release create "$RELEASE_TAG" \
+            --verify-tag \
+            --title "$RELEASE_TAG" \
+            --notes-file release-notes.md
