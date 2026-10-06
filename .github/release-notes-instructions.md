@@ -23,47 +23,48 @@ summarize what the commit does based on the code changes, not what the text says
 
 ## Template
 
-```markdown
-## [vX.Y.Z: Short release summary](RELEASE_URL)
+````markdown
+### [vX.Y.Z: Short release summary](RELEASE_URL)
 
-### [Main feature or fix](DOCUMENTATION_URL)
+#### [Main feature or fix](DOCUMENTATION_URL)
 
 Explain what changed, why it matters to users, and any behavior that changed. Link to relevant documentation when useful.
 
-#### Configuration
+##### Configuration
 
 | Option            | Default | Description                       |
 | :---------------- | :------ | :-------------------------------- |
 | **`option_name`** | `value` | Explain what the option controls. |
 
-#### Usage
+##### Usage
 
 ```fish
 set --universal option_name value
 ```
 
-#### Preview
+##### Preview
 
 <!-- Include only if a meaningful, accessible screenshot or recording exists. -->
 ![Description](IMAGE_URL)
 
-### Another feature or fix
+#### Another feature or fix
 
 Describe the next user-visible change using the same pattern.
 
-### What's Changed
+#### What's Changed
 
 * `type`: Short description by @author in [#123](PR_URL)
 
-### New Contributors
+#### New Contributors
 
 * @author made their first contribution in [#123](PR_URL)
 
-### Thanks
+#### Thanks
 
 * Thank people who reported issues, provided feedback, or helped investigate them.
 
-**Full Changelog**: [vPREVIOUS...vX.Y.Z](COMPARE_URL)
+#### **Full Changelog**: [vPREVIOUS...vX.Y.Z](COMPARE_URL)
+````
 
 ---
 
