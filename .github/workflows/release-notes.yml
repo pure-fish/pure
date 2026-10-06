@@ -65,8 +65,7 @@ jobs:
             --allow-all-tools \
             --silent \
             --prompt \
-            "Can you generate a release notes draft, using the instructions in @.github/release-notes-instructions.md, for the changes between $PREV_TAG and $RELEASE_TAG ?" \
-          > release-notes.md
+            "Can you generate a release notes draft, using the instructions in @.github/release-notes-instructions.md, for the changes between $PREV_TAG and $RELEASE_TAG and put it in release-notes.md"
 
       - name: Upload release notes for review
         uses: actions/upload-artifact@v4
@@ -89,6 +88,7 @@ jobs:
         run: |
           set -euo pipefail
           gh release create "$RELEASE_TAG" \
+            --draft \
             --verify-tag \
             --title "$RELEASE_TAG" \
             --notes-file release-notes.md
