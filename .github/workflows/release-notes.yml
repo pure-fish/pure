@@ -64,7 +64,7 @@ jobs:
           copilot \
             --allow-all-tools \
             --prompt \
-            "Using the instructions in @.github/release-notes-instructions.md, and the changes between $PREV_TAG and $RELEASE_TAG, can you write a release note in release-notes.md"
+            "Using the instructions in @.github/release-notes-instructions.md, and the changes between $PREV_TAG and $RELEASE_TAG, can you write a release note in release-notes.md and a title in release-title.md"
 
       - name: Display Release Notes
         run: |
@@ -81,5 +81,5 @@ jobs:
           gh release create "$RELEASE_TAG" \
             --draft \
             --verify-tag \
-            --title "$RELEASE_TAG" \
+            --title "$RELEASE_TAG: $(cat release-title.md)" \
             --notes-file release-notes.md
