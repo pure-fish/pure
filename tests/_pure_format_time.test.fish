@@ -84,3 +84,26 @@ set --local threshold 0 # in seconds
     set --local threshold 1000 # express as milliseconds
     _pure_format_time_subseconds $milliseconds $threshold
 ) = '.20'
+
+@test "_pure_format_time_subseconds: pad sub-100ms durations with leading zero" (
+    set --local milliseconds 50 # express as milliseconds
+    set --local threshold 0 # express as milliseconds
+    _pure_format_time_subseconds $milliseconds $threshold
+) = '.05'
+
+@test "_pure_format_time_subseconds: pad sub-10ms durations with leading zeros" (
+    set --local milliseconds 5 # express as milliseconds
+    set --local threshold 0 # express as milliseconds
+    _pure_format_time_subseconds $milliseconds $threshold
+) = '.00'
+
+@test "_pure_format_time: format sub-100ms duration to human" (
+    set --local milliseconds 50 # express as milliseconds
+    _pure_format_time $milliseconds $threshold true
+) = '0.05s'
+
+@test "_pure_format_time: format sub-10ms duration to human" (
+    set --local milliseconds 5 # express as milliseconds
+    _pure_format_time $milliseconds $threshold true
+) = '0.00s'
+

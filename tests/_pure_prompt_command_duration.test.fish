@@ -31,3 +31,12 @@ before_all
 
     _pure_prompt_command_duration
 ) = '6.05s'
+
+@test "_pure_prompt_command_duration: displays sub-100ms duration with leading zero" (
+    set CMD_DURATION 53 # in milliseconds
+    set --universal pure_threshold_command_duration 0 # in seconds
+    set --universal pure_show_subsecond_command_duration true
+
+    _pure_prompt_command_duration
+) = '0.05s'
+
