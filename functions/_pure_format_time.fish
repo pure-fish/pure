@@ -42,7 +42,8 @@ function _pure_format_time_subseconds \
     set --local subseconds
     if test "$duration" -gt $threshold
         set --local precision 2
-        set --local milliseconds (string sub --start -3 --length $precision $duration)
+        set --local padded (string pad --width 3 --char 0 $duration)
+        set --local milliseconds (string sub --start -3 --length $precision $padded)
         set --append subseconds '.'$milliseconds
     end
     echo $subseconds
