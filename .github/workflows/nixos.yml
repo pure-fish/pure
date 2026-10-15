@@ -32,7 +32,7 @@ jobs:
         continue-on-error: true
 
       - name: Build Pure Image on NixOS
-        run: make build-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
+        run: make build-pure-on-nix NIX_VERSION=2.31.2 # use code from local context, see fish-with-pure.nix
 
       - name: Run Tests
-        run: make test-pure-on-nix FISH_VERSION=${{ matrix.version.fish }}
+        run: make test-pure-on-nix NIX_VERSION=2.31.2

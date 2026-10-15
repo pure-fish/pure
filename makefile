@@ -70,8 +70,8 @@ build-pure-on-nix: STAGE?=nix
 build-pure-on-nix:
 	docker build \
 		--file ./docker/${STAGE}.Dockerfile \
-		--build-arg FISH_VERSION=${FISH_VERSION} \
-		--tag=pure-${STAGE}-${FISH_VERSION} \
+		--build-arg NIX_VERSION=${NIX_VERSION} \
+		--tag=pure-${STAGE}-${NIX_VERSION} \
 		--load \
 		./
 
@@ -81,13 +81,13 @@ dev-pure-on-nix: TTY?=--tty
 dev-pure-on-nix:
 	chmod o=rwx ./tests/fixtures/ # for tests constants
 	docker run \
-		--name dev-pure-on-${FISH_VERSION} \
+		--name dev-pure-on-${NIX_VERSION} \
 		--rm \
 		--interactive \
 		${TTY} \
 		--volume=$$(pwd):/tmp/.pure/ \
 		--workdir /tmp/.pure/ \
-		pure-${STAGE}-${FISH_VERSION} "fish --version && ${CMD}"
+		pure-${STAGE}-${NIX_VERSION} "fish --version && ${CMD}"
 	chmod o=r-x ./tests/fixtures/ # for tests constants
 
 test-pure-on-nix: CMD?=fishtape tests/*.test.fish

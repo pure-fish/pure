@@ -1,7 +1,9 @@
-FROM docker.io/nixos/nix:2.31.2
+# Specify Nix version to use during build
+# docker build -t <image> --build-arg NIX_VERSION=<version>
+ARG NIX_VERSION=latest
+FROM docker.io/nixos/nix:${NIX_VERSION}
 
-ARG FISH_VERSION
-ENV NIX_CONFIG "experimental-features = nix-command flakes"
+ENV NIX_CONFIG="experimental-features = nix-command flakes"
 
 # To speedup the later `ENTRYPOINT`, we add the `fish` package to the store
 RUN nix-channel --update
@@ -33,5 +35,6 @@ else
     exec /nix-result/bin/fish -c "$*"
 fi
 EOF
+
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
