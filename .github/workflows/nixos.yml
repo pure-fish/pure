@@ -19,7 +19,10 @@ jobs:
         version: [
             { fish: "latest" }, # https://search.nixos.org/packages?show=fish&type=packages&query=fish
           ]
-    steps:
+    env:
+      NIX_VERSION: "2.35.2"
+
+    steps:        
       - name: Checkout repo
         uses: actions/checkout@v4
 
@@ -32,7 +35,7 @@ jobs:
         continue-on-error: true
 
       - name: Build Pure Image on NixOS
-        run: make build-pure-on-nix NIX_VERSION=2.31.2 # use code from local context, see fish-with-pure.nix
+        run: make build-pure-on-nix NIX_VERSION=$NIX_VERSION # use code from local context, see fish-with-pure.nix
 
       - name: Run Tests
-        run: make test-pure-on-nix NIX_VERSION=2.31.2
+        run: make test-pure-on-nix NIX_VERSION=$NIX_VERSION
