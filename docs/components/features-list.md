@@ -55,6 +55,7 @@
 | **`pure_begin_prompt_with_current_directory`**     | `true`  | `true`: _`pwd` `git`, `SSH`, duration_.<br/>`false`: _`SSH` `pwd` `git`, duration_.                                  |
 | **`pure_shorten_prompt_current_directory_length`** | `0`     | Shorten every prompt path component but the last to X characters (0 do not shorten)                                  |
 | **`pure_truncate_prompt_current_directory_keeps`** | `0`     | Truncate working directory path in prompt, but keeps the last to `n` components (`0` full path in current directory) |
+| **`pure_truncate_prompt_current_directory_to_git_root`** | `false` | `true`: truncate working directory path in prompt to be relative to the git repository root (keeps the repo folder name and subpath) |
 
 === "Enabled (pwd first)"
 
@@ -66,6 +67,16 @@
     ![screenshot pure_begin_prompt_with_current_directory=false](/pure/assets/screenshots/light-pure_begin_prompt_with_current_directory%3Dfalse.png#only-light)
     ![screenshot pure_begin_prompt_with_current_directory=false](/pure/assets/screenshots/mirage-pure_begin_prompt_with_current_directory%3Dfalse.png#only-dark)
 
+=== "Truncated to git root"
+
+    ![screenshot pure_truncate_prompt_current_directory_to_git_root=true](/pure/assets/screenshots/light-pure_truncate_prompt_current_directory_to_git_root%3Dtrue.png#only-light)
+    ![screenshot pure_truncate_prompt_current_directory_to_git_root=true](/pure/assets/screenshots/mirage-pure_truncate_prompt_current_directory_to_git_root%3Dtrue.png#only-dark)
+
+=== "Not truncated to git root"
+
+    ![screenshot pure_truncate_prompt_current_directory_to_git_root=false](/pure/assets/screenshots/light-pure_truncate_prompt_current_directory_to_git_root%3Dfalse.png#only-light)
+    ![screenshot pure_truncate_prompt_current_directory_to_git_root=false](/pure/assets/screenshots/mirage-pure_truncate_prompt_current_directory_to_git_root%3Dfalse.png#only-dark)
+
 ### Git
 
 | Option                                 | Default | Description                                          |
@@ -76,6 +87,10 @@
 | **`pure_symbol_git_unpulled_commits`** | `⇣`     | Branch is behind upstream (commits to pull).         |
 | **`pure_symbol_git_unpushed_commits`** | `⇡`     | Branch is ahead upstream (commits to push).          |
 | **`pure_show_numbered_git_indicator`** | `false` | Show number of git stash and commits behind/ahead    |
+
+!!! tip "Truncate the path to the repository root"
+
+    To display the working directory relative to the Git repository root, see [`pure_truncate_prompt_current_directory_to_git_root`](#current-working-directory) in the _Current Working Directory_ section.
 
 !!! tip "Large repositories"
 

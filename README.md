@@ -64,6 +64,7 @@ Fully **customizable** (colors, symbols and features):
 
 * [Update terminal title with _current folder_ and _command_ 🛠][title] ;
 * [Shorten or truncate _current folder_ component 🏴🛠][current-working-directory] ;
+* [Truncate _current folder_ path to the git repository root 🏴][current-working-directory] ;
 * and more…
 
 🏴 means it's controlled by a feature flag, 🛠 means it's configurable.

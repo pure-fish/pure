@@ -1,5 +1,6 @@
 source (status dirname)/fixtures/constants.fish
 source (status dirname)/../functions/_pure_prompt_current_folder.fish
+source (status dirname)/../functions/_pure_prompt_git_truncate.fish
 source (status dirname)/../functions/_pure_parse_directory.fish
 @echo (_print_filename (status filename))
 
