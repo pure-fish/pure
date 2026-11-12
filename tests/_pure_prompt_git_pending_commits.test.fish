@@ -119,6 +119,20 @@ end
     _pure_prompt_git_pending_commits
 ) = $EMPTY
 
+@test "_pure_prompt_git_pending_commits: unborn branch tracking a non-empty upstream don't throw error" (
+    before_each
+
+    set fake_unborn_repo /tmp/unborn-repo
+    rm -rf $fake_unborn_repo
+    git clone --quiet $fake_remote $fake_unborn_repo 2>/dev/null # clone while remote is still empty
+    git push --quiet origin master >/dev/null 2>&1 # remote gets a commit afterward
+    cd $fake_unborn_repo
+    git fetch --quiet # local branch has no commit, but its upstream does
+
+    _pure_prompt_git_pending_commits 2>&1 # capture errors too
+    rm -rf $fake_unborn_repo
+) = $EMPTY
+
 @test "_pure_prompt_git_pending_commits: symbol is colorized" (
     before_each
 
