@@ -72,7 +72,7 @@ jobs:
           cat release-notes.md
 
       - name: Create GitHub Release
-        if: github.event_name == 'create'
+        if: github.event_name == 'create' || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
           RELEASE_TAG: ${{ steps.tags.outputs.tag }}
