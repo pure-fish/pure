@@ -63,7 +63,6 @@ The `add-version-tag.yml` pipeline is triggered only for `master` when `./conf.d
 
 ### Workflows
 
-
 #### Tests execution
 
 see: [.github/workflows/ci.yml](.github/workflows/ci.yml)
@@ -139,7 +138,7 @@ see: [.github/workflows/release-notes.yml](.github/workflows/release-notes.yml)
 
 ```mermaid
 ---
-title: Generate and publish release notes
+title: Generate, draft and wait review to publish release notes
 ---
 
 flowchart TD
@@ -148,7 +147,8 @@ flowchart TD
   CI --x|failed| STOP@{ shape: framed-circle, label: "Stop" }
   BUMP -->|Push conf.d/pure.fish| TAG["`Add version tag<br/>(_add-version-tag.yml_)`"]
   TAG -->|create: vX.Y.Z tag| RELEASE["`Generate release notes<br/>(_release-notes.yml_)`"]
-  RELEASE -->|release| SOCIAL["`Post message on social networks<br/>(_social-networks.yml_)`"]
+  RELEASE -->|draft release| PUBLISH_RELEASE["Review release notes"]
+  PUBLISH_RELEASE -->|👋 manually publish<br>gh release edit --draft=false v9.9.9| SOCIAL["`Post message on social networks<br/>(_social-networks.yml_)`"]
 ```
 
 Add the repository secret `CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW` as a fine-grained personal access token with **Contents: read and write** permission. The workflows use it to push the version commit, create the tag and publish the release so those actions can trigger the next workflows. The release-note generator also needs the separate `COPILOT_GITHUB_TOKEN` secret with **Copilot Requests: Read** permission.
