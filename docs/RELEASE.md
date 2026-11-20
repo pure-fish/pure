@@ -146,12 +146,12 @@ flowchart TD
   PUSH(push to master) --> CI{Alpine tests pass?}
   CI -->|passed| BUMP["Bump project version"]
   CI --x|failed| STOP@{ shape: framed-circle, label: "Stop" }
-  BUMP -->|Push conf.d/pure.fish| TAG["`Add version tag<br/>(_add-version-tag.yml_)`"]
-  TAG -->|create: vX.Y.Z tag| RELEASE["`Generate release notes<br/>(_release-notes.yml_)`"]
+  BUMP -->|Push conf.d/pure.fish and dispatch| TAG["`Add version tag<br/>(_add-version-tag.yml_)`"]
+  TAG -->|Create tag and dispatch| RELEASE["`Generate release notes<br/>(_release-notes.yml_)`"]
   RELEASE -->|release| SOCIAL["`Post message on social networks<br/>(_social-networks.yml_)`"]
 ```
 
-Add the repository secret `CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW` as a fine-grained personal access token with **Contents: read and write** permission. The workflows use it to push the version commit, create the tag and publish the release so those actions can trigger the next workflows. The release-note generator also needs the separate `COPILOT_GITHUB_TOKEN` secret with **Copilot Requests: Read** permission.
+The workflows use `GITHUB_TOKEN` to push the version commit, create the tag, and create a draft release. They explicitly dispatch the next workflow because events created by `GITHUB_TOKEN` do not normally trigger workflows. Manually dispatching the release-notes workflow previews the notes unless **Create a draft release** is selected. The release-note generator also needs the `COPILOT_GITHUB_TOKEN` secret with **Copilot Requests: Read** permission.
 
 [next-version]: https://github.com/thenativeweb/get-next-version
 [push]: https://github.com/ad-m/github-push-action

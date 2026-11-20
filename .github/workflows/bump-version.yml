@@ -2,11 +2,11 @@ name: Bump version # only when test
 
 on:
   workflow_call:
-    secrets:
-      CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW:
-        description: "A token passed from the caller workflow so git push can trigger workflows"
-        required: true
   workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: write
 
 jobs:
   bump-version:
@@ -16,11 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          token: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
-          # When you see:
-          #   Error: fatal: could not read Username for 'https://github.com': terminal prompts disabled
-          # visit https://github.com/settings/personal-access-tokens/new
+          persist-credentials: false
 
       - name: Get next version
         id: next_version
@@ -50,8 +46,14 @@ jobs:
           git add --verbose ./conf.d/pure.fish \
           && git commit --allow-empty --message "chore: bump version ${{ steps.next_version.outputs.version }}"
 
-      - name: Push bump commit # this commit once pushed will trigger the add-version-tag workflow
+      - name: Push bump commit
         if: steps.next_version.outputs.hasNextVersion == 'true'
         uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
+
+      - name: Start version tagging
+        if: >-
+          steps.next_version.outputs.hasNextVersion == 'true' &&
+          github.ref == 'refs/heads/master'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run add-version-tag.yml --ref master

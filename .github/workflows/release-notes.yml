@@ -8,6 +8,11 @@ on:
         description: 'Release tag to publish (for example, v4.19.0)'
         required: true
         type: string
+      publish:
+        description: 'Create a draft release (leave unchecked to preview notes)'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -72,9 +77,9 @@ jobs:
           cat release-notes.md
 
       - name: Create GitHub Release
-        if: github.event_name == 'create'
+        if: github.event_name == 'create' || inputs.publish
         env:
-          GH_TOKEN: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
+          GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ steps.tags.outputs.tag }}
         run: |
           set -euo pipefail

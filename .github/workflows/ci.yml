@@ -40,6 +40,7 @@ jobs:
   bump-version: # Bump when on master
     needs: [test-container]
     if: contains(github.ref, 'master') && github.repository == 'pure-fish/pure'
+    permissions:
+      actions: write
+      contents: write
     uses: ./.github/workflows/bump-version.yml
-    secrets:
-      CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
