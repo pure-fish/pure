@@ -153,6 +153,8 @@ flowchart TD
 
 The workflows use `GITHUB_TOKEN` to push the version commit, create the tag, and create a draft release. They explicitly dispatch the next workflow because events created by `GITHUB_TOKEN` do not normally trigger workflows. Manually dispatching the release-notes workflow previews the notes unless **Create a draft release** is selected. The release-note generator also needs the `COPILOT_GITHUB_TOKEN` secret with **Copilot Requests: Read** permission.
 
+If tagging fails because master moved, review the new commits before manually running the tagging workflow. If dispatching release notes fails after the tag is created, manually run the release-notes workflow for that tag with **Create a draft release** selected.
+
 [next-version]: https://github.com/thenativeweb/get-next-version
 [push]: https://github.com/ad-m/github-push-action
 <!-- markdownlint-disable-next-line MD053 -->

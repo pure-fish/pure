@@ -2,6 +2,9 @@ name: Bump version # only when test
 
 on:
   workflow_call:
+    secrets:
+      CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW:
+        required: false
   workflow_dispatch:
 
 permissions:
@@ -10,6 +13,7 @@ permissions:
 
 jobs:
   bump-version:
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -51,9 +55,9 @@ jobs:
         uses: ad-m/github-push-action@master
 
       - name: Start version tagging
-        if: >-
-          steps.next_version.outputs.hasNextVersion == 'true' &&
-          github.ref == 'refs/heads/master'
+        if: steps.next_version.outputs.hasNextVersion == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run add-version-tag.yml --ref master
+        run: |
+          gh workflow run add-version-tag.yml --ref master \
+            -f expected_sha="$(git rev-parse HEAD)"
