@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
@@ -24,7 +24,7 @@ jobs:
 
       - name: Get next version
         id: next_version
-        uses: thenativeweb/get-next-version@main
+        uses: thenativeweb/get-next-version@2.8.3
 
       - name: Show the next version
         run: |
@@ -52,6 +52,6 @@ jobs:
 
       - name: Push bump commit # this commit once pushed will trigger the add-version-tag workflow
         if: steps.next_version.outputs.hasNextVersion == 'true'
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v1.3.0
         with:
           github_token: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
