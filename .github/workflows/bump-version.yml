@@ -16,11 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          token: ${{ secrets.CI_TOKEN_4_WORKFLOW_FROM_WORKFLOW }}
-          # When you see:
-          #   Error: fatal: could not read Username for 'https://github.com': terminal prompts disabled
-          # visit https://github.com/settings/personal-access-tokens/new
+          persist-credentials: false
 
       - name: Get next version
         id: next_version
