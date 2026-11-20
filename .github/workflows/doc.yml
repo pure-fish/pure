@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Prepare screenshot image
         run: make build-pure-screenshot FISH_VERSION=${{ inputs.fish_version || '4.0.2' }}
